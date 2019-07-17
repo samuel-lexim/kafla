@@ -150,7 +150,9 @@ if(!function_exists('sienna_mikado_scripts')) {
 
 		wp_enqueue_script('sienna_mikado_modules', MIKADO_ASSETS_ROOT.'/js/modules.min.js', array('jquery'), false, true);
 
-		wp_enqueue_script('hoa-custom_modules', MIKADO_ASSETS_ROOT.'/js/hoa-custom.js', array('jquery'), false, true);
+        wp_enqueue_script('slick', MIKADO_ASSETS_ROOT.'/js/slick.min.js', array('jquery'), false, true);
+
+        wp_enqueue_script('hoa-custom_modules', MIKADO_ASSETS_ROOT.'/js/hoa-custom.js', array('jquery'), false, true);
 
 		wp_enqueue_script('pagination-custom_modules', MIKADO_ASSETS_ROOT.'/js/jquery.easyPaginate.js', array('jquery'), false, true);
 

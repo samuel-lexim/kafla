@@ -13,12 +13,19 @@ Template Name: Slider Page Template
         <?php do_action('sienna_mikado_after_container_open'); ?>
         <div class="mkdf-container-inner clearfix">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                <?php
+                $slider = get_field("slider_repeater");
+                $items = get_field("items");
+                $layout = get_field("layout_of_items");
+                ?>
+
                 <div class="mkdf-grid-row-medium-gutter">
                     <div class="mkdf-sidebar-holder mkdf-grid-col-3">
                         <?php get_sidebar(); ?>
                     </div>
 
                     <div class="mkdf-page-content-holder mkdf-grid-col-9">
+
 
                         <div class="col-xs-12 col-md-6 ce-empowerment">
                             <div class="col-xs-1 col-md-1">
