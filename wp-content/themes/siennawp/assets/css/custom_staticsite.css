@@ -1,0 +1,1238 @@
+
+@font-face {
+    font-family:'SFUIText Regular';
+    src: url('fonts/SFUIT fonts/SF-UI-Text-Regular.ttf');
+}
+@font-face {
+    font-family:'SFUIText Light';
+    src: url('fonts/SFUIT fonts/SF-UI-Text-Light.ttf');
+}
+@font-face {
+    font-family:'SFUIText Medium';
+    src: url('fonts/SFUIT fonts/SF-UI-Text-Medium.ttf');
+}
+@font-face {
+    font-family:'SFUIText Bold';
+    src: url('fonts/SFUIT fonts/SF-UI-Text-Bold.ttf');
+}
+@font-face {
+    font-family:'SFUShannonBoldOblique';
+    src: url('fonts/SFUIT fonts/SFUShannonBoldOblique.ttf');
+}
+@font-face {
+    font-family:'SFUIText Semibold';
+    src: url('fonts/SFUIT fonts/SF-UI-Text-Semibold.ttf');
+}
+@font-face {
+    font-family:'SFUIText Heavy';
+    src: url('fonts/SFUIT fonts/SF-UI-Text-Heavy.ttf');
+}
+
+/* Begin Custom css for contact page*/
+.img-contact-header {
+	width: 100%;
+	height: 350px;
+}
+.mkdf-menu-area .mkdf-vertical-align-containers .mkdf-position-right::before {
+	margin-right: 0px;
+}
+.description-contact {
+	font-size: 22px;
+}
+.title-contact-us {
+	font-size: 40px;
+}
+.form-contact-background {
+	background-color: white !important;
+}
+.verification {
+	background-color: white !important;
+}
+form.visual-form-builder li {
+	display: inline-block;
+	width: 50% !important;
+}
+.vfb-item-textarea {
+	display: inline !important;
+}
+.contact-content-page .col-md-6 {
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+.vfb-item-file-upload {
+	display: inline !important;
+}
+.visual-form-builder fieldset {
+    border-radius: 0px !important;
+}
+.visual-form-builder .vfb-legend {
+	border-bottom: 0px !important;
+}
+.contact-infor {
+	font-size: 16px;
+	color: #555;
+}
+/*End custom css for contact page*/
+/*Begin header*/
+.multi-languages {
+	background-color: #2e265f;
+	color: #8a8a8a;
+}
+
+
+/*End header*/
+
+/*Header home*/
+.social-media-head li {
+	list-style-type: none;
+	display: inline-block;
+}
+.social-media-head {
+	display: inline;
+	float: right;
+	margin-bottom:0px;
+}
+.customer-services {
+    padding-right: 34px;
+    padding-left: 60px;
+        line-height: 2;
+}
+.languages {
+        line-height: 2;
+}
+/*Comment*/
+#comments {
+	display:none;
+}
+.textwidget {
+	color: #e2e2e2;
+}
+.es_widget_form {
+	color: #e2e2e2;
+}
+
+
+.mkdf-team-info {
+	display: none;
+}
+.mkdf-team.mkdf-team-main-info-bellow-image .mkdf-team-image {
+    text-align: center;
+    margin-bottom: 20px !important;
+    border: none !important;
+    
+}
+.mkdf-team.mkdf-team-main-info-bellow-image .mkdf-team-image img {
+	width: 100% !important;
+}
+.mkdf-team.mkdf-team-main-info-bellow-image {
+	border: 0px !important;
+}
+
+/*Custom team slider*/
+.mkdf-team-slider-navigation-holder {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 100%;
+    transform: translate3d(-50%, -50%, 0);
+    bottom: 300px;
+    padding: 0 0;
+    z-index: 1;
+
+}
+.mkdf-team-slider-holder .slick-list {
+	margin: 0 auto !important;
+}
+.mkdf-team-slider-prev {
+	float: left;
+}
+.mkdf-team-slider-next {
+	float: right;
+}
+.mkdf-team-slider {
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
+	position: relative;
+}
+.slick-list {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0;
+}
+.mkdf-team-slider-content {
+	width: 100% !important;
+	text-align: center;
+	padding: 0;
+}
+.mkdf-team-slider-holder .mkdf-team-slider {
+	width: 100% !important;
+}
+
+
+
+/*pofolio */
+.text-portflio {
+    text-align: left;
+    margin-left: 12px !important;
+}
+.title-portflio {
+    text-align: left;
+    margin-left: 12px !important;
+}
+.permark-link-page {
+	text-align: left;
+}
+.permark-link-page li a {
+	font-size: 14px;
+	color: #333;
+}
+.permark-link-page li {
+	display: inline-block;
+}
+
+
+
+/*Begin all pages*/
+/*.mkdf-content-inner .mkdf-title {
+	display: none !important;
+}*/
+.mkdf-content-inner .mkdf-title {
+	height: auto !important;
+}
+.mkdf-title .mkdf-title-holder {
+	background-color: #f8f8f8;
+	text-align: center;
+}
+.mkdf-title .mkdf-title-holder h1 {
+    color: #2e265f;
+    font-size: 30px;
+    font-weight: normal;
+    font-family: inherit;
+}
+.page-title-custom {
+	font-size: 44px;
+}
+.slogan-custom {
+	font-size: 17px;
+}
+.sample-text-application-1,.sample-text-application-3,.sample-text-application-5,.sample-text-application-7 {
+	color: #2d2d2d;
+}
+.sample-text-application-2,.sample-text-application-4,.sample-text-application-6 {
+	color: #01a197;
+}
+.application-main-content {
+	    padding-top: 37px;
+}
+
+input.vfb-medium, input[type="text"].vfb-medium {
+    width: 100% !important;
+    height: 30px !important;
+}
+.checkout-our-team {
+	background: #e1e1e1;
+	padding: 80px 0;
+}
+.mkdf-content .mkdf-content-inner>.mkdf-full-width>.mkdf-full-width-inner {
+    padding: 0 !important;
+}
+.sns-live-endore {
+	padding: 70px 0 0 0;
+}
+.lexim-bulds-site {
+	padding: 0 0 70px 0;
+}
+.ecomerce-development {
+	padding: 52px 0 20px 0;
+}
+.part4-ecommerce-development {
+	padding: 50px 0 40px 0;
+}
+.section1-service {
+	padding: 0 0 70px 0;
+	
+}
+.mkdf-drop-down .second .inner>ul, li.narrow .second .inner ul {
+	background-color: #fff;
+}
+.mkdf-drop-down .second .inner ul li a {
+	color: #5e5e5e;
+}
+.mkdf-team-slider-title {
+	font-weight: 600;
+}
+.mkdf-team-slider-holder .mkdf-team-slider-description {
+	margin-bottom: 50px !important;
+}
+.mkdf-main-menu>ul>li>a span.item_inner {
+	padding: 6px 17px;
+}
+.multi-languages div a {
+	color: #fff;
+}
+.section1-title {
+	padding-bottom: 50px;
+}
+.section2-title {
+	padding-bottom: 50px;
+}
+
+.section-ecommerce-develop {
+	background-color: #e1e1e1;
+	padding: 62px 0 84px 0;
+}
+/*.section4-custom-ecommerce {
+	padding: 50px 0 100px 0;
+}*/
+.section5-custom-css {
+	padding-bottom: 80px;
+}
+.vc_custom_1467434864163 {
+
+   	background-color: #f8f8f8 !important;
+	padding-top: 81px !important;
+}
+.mkdf-section-inner-margin {
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+.mkdf-section-subtitle-holder .mkdf-section-subtitle {
+	text-align: center;
+}
+.lx-builds-ws1 .wpb_wrapper .flexslider {
+	margin: 0px;
+	border: 0px;
+	border-radius: 0px;
+}
+.custom1-builds .wpb_wrapper .mkdf-section-title-holder .mkdf-section-title {
+	background: #f5f5f5;
+	padding: 13px 0 13px 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#main1-lexim-builds {
+	padding-top: 50px;
+    padding-bottom: 16px;
+}
+
+.read-more-text-center {
+	text-align: left;
+	color: #f11b25;
+	font-size: 20px;
+}
+.blog-post1-article {
+	padding-top: 44px;
+}
+.custom-title1-text .vc_column-inner  .wpb_wrapper .mkdf-section-title-holder .mkdf-section-title {
+	padding-top: 20px;
+}
+.sub1-text-lexim-builds .mkdf-full-section-inner .wpb_column .vc_column-inner .wpb_wrapper .mkdf-section-subtitle-holder {
+	padding-bottom: 65px;
+	padding-left: 10px;
+}
+.live-feed1-quote-content .vc_column-inner {
+	background: #e1e1e1;
+}
+.padding-top1-live-feed {
+	padding-top: 20px;
+}
+.mkdf-btn {
+	border-radius: 0px;
+	background-color: #f11b25 !important;
+}
+.live-feed1-quote-content .vc_column-inner {
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+.custom1-image-gallery-home-page .wpb_wrapper .flexslider {
+	border: 0px;
+}
+
+/* ============================== CUSTOM ================================== */
+
+/* ============================ HOME PAGE ================================= */
+.mkdf-main-menu>ul>li>a>span.item_outer:before {
+    background-color: #f11b25;
+}
+.mkdf-section-title-holder .mkdf-section-title {
+	font-family: 'SFUIText Regular';
+	font-size: 40px;
+}
+.mkdf-section-title-holder .mkdf-section-title.mkdf-section-title-small {
+    font-size: 16px;
+}
+.mkdf-section-subtitle-holder .mkdf-section-subtitle {
+    font-size: 20px;
+    font-family: 'SFUIText Light';
+}
+.mkdf-section-title-holder .mkdf-section-title.mkdf-section-title-large {
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+.mkdf-page-footer .mkdf-footer-top-holder {
+    background-color: #2e265f;
+}
+.mkdf-footer-bottom-holder {
+	display: none;
+}
+.wpb_image_grid .wpb_image_grid_ul {
+	float: left;
+    width: 100%;
+}
+.wpb_image_grid .wpb_image_grid_ul .isotope-item {
+	width: 9.8%;
+    float:left;
+}
+.wpb_image_grid .wpb_image_grid_ul img {
+	display: block;
+    height: auto;
+    width: 100%;
+    margin: 5px;
+}
+.home-kafla-companies {
+	width: 1300px;
+}
+.isotope-item {
+	padding: 0 5px !important;
+}
+.home-link-menu {
+	background: #f5f5f5;
+    padding: 13px 0 13px 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    text-align: center;
+}
+.home-link-menu a {
+	color: #555;
+    font-size: 16px;
+}
+@media only screen and (min-width: 958px) {
+	.kafla-home-video {
+		width: 800px !important;
+		margin: auto;
+	}
+	.kafla-home-video  #kaflaVid {
+		width: 800px !important;
+	    height: 450px !important;
+	}
+}
+.kafla-home-intro .kafla-home-intro-title,
+.kafla-news-section-top.kafla-home-layout a {
+	font-family: 'SFUIText Regular';
+}
+/* ============================ FOOTER ================================= */
+.mkdf-footer-top-four-cols .mkdf-grid-col-3 {
+	width: 20%;
+	padding-left: 70px;
+	float: left;
+}
+.mkdf-footer-top-four-cols .mkdf-grid-col-3:first-child {
+	width: 60%;
+	padding-left: 0px;
+}
+@media only screen and (max-width: 1024px) {
+	.mkdf-footer-top-four-cols .mkdf-grid-col-3 {
+		width: 50%;
+		padding-left: 0px;
+	}
+	.mkdf-footer-top-four-cols .mkdf-grid-col-3:first-child {
+		width: 100%;
+	}
+	.mkdf-footer-top-four-cols #text-2 .textwidget > div {
+		padding-left: 15px;
+	}
+	.home-kafla-companies {
+	    width: 100%;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.wpb_image_grid .wpb_image_grid_ul .isotope-item {
+	    width: 100%;
+	}
+	.kafla-news-section-middle .kafla-post-content {
+		padding-left: 15px;
+	}
+	#mkdf-back-to-top.on {
+    	opacity: 0;
+	}
+	.frs-slideshow-container .frs-slideshow-content img {
+	    height: auto !important;
+	    width: 100% !important;
+	    max-width: 100% !important;
+	    max-height: 100% !important;
+	    margin-left: 0px !important;
+	}
+	.frs-slideshow-container > .frs-wrapper > .frs-slideshow-content > .frs-slide-img-wrapper > .frs-slide-img {
+    	height: auto !important;
+	}
+	.frs-slideshow-container .frs-skin-default .frs-bullets-wrapper {
+		display: none !important;
+	}
+	.frs-slideshow-container .frs-skin-default div.frs-slider-nav span {
+		top: 25% !important;
+	}
+	.frs-slideshow-container#home-pagepjc {
+	    margin-bottom: 0px;
+	}
+	.kafla-home-intro {
+	    margin-top: -170px;
+	}
+}
+.mkdf-mobile-menu-opener .mkdf-mobile-opener-icon-holder .fa {
+	font-size: xx-large;
+}
+.footer-menu ul li {
+	padding-right: 80px;
+    border-bottom: none !important;
+    float: left;
+}
+.footer-menu-item {
+	color: #fbfbfc;
+    line-height: 20px;
+}
+.footer-donate img {
+	width: 100%;
+}
+/* ============================ HEADER ================================= */
+.home-header-kafla {
+	text-align: right;
+	padding: 10px 0;
+	color: #fff;
+}
+.home-header-kafla a {
+	padding: 0 20px;
+}
+/* ============================ LOG IN ================================= */
+#wppb-login-wrap .login-username input, #wppb-login-wrap .login-password input {
+	width: 100%;
+    padding: 17px 0;
+    margin: 10px 0 25px;
+}
+#wppb-login-wrap .login-username label, #wppb-login-wrap .login-password label, #loginform .login-remember label {
+	font-size: 15px;
+    font-weight: normal;
+    color: #555;
+}
+#loginform .login-remember label {
+	padding: 13px 0;
+}
+.login-submit #wppb-submit {
+	margin-top: 30px;
+	width: 100%;
+    padding: 17px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #2e265f;
+    color: #fff;
+    border: none;
+}
+/* ============================ ABOUT US ================================= */
+.title-about-us {
+	padding-left: 15px;
+    padding-right: 15px;
+}
+/* ============================ CONTACT US ================================= */
+.contact-title-kafla {
+	background-color: #f8f8f8;
+    padding: 10px 0;
+}
+.contact-us-detail {
+	font-size: 20px;
+	color: #2e265f;
+}
+.contact-content-page {
+	padding-top: 50px;
+}
+.contact-infor p {
+	padding: 10px 0;
+}
+/* ============================ PHOTO ================================= */
+.mkdf-ptf-item-title {
+	text-align: center;
+	font-size: 20px;
+	color: #2e265f;
+}
+/* ============================ NEWS ================================= */
+.news-more-link {
+	color: #2e265f;
+	background: #fff;
+	font-weight: bold;
+    font-size: 18px;
+    padding: 10px 0px 20px;
+    text-decoration: underline !important;
+}
+.our-news-layout .vc_column-inner  {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.kafla-news-section-top .kafla-post-title {
+	margin-top: 90px;
+}
+/* ============================ NEWS ================================= */
+.tribe-events-calendar thead th {
+	background-color: #2e265f;
+}
+#tribe-bar-form .tribe-bar-submit input[type=submit] {
+	background-color: #2e265f;
+}
+.tribe-events-page-title {
+	color: #2e265f;
+}
+/* ============================ CONTACT US ================================= */
+.wpcf7-form label {
+	color: #2e265f;
+	width: 100%;
+}
+.wpcf7-form .wpcf7-form-control.wpcf7-text, .wpcf7-form .wpcf7-form-control.wpcf7-textarea {
+	background-color: #fff;
+	border: 1px solid #a4a4a4;
+}
+
+/* ============================ PHOTO ================================= */
+.mkdf-portfolio-list-holder-outer.mkdf-ptf-with-spaces.mkdf-ptf-three-columns article:nth-child(3n+1) {
+	clear: both;
+}
+/*.mkdf-drop-down .narrow .second .inner ul li span.item_text {
+	text-transform: uppercase;
+}*/
+.mkdf-main-menu>ul>li>a span.item_text {
+    text-transform: uppercase;
+}
+/* ============================ LEFT MENU ================================= */
+aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item {
+	border: none;
+}
+aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item>a, aside.mkdf-sidebar .widget.widget_nav_menu ul.menu li a:hover {
+    color: #fff;
+    background-color: #2e265f;
+    text-decoration: none;
+}
+aside.mkdf-sidebar .widget.widget_nav_menu .sub-menu {
+	padding-left: 0px;
+}
+aside.mkdf-sidebar .widget.widget_nav_menu .menu {
+	background-color: #f6f6f6;
+	margin-top: 0px;
+}
+aside.mkdf-sidebar .widget.widget_nav_menu .sub-menu li a {
+	padding-left: 40px !important;
+}
+aside.mkdf-sidebar .widget.widget_nav_menu ul.menu li a {
+	font-size: 17px;
+	padding: 15px 20px;
+}
+.kafla-page-content {
+	color: #555;   
+	font-size: 18px;
+    line-height: 30px;
+    font-family: 'SFUIText Light';
+
+}
+
+.kafla-page-content ul li{
+    list-style-type: square;
+    list-style-position: outside;
+    /*padding: 0px 0 10px 0px;*/
+    margin-left: 5%;
+}
+
+aside.mkdf-sidebar .widget ul li {
+    border-bottom: 1px dashed #c8c8c8;
+}
+aside.mkdf-sidebar .widget.widget_nav_menu ul.sub-menu {
+	border-top: 1px dashed #c8c8c8;
+}
+.mkdf-drop-down .narrow .second .inner ul li {
+    width: 250px;
+}
+/* ============================ HISTORY ================================= */
+.kafla-history-content {
+	margin: 0px;
+}
+.kafla-history-content ul {
+	margin: 0px;
+}
+.kafla-history-content li {
+	list-style: none;
+}
+.kafla-history-content li p {
+	font-size: 18px;
+	color: #555;
+	padding: 5px 10px 20px 50px;
+    margin: 0px;
+}
+.kafla-history-content li > p:first-child {
+	color: #2e265f;
+	font-weight: bold;
+	padding-bottom: 0px;
+	padding-top: 20px;
+}
+.kafla-history-content li:nth-child(2n) {
+	background-color: #fbfbfb;
+}
+.kafla-history-content li:nth-child(2n + 1) {
+	background-color: #f6f6f6;
+}
+#home-pagepjc-slideshow img {
+	margin-top: 0px !important;
+}
+.mkdf-main-menu ul li a {
+    font-size: 18px !important;
+ }
+ .mkdf-page-footer .mkdf-footer-top-holder #text-3 {
+    margin-bottom: 0px;
+}
+/* ============================ HOME PAGE ================================= */
+@media only screen and (min-width: 1350px) {
+	.kafla-home-layout {
+		width: 1330px;
+		margin: auto;
+	}
+}
+@media only screen and (max-width: 1340px) {
+	.kafla-news-section-bottom .kafla-home-layout.row {
+		margin-right: 0px;
+    	margin-left: 0px;
+	}
+}
+.kafla-news-section-top {
+	margin: 50px auto;
+}
+@media only screen and (min-width: 958px) {
+	.kafla-news-section-top .kafla-post-img {
+		height: 300px;
+		overflow: hidden;
+	}
+	.kafla-news-section-top .kafla-post-img img {
+		height: 300px;
+		object-fit: cover;
+	}
+	.kafla-news-section-top .kafla-category-post {
+    	position: relative;
+     	top: 0px; 
+     	width: 100%; 
+	}
+	.kafla-home-layout.sponsors-area {
+		width: 920px;
+	}
+}
+@media only screen and (max-width: 1024px) {
+	#nav_menu-2 {
+		display: none;
+	}
+}
+@media only screen and (max-width: 957px) {
+	.kafla-news-section-top .kafla-category-post {
+    	position: relative !important;
+     	top: 0px !important; 
+     	width: 100% !important; 
+	}
+	.kafla-news-section-top .kafla-post-title {
+    margin-top: 20px;
+	}
+	/*.testimonials_list_area .doitac {
+	    width: calc(100% / 3) !important;
+	}*/
+	.category .mkdf-blog-holder article, .kafla-category-news .lcp_catlist li {
+		width: 100% !important;
+	}
+	.mkdf-sidebar-holder.mkdf-grid-col-3, #nav_menu-2 {
+		display: none;
+	}
+	.tribe-events-sub-nav li a {
+		background-color: #2e265f;
+	}
+	.mkdf-title .mkdf-title-holder h1 span {
+    	display: none;
+	}
+	.mkdf-blog-date-on-side .mkdf-post-text-inner {
+	    margin-left: 0px !important;
+	}
+}
+.kafla-news-section-top .kafla-category-post {
+    position: absolute;
+    top: 315px;
+    width: calc(100% - 30px);
+    text-align: center;
+    background: #f5f5f5;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kafla-news-section-top .kafla-category-post:hover {
+	background-color: #2e265f;
+}
+.kafla-news-section-top .kafla-category-post a {
+	color: #a4a4a4;
+    font-size: 16px;
+    font-weight: normal;
+}
+.kafla-news-section-top .kafla-category-post:hover a {
+	color: #fff;
+}
+ul.lcp_catlist {
+	list-style: none;
+}
+.kafla-news-section-top .kafla-post-content {
+	text-align: center;
+}
+.kafla-news-section-top .kafla-post-content a {
+	color: #555;
+    font-size: 18px;
+}
+.kafla-news-section-middle {
+	background-color: #f8f8f8;
+	padding: 70px 0 180px;
+}
+@media only screen and (min-width: 767px) {
+	.kafla-news-section-middle .kafla-post-img{
+		width: 33%;
+		float: left;
+	}
+	.kafla-news-section-middle .kafla-post-content {
+		padding: 0 15px;
+		width: 67%;
+		float: left;
+	}
+}
+.kafla-news-section-middle .kafla-post-img img {
+	width: 100%;
+	height: 370px;
+    padding: 0 15px;
+}
+.kafla-news-section-middle .kafla-post-title {
+	margin: 50px 0;
+}
+.kafla-news-section-middle .kafla-post-title a {
+	font-size: 30px;
+	color: #2e265f;
+}
+.kafla-news-section-middle .kafla-post-content {
+	color: #555;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+.kafla-news-section-bottom {
+	clear: both;
+	background-color: #f8f8f8;
+	padding: 100px 15px;
+	text-align: center;
+}
+.kafla-news-section-bottom .fluidvids {
+	padding-top: 23% !important;
+    width: 42% !important;
+    margin: auto;
+}
+.kafla-news-section-bottom .kafla-home-about-tilte {
+    font-size: 30px;
+    color: #2e265f;
+    margin: 50px 0 40px;
+    font-family: "SFUIText Semibold";
+}
+.kafla-news-section-bottom img {
+	margin-bottom: 50px !important;
+}
+.kafla-news-section-bottom .kafla-home-about-content {
+    color: #555;
+    font-size: 20px;
+    line-height: 30px;
+    padding-bottom: 50px;
+    font-family: 'SFUIText Light';
+    text-align: center;
+}
+.kafla-news-section-bottom a {
+    color: #ffffff;
+    background-color: #f11b25;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-family: 'SFUIText Semibold';
+}
+.kafla-home-intro {
+	padding: 15px;
+}
+.kafla-home-intro-title {
+	font-size: 30px;
+	margin-bottom: 40px;
+	color: #f11b25;
+	text-align: center;
+}
+.kafla-home-intro-content {
+	color: #555;
+    text-align: center;
+    font-size: 18px;
+    line-height: 34px;
+    font-family: 'Open Sans', sans-serif;
+}
+/*.kafla-heritage-night-section {
+	padding: 50px 0;
+}*/
+.kafla-heritage-night-section .mkdf-section-title-holder {
+    margin-bottom: 60px;
+}
+.kafla-heritage-night-section .mkdf-section-title-holder h2,
+.kafla-home-sponsers h2 {
+	font-size: 33px !important;
+	font-family: 'SFUIText Light' !important;
+}
+.home .section4-custom-ecommerce {
+	padding: 50px 0 0;
+}
+/* ============================ KAFLA NEWS ================================= */
+.category .mkdf-grid-row-medium-gutter .mkdf-grid-col-12 {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.category .mkdf-blog-holder article, .kafla-category-news .lcp_catlist li {
+    width: 33.33%;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.category .mkdf-blog-holder article:nth-child( 3n + 1 ), .kafla-category-news .lcp_catlist li:nth-child( 3n + 1 ) {
+	clear: both;
+}
+.kafla-category-news .kafla-post-img {
+	height: 250px;
+	overflow: hidden;
+}
+.kafla-category-news .kafla-post-img img {
+	height: 250px;
+    object-fit: cover;
+}
+.category .mkdf-blog-holder .mkdf-post-image img {
+	height: 250px;
+}
+.category .mkdf-blog-date-on-side .mkdf-date-format, .search-results .mkdf-blog-date-on-side .mkdf-date-format {
+	margin-right: 10px;
+}
+.single-post .mkdf-blog-holder article .mkdf-post-image, .mkdf-post-content .mkdf-author-desc {
+	display: none;
+}
+.kafla-category-news .kafla-post-title {
+	margin: 20px 0;
+	height: 70px;
+}
+.kafla-category-news .kafla-post-content {
+    font-size: 18px;
+    color: #555;
+    font-family: 'SFUIText Light';
+}
+.kafla-category-news .kafla-post-title a {
+    color: #2e265f;
+    font-family: 'SFUIText Bold';
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 20px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.kafla-category-news .kafla-post-title a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+.page-id-399 .kafla-category-news .kafla-post-excerp {
+	height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 25px;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+}
+.kafla-category-news .kafla-post-readmore-link {
+	margin: 20px 0 80px;
+}
+.kafla-category-news .kafla-post-readmore-link a {
+	color: #000;
+	font-size: 18px;
+	text-decoration: underline;
+}
+.lcp_paginator {
+	text-align: right;
+}
+.easyPaginateNav {
+	text-align: right;
+    padding-top: 50px;
+}
+.lcp_paginator li, .mkdf-pagination li,
+.easyPaginateNav a.page {
+	font-size: 20px;
+	padding: 10px 18px !important;
+	border: none !important;
+	background-color: #efefef !important;
+	margin-left: 15px !important;
+	color: #2e265f;
+	text-decoration: none;
+}
+.lcp_paginator li a, .mkdf-pagination li a {
+	color: #2e265f !important;
+}
+.lcp_paginator li.lcp_currentpage, .mkdf-pagination li.active,
+.easyPaginateNav a.page.current {
+	color: #fff;
+	background-color: #2e265f !important;
+	font-weight: bold;
+}
+.mkdf-pagination li.active span {
+	color: #fff;
+}
+/* ============================ KAFLA PHOTO - VIDEO ================================= */
+.kafla-photo .kafla-post-title, .kafla-video .kafla-post-title {
+	text-align: center;
+}
+.padding-article .title-sub {
+	display: none;
+}
+.mkdf-menu-area .mkdf-vertical-align-containers .mkdf-position-left {
+	z-index: 99;
+}
+#mkdf-back-to-top, .mkdf-blog-date-on-side .mkdf-date-format {
+    background-color: #ee334e;
+}
+/* ============================ EVENT ================================= */
+#tribe-events-footer .tribe-events-sub-nav .tribe-events-nav-previous {
+	padding: 15px 40px;
+	background-color: #2e265f;
+}
+#tribe-events-footer .tribe-events-sub-nav .tribe-events-nav-previous a {
+	color: #fff;
+}
+#tribe-events-content.tribe-events-single .tribe-events-event-image img {
+	width: 100%;
+}
+#tribe-events-content.tribe-events-single .tribe-events-single-event-description {
+	text-align: center;
+}
+/* ============================ GET INVOLVED ================================= */
+.kafla-get-involved div > div {
+	background-color: #f8f8f8;
+	padding: 50px 15px 20px;
+	height: 600px;
+}
+/* ============================ ORGANIZATION ================================= */
+.kafla-orginization-first img {
+	height: 200px;
+}
+.kafla-orginization-first p {
+	font-size: 20px;
+    color: #a4a4a4;
+}
+.kafla-orginization-first p:nth-child(2) {
+	color: #2e265f;
+	margin: 20px 0px 0px;
+}
+.kafla-orginization-second {
+	margin-top: 60px;
+	margin-left: -25px;
+    margin-right: -25px;
+}
+.kafla-orginization-second .wpb_wrapper div {
+	width: 11.1%;
+	float: left;
+	padding: 10px;
+	text-align: center;
+}
+.kafla-orginization-second .wpb_wrapper div img {
+	width: 100%;
+}
+@media only screen and (max-width: 1200px) and (min-width: 768px) {
+	.kafla-orginization-second .wpb_wrapper div {
+		width: 33.3%;
+	}
+	.kafla-orginization-second .wpb_wrapper div:nth-child(3n + 1) {
+		clear: both;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.kafla-orginization-second .wpb_wrapper div {
+		width: 50%;
+	}
+	.kafla-orginization-second .wpb_wrapper div:nth-child(2n + 1) {
+		clear: both;
+	}
+}
+.kafla-orginization-second p {
+	font-size: 16px;
+    color: #a4a4a4;
+}
+.kafla-orginization-second p:nth-child(2) {
+	color: #2e265f;
+	margin: 20px 0px 0px;
+}
+
+/* ============================ HEADER-TOP ================================= */
+.top-multi-languages {
+    text-align: left;
+    padding-left: 0px;
+    padding-top: 4px;
+}
+.top-multi-languages .qtranxs_widget .widgettitle {
+    display: none;
+}
+.top-multi-languages .qtranxs_widget .language-chooser-item {
+    font-size: 14px;
+    opacity: 1;
+    text-transform: uppercase;
+    margin-right: 0px;
+}
+.top-multi-languages .qtranxs_widget .language-chooser-item a {
+	padding-left: 0px;
+	padding-right: 10px;
+}
+.top-multi-languages .qtranxs_widget ul li+li {
+    border-left: 2px solid #939393;
+    padding-left: 15px;
+}
+.top-multi-languages .qtranxs_widget .language-chooser-item.active a {
+    color: #f11b25;
+    font-weight: bold;
+}
+.home-header-kafla #searchform #s {
+    width: 70%;
+    height: 30px;
+    padding: 0;
+    background-image: url(/wp-content/uploads/2017/10/icon-search.png);
+    background-color: #fff;
+    border: 1px solid #f2f2f2;
+    color: #2e265f;
+    background-position: 10px 3px;
+    background-repeat: no-repeat;
+    text-indent: 65px;
+    box-sizing: border-box;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: inherit;
+}
+.home-header-kafla #searchform #searchsubmit {
+    width: 20%;
+    height: 30px;
+    position: inherit;
+    background-color: transparent;
+    font-size: 16px;
+    text-transform: none;
+    border: 1px solid #f8f8f8;
+    border-radius: 0;
+    font-family: inherit;
+}
+.home-header-kafla .kafla-top-bar-donate {
+	padding-right: 0px;
+}
+.home-header-kafla .kafla-top-bar-donate form {
+    height: 30px;
+}
+.testimonials_list_area {
+	padding-bottom: 20px;
+}
+.sponsors-platinum .testimonials_list_area .doitac {
+	width: calc(100% / 3);
+	float: left;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+   	.sponsors-platinum .testimonials_list_area .doitac {
+		width: calc(100% / 3.2);
+	}
+}
+.sponsors-silver .testimonials_list_area .doitac {
+	width: calc(100% / 4);
+	float: left;
+}
+.sponsors-bronze .testimonials_list_area .doitac {
+	width: calc(100% / 5);
+	padding-top: 20px;
+	float: left;
+}
+.kafla-home-layout.sponsors-area .sponsors-title {
+	font-family: SFUIText Bold;
+    font-size: 22px;
+    border-bottom: 4px solid;
+    width: 120px;
+    margin: 40px auto;
+}
+.kafla-home-layout.sponsors-area > p > img {
+	height: 40px;
+}
+.testimonials_list_area .doitac img {
+    max-height: 150px;
+}
+.mkdf-drop-down .second .inner ul li.sub ul li:hover>a, .mkdf-drop-down .second .inner>ul>li:hover>a {
+    color: #2e265f;
+}
+.kafla-mission-bottom div, .kafla-mission-bottom p {
+	float: left;
+}
+@media only screen and (min-width: 1300px) {
+	.kafla-mission-bottom div {
+		margin-left: 60px;
+	}
+}
+.kafla-mission-bottom div:first-child {
+	margin-left: 0px;
+}
+.kafla-mission-bottom div img {
+	margin-right: 15px;
+}
+.kafla-mission-bottom p {
+	font-family: 'SFUIText Medium';
+    font-size: 16px;
+    color: #2e265f;
+}
+.kafla-mission-bottom div p + p {
+	padding-top: 5px;
+}
+/* ============================ PROJECT PAGE ================================= */
+.kafla-page-projects .kafla-project-title {
+	font-size: 25px;
+	font-family: 'SFUIText Regular';
+	color: #2e265f;
+	padding-bottom: 15px;
+	text-align: center;
+}
+.kafla-page-projects .kafla-project-subtitle {
+	font-size: 18px;
+	color: #000;
+    font-family: 'SFUIText Regular';
+    margin: 10px 0px 0px;
+    padding-left: 0px;
+}
+.kafla-page-projects p {
+	line-height: 26px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    padding-left: 30px;
+}
+.kafla-page-projects img {
+	width: 100%;
+	padding-bottom: 15px;
+}
+.kafla-page-projects .kafla-project-page-section {
+	padding-bottom: 50px;
+}
+.contact-content-page input.wpcf7-form-control.wpcf7-submit {
+    background-color: #2e265f;
+}
+.contact-content-page input.wpcf7-form-control.wpcf7-submit:not(.mkdf-btn-custom-hover-bg):not(.mkdf-btn-with-animation):hover {
+    background-color: #f11b25 !important;
+}
+@media only screen and (max-width: 1279px) {
+	.kafla-home-video #kaflaVid {
+		width: 100%;
+    	height: auto;
+	}
+}
+.single.single-post .mkdf-container + .mkdf-column-inner #nav_menu-2 {
+	display: none;
+}
+.page table td {
+    border-right: 1px solid #e6e6e6;
+}

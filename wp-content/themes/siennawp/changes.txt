@@ -1,0 +1,4 @@
+1.1
+- Added WordPress 4.5 compatibility
+- Updated Visual Composer to version 4.11.2
+- Update Slider Revolution to version 5.2.4.1

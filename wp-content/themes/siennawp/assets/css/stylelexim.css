@@ -1,0 +1,2550 @@
+@font-face {
+	 font-family: "lato-regular";
+    src: url("../fonts/lato-regular.ttf");
+}
+@font-face {
+  font-family: "lato-black";
+  src: url("../fonts/lato-black.ttf");
+}
+@font-face {
+  font-family: "lato-bold";
+  src: url("../fonts/lato-bold.ttf");
+}
+@font-face {
+  font-family: "lato-thin";
+  src: url("../fonts/lato-thin.ttf");
+}
+@font-face {
+  font-family: "lato-medium";
+  src: url("../fonts/lato-medium.ttf");
+}
+/*
+* ==========  CSS Home ===========
+*/
+body {
+	font-family:  'lato-regular','SFUIText', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+.nopadding {
+  padding: 0 !important;
+}
+.nomargin {
+  margin: 0 !important;
+}
+.nopadding-nomargin{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+#header-top-home{
+  max-width: 1415px;
+  margin: 0 auto;
+}
+.white-space-nowrap{
+	white-space: nowrap;
+}
+.parent-position{
+  position: relative;
+}
+.child-position{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content-top-home{
+  height: 1078px;
+  /*background-image:  url(./images/bg-home-1.jpg);*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.content-top-child{
+    height: 1078px;
+    width: 1900px;
+}
+.content-top-child-home{
+    height: 1078px;
+    width: 1900px;
+    z-index: 99;
+}
+.content-home-center{
+  width:  73%;
+  z-index: 99;
+}
+#icon-home{
+  width:279px; 
+  height:60px;
+  background-image:  url(./images/icon-home.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+#btn-donate{
+  font-size: 13px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 50px;
+  padding: 5px 20px;
+  border-color: #ffffff;
+}
+#btn-donate:hover {
+  font-size: 13px;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 5px 20px;
+  border-color: #ffffff;
+  text-decoration: none;
+}
+#btn-watchvideo{
+   font-size: 30px;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 8px 30px;
+  border-color: #ffffff;
+  font-family: 'lato-medium';
+}
+#btn-watchvideo:hover {
+  font-size: 30px;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 8px 30px;
+  border-color: #ffffff;
+  text-decoration: none;
+  font-family: 'lato-medium';
+}
+#donate-top-right>div{
+  display: inline-block;
+  margin-right: 15px;
+}
+#donate-top-right{
+  text-align: right;
+  margin-bottom: 20px;
+}
+#header-top-home>.col-md-2{
+	padding-right: 0px;
+}
+.form-search-home-top {
+    display: flex;
+    justify-content: flex-end;
+}
+.titles-top-home{
+  font-size: 24px;
+  color: #ffffff;
+  font-family: 'lato-medium';
+  text-align: center;
+  margin-bottom: 45px;
+}
+#decor-top-left{
+  background-color: #ffffff;
+  width: 1px;
+  height: 100px;
+  margin-left: 9px;
+}
+#ic-you{
+  width:24px; 
+  height:24px;
+  background-image:  url(./images/ic-you.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 25px;
+}
+#ic-in{
+  width: 23px;
+  height: 23px;
+  background-image:  url(./images/ic-in.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 25px;
+}
+#ic-tw{
+  width:21px; 
+  height:18px;
+  background-image:  url(./images/ic-tw.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 25px;
+}
+#ic-fb{
+  width:20px; 
+  height:19px;
+  background-image:  url(./images/ic-fb.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 25px;
+}
+#follow-us-text{
+  width:15px; 
+  height:111px;
+  background-image:  url(./images/follow-us-text.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 10px;
+  margin-left: 3px;
+}
+#ic-community{
+  width:78px; 
+  height:78px;
+  background-image:  url(./images/ic-community.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0 auto;
+  margin-bottom: 35px;
+}
+#ic-political{
+  width:78px; 
+  height:84px;
+  background-image:  url(./images/ic-political.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+   margin: 0 auto;
+   margin-bottom: 35px;
+}
+#ic-economic{
+  width:78px; 
+  height:83px;
+  background-image:  url(./images/ic-economic.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+   margin: 0 auto;
+   margin-bottom: 35px;
+}
+.empowerment-titles{
+   font-size: 24px;
+  color: #343091;
+  font-family: 'lato-bold';
+}
+.empowerment-anchor-box{
+	top:-42px;
+	left: 160px;
+	position: absolute;
+}
+.empowerment-box {
+  width: 360px;
+  height: 320px;
+  color: #ffffff;
+  z-index: 99; 
+  font-size: 14px;
+  text-align: center;
+  list-style: none;
+  background-color: #ffffff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  /*border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;*/
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.empowerment-box-child{
+	width: 200px;
+    height: 200px;
+}
+.empowerment-anchor-box .col-md-4{
+	padding-right: 80px;
+    padding-left: 80px;
+}
+.news-box{
+	bottom: -75px;
+  left: 237px;
+	position: absolute;
+  width: 1410px;
+  height: 1450px;
+  color: #ffffff;
+  z-index:  9999;
+  font-size: 14px;
+  text-align: center;
+  list-style: none;
+  background-color: #ffffff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  /*border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;*/
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+#news-korean{
+  width:1338px; 
+  height:608px;
+  background-image:  url(./images/bg-home-2.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0 auto;
+  margin-top: 35px;
+  position: relative;
+  cursor: pointer;
+}
+#news-gallery{
+  width:697px; 
+  height:357px;
+  background-image:  url(./images/img-photo-gallery.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+}
+#news-video{
+  width:697px; 
+  height:357px;
+  background-image:  url(./images/img-video-story.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-top: 30px;
+  position: relative;
+  cursor: pointer;
+}
+#news-event{
+  width:608px; 
+  height:740px;
+  background-image:  url(./images/img-up-coming.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
+.news-box>div:nth-child(2){
+  padding-left: 35px;
+  padding-top: 30px;
+}
+.news-box>div:nth-child(3){
+   padding-top: 30px;
+  padding-right: 0px;
+  padding-left: 25px;
+}
+#multi-languages-home-top .language-chooser-item.active a {
+  color: #ffffff;
+  font-size: 20px;
+}
+#multi-languages-home-top .language-chooser-item a {
+  color: #ffffff;
+  font-size: 20px;
+}
+#multi-languages-home-top .qtranxs_widget ul li+li {
+    border-left: 2px solid #ffffff;
+    padding-top: 5px;
+}
+#menu-main-home-top>ul>li>a{
+	color: #ffffff;
+	font-weight:unset;
+}
+#menu-main-home-top>ul>li>a>span.item_outer:before {
+  background-color: #ffffff;
+  height: 6%;
+  width: 60%;
+  left: 16px;
+  top: 35px;
+}
+#menu-main-home-top{
+  margin-top: 22px;
+  margin-left: 0;
+}
+#multi-languages-home-top{ 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.decor-find-home{
+    background-color: #ffffff;
+    width: 2px;
+    height: 19px;
+    position: relative;
+    margin: 0 10px 0 0px;
+}
+#ic-find{
+    width: 30px;
+    height: 30px;
+    background-image: url(./images/ic-find.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+}
+.form-search-home-top input[type=submit] {
+    display: none;
+}
+aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item>a, aside.mkdf-sidebar .widget.widget_nav_menu ul.menu li a:hover{
+	background-color:unset;
+	background-image: linear-gradient(-90deg,  #ee334f,#343091);
+}
+.btn-donate-home-footer{
+   width: 520px;
+   height: 60px;
+}
+.news-box a:hover{
+  text-decoration: unset;
+}
+.news-box a:focus{
+  text-decoration: unset;
+}
+.bg-header{
+  height: 139px;
+  background-image:  url(./images/bg-header.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: 999;
+    margin: 0 auto;
+    max-width: 2000px;
+}
+.bg-image-header{
+  height: 139px !important;
+  background-image:  url(./images/bg-header.jpg) !important;
+   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: 999;
+}
+.bg-header-child{
+  height: 139px;
+  width: auto;
+}
+.bg-header #header-top-home{
+  padding-top: 15px;
+}
+.bg-header #donate-top-right {
+  margin-bottom: 5px;
+}
+/*
+.home .bg-header{
+  height: 0;
+  background: transparent;
+}*/
+.bg-video-home-top{
+	height: 1078px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#header-top-home .col-md-7{
+   padding-left: 0;
+   padding-right: 0;
+}
+.sticky-element-placeholder.sticky-element-active{
+	display: block;
+    float: none;
+    flex: 0 1 auto;
+    box-sizing: border-box;
+    clear: none;
+    overflow: visible;
+    transform: none;
+	width: 100% !important;
+}
+.sticky-element-original.element-is-sticky{
+	position: fixed;
+    top: 0px;
+    margin-top: 0px;
+    z-index: 1;
+	width: 100% !important;
+	left: 0;
+    right: 0;
+}
+.bg-header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    max-width: 2000px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    border: none;
+}
+.content-top-home .flex-control-nav{
+	z-index: 9999;
+}
+#header-top-home>.col-md-3 {
+    margin-top: -5px;
+}
+/*
+* ==========  END CSS Home ===========
+*/
+/*
+* ==========   CSS about-kafla-content ===========
+*/
+.about-kafla-content{
+  /*height: auto;
+  overflow: hidden;*/
+   height: 1800px;
+   z-index: 99;
+}
+.about-kafla-content-child{
+ /*width: 1395px;
+  margin: 0 auto;
+  text-align: center;*/
+  height: 1800px;
+  width: 1900px;
+}
+.korean-news-titles{
+  font-size: 68px;
+  color: #ffffff;
+  text-transform: uppercase;
+   font-family: 'lato-black';
+   text-align: left;
+   padding-left: 60px;
+   padding-top: 27%;
+   position: relative;
+   z-index: 999;
+   text-shadow: 2px 2px 4px #000000;
+}
+.korean-news-descript{
+  font-size: 34px;
+  color: #fffefe;
+   font-family: 'lato-thin';
+   text-align: left;
+   padding-left: 60px;
+  position: relative;
+   z-index: 999;
+   text-shadow: 2px 2px 4px #000000;
+}
+.news-titles{
+  font-size: 47px;
+  color: #ffffff;
+  text-transform: uppercase;
+   font-family: 'lato-black';
+   text-align: left;
+   padding-left: 60px;
+    position: relative;
+   z-index: 999;
+   text-shadow: 2px 2px 4px #000000;
+}
+.news-descript{
+  font-size: 23px;
+  color: #ffffff;
+  font-family: 'lato-thin';
+  text-align: left;
+  padding-left: 60px;
+   position: relative;
+   z-index: 999;
+   text-shadow: 2px 2px 4px #000000;
+}
+#news-gallery .news-titles, #news-video .news-titles{
+	padding-top: 31%;
+}
+#news-event .news-titles{
+	padding-top: 96%;
+}
+.hover-overlay-effect{
+  width: 100%;
+  height: 100%;
+  background-color: #2a2674;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  display: block;
+}
+.hover-overlay-effect.active{
+   display: none;
+}
+/*
+* ==========  END CSS about-kafla-content ===========
+*/
+/*
+* ==========   CSS detailing ===========
+*/
+.detailing-content{
+	 height: 960px;
+   background-image:  url(./images/bg-home-3.jpg);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+    margin: 0 auto;
+    max-width: 2000px;
+}
+.detailing-content-child{
+  height: 560px;
+  width: 1415px;
+}
+.detailing-content-titles{
+  font-size: 35px;
+  color: #ffffff;
+  font-family: 'lato-black';
+  margin-bottom: 40px;
+}
+.detailing-descript{
+  font-size: 21px;
+  color: #ffffff;
+   margin-bottom: 40px;
+  font-family: 'lato-thin';
+}
+#btn-read-more{
+  font-size: 29px;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 8px 30px;
+  border-color: #ffffff;
+}
+#btn-read-more:hover {
+  font-size: 29px;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 8px 30px;
+  border-color: #ffffff;
+  text-decoration: none;
+}
+#img-hand{
+  width: 760px;
+  height: 533px;
+   background-image:  url(./images/img-hand.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
+.detailing-content-left{
+   width: 670px;
+   height: 550px;
+}
+.detailing-content-left-child{
+   width: 560px;
+   height: 320px;
+}
+/*
+* ==========  END CSS detailing ===========
+*/
+/*
+* ==========  CSS brand ===========
+*/
+
+.brand-content{
+   height: 660px;
+   background-image:  url(./images/bg-home-4.jpg);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+    margin: 0 auto;
+    max-width: 2000px;
+}
+.brand-content-child{
+  height: 515px;
+  width: 1415px;
+  text-align: center;
+}
+.brand-titles{
+  color: #ee334f;
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+#ic-bank-of-hope{
+  width: 575px;
+  height: 166px;
+   background-image:  url(./images/ic-bank-of-hope.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   margin: 0 auto;
+}
+#ic-joseon{
+  width: 575px;
+  height: 126px;
+   background-image:  url(./images/ic-joseon.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   margin: 0 auto;
+   margin-bottom: 80px;
+}
+#ic-korean-war{
+    width: 371px;
+   height: 83px;
+   background-image:  url(./images/ic-korean-war.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
+#ic-hanmi-bank{
+  width: 414px;
+  height: 72px;
+   background-image:  url(./images/ic-hanmi-bank.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   margin: 0 auto;
+   margin-top: -15px;
+}
+#ic-korean-text{
+    width: 277px;
+   height: 53px;
+   background-image:  url(./images/ic-korean-text.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   margin: 0 auto;
+}
+.btn-show-more{
+   width: 288px;
+   height: 66px;
+   background-image:  url(./images/btn-show-more.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   margin: 0 auto;
+   margin-top: 50px;
+}
+#btn-show-more{
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  padding: 11px;
+}
+#btn-show-more:hover{
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+  padding: 11px;
+} 
+/*
+* ==========  END CSS brand ===========
+*/
+/*
+* ==========  CSS footer  ===========
+*/
+.footer-content{
+   height:  280px;
+   background-image:  url(./images/bg-home-5.jpg);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+    margin: 0 auto;
+    max-width: 2000px;
+}
+.footer-content-child{
+  height: 120px;
+  width: 1365px;
+  text-align: center;
+}
+#copyright-home{
+   background-color: #ee334f;
+   width: 100%;
+   height: 50px;
+   bottom: 0;
+   position: absolute;
+}
+#copyright-home div{
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+  padding-top: 7px;
+  color: #ffffff;
+}
+.page:not(.home) #content{
+	padding-bottom: 0;
+}
+#decor-footer{
+  background-color: #ffffff;
+   width: 2px;
+   height: 37px;
+}
+#btn-donate-colorful{
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  padding: 8px;
+}
+#btn-donate-colorful:hover{
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-donate-colorful{
+  width: 184px;
+  height: 60px;
+  background-image:  url(./images/btn-donate.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#ic-fb-2{
+  width: 36px;
+  height: 34px;
+  background-image:  url(./images/ic-fb-2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#ic-tw-2{
+  width: 37px;
+  height: 32px;
+  background-image:  url(./images/ic-tw-2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#ic-you-2{
+   width: 35px;
+  height: 35px;
+  background-image:  url(./images/ic-you-2.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+}
+#ic-in-2{
+  width: 34px;
+  height: 34px;
+  background-image:  url(./images/ic-in-2.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+}
+.info-footer{
+  font-size: 22px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 27px; 
+}
+#follow-us-text-footer{
+  color: #ffffff;
+  font-size: 30px;
+}
+.donate-footer>div:nth-child(1){
+  /* width: 215px;*/
+    width: 550px;
+   margin-left: 10%;
+}
+.donate-footer>div:nth-child(2){
+  /*width: 70px;*/
+  width: 25px;
+  margin-top: 10px;
+}
+.donate-footer>div:nth-child(3){
+  /*width: 90px;*/
+  width: 210px;
+  margin-top: 7px;
+}
+.donate-footer>div:nth-child(4){
+  /*width: 75px;*/
+  width: 65px;
+  margin-top:10px;
+}
+.donate-footer>div:nth-child(5){
+  width: 65px;
+  margin-top: 10px;
+}
+.donate-footer>div:nth-child(6){
+  width: 65px;
+  margin-top: 10px;
+}
+.donate-footer>div:nth-child(7){
+  width: 65px;
+  margin-top: 10px;
+}
+.donate-footer>div:nth-child(8){
+   width: 72px;
+   margin-top: 10px;
+}
+.donate-footer>div:nth-child(9){
+   width: 72px;
+   margin-top: 10px;
+}
+/*
+* ==========  END CSS footer  ===========
+*/
+/*
+* ==========  CSS Community Empowerment ===========
+*/
+#img-ce{
+  max-width:451px; 
+  height:615px;
+  background-image:  url(./images/img-ce.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.decor-point-e{
+  width:10px; 
+  height:10px;
+  background-image:  url(./images/decor-point-e.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.ce-empowerment .col-md-1{
+  padding-top: 7px;
+}
+.ce-empowerment .col-md-11{
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+/*
+* ========== END CSS Community Empowerment ===========
+*/
+/*
+* ==========  CSS Political Empowerment ===========
+*/
+#img-pe{
+  max-width:360px; 
+  height:542px;
+  background-image:  url(./images/img-pe.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+/*
+* ========== END CSS Political Empowerment ===========
+*/
+/*
+* ==========  CSS Economic Empowerment ===========
+*/
+#img-ee{
+  max-width:1023px; 
+  height:354px;
+  background-image:  url(./images/img-ee.jpg) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 7%;
+}
+.ee-empowerment .col-md-1{
+  padding-top: 8px;
+  width: 40px;
+}
+.ee-empowerment .col-md-11{
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+/*
+* ========== END CSS Economic Empowerment ===========
+*/
+/*
+* ==========  CSS Sponsors ===========
+*/
+.tittles-top-sponsors{
+  font-size: 27px;
+  color: #ee334f; 
+  padding-bottom: 70px;
+}
+.tittles-sponsors{
+  font-size: 23px;
+  color: #000000;
+  font-family: 'lato-bold','Helvetica Neue',Helvetica,Arial,sans-serif;/**/
+  margin-bottom: 50px;
+  position: relative;
+   top: 0;
+   left: 45%;
+}
+.decor-tittles-sponsors{
+  width: 30px;
+  height:2px;
+  background-color: #000000;
+  margin: 0 auto;
+   position: absolute;
+}
+.margin-bottom-100{
+	margin-bottom: 100px;
+}
+.margin-bottom-40{
+	margin-bottom: 40px;
+}
+#sp-a{
+	max-width:322px; 
+	height:69px;
+	background-image:  url(./images/sp-a.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+  margin-left: 0;
+}
+#sp-a2{
+	max-width:322px; 
+	height:69px;
+	background-image:  url(./images/ic-joseon.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+  margin-right: 0;
+	
+}
+#sp-b1{
+	max-width:249px; 
+	height:57px;
+	background-image:  url(./images/sp-b1.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+#sp-b2{
+	max-width:277px; 
+	height:49px;
+	background-image:  url(./images/sp-b2.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-b3{
+	max-width:185px; 
+	height:36px;
+	background-image:  url(./images/sp-b3.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+    margin-top: 10px;	
+}
+#sp-c1{
+	max-width:179px; 
+	height:40px;
+	background-image:  url(./images/sp-c1.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+	margin-right: 0;
+}
+#sp-c2{
+	max-width:206px; 
+	height:38px;
+	background-image:  url(./images/sp-c2.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}	
+#sp-d1{
+	max-width:160px; 
+	height:62px;
+	background-image:  url(./images/sp-d1.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-d2{
+	max-width:145px; 
+	height:66px;
+	background-image:  url(./images/sp-d2.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-d3{
+	max-width:228px; 
+	height:60px;
+	background-image:  url(./images/sp-d3.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-d4{
+	max-width:144px; 
+	height:60px;
+	background-image:  url(./images/sp-d4.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e1{
+	max-width:173px; 
+	height:53px;
+	background-image:  url(./images/sp-e1.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e2{
+	max-width:247px; 
+	height:47px;
+	background-image:  url(./images/sp-e2.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e3{
+	max-width:103px; 
+	height:61px;
+	background-image:  url(./images/sp-e3.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e4{
+	max-width:179px; 
+	height:30px;
+	background-image:  url(./images/sp-e4.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e5{
+	max-width:211px; 
+	height:42px;
+	background-image:  url(./images/sp-e5.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e6{
+	max-width:169px; 
+	height:46px;
+	background-image:  url(./images/sp-e6.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e7{
+	max-width:139px; 
+	height:34px;
+	background-image:  url(./images/sp-e7.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e8{
+	max-width:183px; 
+	height:51px;
+	background-image:  url(./images/sp-e8.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e9{
+	max-width:273px; 
+	height:55px;
+	background-image:  url(./images/sp-e9.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+#sp-e10{
+	max-width:281px; 
+	height:29px;
+	background-image:  url(./images/sp-e10.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin-top: 15px;
+}
+#sp-f{
+	max-width:1003px; 
+	height:236px;
+	background-image:  url(./images/sp-f.png) ;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0 auto;
+}
+/*
+* ========== END CSS Sponsors ===========
+*/
+
+
+/*
+* ==========  CSS Responsive ===========
+*/
+
+@media all and (max-width:1599px) { 
+  body {
+    font-size: 12px;
+  }
+   /*
+  * ==========  CSS Home ===========
+  */
+   #menu-main-home-top>ul>li>a span.item_inner {
+      padding: 10px 16px;
+      font-size: 16px;
+   }
+   .content-home-center {
+        width: 74%;
+   }
+   #menu-main-home-top {
+        margin-left: 50px;
+   }
+   .titles-top-home {
+      margin-bottom: 15px;
+      font-size: 20px;
+   }
+   .content-top-home{
+      height: 760px;
+   }
+   .content-top-child-home {
+      height: 760px;
+      max-width: 1366px;
+   }
+   #header-top-home {
+       max-width: 1200px;
+   }
+   #btn-watchvideo {
+      font-size: 20px;
+      padding: 5px 20px;
+   }
+   #btn-watchvideo:hover {
+      font-size: 20px;
+      padding: 5px 20px;
+      text-decoration: unset;
+  }
+   .about-kafla-content-child {
+        max-width: 1366px;
+        height:  1590px;
+   }
+   .about-kafla-content {
+      height:  1590px;
+   }
+   .empowerment-anchor-box {
+      left: 25px;
+   }
+   .empowerment-titles {
+      font-size: 20px;
+   }
+   #ic-community {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 30px;
+   }
+   #ic-political {
+        width: 75px;
+        height: 81px;
+        margin-bottom: 30px;
+   }
+   #ic-economic {
+        width: 75px;
+        height: 80px;
+        margin-bottom: 30px;
+   }
+   .empowerment-box {
+      width: 340px;
+      height: 300px;
+   }
+   .empowerment-anchor-box .col-md-4 {
+        padding-right: 50px;
+        padding-left: 50px;
+   }
+   .empowerment-box-child {
+        width: 170px;
+        height: 170px;
+   }
+   .news-box {
+      bottom: -60px;
+      left: 76px;
+      width: 1220px;
+      height: 1260px;
+   }
+   .korean-news-titles {
+      font-size: 55px;
+      padding-top: 29%;
+   }
+   .korean-news-descript {
+      font-size:  22px;
+   }
+   #news-korean {
+      width: 1150px;
+      height: 525px;
+   }
+   #news-gallery {
+      width: 595px;
+      height: 305px;
+   }
+   #news-video {
+      width: 595px;
+      height: 305px;
+   }
+   #news-event {
+      width: 525px;
+      height: 640px;
+   }
+   .news-box>div:nth-child(3) {
+      padding-left: 15px;
+   }
+   #news-gallery .news-titles, #news-video .news-titles {
+        padding-top: 27%;
+   }
+   #news-event .news-titles {
+        padding-top: 94%;
+   }
+   .news-titles {
+      padding-left: 50px;
+   }
+   .news-descript {
+      padding-left: 50px;
+   }
+   .detailing-content-child {
+        width: 1220px;
+        height: 430px;
+   }
+   .detailing-content {
+      height:  670px;
+   }
+   #img-hand {
+      width: 600px;
+      height: 420px;
+   }
+   .detailing-content-titles {
+      font-size: 30px;
+      margin-bottom: 30px;
+   }
+   .detailing-descript {
+      font-size: 17px;
+      margin-bottom: 30px;
+   }
+   #btn-read-more {
+      font-size: 22px;
+   }
+   #btn-read-more:hover {
+      font-size: 22px;
+      text-decoration: unset;
+  }
+  .detailing-content-left {
+      width: 610px;
+      height: 420px;
+   }
+    .detailing-content-left-child {
+      width: 480px;
+      height: 270px;
+    }
+    .brand-titles{
+      font-size: 35px;
+      margin-bottom: 40px;
+    }
+   .brand-content-child {
+      width: 1200px;
+      height: 520px;
+    }
+    .brand-content {
+      height: 635px;
+    }
+    #ic-bank-of-hope {
+      width: 470px;
+      height: 140px;
+      margin-bottom: 90px;
+    }
+     #ic-joseon {
+      width: 470px;
+      height: 104px;
+    }
+    #ic-korean-war {
+      width: 339px;
+      height: 70px;
+  }
+  #ic-hanmi-bank {
+      width: 390px;
+      height: 65px;
+  }
+  #ic-korean-text {
+      width: 245px;
+      height: 47px;
+  }
+  .btn-show-more {
+      width: 260px;
+      height: 60px;
+      margin-top: 60px;
+  }
+  #btn-show-more {
+    font-size: 27px;
+  }
+  #btn-show-more:hover {
+      font-size: 27px;
+      text-decoration: unset;
+  }
+  .footer-content-child {
+      width: 1200px;
+      height: 105px;
+  }
+  .info-footer {
+      font-size: 18px;
+  }
+  .btn-donate-home-footer {
+      width: 440px;
+      height: 50px;
+  }
+  .donate-footer>div:nth-child(1) {
+      margin-left: 10%;
+      width: 470px;
+  }
+  #follow-us-text-footer {
+      font-size: 24px;
+  }
+  #decor-footer {
+      height: 30px;
+  }
+  #ic-fb-2 {
+      width: 34px;
+      height: 32px;
+  }
+  #ic-tw-2 {
+      width: 35px;
+      height: 30px;
+  }
+  #ic-in-2 {
+    width: 32px;
+    height: 32px;
+  }
+  #ic-you-2 {
+    width: 33px;
+    height: 33px;
+  }
+  .donate-footer>div:nth-child(3) {
+      width: 177px;
+  }
+  .footer-content {
+      height: 265px;
+  }
+  #copyright-home div {
+      font-size: 18px;
+  }
+  #copyright-home {
+      height: 40px;
+  }
+  /*
+  * ========== END CSS Home ===========
+  */
+ 
+}
+
+@media all and (max-width:1365px) { 
+  /*
+  * ==========  CSS Home ===========
+  */
+   .content-top-child-home {
+      max-width: 1280px;
+   }
+   .about-kafla-content-child {
+        max-width: 1280px;
+        height:  1480px;
+   }
+   .about-kafla-content {
+      height:  1480px;
+   }
+   .empowerment-anchor-box {
+      left:   45px;
+   }
+   .empowerment-box {
+       width: 320px;
+      height: 280px;
+   }
+   .empowerment-anchor-box .col-md-4 {
+      padding-right: 40px;
+      padding-left: 40px;
+   }
+   .news-box {
+      bottom: -50px;
+      left: 87px;
+      width: 1115px;
+      height: 1150px;
+   }
+   .korean-news-titles {
+      font-size: 50px;
+   }
+   #news-korean {
+      width: 1050px;
+      height:  480px;
+      margin-top: 28px;
+   }
+   #news-gallery {
+      width: 535px;
+      height: 275px;
+   }
+   #news-video {
+      width: 535px;
+      height: 275px;
+   }
+   #news-event {
+      width: 480px;
+      height: 580px;
+      margin-left: 29px;
+   }
+   #news-gallery .news-titles, #news-video .news-titles {
+        padding-top:  29%;
+   }
+   #news-event .news-titles{
+        padding-top:  96%;
+   }
+   .news-descript {
+   	   font-size: 20px;
+   }
+  .news-titles {
+      font-size: 40px;
+  }
+  .tittles-top-sponsors {
+    font-size: 25px;
+  }
+  .tittles-sponsors {
+    font-size: 20px;
+  }
+   /*
+  * ========== END CSS Home ===========
+  */
+
+
+}
+
+@media all and (max-width:1279px) {
+  body {
+    font-size: 11px;
+  }
+   /*
+  * ==========  CSS Home ===========
+  */
+    #menu-main-home-top>ul>li>a span.item_inner {
+      padding: 10px 8px;
+      font-size: 14px;
+   }
+   .content-home-center {
+        width: 75%;
+   } 
+   #menu-main-home-top {
+        margin-left: 30px;
+   }
+   .titles-top-home {
+      font-size: 16px;
+   }
+   .content-top-home{
+      height:  580px;
+   }
+   .content-top-child-home {
+      height:  580px;
+      max-width: 1024px;
+   }
+   #header-top-home {
+       max-width: 950px;
+   }
+   #decor-top-left {
+      height: 50px;
+      margin-left: 7px;
+   }
+   #btn-watchvideo {
+      font-size: 16px;
+   }
+    #btn-watchvideo:hover {
+      font-size: 16px;
+   }
+   .about-kafla-content-child {
+        max-width: 1024px;
+        height:  1200px;
+   }
+   .about-kafla-content {
+      height: 1100px;
+   }
+   .empowerment-anchor-box {
+    top: -30px;
+      left:  18px;
+   }
+   .empowerment-titles {
+      font-size:  17px;
+   }
+   .empowerment-box {
+      width: 260px;
+      height: 240px;
+   }
+   .empowerment-anchor-box .col-md-4 {
+      padding-right: 35px;
+      padding-left: 35px;
+   }
+   .empowerment-box-child {
+        width: 150px;
+        height: 150px;
+   }
+   .news-box {
+      bottom: -60px;
+      left: 53px;
+      width: 920px;
+      height: 950px;
+   }
+   .korean-news-titles {
+      font-size: 40px;
+   }
+   .korean-news-descript {
+      font-size:  20px;
+   }
+   #news-korean {
+      width: 855px;
+      height: 390px;
+   }
+   #news-gallery {
+      width:  430px;
+        height: 220px;
+   }
+   #news-video {
+      width:  430px;
+      height: 220px;
+   }
+   #news-event {
+      width: 390px;
+      height: 470px;
+      margin-left: 22px;
+   }
+   .news-descript {
+   	  font-size: 18px;
+   }
+   .detailing-content-child {
+        width: 950px;
+        height: 330px;
+   }
+   .detailing-content {
+      height:  600px;
+   }
+   #img-hand {
+      width: 470px;
+      height: 330px;
+   }
+   .detailing-content-titles {
+      font-size: 25px;
+      margin-bottom:  25px;
+   }
+   .detailing-descript {
+      font-size: 15px;
+      margin-bottom: 25px;
+   }
+   #btn-read-more {
+      font-size: 20px;
+   }
+   #btn-read-more:hover {
+      font-size: 20px;
+   }
+  .detailing-content-left {
+      width: 470px;
+      height:  330px;
+   }
+    .detailing-content-left-child {
+      width: 400px;
+      height: 240px;
+    }
+    .brand-titles{
+      font-size:  30px;
+    }
+   .brand-content-child {
+      width: 950px;
+      height:  440px;
+    }
+    .brand-content {
+      height: 600px;
+    }
+    #ic-bank-of-hope {
+      width: 380px;
+      height: 100px;
+    }
+    #ic-joseon {
+      width: 380px;
+      height:  82px;
+    }
+    #ic-korean-war {
+      width: 260px;
+      height: 55px;
+  }
+  #ic-hanmi-bank {
+      width: 320px;
+      height: 55px;
+  }
+  #ic-korean-text {
+      width: 185px;
+      height: 35px;
+  }
+  .donate-footer>div:nth-child(1) {
+      margin-left: 14%;
+      width: 430px;
+  }
+  #follow-us-text-footer {
+      font-size: 20px;
+  }
+  #decor-footer {
+      height: 25px;
+  }
+  #ic-fb-2 {
+      width: 30px;
+      height: 28px;
+  }
+  #ic-tw-2 {
+      width: 30px;
+      height: 26px;
+  }
+  #ic-in-2 {
+      width: 27px;
+      height: 27px;
+  }
+  #ic-you-2 {
+    width: 29px;
+    height: 29px;
+  }
+  .donate-footer>div:nth-child(3) {
+      width: 150px;
+  }
+  .news-titles {
+      font-size: 30px;
+  }
+  #icon-home {
+    width: 240px;
+      height: 50px;
+  }
+  #ic-tw {
+    width: 18px;
+      height: 15px;
+      margin-bottom: 15px;
+  }
+  #ic-fb {
+      width: 17px;
+      height: 16px;
+      margin-bottom: 10px;
+  }
+  #follow-us-text {
+      width: 10px;
+      height: 85px;
+  }
+  #btn-show-more {
+      font-size: 22px;
+  }
+  #btn-show-more:hover {
+      font-size: 22px;
+  }
+  .btn-show-more {
+      width: 230px;
+      height: 53px;
+  }
+  .info-footer {
+      font-size:  15px;
+  }
+  .btn-donate-home-footer {
+      width: 400px;
+      height: 45px;
+  }
+  .donate-footer>div:nth-child(4){
+    margin-top: 5px;
+    width:60px;
+  }
+  .donate-footer>div:nth-child(5) {
+      width: 60px;
+      margin-top: 5px;
+  }
+  .donate-footer>div:nth-child(6){
+     margin-top: 5px;
+     width:60px;
+  }
+  .donate-footer>div:nth-child(7) {
+      width: 60px;
+      margin-top: 5px;
+  }
+  #copyright-home div {
+      font-size: 16px;
+  }
+  #menu-main-home-top .second .inner ul li a{
+     font-size: 14px !important;
+  }
+  .ce-empowerment .col-md-1{
+	  padding-top: 5px;
+	  padding-left: 0;
+	}
+   /*
+  * ========== END CSS Home ===========
+  */
+ 
+}
+@media all and (max-width:992px) {
+	/*
+	* ==========  CSS Home ===========
+	*/
+	  #header-top-home>.col-xs-7{
+	  	 padding-right:50px;
+	  }
+
+	/*
+  * ========== END CSS Home ===========
+  */
+
+}
+@media all and (max-width:768px) {
+	/*
+	* ==========  CSS Home ===========
+	*/
+   	.empowerment-box {
+	       width: 180px;
+    	height: 180px;
+	}
+	.empowerment-anchor-box .col-xs-4 {
+	    padding-right: 10px;
+	    padding-left: 10px;
+	}
+	#ic-economic,#ic-political,#ic-community {
+	    width: 50px;
+	    height: 50px;
+	    margin-bottom: 15px;
+	}
+	.empowerment-titles {
+	    font-size: 14px;
+	}
+	.empowerment-box-child {
+	    width: 100px;
+    	height: 100px;
+	}
+	.empowerment-anchor-box {
+	    left:  0;
+        top: 0;
+	}
+	.content-top-home {
+	    height:  380px;
+	}
+	.content-top-child-home {
+	    height:  380px;
+	    max-width: 768px;
+	}
+	.bg-video-home-top {
+	    height:  220px;
+	}
+	.about-kafla-content-child {
+	    max-width:  600px;
+	}
+	.news-box {
+	    bottom:  unset;
+	    width: 100%;
+	    left: 0;
+	    height: 1610px;
+	    top: 215px;
+	}
+	#news-event {
+	    width: 100%;
+	    height: auto;
+	}
+  #news-video{
+      width: 100%;
+      height: 291px;
+  }
+  #news-korean{
+    width: 100%;
+    height: 260px;
+  }
+  #news-gallery{
+    width: 100%;
+    height: 291px;
+  }
+	.korean-news-titles {
+	    font-size: 28px;
+	    padding-top:  25%;
+	}
+	.korean-news-descript {
+	    font-size: 15px;
+	}
+	.news-titles {
+	    font-size: 25px;
+	}
+	.news-descript {
+	    font-size: 14px;
+	}
+	.news-box>div:nth-child(2){
+		padding-left:15px;
+		padding-top: 15px;
+	}
+	#news-event .news-titles {
+	    padding-top: 105%;
+	}
+	#news-korean {
+		margin-top: 15px;
+	}
+	#news-gallery .news-titles, #news-video .news-titles {
+	    padding-top: 35%;
+	}
+	#news-event{
+		margin-left: 0;
+		background-size: cover;
+    height: 690px;
+	}
+	#news-video{
+		margin-top: 15px;
+	}
+	.news-box>div:nth-child(3){
+		padding-top: 15px;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	}
+	.korean-news-titles, .korean-news-descript, .news-titles, .news-descript{
+		padding-left: 30px;
+	}
+	.about-kafla-content {
+	    height:   1800px;
+	}
+	.about-kafla-content-child {
+	    height: 1750px;
+	}
+	.detailing-content-child {
+	    width: 600px;
+    	height:  480px;
+	}
+	.brand-content {
+	    height: 430px;
+	}
+	.brand-content-child{
+		  width: 620px;
+    	height:315px;
+	}
+	#ic-bank-of-hope {
+	    width: 240px;
+    	height: 70px;
+    	margin-bottom: 50px;
+	}
+	#ic-joseon {
+	    width: 250px;
+    	height: 54px;
+	    margin-bottom: 0;
+	}
+	#ic-hanmi-bank{
+		width: 200px;
+    	height: 34px;
+    	margin-top: -6px;
+	}
+	#ic-korean-war{
+		width: 180px;
+    	height: 41px;
+	}
+	#ic-korean-text{
+		width: 140px;
+    	height: 27px;
+	}
+	.brand-titles {
+	    font-size: 20px;
+	}
+	#btn-show-more {
+	    font-size: 20px;
+    	padding: 3px;
+	}
+	#btn-show-more:hover{
+		font-size: 20px;
+    	padding: 3px;
+	}
+	.btn-show-more {
+	    width: 160px;
+    	height: 37px;
+    	margin-top: 50px;
+	}
+	#img-hand-mobi{
+	   max-width: 100%;
+      height: 240px;
+	   background-image:  url(./images/img-hand-mobi.png);
+	   background-repeat: no-repeat;
+	   background-position: center;
+	   background-size: cover;
+	}
+	.detailing-content-left {
+	    width: 100%;
+	}
+	.detailing-content-left-child {
+	    width: 100%;
+	}
+	.detailing-content-titles {
+	    font-size: 20px;
+	}
+	.detailing-descript{
+		margin-top: 25px;
+	}
+	#btn-read-more {
+	    font-size: 14px;
+        padding: 4px 15px;
+	}
+	#btn-read-more:hover {
+		font-size: 14px;
+        padding: 4px 15px;
+	}
+	.btn-read-more{
+		text-align: center;
+	}
+  #decor-hand{
+      background-color: #ffffff;
+      width: 120px;
+      height: 3px;
+      margin-bottom: 15px;
+  }
+  #copyright-home div {
+      font-size:  14px;
+  }
+  #copyright-home {
+      height: 35px;
+  }
+  .footer-content {
+      height: 200px;
+  }
+  .footer-content-child {
+      width: 600px;
+      height: 120px;
+  }
+  .info-footer {
+      font-size: 14px;
+      margin-bottom: 15px;
+  }
+  .btn-donate-home-footer {
+      width: 185px;
+      height:  22px;
+  }
+  #decor-footer {
+      height: 15px;
+      width: 1px;
+  }
+  #follow-us-text-footer {
+      font-size: 13px;
+  }
+  #ic-fb-2 {
+     width: 15px;
+     height: 14px;
+  }
+  #ic-tw-2 {
+      width: 16px;
+      height: 14px;
+  }
+   #ic-in-2 {
+      width: 15px;
+      height: 15px;
+  }
+  #ic-you-2 {
+    width: 16px;
+    height: 16px;
+  }
+  .donate-footer>div:nth-child(1) {
+      width:  220px;
+  }
+  .donate-footer>div:nth-child(2) {
+      margin-top: 2px;
+     padding-left: 10px;
+     padding-right: 0;
+  }
+  .donate-footer>div:nth-child(3) {
+      width: 90px;
+      margin-top: 3px;
+      padding: 0;
+      padding-right: 5px;
+  }
+  .donate-footer>div:nth-child(4) {
+        margin-top: 3px;
+        width: 30px;
+        padding-left: 5px;
+        padding-right: 5px;
+  }
+  .donate-footer>div:nth-child(5) {
+      margin-top:  3px;
+      width: 20px;
+      padding: 0;
+  }
+  .donate-footer>div:nth-child(6) {
+        margin-top: 3px;
+        width: 30px;
+        padding-left: 5px;
+        padding-right: 5px;
+  }
+  .donate-footer>div:nth-child(7) {
+      margin-top:  3px;
+      width: 20px;
+      padding: 0;
+  }
+  #icon-home {
+      width: 160px;
+      height: 33px;
+  }
+  .decor-area-menu{
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 9999;
+  }
+  #follow-us-text-menu-right {
+      color: #ffffff;
+      font-size:  12px;
+      white-space: nowrap;
+      margin-top: 4px;
+  }
+  #decor-area-menu-right{
+      background-color: #ffffff;
+      height: 1px;
+      width: 70px;
+      margin-top: 10px;
+  }
+  .decor-area-menu>div:nth-child(1){
+      padding-right: 0;
+  }
+  .decor-area-menu>div:nth-child(2){
+
+  }
+  .decor-area-menu>div:nth-child(3){
+      padding-right: 0px;
+      padding-left: 15px;
+      padding-top: 4px;
+  }
+  .decor-area-menu>div:nth-child(4){
+      padding-right: 0px;
+      padding-left: 15px;
+      padding-top: 4px;
+  }
+  .decor-area-menu>div:nth-child(5){
+      padding-top: 2px;
+  }
+  .donate-area-menu{
+      margin-top: 20%;
+  }
+  .bg-header #header-top-home {
+      padding-top: 10px;
+  }
+  .bg-image-header {
+   	 height: 70px !important;
+  }
+  .titles-top-home {
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+  .content-home-center {
+     width: 65%;
+     padding-top: 30%;     
+  }
+  #btn-watchvideo {
+      font-size: 12px;
+      padding: 2px 15px;
+  }
+  #btn-watchvideo:hover {
+  	  font-size: 12px;
+      padding: 2px 15px;
+  }
+  .bg-header {
+    height: 70px;
+  }
+  #header-top-home>.col-md-3 {
+      margin-top: 0;
+  }
+  .ce-empowerment .col-md-11 {
+      font-size: 14px;
+  }
+  .ee-empowerment .col-md-11 {
+    font-size: 14px;
+  }
+  #img-ce {
+    max-width: 694px;
+    height: 340px;
+    background-image: url(./images/img-ce-mobi.jpg);
+  }
+   #img-pe {
+    max-width: 695px;
+    height: 340px;
+    background-image: url(./images/img-pe-mobi.jpg);
+  }
+  #img-ee {
+    max-width: 695px;
+    height: 380px;
+    background-image: url(./images/img-ee-mobi.jpg);
+  }
+  /*
+	* ========== END CSS Home ===========
+	*/
+	/*
+	* ==========  CSS Sponsors ===========
+	*/
+  .tittles-top-sponsors {
+      padding-bottom: 30px;
+  }
+  .tittles-sponsors {
+      margin-bottom: 40px;
+  }
+  #sp-a {
+    max-width: 240px;
+    margin-bottom: 40px;
+  }
+  .margin-bottom-100 {
+      margin-bottom: 40px;
+  }
+  #sp-f {
+    height: 165px;
+  }
+
+	/*
+	* ========== END CSS Sponsors ===========
+	*/
+
+}
+@media all and (max-width:639px) {
+	/*
+	* ==========  CSS Home ===========
+	*/
+   	.empowerment-box {
+	    width: 100px;
+      height: 100px;
+	}
+	.empowerment-anchor-box .col-xs-4 {
+	    padding-right: 10px;
+	    padding-left: 10px;
+	}
+	#ic-economic,#ic-political,#ic-community {
+	    width: 30px;
+	    height: 30px;
+	    margin-bottom: 15px;
+	}
+	.empowerment-titles {
+	    font-size: 10px;
+	}
+	.empowerment-box-child {
+	    width: 80px;
+    	height: 70px;
+	}
+	.empowerment-anchor-box {
+	    left:  0;
+      top: 0;
+	}
+	.content-top-home {
+	    height:  220px;
+	}
+	.content-top-child-home {
+	    height:  220px;
+	    max-width: 415px;
+	}
+	.bg-video-home-top {
+	    height:  220px;
+	}
+	.about-kafla-content-child {
+	    max-width: 350px;
+	}
+	.news-box {
+	    bottom:  unset;
+	    width: 100%;
+	    left: 0;
+	    height: 950px;
+	    top:  125px;
+	}
+	#news-korean,#news-gallery,#news-video,#news-event {
+	    width: 100%;
+	    height: auto;
+	}
+	.korean-news-titles {
+	    font-size: 28px;
+	    padding-top:  20%;
+	}
+	.korean-news-descript {
+	    font-size: 15px;
+	}
+	.news-titles {
+	    font-size: 25px;
+	}
+	.news-descript {
+	    font-size: 14px;
+	}
+	.news-box>div:nth-child(2){
+		padding-left:15px;
+		padding-top: 15px;
+	}
+	#news-event .news-titles {
+	    padding-top: 95%;
+	}
+	#news-korean {
+		margin-top: 15px;
+	}
+	#news-gallery .news-titles, #news-video .news-titles {
+	    padding-top: 35%;
+	}
+	#news-event{
+		margin-left: 0;
+		background-size: cover;
+    height: 390px;
+	}
+	#news-video{
+		margin-top: 15px;
+	}
+	.news-box>div:nth-child(3){
+		padding-top: 15px;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	}
+	.korean-news-titles, .korean-news-descript, .news-titles, .news-descript{
+		padding-left: 20px;
+	}
+	.about-kafla-content {
+	    height: 1050px;
+	}
+	.about-kafla-content-child {
+	    height: 1000px;
+	}
+	.detailing-content-child {
+	    width: 350px;
+    	height: 440px;
+	}
+	.brand-content {
+	    height: 260px;
+	}
+	.brand-content-child{
+	  width: 370px;
+    height: 190px;
+	}
+	#ic-bank-of-hope {
+	    width: 140px;
+    	height: 40px;
+    	margin-bottom: 30px;
+	}
+	#ic-joseon {
+	    width: 150px;
+    	height: 33px;
+    	margin-bottom: 0;
+	}
+	#ic-hanmi-bank{
+		width: 110px;
+    	height: 19px;
+    	margin-top: -4px;
+	}
+	#ic-korean-war{
+		width: 100px;
+    	height: 22px;
+	}
+	#ic-korean-text{
+		width: 80px;
+    	height: 15px;
+	}
+	.brand-titles {
+	    font-size: 14px;
+      margin-bottom: 20px;
+	}
+	#btn-show-more {
+	    font-size: 14px;
+	    padding: 2px;
+	}
+	#btn-show-more:hover {
+	    font-size: 14px;
+	    padding: 2px;
+	}
+	.btn-show-more {
+	    width: 120px;
+	    height: 27px;
+	    margin-top: 30px;
+	}
+	#img-hand-mobi{
+	   max-width: 100%;
+      height: 140px;
+	   background-image:  url(./images/img-hand-mobi.png);
+	   background-repeat: no-repeat;
+	   background-position: center;
+	   background-size: cover;
+	}
+	.detailing-content-left {
+	    width: 100%;
+	}
+	.detailing-content-left-child {
+	    width: 100%;
+	}
+	.detailing-content-titles {
+	    font-size: 18px;
+	}
+	.detailing-descript{
+		margin-top: 25px;
+	}
+	#btn-read-more {
+	    font-size: 12px;
+        padding: 4px 15px;
+	}
+	#btn-read-more:hover {
+	    font-size: 12px;
+        padding: 4px 15px;
+	}
+	.btn-read-more{
+		text-align: center;
+	}
+  #decor-hand{
+      background-color: #ffffff;
+      width: 94px;
+      height: 3px;
+      margin-bottom: 15px;
+  }
+  #copyright-home div {
+      font-size: 8px;
+  }
+  #copyright-home {
+      height: 25px;
+  }
+  .footer-content {
+      height: 170px;
+  }
+  .footer-content-child {
+      width: 350px;
+      height: 105px;
+  }
+  .info-footer {
+      font-size: 11px;
+      margin-bottom: 15px;
+  }
+  .btn-donate-home-footer {
+      width: 160px;
+      height: 20px;
+  }
+  #decor-footer {
+      height: 15px;
+      width: 1px;
+  }
+  #follow-us-text-footer {
+      font-size: 10px;
+  }
+  #ic-fb-2 {
+     width: 15px;
+     height: 14px;
+  }
+  #ic-tw-2 {
+      width: 16px;
+      height: 14px;
+  }
+   #ic-in-2 {
+     width: 16px;
+     height: 16px;
+  }
+  #ic-you-2 {
+    width: 17px;
+    height: 18px;
+  }
+  .donate-footer>div:nth-child(1) {
+      margin-left: 0;
+      width: 172px;
+  }
+  .donate-footer>div:nth-child(2) {
+      margin-top: 2px;
+     padding-left: 10px;
+     padding-right: 0;
+     width: 15px;
+  }
+  .donate-footer>div:nth-child(3) {
+      width: 65px;
+      margin-top: 3px;
+      padding: 0;
+      padding-right: 5px;
+  }
+  .donate-footer>div:nth-child(4) {
+        margin-top: 3px;
+        width: 25px;
+        padding-left: 5px;
+        padding-right: 5px;
+  }
+  .donate-footer>div:nth-child(5) {
+      margin-top:  3px;
+      width: 18px;
+      padding: 0;
+  }
+  .donate-footer>div:nth-child(6) {
+        margin-top: 3px;
+	    width: 27px;
+	    padding-left: 5px;
+	    padding-right: 5px;
+  }
+  .donate-footer>div:nth-child(7) {
+      margin-top: 1px;
+      width: 20px;
+      padding: 0;
+  }
+  #icon-home {
+      width: 160px;
+      height: 33px;
+  }
+  .decor-area-menu{
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 9999;
+  }
+  #follow-us-text-menu-right {
+      color: #ffffff;
+      font-size:  12px;
+      white-space: nowrap;
+      margin-top: 4px;
+  }
+  #decor-area-menu-right{
+      background-color: #ffffff;
+      height: 1px;
+      width: 70px;
+      margin-top: 10px;
+  }
+  .decor-area-menu>div:nth-child(1){
+      padding-right: 0;
+  }
+  .decor-area-menu>div:nth-child(2){
+
+  }
+  .decor-area-menu>div:nth-child(3){
+      padding-right: 0px;
+      padding-left: 15px;
+      padding-top: 4px;
+  }
+  .decor-area-menu>div:nth-child(4){
+      padding-right: 0px;
+      padding-left: 15px;
+      padding-top: 4px;
+  }
+  .decor-area-menu>div:nth-child(5){
+      padding-top: 2px;
+  }
+  .donate-area-menu{
+      margin-top: 20%;
+  }
+  .bg-header #header-top-home {
+      padding-top: 10px;
+  }
+  .titles-top-home {
+      font-size: 12px;
+      margin-bottom: 5px;
+  }
+  .content-home-center {
+      width: 60%;
+      padding-top: 18%;
+  }
+  .ee-empowerment .col-md-1 {
+      padding: 0;
+      padding-top: 5px;
+      width: 10px;
+  }
+  #img-ce {
+      height: 200px;
+  }
+  #img-pe {
+     height: 200px;
+  }
+   #img-ee {
+      height: 220px;
+   }
+  /*
+	* ========== END CSS Home ===========
+	*/
+	/*
+  * ==========  CSS Sponsors ===========
+  */
+  .tittles-top-sponsors {
+      font-size: 16px;
+
+  }
+  .tittles-sponsors {
+      margin-bottom: 20px;
+      font-size: 16px;
+  }
+  #sp-a {
+    max-width: 150px;
+    margin-bottom: 30px;
+  }
+  .margin-bottom-100 {
+      margin-bottom: 40px;
+  }
+  #sp-f {
+    height: 120px;
+  }
+
+  /*
+  * ========== END CSS Sponsors ===========
+  */
+}
+
+
+/*
+* ==========  END CSS Responsive ===========
+*/

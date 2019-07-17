@@ -1,0 +1,965 @@
+# Copyright (C) 2016 Mikado Themes
+# This file is distributed under the GNU General Public License.
+msgid ""
+msgstr ""
+"Project-Id-Version: SiennaWP 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/siennawp\n"
+"POT-Creation-Date: 2016-03-17 16:13:58+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: 404.php:5
+msgid "The page you are looking for does not exist. It may have been moved, or removed altogether. Perhaps you can return back to the site's homepage and see if you can find what you are looking for."
+msgstr ""
+
+#: 404.php:11
+msgid "Page you are looking for is not found"
+msgstr ""
+
+#: 404.php:17
+msgid "Go Back"
+msgstr ""
+
+#: 404.php:35
+msgid "404"
+msgstr ""
+
+#: comments.php:4
+msgid "No Comments"
+msgstr ""
+
+#: comments.php:4
+msgid " Comment "
+msgstr ""
+
+#: comments.php:4
+msgid " Comments: "
+msgstr ""
+
+#: comments.php:9
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: comments.php:32
+msgid "Sorry, the comment form is closed at this time."
+msgstr ""
+
+#: comments.php:45
+msgid "Post a Comment"
+msgstr ""
+
+#: comments.php:46
+msgid "Post a Reply to %s"
+msgstr ""
+
+#: comments.php:47
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:48
+msgid "Submit"
+msgstr ""
+
+#: comments.php:49
+msgid "Comment"
+msgstr ""
+
+#: comments.php:53
+msgid "Your full name"
+msgstr ""
+
+#: comments.php:54
+msgid "E-mail address"
+msgstr ""
+
+#: comments.php:55
+msgid "Website"
+msgstr ""
+
+#: framework/admin/skins/mikado/templates/content-import.php:100
+msgid "The import process may take some time. Please be patient."
+msgstr ""
+
+#: framework/admin/skins/mikado/templates/content-import.php:119
+msgid "Important notes:"
+msgstr ""
+
+#: framework/admin/skins/mikado/templates/content-import.php:121
+msgid "Please note that import process will take time needed to download all attachments from demo web site."
+msgstr ""
+
+#: framework/admin/skins/mikado/templates/content-import.php:122
+msgid "If you plan to use shop, please install WooCommerce before you run import."
+msgstr ""
+
+#: framework/admin/skins/mikado/templates/header.php:19
+msgid "Save Changes"
+msgstr ""
+
+#: framework/mkd-framework.php:537
+msgid "Dismiss this notice"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:107
+msgid "Position"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:108
+#: framework/modules/shortcodes/social-feed/lib/instagram/instagram-provider.php:67
+msgid "Instagram"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:109
+#: framework/modules/shortcodes/social-feed/lib/twitter/twitter-provider.php:62
+msgid "Twitter"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:110
+msgid "Pinterest"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:111
+msgid "Tumbrl"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:112
+msgid "Facebook"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:113
+msgid "Google Plus"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:114
+msgid "Linkedin"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:280
+#: framework/modules/blog/templates/lists/masonry-full-width.php:25
+#: framework/modules/blog/templates/lists/masonry.php:25
+msgid "Load More"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:282
+#: framework/modules/blog/templates/lists/masonry-full-width.php:27
+#: framework/modules/blog/templates/lists/masonry.php:27
+msgid "Loading..."
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:582
+msgid "Pingback:"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:586
+msgid " at "
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:856
+msgid "Continue reading"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:979
+msgid "Read More"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:1221
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: framework/modules/blog/templates/lists/parts/filter.php:25
+#: framework/modules/shortcodes/social-feed/templates/social-feed-carousel-holder.php:9
+#: framework/modules/shortcodes/social-feed/templates/social-feed-masonry-holder.php:9
+msgid "All"
+msgstr ""
+
+#: framework/modules/blog/templates/lists/post-formats/audio-standard-date-on-side.php:47
+#: framework/modules/blog/templates/lists/post-formats/audio-standard-whole-post.php:47
+#: framework/modules/blog/templates/lists/post-formats/audio.php:49
+#: framework/modules/blog/templates/lists/post-formats/gallery-standard-date-on-side.php:43
+#: framework/modules/blog/templates/lists/post-formats/gallery-standard-whole-post.php:34
+#: framework/modules/blog/templates/lists/post-formats/gallery.php:48
+#: framework/modules/blog/templates/lists/post-formats/standard-standard-date-on-side.php:45
+#: framework/modules/blog/templates/lists/post-formats/standard-standard-whole-post.php:34
+#: framework/modules/blog/templates/lists/post-formats/standard.php:48
+#: framework/modules/blog/templates/lists/post-formats/video-standard-date-on-side.php:35
+#: framework/modules/blog/templates/lists/post-formats/video-standard-whole-post.php:36
+#: framework/modules/blog/templates/lists/post-formats/video.php:49
+#: framework/modules/blog/templates/single/post-formats/audio-date-on-side.php:47
+#: framework/modules/blog/templates/single/post-formats/audio.php:32
+#: framework/modules/blog/templates/single/post-formats/gallery-date-on-side.php:43
+#: framework/modules/blog/templates/single/post-formats/gallery.php:23
+#: framework/modules/blog/templates/single/post-formats/link-date-on-side.php:30
+#: framework/modules/blog/templates/single/post-formats/link.php:26
+#: framework/modules/blog/templates/single/post-formats/quote-date-on-side.php:34
+#: framework/modules/blog/templates/single/post-formats/quote.php:29
+#: framework/modules/blog/templates/single/post-formats/standard-date-on-side.php:52
+#: framework/modules/blog/templates/single/post-formats/standard.php:23
+#: framework/modules/blog/templates/single/post-formats/video-date-on-side.php:35
+#: framework/modules/blog/templates/single/post-formats/video.php:25
+#: framework/modules/shortcodes/socialshare/templates/dropdown.php:4
+#: search.php:75
+msgid "Share"
+msgstr ""
+
+#: framework/modules/blog/templates/parts/audio.php:4
+msgid "Your browser don't support audio player"
+msgstr ""
+
+#: framework/modules/blog/templates/parts/no-posts.php:2
+#: framework/modules/shortcodes/blog-carousel/templates/blog-carousel-holder.php:12
+#: framework/modules/shortcodes/blog-list/templates/blog-list-holder.php:15
+#: framework/modules/shortcodes/blog-slider/templates/blog-slider-template.php:47
+#: search.php:93
+msgid "No posts were found."
+msgstr ""
+
+#: framework/modules/blog/templates/parts/post-info-author.php:2
+msgid "by"
+msgstr ""
+
+#: framework/modules/blog/templates/parts/post-info-comments.php:7
+#: framework/modules/shortcodes/blog-carousel/templates/blog-carousel-item.php:31
+msgid "comments"
+msgstr ""
+
+#: framework/modules/blog/templates/parts/post-info-comments.php:7
+#: framework/modules/shortcodes/blog-carousel/templates/blog-carousel-item.php:31
+msgid "comment"
+msgstr ""
+
+#: framework/modules/blog/templates/single/parts/related-posts.php:4
+msgid "Related Posts"
+msgstr ""
+
+#: framework/modules/blog/templates/single/parts/tags.php:2
+msgid "Post Tags:"
+msgstr ""
+
+#: framework/modules/header/functions.php:10
+msgid "Main Navigation"
+msgstr ""
+
+#: framework/modules/header/types/header-type3.php:53
+#: framework/modules/header/widget-areas-functions.php:45
+msgid "Right From Main Menu"
+msgstr ""
+
+#: framework/modules/header/types/header-type3.php:57
+#: framework/modules/header/widget-areas-functions.php:49
+msgid "Widgets added here will appear on the right hand side from the main menu"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:11
+msgid "Top Bar Left"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:20
+msgid "Top Bar Center"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:28
+msgid "Top Bar Right"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:64
+msgid "Right From Mobile Logo"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:68
+msgid "Widgets added here will appear on the right hand side from the mobile logo"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:86
+msgid "Sticky Right"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:90
+msgid "Widgets added here will appear on the right hand side in sticky menu"
+msgstr ""
+
+#: framework/modules/like/like.php:134 framework/modules/like/like.php:147
+#: framework/modules/like/like.php:166
+msgid "Like this"
+msgstr ""
+
+#: framework/modules/like/like.php:137 framework/modules/like/like.php:150
+#: framework/modules/like/like.php:169
+msgid "You already like this!"
+msgstr ""
+
+#: framework/modules/like/like.php:155
+msgid "Like"
+msgstr ""
+
+#: framework/modules/portfolio/templates/single/parts/date.php:4
+msgid "Date"
+msgstr ""
+
+#: framework/modules/portfolio/templates/single/parts/tags.php:12
+msgid "Tags"
+msgstr ""
+
+#: framework/modules/search/templates/types/fullscreen-search.php:15
+msgid "Search on site..."
+msgstr ""
+
+#: framework/modules/search/templates/types/search-covers-header.php:9
+#: framework/modules/search/templates/types/search-dropdown.php:4
+#: framework/modules/search/templates/types/search-slides-from-header-bottom.php:8
+#: framework/modules/search/templates/types/search-slides-from-window-top.php:9
+#: framework/modules/title/title-functions.php:129
+#: framework/modules/widgets/search-opener/search-opener.php:110
+#: searchform.php:3
+msgid "Search"
+msgstr ""
+
+#: framework/modules/search/templates/types/search-dropdown.php:3
+msgid "Search..."
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:28
+msgid "Mikado Accordion Tab"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:42
+msgid "Title"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:45
+msgid "Section"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:46
+msgid "Enter accordion section title."
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:50
+msgid "Section ID"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:52
+msgid "Enter optional row ID. Make sure it is unique, and it is valid as w3c specification: %s (Must not have spaces)"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:52
+msgid "link"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion.php:27
+msgid "Accordion"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion.php:38
+msgid "Extra class name"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion.php:40
+msgid "Style particular content element differently - add a class name and refer to it in custom CSS."
+msgstr ""
+
+#: framework/modules/shortcodes/blog-list/blog-list.php:39
+#: includes/nav-menu/edit_custom_walker.php:220
+msgid "Type"
+msgstr ""
+
+#: framework/modules/shortcodes/button/button.php:181
+msgid "Insert margin in format: 0px 0px 1px 0px"
+msgstr ""
+
+#: framework/modules/shortcodes/horizontal-timeline/templates/horizontal-timeline-template.php:37
+msgid "Please add some events to timeline"
+msgstr ""
+
+#: framework/modules/shortcodes/icon/icon.php:81
+msgid "Please insert border radius(Rounded corners) in px. For example: 4 "
+msgstr ""
+
+#: framework/modules/shortcodes/item-showcase/item-showcase-list-item.php:22
+msgid "Mikado Item Showcase List Item"
+msgstr ""
+
+#: framework/modules/shortcodes/item-showcase/item-showcase.php:28
+msgid "Mikado Item Showcase"
+msgstr ""
+
+#: framework/modules/shortcodes/social-feed/lib/blog/blog-provider.php:50
+msgid "Blog"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/templates/working-hours-template.php:33
+msgid "Working hours hadn't been set"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:210
+msgid "Monday - Friday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:217
+msgid "Saturday - Sunday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:224
+msgid "Monday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:231
+msgid "Tuesday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:238
+msgid "Wednesday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:245
+msgid "Thursday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:252
+msgid "Friday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:259
+msgid "Saturday"
+msgstr ""
+
+#: framework/modules/shortcodes/working-hours/working-hours.php:266
+msgid "Sunday"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:109
+msgid " Tag"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:117
+msgid "Author:"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:138
+msgid "404 - Page not found"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:161
+msgid "Archive"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:254
+msgid "Search results for "
+msgstr ""
+
+#: framework/modules/title/title-functions.php:330
+msgid "Posts tagged "
+msgstr ""
+
+#: framework/modules/title/title-functions.php:334
+msgid "Articles posted by "
+msgstr ""
+
+#: framework/modules/title/title-functions.php:347
+msgid "Page"
+msgstr ""
+
+#: framework/modules/widgets/instagram/instagram.php:13
+msgid "Display instagram images"
+msgstr ""
+
+#: framework/modules/widgets/latest-post/latest-posts.php:10
+msgid "Display posts from your blog"
+msgstr ""
+
+#: framework/modules/widgets/lib/widget-class.php:76
+msgid "There are no options for this widget."
+msgstr ""
+
+#: framework/modules/widgets/sticky-sidebar/sticky-sidebar.php:10
+msgid "Use this widget to make the sidebar sticky. Drag it into the sidebar above the widget which you want to be the first element in the sticky sidebar."
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:8
+msgid "Mikado Woocommerce Dropdown Cart"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:75
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:202
+msgid "Quantity: "
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:80
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:208
+#: woocommerce/cart/cart.php:50
+msgid "Remove this item"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:89
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:217
+#: woocommerce/cart/cart-totals.php:81 woocommerce/cart/cart.php:30
+msgid "Total"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:103
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:231
+msgid "Checkout"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:110
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:239
+msgid "View Cart"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:118
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:248
+msgid "No products in the cart."
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:98
+msgid "Sale"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:115
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:127
+msgid "First name"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:116
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:128
+msgid "Last name"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:117
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:129
+msgid "Company name"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:118
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:130
+msgid "Address"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:119
+msgid "Email"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:120
+msgid "Phone"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:121
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:131
+msgid "Postcode / ZIP"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:122
+msgid "State / County"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:278
+msgid "Apply Coupon"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:297
+msgid "Update Cart"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:316
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:334
+msgid "Update Totals"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:354
+msgid "Pay for order"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:379
+msgid "Place Order"
+msgstr ""
+
+#: functions.php:954
+msgid "No more posts"
+msgstr ""
+
+#: functions.php:955
+msgid "Loading new posts..."
+msgstr ""
+
+#: header.php:43
+msgid "Top"
+msgstr ""
+
+#. translators: %s: title of menu item which is invalid
+
+#: includes/nav-menu/edit_custom_walker.php:80
+msgid "%s (Invalid)"
+msgstr ""
+
+#. translators: %s: title of menu item in draft status
+
+#: includes/nav-menu/edit_custom_walker.php:84
+msgid "%s (Pending)"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:109
+msgid "Move up"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:122
+msgid "Move down"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:124
+#: includes/nav-menu/edit_custom_walker.php:126
+msgid "Edit Menu Item"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:135
+msgid "URL"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:142
+msgid "Navigation Label"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:149
+msgid "Title Attribute"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:157
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:163
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:170
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:177
+msgid "Description"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:179
+msgid "The description will be displayed in the menu if the current theme supports it."
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:187
+msgid "Anchor"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:201
+msgid "Don't link"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:214
+msgid "Don't show"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:238
+msgid "Wide menu position"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:257
+msgid "Background image for Dropdown"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:272
+msgid "Icon Pack"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:280
+msgid "Only with \"default\" & \"wide with icons\" menu types"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:291
+msgid "Icon"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:312
+msgid "Featured icon"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:319
+msgid "Star"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:322
+msgid "Heart"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:325
+msgid "Arrow"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:335
+msgid "Custom widget area"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:348
+msgid "Only with \"wide & wide with icons\" menu type"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:357
+msgid "Original: %s"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:370
+msgid "Remove"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:375
+msgid "Cancel"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:71
+msgid "Install Required Plugins"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:72
+msgid "Install Plugins"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:73
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:74
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:75
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:76
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:77
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:78
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:79
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:80
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:81
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:82
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:83
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:84
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:85
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:86
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:87
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: includes/sidebar/mkd-custom-sidebar.php:18
+msgid "Custom Widget Area"
+msgstr ""
+
+#: includes/sidebar/mkd-custom-sidebar.php:42
+msgid "Enter Name of the new Widget Area"
+msgstr ""
+
+#: includes/sidebar/mkd-custom-sidebar.php:43
+msgid "Add Widget Area"
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:47
+msgid "Shipping costs will be calculated once you have provided your address."
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:49
+msgid "There are no shipping methods available. Please double check your address, or contact us if you need any help."
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:22
+msgid "Cart Totals"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:27
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:49
+msgid "Shipping"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:93
+msgid " (taxes estimated for %s)"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:96
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr ""
+
+#: woocommerce/cart/cart.php:27
+msgid "Product"
+msgstr ""
+
+#: woocommerce/cart/cart.php:28
+msgid "Price"
+msgstr ""
+
+#: woocommerce/cart/cart.php:29
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/cart/cart.php:82
+msgid "Available on backorder"
+msgstr ""
+
+#: woocommerce/cart/cart.php:128
+msgid "Coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:129
+msgid "Coupon code"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:24
+msgid "Calculate Shipping"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:30
+msgid "Select a country&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:47
+#: woocommerce/cart/shipping-calculator.php:53
+#: woocommerce/cart/shipping-calculator.php:65
+msgid "State / county"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:54
+msgid "Select a state&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:74
+msgid "City"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:82
+msgid "Postcode / Zip"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:26
+msgctxt "Product quantity input tooltip"
+msgid "Qty"
+msgstr ""
+
+#: woocommerce/product-searchform.php:26
+msgctxt "placeholder"
+msgid "Search Products&hellip;"
+msgstr ""
+
+#: woocommerce/product-searchform.php:26
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: woocommerce/single-product/product-image.php:48
+msgid "Placeholder"
+msgstr ""
+#. Theme Name of the plugin/theme
+msgid "SiennaWP"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://sienna.mikado-themes.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Professional All-Purpose Business Theme"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mikado Themes"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://themeforest.net/user/mikado-themes"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Blog: Masonry Full Width"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Blog: Masonry"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Blog: Split Column"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Blog: Standard Date On Side"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Blog: Standard Date On Side Whole Post"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Full Width"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Landing Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "WooCommerce"
+msgstr ""

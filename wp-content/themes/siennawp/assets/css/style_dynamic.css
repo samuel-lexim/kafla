@@ -1,0 +1,83 @@
+/* generated in /var/www/html/wp-content/themes/siennawp/assets/custom-styles/general-custom-styles.php sienna_mikado_design_styles function */
+.mkdf-preload-background { background-image: url(http://34.215.21.2/wp-content/themes/siennawp/assets/img/preload_pattern.png) !important;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/assets/custom-styles/general-custom-styles.php sienna_mikado_design_styles function */
+.mkdf-boxed .mkdf-wrapper { background-attachment: fixed;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/header/custom-styles/header.inc sienna_mikado_sticky_header_styles function */
+.mkdf-page-header .mkdf-sticky-header .mkdf-sticky-holder { background-color: rgba(46, 38, 95, 1);}
+
+
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				
+		
+				
+		/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_covers_header_style function */
+.mkdf-search-slide-header-bottom.mkdf-animated .mkdf-form-holder-outer, .mkdf-search-slide-header-bottom .mkdf-form-holder-outer, .mkdf-search-slide-header-bottom { height: px;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_opener_text_styles function */
+.mkdf-search-icon-text { color: ;font-size: px;line-height: px;text-transform: ;font-family: , sans-serif;font-style: ;font-weight: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_opener_text_styles function */
+.mkdf-search-opener:hover .mkdf-search-icon-text { color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_opener_spacing function */
+.mkdf-search-opener { padding-left: px;padding-right: px;margin-left: px;margin-right: px;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_bar_background function */
+.mkdf-search-slide-header-bottom, .mkdf-search-cover, .mkdf-search-fade .mkdf-fullscreen-search-holder .mkdf-fullscreen-search-table, .mkdf-fullscreen-search-overlay, .mkdf-search-slide-window-top, .mkdf-search-slide-window-top input[type="text"] { background-color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_text_styles function */
+.mkdf-search-slide-header-bottom input[type="text"], .mkdf-search-cover input[type="text"], .mkdf-fullscreen-search-holder .mkdf-search-field, .mkdf-search-slide-window-top input[type="text"] { color: ;font-size: px;text-transform: ;font-family: , sans-serif;font-style: ;font-weight: ;letter-spacing: px;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_text_styles function */
+.mkdf-search-slide-header-bottom.mkdf-disabled input[type="text"]::-webkit-input-placeholder, .mkdf-search-slide-header-bottom.mkdf-disabled input[type="text"]::-moz-input-placeholder { color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_label_styles function */
+.mkdf-fullscreen-search-holder .mkdf-search-label { color: ;font-size: px;text-transform: ;font-family: , sans-serif;font-style: ;font-weight: ;letter-spacing: px;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_icon_styles function */
+.mkdf-search-slide-window-top > i, .mkdf-search-slide-header-bottom .mkdf-search-submit i, .mkdf-fullscreen-search-holder .mkdf-search-submit { color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_icon_styles function */
+.mkdf-search-slide-window-top > i:hover, .mkdf-search-slide-header-bottom .mkdf-search-submit i:hover, .mkdf-fullscreen-search-holder .mkdf-search-submit:hover { color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_icon_styles function */
+.mkdf-search-slide-header-bottom.mkdf-disabled .mkdf-search-submit i, .mkdf-search-slide-header-bottom.mkdf-disabled .mkdf-search-submit i:hover { color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_icon_styles function */
+.mkdf-search-slide-window-top > i, .mkdf-search-slide-header-bottom .mkdf-search-submit i, .mkdf-fullscreen-search-holder .mkdf-search-submit { font-size: px;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_close_icon_styles function */
+.mkdf-search-slide-window-top .mkdf-search-close i, .mkdf-search-cover .mkdf-search-close i, .mkdf-fullscreen-search-close i { color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_close_icon_styles function */
+.mkdf-search-slide-window-top .mkdf-search-close i:hover, .mkdf-search-cover .mkdf-search-close i:hover, .mkdf-fullscreen-search-close i:hover { color: ;}
+
+/* generated in /var/www/html/wp-content/themes/siennawp/framework/modules/search/custom-styles/search.php sienna_mikado_search_close_icon_styles function */
+.mkdf-search-slide-window-top .mkdf-search-close i, .mkdf-search-cover .mkdf-search-close i, .mkdf-fullscreen-search-close i { font-size: px;}
+

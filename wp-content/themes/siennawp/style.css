@@ -1,0 +1,590 @@
+/*
+Theme Name: SiennaWP
+Theme URI: http://sienna.mikado-themes.com
+Description: Professional All-Purpose Business Theme
+Author: Mikado Themes
+Author URI: http://themeforest.net/user/mikado-themes
+Version: 1.1
+License: GNU General Public License
+License URI: licence/GPL.txt
+
+CSS changes can be made in files in the /css/ folder. This is a placeholder file required by WordPress, so do not delete it.
+
+*/
+
+@media (min-width: 1200px){
+	.container{
+		width:1300px !important;
+		}
+}
+.mkdf-menu-area{
+    border: 1px solid #ccc;
+}
+.title-home{
+	text-align:center;
+    font-size: 44px;
+    font-weight: 600;
+
+}
+
+.text-home{
+	text-align:center;
+	font-size:16px;
+	
+}
+.details p{
+	font-size:18px;
+	text-align:left;
+	padding:20px;
+    background: #0ed2ca;
+    color:#fff;
+	margin: 0 0 0px;
+}
+.title-top{
+	padding: 12px 14px;
+}
+.title-box-2{
+	text-align:left;
+    font-size: 30px;
+    font-weight: 600;
+    color:#1AA89C;
+
+}
+.text-1-box{
+	text-align:left;
+	font-size:18px;
+	color:#fff;
+}
+.text-2-box{
+    padding: 20px 0;
+    color:#fff;
+}
+
+.button-free{
+	background:#1AA89C;
+    padding: 10px 40px;
+    font-size: 18px;
+    color:#fff;
+}
+.box-section{
+	padding: 50px 0px;
+}
+
+/* Footer  */
+
+.mkdf-footer-bottom-holder{
+    background-color: #1aa89c !important;
+    border-top: 1px solid #959595;
+}
+.mkdf-footer-bottom-holder-inner{
+    border-top: none !important;
+}
+.mkdf-footer-top-holder .mkdf-container-inner{
+    padding: 20px 0 0 !important;
+}
+
+.hidden-box{
+    display:none;
+}
+.es_button{
+    color:#1aa89c;
+}
+.es_textbox_button{
+    border-width:0 !important;
+    padding: 6px 6px !important;
+}
+
+/* section 3 */
+
+.title-blog{
+	font-size:20px;
+	color:#1AA89C;
+    	padding: 10px 10px 0;
+    	text-align:center;
+}
+.text-blog{
+	font-size:13px;
+	padding: 0 0 10px 10px;
+}
+.link-blog {
+	padding: 0 0 10px 10px;
+
+}
+.list-item{
+	padding-bottom:50px;
+}
+.text-comment{
+	padding:10px;
+}
+
+
+/* page portflio */
+.style-padding{
+	padding-bottom:20px;
+}
+.title-portflio{
+    font-size: 30px;
+    font-weight: 600;
+
+}
+.text-portflio{
+	font-size:16px;
+}
+
+.box-text-image{
+	background:white;
+	color:black;
+}
+
+.content-galary{
+    background: white;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.lamtruong {
+	width: 100%;
+}
+.spider_popup_close{
+	right: 5px !important;
+}
+.bwg_popup_image {
+	width: 100%;
+}
+
+/* page blog list */
+.title-list{
+	font-size:24px;
+	color:#1AA89C;
+    padding: 10px 0 0;
+}
+.title-list-2{
+	font-size:20px;
+	color:#1AA89C;
+	display:inline;
+}
+.backgroud-list{
+	background:#e1e1e1;
+	border-bottom: 8px solid white;
+}
+.socia-icon {
+    display: inline;
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 5px;
+}
+.socia-icon1 {
+	float:left;
+	padding: 5px;
+}
+.socia-icon ul li {
+	    padding: 5px 0px;
+}
+.title-socia{
+	font-weight:600;
+	font-size:15px;
+	padding: 20px 0px 0px 20px;
+}
+
+
+.icon-arrow1{
+	display:inline;
+	float:right;
+}
+
+.icon-arrow1 .close ,.icon-arrow1,.icon-arrow1 .close:hover{
+	opacity:1;
+}
+
+
+/* css drop down */
+
+.dropdown-blog li a:hover {
+    background: #f6f6f6;
+}       
+.dropdown .show {
+    display: block;
+    max-height: 9999px;
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    animation: showAnimation 0.5s ease-in-out;
+    -moz-animation: showAnimation 0.5s ease-in-out;
+    -webkit-animation: showAnimation 0.1s ease-in-out;
+    -moz-transition: max-height 1s ease-in-out;
+    -o-transition: max-height 1s ease-in-out;
+    -webkit-transition: max-height 1s ease-in-out;
+    transition: max-height 1s ease-in-out;
+}
+.dropdown .hide {
+    max-height: 0;
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    animation: hideAnimation 0.1s ease-out;
+    -moz-animation: hideAnimation 0.1s ease-out;
+    -webkit-animation: hideAnimation 0.1s ease-out;
+    -moz-transition: max-height 0.1s ease-out;
+    -o-transition: max-height 0.1s ease-out;
+    -webkit-transition: max-height 0.1s ease-out;
+    transition: max-height 0.1s ease-out;
+}  
+
+
+
+
+/*Menu --------------------------*/
+.title-blog{
+    /* padding: 17px 0;*/
+}
+.text-center {
+  text-align: center;
+}
+
+.container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0px 0;
+  }
+.title {
+  font-family: 'Pacifico';
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.4;
+  color: blue;
+}
+.dropdown a {
+  text-decoration: none;
+ }
+
+.dropdown .icon-arrow {
+    position: absolute;
+    display: block;
+   /*  font-size: 0.7em;
+    color: #fff; */
+    top: 14px;
+    right: 10px;
+    width: 30px;
+    height: 35px;
+     background:url('http://52.41.15.109/lexim/wp-content/uploads/images/icon/arrow1.png') no-repeat;
+}
+.dropdown1 .icon-arrow {
+    position: absolute;
+    display: block;
+   /*  font-size: 0.7em;
+    color: #fff; */
+    top: 14px;
+    right: 10px;
+    width: 30px;
+    height: 35px;
+     background:url('http://52.41.15.109/lexim/wp-content/uploads/images/icon/arrow1.png') no-repeat;
+}
+       
+.dropdown1 .icon-arrow {
+    position: absolute;
+    display: block;
+   /*  font-size: 0.7em;
+    color: #fff; */
+    top: 14px;
+    right: 10px;
+    width: 30px;
+    height: 35px;
+     background:url('http://52.41.15.109/lexim/wp-content/uploads/images/icon/arrow1.png') no-repeat;
+}
+
+.dropdown .icon-arrow.open {
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -moz-transition: -moz-transform 0.6s;
+    -o-transition: -o-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+    background:url('http://52.41.15.109/lexim/wp-content/uploads/images/icon/arrow.png') no-repeat;
+}
+.dropdown1 .icon-arrow.open1 {
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -moz-transition: -moz-transform 0.6s;
+    -o-transition: -o-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+    background:url('http://52.41.15.109/lexim/wp-content/uploads/images/icon/arrow.png') no-repeat;
+}
+.title-top .close{
+	opacity:1;
+}
+.title-top .close:hover{
+	opacity:1;
+}
+.dropdown .icon-arrow.close {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -moz-transition: -moz-transform 0.6s;
+    -o-transition: -o-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+    background:url('http://52.41.15.109/lexim/wp-content/uploads/images/icon/arrow1.png') no-repeat;
+}
+
+.dropdown1 .icon-arrow.close1 {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -moz-transition: -moz-transform 0.6s;
+    -o-transition: -o-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+    background:url('http://52.41.15.109/lexim/wp-content/uploads/images/icon/arrow1.png') no-repeat;
+}
+.icon-arrow.open {
+	background:url('http://52.41.15.109/lexim/uploads/images/icon/arrow.png') no-repeat;
+}   
+
+.dropdown-blog li a {
+    display: block;
+    color: #6e6e6e;
+    background: #EEE;
+    -moz-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d4d4d4 inset;
+    -webkit-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d4d4d4 inset;
+    box-shadow: 0 1px 0 white inset, 0 -1px 0 #d4d4d4 inset;
+    text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3);
+    padding: 10px 10px;
+}
+      
+.dropdown .show {
+    display: block;
+    max-height: 9999px;
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    animation: showAnimation 0.5s ease-in-out;
+    -moz-animation: showAnimation 0.5s ease-in-out;
+    -webkit-animation: showAnimation 0.1s ease-in-out;
+    -moz-transition: max-height 1s ease-in-out;
+    -o-transition: max-height 1s ease-in-out;
+    -webkit-transition: max-height 1s ease-in-out;
+    transition: max-height 1s ease-in-out;
+}
+.dropdown .hide {
+    max-height: 0;
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    animation: hideAnimation 0.1s ease-out;
+    -moz-animation: hideAnimation 0.1s ease-out;
+    -webkit-animation: hideAnimation 0.1s ease-out;
+    -moz-transition: max-height 0.1s ease-out;
+    -o-transition: max-height 0.1s ease-out;
+    -webkit-transition: max-height 0.1s ease-out;
+    transition: max-height 0.1s ease-out;
+}
+/* .dropdown .dropdown-menu1{
+	position:relative;
+}  */
+
+
+.dropdown-blog{
+	position: static;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+
+
+/* END DROPDOWN */
+.title-list-3{
+	font-size:20px;
+	color:#1AA89C;
+	display:inline;
+	float:left !important;
+}
+.box-sidebar{
+    	
+	padding-top: 103px;
+}
+.box-sidebar1{
+    border: 1px solid #c2c2c2;	
+}
+.demo-3 {
+	border:1px solid #ccc;
+	overflow: hidden;
+}
+.sidebar-post{
+    padding-left: 40px !important;
+    list-style:none;
+}
+.sidebar-post li a{
+    	color: #c2c2c2;
+	
+}
+
+/* Article format page */
+.related-articles{
+    padding: 10px;
+}
+.list-related a{
+    color:#000;
+}
+.list-related a:hover{
+    text-decoration:none;
+}
+.list-related h4{
+    background:#e1e1e1;
+    padding:10px;
+    font-size:14px;
+}
+.sidebar-related{
+    list-style: none;
+}
+.title-related{
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.mkdf-post-title{
+    font-size:18px;
+    font-weight:600;
+}
+.title-sub{
+
+}
+.padding-article{
+    padding-bottom: 30px;
+}
+.mkdf-blog-date-on-side .mkdf-post-text-inner{
+    margin-left: 0 !important;
+}
+.mkdf-blog-date-on-side .mkdf-post-text-inner{
+    border-bottom:none !important;
+}
+.mkdf-post-image a img {
+	width: 100%;
+}
+/* services */
+.pagination-custom-services {
+	text-align: center;
+}
+.pagination-custom-services a {
+	padding: 13px;
+    	display: inline-block;
+    	background: #ffffff;
+	border: 1px solid #c2c2c2;
+	margin: 10px;
+	color: #c2c2c2;
+}
+.frs-slideshow-container .frs-skin-default .frs-bullets-wrapper ul.frs-bullets {
+	float: left;
+}
+.going-down {
+	position: relative;
+	right: 50%;
+	float: right;
+	top: -27px;
+	height: auto;
+	
+}
+
+.frs-slideshow-container .frs-skin-default .frs-bullets-wrapper ul.frs-bullets {
+	top: -26px !important;
+}
+
+.es_textbox_class {
+	border-bottom: 2px solid #959595;
+    	border-top: 0px;
+    	border-left: 0px;
+    	border-right: 0px;
+	background-color: transparent !important;
+}
+.textwidget img {
+	padding: 0 5px;
+}
+/*Contact form*/
+#item-vfb-4 {
+	width: 100% !important;
+}
+.vfb-submit {
+	    float: right;
+    width: 100px;
+    height: 30px;
+    background: #01a398;
+    border: 0px;
+}
+.vfb-item-secret {
+	display: none !important;
+}
+.vfb-legend {
+	display: none;
+}
+.visual-form-builder fieldset {
+    border: 0px !important;
+    margin: 15px 0 0 0 !important;
+}
+.vfb-form-1 {
+	border: 1px solid #c2c2c2;
+    	padding: 0 14px;
+}
+#vfb-3 {
+	display: none;
+}
+/* Home */
+.mkdf-full-section-inner .container { 
+	    float: initial;
+}
+.mkdf-info-card-front-side {
+	overflow: hidden;
+}
+.mkdf-info-card-image-holder img {
+	width: 100%;
+}
+.mkdf-info-card-image-holder {
+	height: 100%;
+}
+.mkdf-info-card-image-holder img {
+	height: 100% !important;
+}
+.mkdf-team.mkdf-team-main-info-bellow-image .mkdf-team-image {
+	padding: 0px !important;
+}
+.mkdf-team.mkdf-team-main-info-bellow-image {
+	padding: 0px !important;
+}
+.mkdf-info-card-carousel .mkdf-info-card-front-side .mkdf-info-card-front-side-holder {
+	height: auto !important;
+}
+.mkdf-info-card-carousel .mkdf-info-card-front-side .mkdf-info-card-front-side-holder-inner {
+	padding: 0px !important;
+}
+.remove-class-demo {
+	display:none;
+}
+.flexslider {
+    box-shadow: 0 0px 0px rgba(0,0,0,.2) !important;
+}
+/* End home */
+/*End contact form */
+#sangar-layer-desktop-0 .overlay-bg {
+    display: none;
+}
+.mkdf-section-title-holder {
+    margin-top: 50px;
+}
