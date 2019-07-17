@@ -2626,6 +2626,16 @@ aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item > a, aside.mkdf-si
     /*
     * ========== END CSS Sponsors ===========
     */
+    /*
+     * ========== START 767px - SLIDER PAGE TEMPLATE ===========
+     */
+    .item-title-inner {
+        width: 100%;
+    }
+
+    /*
+     * ========== END 767px - SLIDER PAGE TEMPLATE ===========
+     */
 
 }
 
