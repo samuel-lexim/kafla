@@ -25,70 +25,24 @@ Template Name: Slider Page Template
                     </div>
 
                     <div class="mkdf-page-content-holder mkdf-grid-col-9">
+                        <?php if (isset($slider) && is_array($slider) && count($slider) > 0) { ?>
+                            <div class="single-image-slick">
+                                <?php foreach ($slider as $image) {
+                                    if (isset($image['image'])) { ?>
+                                        <div><img src="<?= $image['image'] ?>" alt=""/></div>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
 
-
-                        <div class="col-xs-12 col-md-6 ce-empowerment">
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Food Bank</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Medicare & Medi-Cal Assistance</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Senior & Affordable Housing Consultation</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Flu Shot Fair</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Community Emergency Response Team (CERT)
-                                Trainings (with LA Fire Dept)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> LAPD Olympic Station Translator Program</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Pro Bono Immigration & Labor Legal Clinic</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Community Education & Outreach</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Homeless Outreach</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11"> Cultural Preservation Programs</div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-1 col-md-1">
-                                <div class="decor-point-e"></div>
-                            </div>
-                            <div class="col-xs-11 col-md-11">Korean National Holiday Events</div>
-                            <div class="clearfix"></div>
-
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <div id="img-ce"></div>
+                        <div class="item-title-wrap <?= $layout ?>">
+                            <?php if (isset($items) && is_array($items) && count($items) > 0) { ?>
+                                <?php foreach ($items as $title) {
+                                    if (isset($title['item_title'])) { ?>
+                                        <div class="item-title-inner"><?= $title['item_title'] ?></div>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
                         </div>
 
                         <?php do_action('sienna_mikado_page_after_content'); ?>

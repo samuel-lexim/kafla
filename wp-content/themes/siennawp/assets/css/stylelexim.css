@@ -1319,7 +1319,46 @@ aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item > a, aside.mkdf-si
 * ========== END CSS Slider Page Template ===========
 */
 
+.item-title-wrap {
+    padding-top: 7%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
 
+.item-title-inner {
+    position: relative;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    color: #000;
+    width: 50%;
+    line-height: 1.5;
+    margin: 0;
+    padding: 10px 10px 10px 40px;
+}
+
+.item-title-inner:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 10px;
+    height: 10px;
+    background: #2e265f;
+}
+
+.item-title-wrap.full_width .item-title-inner {
+    width: 100%;
+}
+
+.single-image-slick img {
+    width: 100%;
+}
 
 /*
 * ========== END CSS Slider Page Template ===========

@@ -1,56 +1,60 @@
-jQuery(function(){		  
-	jQuery(document).ready(function($) {
-        
+jQuery(function () {
+    'use strict';
+
+    jQuery(document).ready(function ($) {
+
         // hover on area KOREAN NEWS,PHOTO GALLERY,VIDEO STORY,UP COMING EVENT active for hover
-   		$(".check-active-overlay").hover(function(){   
-   			$(this).find('.hover-overlay-effect').removeClass("active");                      
-        }, function(){        
-             $(".hover-overlay-effect").addClass("active"); 
-        });  
-        
+        $('.check-active-overlay').hover(function () {
+            $(this).find('.hover-overlay-effect').removeClass('active');
+        }, function () {
+            $('.hover-overlay-effect').addClass('active');
+        });
+
         // change text chooser language item
-        $('li.language-chooser-item-en a').html("E");
-        $('li.language-chooser-item-ko a').html("한");
+        $('li.language-chooser-item-en a').html('E');
+        $('li.language-chooser-item-ko a').html('한');
 
         // hover on menu top show sub menu.
-        $("#menu-main-home-top>ul>li").hover(function(){ 
-        	if($(this).hasClass("menu-item-has-children")){ 		
-		    	$(this).find('div.second').addClass("mkdf-drop-down-start");
-        	}
-         }, function(){        
-             $("#menu-main-home-top>ul>li>div").removeClass("mkdf-drop-down-start");
-        }); 
-        
+        $('#menu-main-home-top>ul>li').hover(function () {
+            if ($(this).hasClass('menu-item-has-children')) {
+                $(this).find('div.second').addClass('mkdf-drop-down-start');
+            }
+        }, function () {
+            $('#menu-main-home-top>ul>li>div').removeClass('mkdf-drop-down-start');
+        });
+
         // func click icon find at home, show or hide form search.
-         $('body').delegate('#ic-find','click',function(){
-				 $(".form-search-home-top").toggle();					   			 
-		 });
-        
+        $('body').delegate('#ic-find', 'click', function () {
+            $('.form-search-home-top').toggle();
+        });
+
         // add placeholder Search... in textbox search
-         $('.form-search-home-top #s').attr('placeholder', 'Search...');
-             
+        $('.form-search-home-top #s').attr('placeholder', 'Search...');
+
         // sticky menu on pc and mobile       
         $(window).scroll(function () {
-            if($(window).scrollTop() > 0) {
-                $(".bg-header").addClass('sticky');
-                $(".bg-header").addClass('bg-image-header');            
+            if ($(window).scrollTop() > 0) {
+                $('.bg-header').addClass('sticky');
+                $('.bg-header').addClass('bg-image-header');
             } else {
-                $(".bg-header").removeClass('sticky');
-                $(".bg-header").removeClass('bg-image-header');          
+                $('.bg-header').removeClass('sticky');
+                $('.bg-header').removeClass('bg-image-header');
             }
         });
-       
-        //  func click show video and hide background slider
-         $('body').delegate('#btn-watchvideo','click',function(){					
-				$(".content-top-home .bg-video-home-top").show(); 
-				$(".content-top-home .content-top-child-home").hide(); 
-				$(".content-top-home .home-banner-slider").hide(); 				
-				$(".content-top-home").css({"background-image": "unset"});		   			 
-		 });
 
-      
-  
-	});      
+        //  func click show video and hide background slider
+        $('body').delegate('#btn-watchvideo', 'click', function () {
+            $('.content-top-home .bg-video-home-top').show();
+            $('.content-top-home .content-top-child-home').hide();
+            $('.content-top-home .home-banner-slider').hide();
+            $('.content-top-home').css({'background-image': 'unset'});
+        });
+
+
+        // Slick slider
+        $('.single-image-slick').slick();
+
+    });
 });
 
 
