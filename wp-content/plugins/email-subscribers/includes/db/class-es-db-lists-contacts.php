@@ -27,12 +27,12 @@ class ES_DB_Lists_Contacts {
 		global $wpdb;
 		$query = "SELECT list_id FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE contact_id = $id";
 
-		if(!empty($status)) {
+		if ( ! empty( $status ) ) {
 			$query .= " AND status = %s";
-			$query = $wpdb->prepare($query, $status);
+			$query = $wpdb->prepare( $query, $status );
 		}
 
-		$res   = $wpdb->get_col( $query );
+		$res = $wpdb->get_col( $query );
 
 		return $res;
 	}
@@ -45,24 +45,33 @@ class ES_DB_Lists_Contacts {
 		return $res;
 	}
 
-	public static function get_list_contact_status_map( $id ){
+	public static function get_list_contact_status_map( $id ) {
 		global $wpdb;
-		$query = "SELECT list_id, status FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE contact_id = $id";
-		$res   = $wpdb->get_results( $query, ARRAY_A );
-		foreach ( $res as $list ) {
-			$lists_contact_status_map[ $list['list_id'] ] = $list['status'];
+
+		$query = "SELECT list_id, status FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE contact_id = {$id}";
+
+		$res = $wpdb->get_results( $query, ARRAY_A );
+
+		$lists_contact_status_map = array();
+		if ( count( $res ) > 0 ) {
+			foreach ( $res as $list ) {
+				$lists_contact_status_map[ $list['list_id'] ] = $list['status'];
+			}
 		}
+
 		return $lists_contact_status_map;
 	}
 
 	public static function update_list_contacts( $contact_id, $list_ids ) {
 		global $wpdb;
-		$query      = "DELETE FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE contact_id = $contact_id";
-		$res        = $wpdb->get_results( $query );
+		$query = "DELETE FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE contact_id = $contact_id";
+		$res   = $wpdb->query( $query );
+
+		$result            = false;
 		$optin_type_option = get_option( 'ig_es_optin_type', true );
 
 		$optin_type = 1;
-		if(in_array($optin_type_option, array('double_opt_in', 'double_optin'))) {
+		if ( in_array( $optin_type_option, array( 'double_opt_in', 'double_optin' ) ) ) {
 			$optin_type = 2;
 		}
 
@@ -73,10 +82,11 @@ class ES_DB_Lists_Contacts {
 			$data['optin_type']    = $optin_type;
 			$data['subscribed_at'] = ig_get_current_date_time();
 			$data['subscribed_ip'] = '';
-			$result                = ES_DB_Lists_Contacts::add_lists_contacts( $data );
+
+			$result = ES_DB_Lists_Contacts::add_lists_contacts( $data );
 		}
 
-		return $res;
+		return $result;
 	}
 
 	public static function delete_list_contacts( $contact_id, $list_ids ) {
@@ -91,8 +101,8 @@ class ES_DB_Lists_Contacts {
 	public static function delete_contacts_from_list( $list_id, $contact_ids ) {
 		global $wpdb;
 		$contact_ids = implode( ',', $contact_ids );
-		$query    = "DELETE FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = $list_id AND contact_id IN ($contact_ids)";
-		$res      = $wpdb->get_results( $query );
+		$query       = "DELETE FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = $list_id AND contact_id IN ($contact_ids)";
+		$res         = $wpdb->get_results( $query );
 
 		return $res;
 	}
@@ -127,7 +137,7 @@ class ES_DB_Lists_Contacts {
 				} elseif ( $contact['status'] === 'Unconfirmed' ) {
 					$optin_type = IG_DOUBLE_OPTIN;
 					$status     = 'Unconfirmed';
-				} elseif($contact['status'] === 'Unsubscribed') {
+				} elseif ( $contact['status'] === 'Unsubscribed' ) {
 					$optin_type = IG_DOUBLE_OPTIN;
 					$status     = 'unsubscribed';
 				}
@@ -180,19 +190,48 @@ class ES_DB_Lists_Contacts {
 
 	}
 
-	public static function get_total_count_by_list( $list_id, $status = 'active' ) {
+	public static function get_total_count_by_list( $list_id, $status = 'subscribed' ) {
 		global $wpdb;
 
-		if ( 'active' === $status ) {
-			$sql = "SELECT count(*) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = %d AND status = 'subscribed'";
+		if ( 'subscribed' === $status ) {
+			$sql = "SELECT count(DISTINCT(contact_id)) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = %d AND status = 'subscribed'";
+		} elseif ( 'unsubscribed' === $status ) {
+			$sql = "SELECT count(DISTINCT(contact_id)) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = %d AND status = 'unsubscribed'";
+		} elseif ( 'confirmed' === $status ) {
+			$sql = "SELECT count(DISTINCT(contact_id)) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = %d AND status = 'subscribed' AND optin_type = 2 ";
+		} elseif ( 'unconfirmed' === $status ) {
+			$sql = "SELECT count(DISTINCT(contact_id)) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = %d AND status = 'unconfirmed'";
 		} else {
-			$sql = "SELECT count(*) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = %d";
+			$sql = "SELECT count(DISTINCT(contact_id)) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE list_id = %d";
 		}
 
 		$total_count = $wpdb->get_var( $wpdb->prepare( $sql, $list_id ) );
 
 		return $total_count;
 
+	}
+
+	public static function get_list_status_by_contact_ids( $contact_ids ) {
+		global $wpdb;
+
+		$lists_contacts_table = IG_LISTS_CONTACTS_TABLE;
+
+		if ( is_array( $contact_ids ) ) {
+			$contact_ids_str = "'" . implode( "', '", $contact_ids ) . "'";
+			$query           = "SELECT contact_id, list_id, status FROM {$lists_contacts_table} WHERE contact_id IN ($contact_ids_str)";
+		}
+
+		$results = $wpdb->get_results( $query, ARRAY_A );
+
+		$map = array();
+		if ( count( $results ) > 0 ) {
+
+			foreach ( $results as $result ) {
+				$map[ $result['contact_id'] ][ $result['list_id'] ] = $result['status'];
+			}
+		}
+
+		return $map;
 	}
 
 

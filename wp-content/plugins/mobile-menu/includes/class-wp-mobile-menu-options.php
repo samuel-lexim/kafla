@@ -85,8 +85,9 @@ class WP_Mobile_Menu_Options
         $titan = TitanFramework::getInstance( 'mobmenu' );
         // Create my admin options panel.
         $panel = $titan->createAdminPanel( array(
-            'name' => __( 'Mobile Menu Options', 'mobile-menu' ),
-            'icon' => 'dashicons-smartphone',
+            'name'  => 'Mobile Menu Options',
+            'title' => __( 'Mobile Menu Options', 'mobile-menu' ),
+            'icon'  => 'dashicons-smartphone',
         ) );
         // Only proceed if we are in the plugin page.
         
@@ -259,6 +260,16 @@ class WP_Mobile_Menu_Options
                 'options' => $display_type,
                 'default' => '',
             ) );
+            // Automatically Close Sub Menus.
+            $general_tab->createOption( array(
+                'name'     => __( 'Automatically Close Submenus', 'mobile-menu' ),
+                'id'       => 'autoclose_submenus',
+                'type'     => 'enable',
+                'desc'     => __( 'When you open a submenu it automatically closes the other submenus that are open.', 'mobile-menu' ),
+                'default'  => false,
+                'enabled'  => __( 'On', 'mobile-menu' ),
+                'disabled' => __( 'Off', 'mobile-menu' ),
+            ) );
             // Menu Border Style.
             $general_tab->createOption( array(
                 'name'    => __( 'Menu Items Border Size', 'mobile-menu' ),
@@ -286,7 +297,7 @@ class WP_Mobile_Menu_Options
                 'desc'    => __( 'Enter the Close Icon Font Size', 'mobile-menu' ),
                 'default' => '30',
                 'max'     => '100',
-                'min'     => '0',
+                'min'     => '5',
                 'unit'    => 'px',
             ) );
             // Submenu Open Icon Font.
@@ -488,6 +499,16 @@ class WP_Mobile_Menu_Options
             $header_tab->createOption( array(
                 'name' => __( 'Header options', 'mobile-menu' ),
                 'type' => 'heading',
+            ) );
+            // Header Shadow.
+            $header_tab->createOption( array(
+                'name'     => __( 'Header Shadow.', 'mobile-menu' ),
+                'id'       => 'header_shadow',
+                'type'     => 'enable',
+                'default'  => false,
+                'desc'     => __( 'Choose if you want to enable the header shadow at the bottom of the header.', 'mobile-menu' ),
+                'enabled'  => __( 'Yes', 'mobile-menu' ),
+                'disabled' => __( 'No', 'mobile-menu' ),
             ) );
             // Header Height.
             $header_tab->createOption( array(
@@ -796,7 +817,7 @@ class WP_Mobile_Menu_Options
                 'desc'    => __( 'Enter the Left Menu Panel Width', 'mobile-menu' ),
                 'default' => '270',
                 'max'     => '1000',
-                'min'     => '0',
+                'min'     => '50',
                 'unit'    => 'px',
             ) );
             // Left Menu Panel Width.
@@ -816,7 +837,7 @@ class WP_Mobile_Menu_Options
                 'id'      => 'left_menu_content_padding',
                 'type'    => 'number',
                 'desc'    => __( 'Enter the Left Menu Content Padding', 'mobile-menu' ),
-                'default' => '0',
+                'default' => '10',
                 'max'     => '30',
                 'min'     => '0',
                 'step'    => '1',
@@ -1058,7 +1079,7 @@ class WP_Mobile_Menu_Options
                 'desc'    => __( 'Enter the Right Menu Panel Width', 'mobile-menu' ),
                 'default' => '270',
                 'max'     => '450',
-                'min'     => '0',
+                'min'     => '50',
                 'unit'    => 'px',
             ) );
             // Right Menu Panel Width.
@@ -1078,7 +1099,7 @@ class WP_Mobile_Menu_Options
                 'id'      => 'right_menu_content_padding',
                 'type'    => 'number',
                 'desc'    => __( 'Enter the Right Menu Content Padding', 'mobile-menu' ),
-                'default' => '0',
+                'default' => '10',
                 'max'     => '30',
                 'min'     => '0',
                 'step'    => '1',
@@ -1210,7 +1231,7 @@ class WP_Mobile_Menu_Options
                 'type'    => 'color',
                 'desc'    => '',
                 'alpha'   => true,
-                'default' => '#fff',
+                'default' => '#444',
             ) );
             // Left Panel Sub-menu Background Color.
             $colors_tab->createOption( array(
@@ -1225,6 +1246,15 @@ class WP_Mobile_Menu_Options
             $colors_tab->createOption( array(
                 'name'    => __( 'Submenu Text Color', 'mobile-menu' ),
                 'id'      => 'left_panel_submenu_text_color',
+                'type'    => 'color',
+                'desc'    => '',
+                'alpha'   => true,
+                'default' => '#fff',
+            ) );
+            // Left Panel Cancel Button Color.
+            $colors_tab->createOption( array(
+                'name'    => __( 'Cancel Button Color', 'mobile-menu' ),
+                'id'      => 'left_panel_cancel_button_color',
                 'type'    => 'color',
                 'desc'    => '',
                 'alpha'   => true,
@@ -1287,7 +1317,7 @@ class WP_Mobile_Menu_Options
                 'type'    => 'color',
                 'desc'    => '',
                 'alpha'   => true,
-                'default' => '#fff',
+                'default' => '#444',
             ) );
             // Right Panel Sub-menu Background Color.
             $colors_tab->createOption( array(
@@ -1302,6 +1332,15 @@ class WP_Mobile_Menu_Options
             $colors_tab->createOption( array(
                 'name'    => __( 'Submenu Text Color', 'mobile-menu' ),
                 'id'      => 'right_panel_submenu_text_color',
+                'type'    => 'color',
+                'desc'    => '',
+                'alpha'   => true,
+                'default' => '#fff',
+            ) );
+            // Right Panel Cancel Button Color.
+            $colors_tab->createOption( array(
+                'name'    => __( 'Cancel Button Color', 'mobile-menu' ),
+                'id'      => 'right_panel_cancel_button_color',
                 'type'    => 'color',
                 'desc'    => '',
                 'alpha'   => true,

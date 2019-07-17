@@ -717,7 +717,6 @@
   display: none;
   background-color: #000000;
   opacity: 0.75;
-  filter: Alpha(opacity=75);
   position: fixed;
   top: 0;
   left: 0;
@@ -1502,7 +1501,6 @@ textarea.bwg_popup_input {
   cursor: pointer !important;
   font-size: 25px;
   opacity: 1;
-  filter: Alpha(opacity=100);
   padding-right: 30px;
 }
 .bwg_tab_status {
@@ -2319,10 +2317,10 @@ li.tabs {
 .wd-info {
   cursor: pointer;
 }
-#wpbody-content>div:not(.wrap):not(#screen-meta-links), .wrap .notice:not(.wd-notice) {
+#wpbody-content>div:not(.wrap):not(.updated):not(#screen-meta-links), .wrap .notice:not(.wd-notice) {
   display: none;
 }
 
-#screen-meta-links {
-  margin-bottom: 30px;
+.wd-notice.notice {
+  margin-top: 25px;
 }

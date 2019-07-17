@@ -3,7 +3,7 @@ Contributors: webdorado,wdsupport,photogallerysupport,10web
 Tags: gallery, photo gallery, image gallery, responsive gallery, wordpress gallery plugin, photo albums, gallery slider, gallery lightbox, wordpress photo gallery plugin, fullscreen gallery, watermarking, video gallery
 Requires at least: 3.4
 Tested up to: 5.2
-Stable tag: 1.5.27
+Stable tag: 1.5.30
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ Photo Gallery is the leading plugin for building beautiful mobile-friendly galle
     
 [Special Offer for all Premium Plugins](https://10web.io/plugins-bundle-pricing/)    
     
-https://www.youtube.com/watch?v=VDKtGHAJVpc
+https://youtu.be/pA8-5qaMBqM
 
     
 If you’re looking for a user friendly and feature rich plugin to add responsive galleries and albums to your website, Photo Gallery plugin can be the best option for you. It’s simple in use yet packed with powerful functionality, allowing you to create anything from simple photo galleries to selling digital content right from your website (Premium version). Photo Gallery  comes packed with stunning layout options, gallery and album views, multiple widgets and a number of extensions that take its functionality even further.  WordPress Photo Gallery is a great choice for photography websites and blogs,  as well as sites that want to have robust image galleries with easy navigation.
@@ -281,6 +281,20 @@ Choose whether to display random or the first/last specific number of images.
 **Theme.** Choose the theme, which will be applied to the gallery/album.
 
 == Changelog ==
+
+= 1.5.30 =
+* Removed: Banner to check website performance.
+
+= 1.5.29 =
+* Added: Functionality to disable ajax actions to open galleries by URL.
+* Fixed: Notice on adding Instagram whole post.
+* Fixed: Pagination styles on admin pages.
+* Fixed: Zip upload.
+* Fixed: Filmstrip scroll in fullscreen mode.
+* Fixed: Message on saving global options.
+
+= 1.5.28 =
+* Changed: Banner text.
 
 = 1.5.27 =
 * Added: Banner to check website performance.

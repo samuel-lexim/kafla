@@ -71,8 +71,21 @@ class BWGModelSite {
     global $wpdb;
     $gallery_id = (int) $gallery_id;
     $tag = (int) $tag;
-    $bwg_search = ((isset($_POST['bwg_search_' . $bwg]) && esc_html($_POST['bwg_search_' . $bwg]) != '') ? trim(esc_html($_POST['bwg_search_' . $bwg])) : '');
-    $join = '';
+    if ( BWG()->options->front_ajax != "1" ) {
+      $bwg_search = ((isset($_POST['bwg_search_' . $bwg]) && esc_html($_POST['bwg_search_' . $bwg]) != '') ? trim(esc_html($_POST['bwg_search_' . $bwg])) : '');
+    }
+    else {
+      $get_search = WDWLibrary::get('bwg_search_' . $bwg);
+      $get_sort_by = WDWLibrary::get('sort_by_' . $bwg);
+      $get_filter_teg = WDWLibrary::get('filter_tag_' . $bwg);
+      $bwg_search = ((isset($get_search) && esc_html($get_search) != '') ? trim(esc_html($get_search)) : '');
+      $sort_by = ((isset($get_sort_by) && esc_html($get_sort_by) != '') ? trim(esc_html($get_sort_by)) : '');
+      $filter_teg = ((isset($get_filter_teg) && esc_html($get_filter_teg) != '') ? trim(esc_html($get_filter_teg)) : '');
+      if ( !empty($filter_teg) ) {
+        $filter_teg_arr = explode(',', $filter_teg);
+        $_REQUEST[$tag_input_name] = $filter_teg_arr;
+      }
+    }
     $where = '';
     if ( $bwg_search !== '' ) {
       $bwg_search_keys = explode(' ', $bwg_search);

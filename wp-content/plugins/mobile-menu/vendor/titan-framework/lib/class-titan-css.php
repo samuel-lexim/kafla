@@ -51,9 +51,10 @@ class TitanFrameworkCSS {
 		add_action( 'tf_admin_options_saved_' . $frameworkInstance->optionNamespace, array( $this, 'generateSaveCSS' ) );
 		// Trigger compile when there are no default options saved yet
 		add_action( 'tf_init_no_options_' . $frameworkInstance->optionNamespace, array( $this, 'generateMissingCSS' ) );
+
 	}
 
-
+	
 	/**
 	 * Adds a CSS string to the list for CSS generation
 	 *
@@ -102,10 +103,17 @@ class TitanFrameworkCSS {
 		// Only enqueue the generated css if we have the settings for it.
 		if ( $this->frameworkInstance->settings['css'] == 'generate' ) {
 
-			$css = get_option( $this->getCSSSlug() );
+			$css           = get_option( $this->getCSSSlug() );
 			$generated_css = $this->getCSSFilePath();
-			if ( file_exists( $generated_css ) && empty( $css ) ) {
-				wp_enqueue_style( 'tf-compiled-options-' . $this->frameworkInstance->optionNamespace, $this->getCSSFileURL(), __FILE__ );
+
+			if ( file_exists( $generated_css ) && get_option( 'mobmenu_latest_update_version', '' ) === WP_MOBILE_MENU_VERSION ) {
+				wp_enqueue_style( 'tf-compiled-options-' . $this->frameworkInstance->optionNamespace, $this->getCSSFileURL(), '', WP_MOBILE_MENU_VERSION . '-' .rand(100, 999) );
+			} else {
+				$titan = TitanFramework::getInstance( 'mobmenu' );
+				echo '<style id="dynamic-mobmenu-inline-css">';
+				$css = $this->generateCSS(); 
+				echo $css . '</style>';
+
 			}
 
 		}
@@ -228,6 +236,8 @@ class TitanFrameworkCSS {
 	 * @since  2.6.2
 	 */
 	public function generateMobileMenuCSS() {
+
+		// Start collecting the output buffer.
 		ob_start();
 		require_once( WP_MOBILE_MENU_PLUGIN_PATH . '/includes/dynamic-style.php' );
 		$output = ob_get_contents();
@@ -262,6 +272,13 @@ class TitanFrameworkCSS {
 			// Only do this for the allowed types.
 			if ( in_array( $option->settings['type'], $noCSSOptionTypes ) ) {
 				continue;
+			}
+
+			// Don't colect the custom javascript code.
+			if ( 'code' === $option->settings['type'] ) {
+				if ( 'javascript' === $option->settings['lang'] ) {
+					continue;
+				} 
 			}
 
 			// Decide whether or not we should continue to generate CSS for this option.
@@ -316,7 +333,9 @@ class TitanFrameworkCSS {
 			try {
 				$testerForValidCSS = $scss->compile( $cssString );
 				$cssString  = $testerForValidCSS;
-				$cssString .= $scss->compile( $this->generateMobileMenuCSS() );
+				$mobile_menu_css = $this->generateMobileMenuCSS();
+				$cssString .= $scss->compile( $cssString );
+				$cssString .= $mobile_menu_css;
 			} catch ( Exception $e ) {
 			}
 		}
@@ -347,10 +366,20 @@ class TitanFrameworkCSS {
 			// If we were NOT able to save our generated CSS, save our CSS.
 			// as an option, we'll load that in wp_head in a hook.
 			update_option( $this->getCSSSlug(), $cssString );
-		} 
+		}
+ 
+		// This is flag of control to detect updates.
+		if ( get_option( 'mobmenu_latest_update_version', '' ) !== WP_MOBILE_MENU_VERSION ) {
+			global $mm_fs;
 
-		// Update the SVG Colors.
-		$this->updateSvgColors();
+			if ( $mm_fs->is__premium_only() ) {
+				// Update the SVG Colors.
+				$this->updateSvgColors();
+			}
+
+			update_option( 'mobmenu_latest_update_version', WP_MOBILE_MENU_VERSION );
+
+		}
 
 	}
 
@@ -360,17 +389,20 @@ class TitanFrameworkCSS {
 	 * @since 2.7
 	 */
 	private function updateSvgColors() {
+		$titan         = TitanFramework::getInstance( 'mobmenu' );
 
 		// Change the SVG search icon color.
 		$svg_file_path = WP_MOBILE_MENU_PLUGIN_PATH . 'includes/assets/svgs/search.svg';
-		$titan         = TitanFramework::getInstance( 'mobmenu' );
-		$svg_color     = $titan->getOption( 'search_icon_color', '#000000' );
+
+		$svg_color = $titan->getInternalAdminPageOption('search_icon_color', '#000000');
 		$this->writeSVG( $svg_color, $svg_file_path );
 
-		// Change the SVG cart icon color.
-		$svg_file_path = WP_MOBILE_MENU_PLUGIN_PATH . 'includes/assets/svgs/cart.svg';
-		$svg_color     = $titan->getOption( 'mm_woo_menu_icon_color', '#000000' );
-		$this->writeSVG( $svg_color, $svg_file_path );
+		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+			// Change the SVG cart icon color.
+			$svg_file_path = WP_MOBILE_MENU_PLUGIN_PATH . 'includes/assets/svgs/cart.svg';
+			$svg_color = $titan->getInternalAdminPageOption('mm_woo_menu_icon_color', '#000000');
+			$this->writeSVG( $svg_color, $svg_file_path );
+		}
 	}
 
 	/**
@@ -395,11 +427,15 @@ class TitanFrameworkCSS {
 		if ( ! is_admin() ) {
 			return;
 		}
+		global $wp_filesystem;
 
 		$css_filename = $this->getCSSFilePath();
-
 		WP_Filesystem();
-		global $wp_filesystem;
+
+		// Redo the SVG content.
+		if ( get_option( 'mobmenu_latest_update_version', '' ) !== WP_MOBILE_MENU_VERSION ) {
+			$this->updateSvgColors();
+		}
 
 		// Check if the file exists.
 		if ( $wp_filesystem->exists( $css_filename ) ) {
@@ -415,6 +451,7 @@ class TitanFrameworkCSS {
 		}
 
 		$this->generateSaveCSS();
+
 	}
 
 
@@ -428,7 +465,7 @@ class TitanFrameworkCSS {
 		WP_Filesystem();
 		global $wp_filesystem;
 
-		// Verify that we can create the file
+		// Verify that we can create the file.
 		if ( $wp_filesystem->exists( $cssFilename ) ) {
 			if ( ! $wp_filesystem->is_writable( $cssFilename ) ) {
 				return false;
@@ -437,7 +474,7 @@ class TitanFrameworkCSS {
 				return false;
 			}
 		}
-		// Verify directory
+		// Verify directory.
 		if ( ! $wp_filesystem->is_dir( dirname( $cssFilename ) ) ) {
 			return false;
 		}
@@ -445,21 +482,22 @@ class TitanFrameworkCSS {
 			return false;
 		}
 
-		// Write our CSS
+		// Write our CSS.
 		return $wp_filesystem->put_contents( $cssFilename, $parsedCSS, 0644 );
 	}
 
-		/**
-	 * Writes the CSS file
+	/**
+	 * Writes the SVG file
 	 *
-	 * @return  boolean True if the CSS file was written successfully
-	 * @since   1.2
+	 * @return  boolean True if the SVG file was written successfully
+	 * @since   2.7
 	 */
 	private function writeSVG( $svg_color, $svgFilename ) {
-		WP_Filesystem();
-		global $wp_filesystem;
 
-		// Verify that we can create the file
+		global $wp_filesystem;
+		WP_Filesystem();
+
+		// Verify that we can create the file.
 		if ( $wp_filesystem->exists( $svgFilename ) ) {
 			if ( ! $wp_filesystem->is_writable( $svgFilename ) ) {
 				return false;
@@ -468,19 +506,21 @@ class TitanFrameworkCSS {
 				return false;
 			}
 		}
-		// Verify directory
+		// Verify directory.
 		if ( ! $wp_filesystem->is_dir( dirname( $svgFilename ) ) ) {
 			return false;
 		}
 		if ( ! $wp_filesystem->is_writable( dirname( $svgFilename ) ) ) {
 			return false;
 		}
+
+		$svg_color = str_pad( $svg_color, 7 );
+
 		$svg_file_content = $wp_filesystem->get_contents( $svgFilename );
 		$svg_file_content = substr_replace($svg_file_content, '' . $svg_color . '', strpos( $svg_file_content, 'fill' ) + 6, 7);
 
 		// Update our SVG.
 		return $wp_filesystem->put_contents( $svgFilename, $svg_file_content, 0644 );
 	}
-
 
 }

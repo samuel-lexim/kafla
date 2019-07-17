@@ -99,7 +99,7 @@ class ES_Handle_Sync_Wp_User {
 		//get option
 		$ig_es_sync_wp_users          = get_option( 'ig_es_sync_wp_users', 'norecord' );
 		$ig_es_sync_unserialized_data = maybe_unserialize( $ig_es_sync_wp_users );
-		$ig_es_registered             = $ig_es_sync_unserialized_data['es_registered'];
+		$ig_es_registered             = ( $ig_es_sync_unserialized_data != 'norecord' ) ? $ig_es_sync_unserialized_data['es_registered'] : 'NO';
 		if ( $ig_es_sync_wp_users != 'norecord' && 'YES' === $ig_es_registered ) {
 			$list_id = $ig_es_sync_unserialized_data['es_registered_group'];
 			//get user info
@@ -164,7 +164,6 @@ class ES_Handle_Sync_Wp_User {
 		);
 
 		$tabs = apply_filters( 'ig_es_sync_users_tabs', $tabs );
-
 		?>
         <h2 class="nav-tab-wrapper">
 			<?php foreach ( $tabs as $key => $tab ) {

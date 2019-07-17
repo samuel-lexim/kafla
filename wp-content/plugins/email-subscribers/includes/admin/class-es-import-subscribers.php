@@ -64,13 +64,12 @@ class ES_Import_Subscribers {
 
 									$data = array_combine( $headers, $data );
 									$name  = isset( $data['Name'] ) ? trim( $data['Name'] ) : '';
-									$email = isset( $data['Email'] ) ? trim( $data['Email'] ) : '';
+									$email = isset( $data['Email'] ) ? sanitize_email(trim( $data['Email'] )) : '';
 
 									if ( empty( $email ) ) {
 										$invalid_emails_count ++;
 										continue;
 									}
-
 
 									if ( empty( $name ) ) {
 										$name = ES_Common::get_name_from_email( $email );
@@ -79,8 +78,8 @@ class ES_Import_Subscribers {
 									if ( !in_array( $email, $existing_contacts ) ) {
 
 										$names      = ES_Common::prepare_first_name_last_name( $name );
-										$first_name = $names['first_name'];
-										$last_name  = $names['last_name'];
+										$first_name = sanitize_text_field($names['first_name']);
+										$last_name  = sanitize_text_field($names['last_name']);
 
 										$guid = ES_Common::generate_guid();
 

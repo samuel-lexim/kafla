@@ -321,6 +321,12 @@ class OptionsView_bwg extends AdminView_bwg {
                   <p class="description"><?php _e('Generate or edit a shortcode.', BWG()->prefix); ?></p>
                 </div>
                 <div class="wd-group">
+                  <label class="wd-label"><?php _e('Enable dynamic URLs for galleries and gallery groups', BWG()->prefix); ?></label>
+                  <input type="radio" name="front_ajax" id="front_ajax_1" value="1" <?php if ($row->front_ajax) echo 'checked="checked"'; ?> /><label for="front_ajax_1" class="wd-radio-label"><?php _e('Yes', BWG()->prefix); ?></label>
+                  <input type="radio" name="front_ajax" id="front_ajax_0" value="0" <?php if (!$row->front_ajax) echo 'checked="checked"'; ?> /><label for="front_ajax_0" class="wd-radio-label"><?php _e('No', BWG()->prefix); ?></label>
+                  <p class="description"><?php _e('Enable this option to browse galleries and gallery groups, as well as search results and tagged images with dynamic links.', BWG()->prefix); ?></p>
+                </div>
+                <div class="wd-group">
                   <label class="wd-label"><?php _e('Developer mode', BWG()->prefix); ?></label>
                   <input type="radio" name="developer_mode" id="developer_mode_1" value="1" <?php if ($row->developer_mode) echo 'checked="checked"'; ?> /><label for="developer_mode_1" class="wd-radio-label"><?php _e('Yes', BWG()->prefix); ?></label>
                   <input type="radio" name="developer_mode" id="developer_mode_0" value="0" <?php if (!$row->developer_mode) echo 'checked="checked"'; ?> /><label for="developer_mode_0" class="wd-radio-label"><?php _e('No', BWG()->prefix); ?></label>
@@ -526,7 +532,7 @@ class OptionsView_bwg extends AdminView_bwg {
                         <input <?php echo BWG()->is_pro ? '' : 'disabled="disabled"'; ?> type="number" id="autoupdate_interval_min" name="autoupdate_interval_min" min="0" max="59" value="<?php echo floor($row->autoupdate_interval % 60); ?>" />
                         <span><?php _e('min', BWG()->prefix); ?></span>
                       </div>
-                      <p class="description"><?php _e('Set the interval when Instagram or Facebook galleries will be updated, and will display new posts of your Instagram or Facebook account.', BWG()->prefix) ?></p>
+                      <p class="description"><?php _e('Set the interval when Instagram galleries will be updated, and will display new posts of your Instagram or Facebook account.', BWG()->prefix) ?></p>
                       <?php if ( !BWG()->is_pro ) { ?><p class="description spider_free_version"><?php echo BWG()->free_msg; ?></p><?php } ?>
                     </div>
                   </div>

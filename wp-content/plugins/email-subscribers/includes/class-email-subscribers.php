@@ -74,6 +74,8 @@ class Email_Subscribers {
 	public function __construct() {
 		global $ig_es_feedback, $ig_es_tracker;
 
+		$feedback_version = '1.0.5';
+
 		require_once plugin_dir_path( __FILE__ ) . 'class-email-subscribers-activator.php';
 		require_once plugin_dir_path( __FILE__ ) . 'class-email-subscribers-deactivator.php';
 
@@ -86,15 +88,15 @@ class Email_Subscribers {
 		$this->email_subscribers = 'email-subscribers';
 
 		$this->define_constants();
-		$this->load_dependencies();
+		$this->load_dependencies( $feedback_version );
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
-
-		$ig_es_tracker = 'IG_Tracker_V_1_0_1';
+		$ig_es_tracker = 'IG_Tracker_V_' . str_replace( '.', '_', $feedback_version );
 		if ( is_admin() ) {
-			$ig_es_feedback = new IG_Feedback_V_1_0_1( 'Email Subscribers', 'email-subscribers', 'ig_es', 'esfree.', false );
+			$ig_es_feedback_class = 'IG_Feedback_V_' . str_replace( '.', '_', $feedback_version );
+			$ig_es_feedback       = new $ig_es_feedback_class( 'Email Subscribers', 'email-subscribers', 'ig_es', 'esfree.', false );
 			$ig_es_feedback->render_deactivate_feedback();
 		}
 
@@ -103,7 +105,7 @@ class Email_Subscribers {
 	}
 
 	public function add_admin_notice() {
-	    global $ig_es_tracker;
+		global $ig_es_tracker;
 
 		$screen          = get_current_screen();
 		$screen_id       = $screen ? $screen->id : '';
@@ -144,22 +146,11 @@ class Email_Subscribers {
 				echo '<div class="notice notice-warning" style="background-color: #FFF;"><p style="letter-spacing: 0.6px;">' . $es_upgrade_text . '</p></div>';
 			}
 		}
-
+		$es_premium  = 'email-subscribers-premium/email-subscribers-premium.php';
 		$all_plugins = $ig_es_tracker::get_plugins();
-
-		if ( ! in_array( 'email-subscribers-premium/email-subscribers-premium.php', $all_plugins ) ) {
-
-			// admin starter announcement
-			$upsale_notice_option  = get_option( 'ig_es_redirect_upsale_notice', 'no' );
-			$dismiss_notice_option = get_option( 'ig_es_dismiss_upsale_notice', 'no' );
-			if ( 'yes' !== $upsale_notice_option && 'yes' !== $dismiss_notice_option ) {
-				$text_1 = __( 'Grow your audience. Stop worrying about email.' );
-				echo '<div class="notice notice-warning" style="background: #ffefd5;">
-                        <p style="font-size: 1.1em; "><span class="dashicons dashicons-megaphone" style="color: #ff0000;"></span>&nbsp;&nbsp;' . $text_1 . '&nbsp;&nbsp;<strong><a href="?es_dismiss_admin_notice=1&option_name=redirect_upsale_notice" target="_blank" >' . __( 'Get Starter Plan', 'email-subscribers' ) . '</a></strong>
-                        <a style="float:right" class="ig-admin-btn ig-admin-btn-secondary" href="?es_dismiss_admin_notice=1&option_name=dismiss_upsale_notice">' . __( 'No, I don\'t want it', true ) . '</a>
-                        </p>
-                    </div>';
-			}
+		//get pro button
+		if ( ! in_array( $es_premium, $all_plugins ) && is_admin() && ! in_array( $screen_id, array( 'toplevel_page_es_dashboard' ), true ) ) {
+			echo "<div class='notice es-floting-button'><i class='dashicons dashicons-es dashicons-awards'></i> <a href='https://www.icegram.com/email-subscribers-pricing/?utm_source=in_app&utm_medium=get_starter_floating_button&utm_campaign=es_upsale' target='_blank'>" . __( 'Get Starter Now!', 'email-subscribers' ) . "</a></div>";
 		}
 		//cron notice
 		$notice_option = get_option( 'ig_es_wp_cron_notice' );
@@ -280,8 +271,9 @@ class Email_Subscribers {
 	 * @since    4.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function load_dependencies( $feedback_version ) {
 
+		$feedback_version_for_file = str_replace( '.', '-', $feedback_version );
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
@@ -358,8 +350,8 @@ class Email_Subscribers {
 			'includes/pro-features.php',
 
 			// Feedback
-			'includes/feedback/class-ig-tracker-v-1-0-1.php',
-			'includes/feedback/class-ig-feedback-v-1-0-1.php',
+			'includes/feedback/class-ig-tracker-v-' . $feedback_version_for_file . '.php',
+			'includes/feedback/class-ig-feedback-v-' . $feedback_version_for_file . '.php',
 			'includes/feedback.php'
 		);
 
@@ -407,8 +399,10 @@ class Email_Subscribers {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'plugins_loaded' );
+
 		$this->loader->add_filter( 'ig_es_lite_do_send', $plugin_admin, 'do_send', 10, 2 );
 
+		$this->loader->add_action( 'wp_ajax_count_contacts_by_list', $plugin_admin, 'count_contacts_by_list' );
 
 		//$this->loader->add_filter( 'ig_es_blocked_domains', $plugin_admin, 'blocked_domains', 10, 1 );
 		//$this->loader->add_filter( 'ig_es_whitelist_ips', $plugin_admin, 'whitelist_ips', 10, 1 );

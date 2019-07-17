@@ -16,6 +16,10 @@ class WP_Mobile_Menu_Core
      */
     public  $titan ;
     /**
+     * @var String
+     */
+    public  $menu_display_type ;
+    /**
      * Add Body Class
      *
      * @since 2.0
@@ -24,12 +28,23 @@ class WP_Mobile_Menu_Core
     {
         $titan = TitanFramework::getInstance( 'mobmenu' );
         $display_type = $titan->getOption( 'menu_display_type' );
+        $lpanel_elements = $titan->getOption( 'left_menu_content_position' );
+        $rpanel_elements = $titan->getOption( 'right_menu_content_position' );
+        // If the User profile is being used at the Top of the left panel.
+        if ( 'user-profile' === $lpanel_elements[0] ) {
+            $classes[] = 'left-mobmenu-user-profile';
+        }
+        // If the User profile is being used at the Top of the right panel.
+        if ( 'user-profile' === $rpanel_elements[0] ) {
+            $classes[] = 'right-mobmenu-user-profile';
+        }
         if ( '' === $display_type || !$display_type ) {
             $display_type = 'slideout-over';
         }
         if ( true === $display_type || '1' === $display_type ) {
             $display_type = 'slideout-push';
         }
+        // Add the class of the animation display type.
         switch ( $display_type ) {
             case 'slideout-push':
                 $menu_display_type = 'mob-menu-slideout';
@@ -44,6 +59,7 @@ class WP_Mobile_Menu_Core
                 $menu_display_type = 'mob-menu-overlay';
                 break;
         }
+        $this->menu_display_type = $menu_display_type;
         $classes[] = $menu_display_type;
         // Check if the Auto-hide Header option is on so it can be added a new class.
         if ( $titan->getOption( 'autohide_header' ) ) {
@@ -66,8 +82,6 @@ class WP_Mobile_Menu_Core
     public function frontend_enqueue_scripts()
     {
         global  $mm_fs ;
-        // Filters.
-        add_filter( 'wp_head', array( $this, 'load_dynamic_css_style' ) );
         // Enqueue the common free scripts.
         $this->frontend_free_enqueue_scripts();
     }
@@ -97,18 +111,6 @@ class WP_Mobile_Menu_Core
             '',
             WP_MOBILE_MENU_VERSION
         );
-    }
-    
-    /**
-     * Load dynamic css.
-     */
-    public function load_dynamic_css_style()
-    {
-        $titan = TitanFramework::getInstance( 'mobmenu' );
-        echo  '<style id="dynamic-mobmenu-inline-css">' ;
-        include_once 'dynamic-style.php';
-        echo  $titan->getOption( 'custom_css' ) ;
-        echo  '</style>' ;
     }
     
     /**
@@ -192,6 +194,7 @@ class WP_Mobile_Menu_Core
         $submenu_open_icon_font = $titan->getOption( 'submenu_open_icon_font' );
         $submenu_close_icon_font = $titan->getOption( 'submenu_close_icon_font' );
         $mm_open_cart_menu = '';
+        $logo_content = '';
         $menu_display_type = 'mob-menu-slideout';
         $output = '';
         $output .= '<div class="mobmenu-overlay"></div>';
@@ -212,15 +215,15 @@ class WP_Mobile_Menu_Core
         if ( $titan->getOption( 'enable_mm_woo_open_cart_menu' ) ) {
             $mm_open_cart_menu = ' data-open-cart="true"';
         }
-        $output .= '<div class="mob-menu-header-holder mobmenu" ' . $sticky_el_data_detach . $autoclose_menus_el_data . $mm_open_cart_menu . ' data-open-icon="' . $submenu_open_icon_font . '" data-close-icon="' . $submenu_close_icon_font . '">';
+        $menu_display_class = ' data-menu-display="' . $this->menu_display_type . '"';
+        $output .= '<div class="mob-menu-header-holder mobmenu" ' . $menu_display_class . $sticky_el_data_detach . $autoclose_menus_el_data . $mm_open_cart_menu . ' data-open-icon="' . $submenu_open_icon_font . '" data-close-icon="' . $submenu_close_icon_font . '">';
         // Left Menu Content.
         
         if ( $titan->getOption( 'enable_left_menu' ) && !$left_logged_in_user ) {
             $left_menu_text = '';
             if ( '' !== $titan->getOption( 'left_menu_text' ) ) {
-                $left_menu_text .= '<span class="left-menu-icon-text">' . $titan->getOption( 'left_menu_text' ) . '</span>';
+                $left_menu_text .= '<span class="left-menu-icon-text">' . __( $titan->getOption( 'left_menu_text' ), 'mobile-menu' ) . '</span>';
             }
-            $left_menu_content = '<div  class="mobmenul-container">';
             
             if ( $titan->getOption( 'left_menu_icon_action' ) ) {
                 $left_menu_content .= '<a href="#" class="mobmenu-left-bt mobmenu-trigger-action" data-panel-target="mobmenu-left-panel" aria-label="' . __( 'Left Menu Button', 'mobile-menu' ) . '">';
@@ -253,7 +256,6 @@ class WP_Mobile_Menu_Core
             $left_menu_content .= $left_menu_text;
             $left_menu_content .= '</a>';
             $left_menu_content = apply_filters( 'mm_left_menu_filter', $left_menu_content );
-            $left_menu_content .= '</div>';
         }
         
         if ( !$titan->getOption( 'disabled_logo_text' ) ) {
@@ -263,11 +265,10 @@ class WP_Mobile_Menu_Core
         // Right Menu Content.
         
         if ( $titan->getOption( 'enable_right_menu' ) && !$right_logged_in_user ) {
-            $right_menu_text = '';       
-            $right_menu_content = '<div class="mobmenur-container">';
+            $right_menu_text = '';
             $right_menu_content = apply_filters( 'mm_before_right_menu_filter', $right_menu_content );
             if ( '' !== $titan->getOption( 'right_menu_text' ) ) {
-                $right_menu_text .= '<span class="right-menu-icon-text">' . $titan->getOption( 'right_menu_text' ) . '</span>';
+                $right_menu_text .= '<span class="right-menu-icon-text">' . __( $titan->getOption( 'right_menu_text' ), 'mobile-menu' ) . '</span>';
             }
             
             if ( $titan->getOption( 'right_menu_icon_action' ) ) {
@@ -301,11 +302,10 @@ class WP_Mobile_Menu_Core
             $right_menu_content .= $right_menu_text;
             $right_menu_content .= '</a>';
             $right_menu_content = apply_filters( 'mm_right_menu_filter', $right_menu_content );
-            $right_menu_content .= '</div>';
         }
         
         $header_elements_order = array( 'left-menu', 'logo', 'right-menu' );
-        $header_output = '';
+        $header_output = '<div  class="mobmenul-container">';
         if ( !empty($header_elements_order) ) {
             foreach ( $header_elements_order as $element ) {
                 switch ( $element ) {
@@ -322,7 +322,7 @@ class WP_Mobile_Menu_Core
                         $header_output .= $header_shop_filter;
                         break;
                     case 'logo':
-                        //$header_output .= $logo_content;
+                        $header_output .= '</div>' . $logo_content . '<div class="mobmenur-container">';
                         break;
                     case 'search':
                         $header_output .= $header_search;
@@ -352,8 +352,6 @@ class WP_Mobile_Menu_Core
             echo  $this->mobmenu_close_button( $close_icon ) ;
             ?></a>
 
-				<?php 
-            ?>
 				<div class="mobmenu-content">
 				<?php 
             
@@ -417,29 +415,6 @@ class WP_Mobile_Menu_Core
 				<div class="mobmenu-right-alignment mobmenu-panel mobmenu-right-panel <?php 
             echo  $mobmenu_parent_link ;
             ?> ">
-
-            <div class="decor-area-menu">
-                    <div class="col-xs-3 ">
-                       <div id="decor-area-menu-right"></div>
-                    </div> 
-                    <div class="col-xs-3 ">
-                       <div id="follow-us-text-menu-right">FOLLOW US</div>
-                    </div> 
-                    <div class="col-xs-1 ">
-                       <a href="https://www.facebook.com/kafla1962/" style="cursor: pointer;"><div id="ic-fb-2"></div></a>
-                    </div>
-                     <div class="col-xs-1 ">
-                        <a href="https://twitter.com/kafla1962" style="cursor: pointer;"><div id="ic-tw-2"></div></a>
-                    </div>
-                     <div class="col-xs-1 ">
-                       <a href="https://www.instagram.com/kafla1962/" style="cursor: pointer;"><div id="ic-in-2"></div></a>
-                    </div>
-                     <div class="col-xs-1 ">
-                        <a href="https://www.youtube.com/channel/UC0eC11Hw5AYxaZkfcwPdmVQ" style="cursor: pointer;"><div id="ic-you-2"></div></a>
-                    </div>
-
-            </div> 
-
 				<a href="#" class="mobmenu-right-bt" aria-label="<?php 
             _e( 'Right Menu Button', 'mobile-menu' );
             ?>"><?php 
@@ -476,7 +451,7 @@ class WP_Mobile_Menu_Core
                             $right_menu_panel_content .= $header_cart;
                             break;
                         case 'logo':
-                            $right_menu_panel_content .= '</div>' . $logo_content . '<div  class="mobmenur-container">';
+                            $right_menu_panel_content .= '</div>' . $logo_content;
                             break;
                     }
                 }
@@ -495,13 +470,7 @@ class WP_Mobile_Menu_Core
             }
             
             ?>
-            <div class="donate-area-menu col-xs-12">
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                         <input type="hidden" name="cmd" value="_s-xclick">
-                         <input type="hidden" name="hosted_button_id" value="625DYMQKHTEW4">
-                         <input type="image" src="/wp-content/themes/siennawp/assets/css/images/btn-donate-home-top.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="width: 223px;height: 30px">
-                </form>                   
-            </div>
+
 			</div><div class="mob-menu-right-bg-holder"></div></div>
 
 		<?php 
@@ -521,18 +490,17 @@ class WP_Mobile_Menu_Core
             $current_menu = '';
         }
         
-        if ( '' === $current_menu && has_nav_menu( $menu . '-wp-mobile-menu' ) ) {
+        if ( has_nav_menu( $menu . '-wp-mobile-menu' ) ) {
             $current_menu = $menu . '-wp-mobile-menu';
             $menu_param = 'theme_location';
+        } else {
+            $menu_param = 'menu';
         }
         
         $output = '';
         // Only build the menu it there is a menu assigned to it.
         
         if ( '' !== $current_menu ) {
-            if ( $menu . '-wp-mobile-menu' !== $current_menu ) {
-                $menu_param = 'menu';
-            }
             // Display the menu.
             $output = wp_nav_menu( array(
                 $menu_param   => $current_menu,
@@ -557,23 +525,6 @@ class WP_Mobile_Menu_Core
         }
         
         return $output;
-    }
-    
-    /**
-     * Register Strings for translation.
-     */
-    public function register_strings_for_translation()
-    {
-        
-        if ( function_exists( 'pll_register_string' ) ) {
-            $current_options = get_option( 'mobmenu_options' );
-            $admin_options = unserialize( $current_options );
-            pll_register_string( 'mobile-menu', $admin_options['mm_woo_cart_shop_link_text'] );
-            pll_register_string( 'mobile-menu', $admin_options['mm_woo_cart_no_items_text'] );
-            pll_register_string( 'mobile-menu', $admin_options['mm_woo_cart_header_text'] );
-            pll_register_string( 'mobile-menu', $admin_options['mm_woo_filter_button_text'] );
-        }
-    
     }
     
     /**
@@ -669,17 +620,15 @@ class WP_Mobile_Menu_Core
         
         $output = '<div class="mob-menu-logo-holder">' . $logo_url;
         $header_branding = $titan->getOption( 'header_branding' );
-        if ( ('logo' === $header_branding || 'logo-text' === $header_branding || 'text-logo' === $header_branding) && '' !== $logo_img ) {
-            // If there is a retina logo use only that logo.
-            
-            if ( '' !== $titan->getOption( 'logo_img_retina' ) ) {
-                $logo_img = $logo_img_retina;
-                $logo_output .= '<img class="mob-retina-logo" src="' . $logo_img_retina . '"  alt=" ' . __( 'Logo Header Menu', 'mobile-menu' ) . '">';
-            } else {
-                $logo_output .= '<img class="mob-standard-logo" src="' . $logo_img . '"  alt=" ' . __( 'Logo Header Menu', 'mobile-menu' ) . '">';
-            }
         
+        if ( ('logo' === $header_branding || 'logo-text' === $header_branding || 'text-logo' === $header_branding) && '' !== $logo_img ) {
+            $logo_output .= '<img class="mob-standard-logo" src="' . $logo_img . '"  alt=" ' . __( 'Logo Header Menu', 'mobile-menu' ) . '">';
+            // If there is a retina logo.
+            if ( isset( $logo_img_retina ) ) {
+                $logo_output .= '<img class="mob-retina-logo" src="' . $logo_img_retina . '"  alt=" ' . __( 'Logo Header Menu', 'mobile-menu' ) . '">';
+            }
         }
+        
         $header_text = '<span>' . $header_text . '</span>';
         if ( $header_branding ) {
             switch ( $header_branding ) {
@@ -835,10 +784,10 @@ class WP_Mobile_Menu_Core
             'plus-1',
             'minus',
             'minus-1',
-            'icon-plus-2',
+            'plus-2',
             'minus-2',
             'down-open',
-            'icon-up-open-big',
+            'up-open-big',
             'down-dir',
             'left-dir',
             'right-dir',

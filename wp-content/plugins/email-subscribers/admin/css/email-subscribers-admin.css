@@ -1182,23 +1182,32 @@ div.es .last {
     margin-right: 0;
 }
 
-.ig-es-feedback-button {
-    height: 40px;
-    border: solid 3px #CCCCCC;
-    background: #333;
-    width: 100px;
-    line-height: 32px;
-    -webkit-transform: rotate(-90deg);
-    font-weight: 600;
-    color: white;
-    transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
+.ig-es-pricing-img {
+    padding-bottom: 2em;
+}
+
+.email-subscribers_page_es_pricing #wpwrap #wpcontent {
+    background-color: #f1f1f1;
+}
+.es-floting-button{
+    width: 10em;
+    padding: 0.5em;
     text-align: center;
-    font-size: 17px;
-    position: fixed;
-    right: -40px;
-    top: 45%;
-    font-family: "Roboto", helvetica, arial, sans-serif;
-    z-index: 999;
+    margin: 0px 1em !important;
+    float: right;
+    /*background: #03a025;*/
+    background: #00a0d2;
+    color: white;
+    border: none;
+    font-size: 1.3em;
+}
+.es-floting-button a{
+    text-decoration: none;
+    color: inherit;
+    }
+.es-floting-button:hover{
+    background: #FFF;
+    /*color: #03a025;*/
+    color: #00a0d2;
+    font-weight: bold;
 }

@@ -435,9 +435,9 @@ function ig_es_update_400_delete_tables() {
 		$wpdb->prefix . 'ig_sending_queue'
 	);
 
-	foreach ($tables_to_delete as $table) {
+	foreach ( $tables_to_delete as $table ) {
 		$query = "DROP TABLE IF EXISTS {$table}";
-		$wpdb->query($query);
+		$wpdb->query( $query );
 	}
 }
 
@@ -506,7 +506,7 @@ function ig_es_update_400_migrate_notifications() {
 
 function ig_es_update_400_migrate_reports_data() {
 
-	@ini_set('max_execution_time', 0);
+	@ini_set( 'max_execution_time', 0 );
 	/**
 	 * - Migrate individual notification data from es_deliverreport to ig_es_sending_queue table
 	 * es_deliverreport => ig_es_sending_queue
@@ -625,6 +625,7 @@ function ig_es_update_4010_db_version() {
 	$db_update_option = '4010_db_updated_at';
 	ES_Common::set_ig_option( $db_update_option, ig_get_current_date_time() );
 }
+
 /* --------------------- ES 4.0.10(End)--------------------------- */
 
 function ig_es_update_4011_migrate_newsletter_es_template_type() {
@@ -640,6 +641,7 @@ function ig_es_update_4011_db_version() {
 	$db_update_option = '4011_db_updated_at';
 	ES_Common::set_ig_option( $db_update_option, ig_get_current_date_time() );
 }
+
 /* --------------------- ES 4.0.11(End)--------------------------- */
 
 function ig_es_update_4015_alter_blocked_emails_table() {
@@ -654,6 +656,7 @@ function ig_es_update_4015_db_version() {
 	$db_update_option = '4015_db_updated_at';
 	ES_Common::set_ig_option( $db_update_option, ig_get_current_date_time() );
 }
+
 /* --------------------- ES 4.0.15(End)--------------------------- */
 function ig_es_update_411_alter_contacts_table() {
 	global $wpdb;
@@ -667,4 +670,35 @@ function ig_es_update_411_db_version() {
 	$db_update_option = '411_db_updated_at';
 	ES_Common::set_ig_option( $db_update_option, ig_get_current_date_time() );
 }
+
 /* --------------------- ES 4.1.1(End)--------------------------- */
+function ig_es_update_417_alter_campaigns_table() {
+	global $wpdb;
+
+	$campaigns_table = IG_CAMPAIGNS_TABLE;
+
+	$cols = $wpdb->get_col( "SHOW COLUMNS FROM {$campaigns_table}" );
+	if ( ! in_array( 'meta', $cols ) ) {
+		$query = "ALTER TABLE {$campaigns_table} ADD COLUMN meta longtext NULL AFTER `status`";
+		$wpdb->query( $query );
+	}
+}
+
+function ig_es_update_417_alter_mailing_queue_table() {
+	global $wpdb;
+
+	$mailing_queue_table = IG_MAILING_QUEUE_TABLE;
+
+	$cols = $wpdb->get_col( "SHOW COLUMNS FROM {$mailing_queue_table}" );
+	if ( ! in_array( 'meta', $cols ) ) {
+		$query = "ALTER TABLE {$mailing_queue_table} ADD COLUMN meta longtext NULL AFTER `finish_at`";
+		$wpdb->query( $query );
+	}
+}
+
+function ig_es_update_417_db_version() {
+	ES_Install::update_db_version( '4.1.7' );
+	$db_update_option = '417_db_updated_at';
+	ES_Common::set_ig_option( $db_update_option, ig_get_current_date_time() );
+}
+/* --------------------- ES 4.1.7(End)--------------------------- */

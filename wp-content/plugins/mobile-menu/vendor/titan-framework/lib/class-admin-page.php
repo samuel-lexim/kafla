@@ -115,7 +115,7 @@ class TitanFrameworkAdminPage {
 	}
 
 	public function addTitanCreditText() {
-		return __( "<em>Check our documentation at <a href='https://www.wpmobilemenu.com/knowledgebase'>WP Mobile Menu Documentation</a></em>", 'mobile-menu' );
+		return __( "You are using WP Mobile Menu version " . WP_MOBILE_MENU_VERSION . " </br><em>Check our documentation at <a href='https://www.wpmobilemenu.com/knowledgebase'>WP Mobile Menu Documentation</a></em>", 'mobile-menu' );
 	}
 
 
@@ -320,7 +320,7 @@ class TitanFrameworkAdminPage {
 
 		?>
 		<div class="wrap">
-		<h2><?php echo $this->settings['title'] ?></h2>
+		<h2><?php echo $this->settings['title']; ?></h2>
 		<?php
 		if ( ! empty( $this->settings['desc'] ) ) {
 			?><p class='description'><?php echo $this->settings['desc'] ?></p><?php

@@ -77,14 +77,14 @@
 						success: function (response) {
 							if (response && typeof response.status !== 'undefined' && response.status == "SUCCESS") {
 								$('#es-send-test').parent().find('.helper').html('<span style="color:green">' + response.message + '</span>');
-							}else{
+							} else {
 								$('#es-send-test').parent().find('.helper').html('<span style="color:#e66060">' + response.message + '</span>');
 							}
 
 							$('#es-send-test').next('#spinner-image').hide();
 						},
 
-						error: function(err) {
+						error: function (err) {
 							$('#es-send-test').next('#spinner-image').hide();
 						}
 					});
@@ -95,53 +95,115 @@
 			});
 
 			//klawoo form submit
-			 jQuery("form[name=klawoo_subscribe]").submit(function (e) {
-                e.preventDefault();
-                var form = e.target;
-                jQuery(form).find('#klawoo_response').html('');
-                jQuery(form).find('#klawoo_response').show();
+			jQuery("form[name=klawoo_subscribe]").submit(function (e) {
+				e.preventDefault();
+				var form = e.target;
+				jQuery(form).find('#klawoo_response').html('');
+				jQuery(form).find('#klawoo_response').show();
 
-                params = jQuery(form).serializeArray();
-                params.push( {name: 'action', value: 'es_klawoo_subscribe' });
+				params = jQuery(form).serializeArray();
+				params.push({name: 'action', value: 'es_klawoo_subscribe'});
 
-                jQuery.ajax({
-                    method: 'POST',
-                    type: 'text',
-                    url: ajaxurl,
-                    async: false,
-                    data: params,
-                    success: function(response) {
-                        if (response != '') {
-                            var parser = new DOMParser()
-                            var el = parser.parseFromString(response, "text/xml");
-                            var msg = el.childNodes[0].firstChild.nextElementSibling.innerHTML;
-                        	if( jQuery(form).hasClass('es-onboarding')){
-                        		location.reload();
-                        	}else{
-	                            jQuery(form).find('#klawoo_response').html();
+				jQuery.ajax({
+					method: 'POST',
+					type: 'text',
+					url: ajaxurl,
+					async: false,
+					data: params,
+					success: function (response) {
+						if (response != '') {
+							var parser = new DOMParser()
+							var el = parser.parseFromString(response, "text/xml");
+							var msg = el.childNodes[0].firstChild.nextElementSibling.innerHTML;
+							if (jQuery(form).hasClass('es-onboarding')) {
+								location.reload();
+							} else {
+								jQuery(form).find('#klawoo_response').html();
 
-	                            jQuery('.es-emm-optin #name').val('');
-	                            jQuery('.es-emm-optin #email').val('');
-	                            jQuery('.es-emm-optin #es-gdpr-agree').attr('checked', false);
-	                            setTimeout(function() {
-	                                jQuery(form).find('#klawoo_response').hide('slow');
-	                            }, 2000);
-                        	}
-
-
-                        } else {
-                            jQuery('#klawoo_response').html('error!');
-                        }
-                    }
-                });
-
-            });
+								jQuery('.es-emm-optin #name').val('');
+								jQuery('.es-emm-optin #email').val('');
+								jQuery('.es-emm-optin #es-gdpr-agree').attr('checked', false);
+								setTimeout(function () {
+									jQuery(form).find('#klawoo_response').hide('slow');
+								}, 2000);
+							}
 
 
+						} else {
+							jQuery('#klawoo_response').html('error!');
+						}
+					}
+				});
+
+			});
+
+
+			// Select List ID for Export
+			var _href = $('#ig_es_export_link_select_list').attr("href");
+			$('#ig_es_export_list_dropdown').change(function () {
+				var selected_list_id = $(this).val();
+
+				$('#ig_es_export_link_select_list').attr("href", _href + '&list_id=' + selected_list_id);
+
+				// Update total count in lists
+				var params = {
+					action: 'count_contacts_by_list',
+					list_id: selected_list_id
+				};
+
+				$.ajax({
+					method: 'POST',
+					url: ajaxurl,
+					async: false,
+					data: params,
+					success: function (response) {
+						if (response != '') {
+							response = JSON.parse(response);
+							$('#ig_es_export_select_list .ig_es_total_contacts').text(response.total);
+						}
+					}
+				});
+
+			});
+
+			// Broadcast Setttings
+			// Get count by list
+			$('#ig_es_campaign_submit_button').attr("disabled", true);
+			$('#ig_es_broadcast_list_ids').change(function(){
+				var selected_list_id = $(this).val();
+
+				// Update total count in lists
+				var params = {
+					action: 'count_contacts_by_list',
+					list_id: selected_list_id,
+					status: 'subscribed'
+				};
+
+				$.ajax({
+					method: 'POST',
+					url: ajaxurl,
+					async: false,
+					data: params,
+					success: function (response) {
+						if (response !== '') {
+							response = JSON.parse(response);
+							if(response.hasOwnProperty('total')) {
+								var total = response.total;
+								$('#ig_es_total_contacts').text(response.total);
+								if(total == 0 ) {
+									$('#ig_es_campaign_submit_button').attr("disabled", true);
+								} else {
+									$('#ig_es_campaign_submit_button').attr("disabled", false);
+								}
+							}
+						}
+					}
+				});
+			});
 		});
 
 
-	// Get the element with id="defaultOpen" and click on it
+
 
 
 })(jQuery);

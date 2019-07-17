@@ -486,7 +486,6 @@ div[id^="bwg_container"] .bwg-border-box * {
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   opacity: 1;
-  filter: Alpha(opacity=100);
   z-index: 102;
   position: relative;
 }
@@ -512,7 +511,6 @@ div[id^="bwg_container"] .bwg-border-box * {
 .bwg-title1,
 .bwg-ecommerce1 {
   opacity: 1;
-  filter: Alpha(opacity=100);
   text-align: center;
   width: 100%;
 }
@@ -533,14 +531,12 @@ div[id^="bwg_container"] .bwg-border-box * {
 .bwg-item0:hover .bwg-ecommerce1 {
   left: 0 !important;
   opacity: 1 !important;
-  filter: Alpha(opacity=100) !important;
 }
 
 .bwg-play-icon1 {
   display: flex;
   height: 100%;
   opacity: 1;
-  filter: Alpha(opacity=100);
   position: absolute;
   top: 0;
   width: 100%;
@@ -566,7 +562,6 @@ div[id^="bwg_container"] .bwg-border-box * {
   height: 100%;
   background-color: #FFFFFF;
   opacity: 0.95;
-  filter: Alpha(opacity=95);
 }
 .bwg_loading_div_3 {
   display: table-cell;
@@ -1040,13 +1035,11 @@ div[id^="bwg_container1_"] div[id^="bwg_container2_"] div[class^="bwg_slide_cont
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	filter: Alpha(opacity=0);
 	opacity: 0;
 	-webkit-transition: all .45s ease-in-out;
 	transition: all .45s ease-in-out;
 }
 .bwg-zoom-effect:hover .bwg-zoom-effect-overlay {
-	filter: Alpha(opacity=1);
 	opacity: 1;
 }
 .bwg-zoom-effect img {
@@ -1734,13 +1727,11 @@ body .bwg_thumbnail.bwg_container .search_line.bwg-search-line-responsive .SumoS
 }
 .bwg_thumb_active {
   opacity: 1;
-  filter: Alpha(opacity=100);
 }
 
 .bwg_filmstrip_thumbnail_img {
   display: block;
   opacity: 1;
-  filter: Alpha(opacity=100);
 }
 
 .bwg_filmstrip_left {
@@ -1814,7 +1805,6 @@ body .bwg_thumbnail.bwg_container .search_line.bwg-search-line-responsive .SumoS
 .bwg_popup_image_spun {
   height: inherit;
   display: table-cell;
-  filter: Alpha(opacity=100);
   opacity: 1;
   position: absolute;
   vertical-align: middle;
@@ -1825,7 +1815,6 @@ body .bwg_thumbnail.bwg_container .search_line.bwg-search-line-responsive .SumoS
   width: inherit;
   height: inherit;
   display: table-cell;
-  filter: Alpha(opacity=0);
   opacity: 0;
   position: absolute;
   vertical-align: middle;
@@ -1840,7 +1829,6 @@ body .bwg_thumbnail.bwg_container .search_line.bwg-search-line-responsive .SumoS
 }
 .bwg_gridlet {
   opacity: 1;
-  filter: Alpha(opacity=100);
   position: absolute;
 }
 
@@ -2146,13 +2134,11 @@ div[id^='bwg_container1_'] div[id^='bwg_container2_'] div[class^='bwg_slideshow_
 
 div[id^='bwg_container1_'] div[id^='bwg_container2_'] div[class^='bwg_slideshow_thumb_active_'] {
   opacity: 1;
-  filter: Alpha(opacity=100);
 }
 
 div[id^='bwg_container1_'] div[id^='bwg_container2_'] img[class^='bwg_slideshow_filmstrip_thumbnail_img_'] {
   display: block;
   opacity: 1;
-  filter: Alpha(opacity=100);
   padding: 0 !important;
 }
 
@@ -2258,7 +2244,6 @@ div[id^='bwg_container1_'] div[id^='bwg_container2_'] span[class^='bwg_slideshow
   width: inherit;
   height: inherit;
   display: table-cell;
-  filter: Alpha(opacity=100);
   opacity: 1;
   position: absolute;
   vertical-align: middle;
@@ -2269,7 +2254,6 @@ div[id^='bwg_container1_'] div[id^='bwg_container2_'] span[class^='bwg_slideshow
   width: inherit;
   height: inherit;
   display: table-cell;
-  filter: Alpha(opacity=0);
   opacity: 0;
   position: absolute;
   vertical-align: middle;
@@ -2286,7 +2270,6 @@ div[id^='bwg_container1_'] div[id^='bwg_container2_'] span[class^='bwg_grid_'] {
 
 div[id^='bwg_container1_'] div[id^='bwg_container2_'] span[class^='bwg_gridlet_'] {
   opacity: 1;
-  filter: Alpha(opacity=100);
   position: absolute;
 }
 
@@ -2314,7 +2297,6 @@ div[id^='bwg_container1_'] div[id^='bwg_container2_'] div[class^='bwg_slideshow_
 }
 div[id^='bwg_container1_'] div[id^='bwg_container2_'] span[class^='bwg_slideshow_dots_active_'] {
   opacity: 1;
-  filter: Alpha(opacity=100);
 }
 
 div[id^='bwg_container1_'] div[id^='bwg_container2_'] span[class^='bwg_slideshow_image_spun1_'] {
@@ -2333,7 +2315,6 @@ div[id^='bwg_container1_'] div[id^='bwg_container2_'] span[class^='bwg_mosaic_pl
   display: flex;
   height: 100%;
   opacity: 1;
-  filter: Alpha(opacity=100);
   position: absolute;
   top: 0;
   width: 100%;

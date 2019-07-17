@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class ES_DB_Mailing_Queue {
 
-
 	public $table_name;
 
 	public $version;
@@ -41,7 +40,8 @@ class ES_DB_Mailing_Queue {
 			'start_at'    => '%s',
 			'finish_at'   => '%s',
 			'created_at'  => '%s',
-			'updated_at'  => '%s'
+			'updated_at'  => '%s',
+			'meta'        => '%s'
 		);
 	}
 
@@ -56,7 +56,8 @@ class ES_DB_Mailing_Queue {
 			'start_at'    => null,
 			'finish_at'   => null,
 			'created_at'  => ig_get_current_date_time(),
-			'updated_at'  => null
+			'updated_at'  => null,
+			'meta'        => null
 		);
 	}
 
@@ -78,21 +79,42 @@ class ES_DB_Mailing_Queue {
 
 		$notification = array();
 
+		$ig_mailing_queue_table = IG_MAILING_QUEUE_TABLE;
+
 		if ( ! empty( $campaign_hash ) ) {
-			$query = "SELECT * FROM " . IG_MAILING_QUEUE_TABLE . " WHERE hash = %s";
+			$query = "SELECT * FROM {$ig_mailing_queue_table} WHERE hash = %s";
 			$query = $wpdb->prepare( $query, array( $campaign_hash ) );
 		} else {
-			$query = "SELECT * FROM " . IG_MAILING_QUEUE_TABLE . " WHERE status IN ('Sending', 'In Queue') ORDER BY id LIMIT 0, 1";
+			$current_time = ig_get_current_date_time();
+
+			$query = "SELECT * FROM {$ig_mailing_queue_table} WHERE status IN ('Sending', 'In Queue') AND start_at <= '{$current_time}' ORDER BY start_at, id LIMIT 0, 1";
 		}
 
 		$results = $wpdb->get_results( $query, ARRAY_A );
 
 		if ( count( $results ) > 0 ) {
 			$notification = array_shift( $results );
+			// refresh content
+			$meta = maybe_unserialize( $notification['meta'] );
+			if ( ! empty( $meta ) ) {
+				if ( 'post_notification' === $meta['type'] ) {
+					$content = ES_Handle_Post_Notification::refresh_post_content( $meta['post_id'], $notification['campaign_id'] );
+				} elseif ( 'newsletter' === $meta['type'] ) {
+					$content = ES_Newsletters::refresh_newsletter_content( $notification['campaign_id'] );
+				}
+
+				if ( ! empty( $content ) ) {
+					$notification['subject'] = ! empty( $content['subject'] ) ? $content['subject'] : $notification['subject'];
+					$notification['body']    = ! empty( $content['body'] ) ? $content['body'] : $notification['body'];
+					$query_sub_str           = " , subject = '" . esc_sql($notification['subject']) . "', body = '" . esc_sql($notification['body']) . "' ";
+				}
+			}
 			//update sent date
 			$currentdate = ig_get_current_date_time();
-			$query       = $wpdb->prepare( "UPDATE " . IG_MAILING_QUEUE_TABLE . "
-                                    SET start_at = %s WHERE hash = %s AND start_at = %s", array( $currentdate, $notification['hash'], '0000-00-00 00:00:00' ) );
+			$query_str   = "UPDATE {$ig_mailing_queue_table} SET start_at = %s ";
+			$where       = " WHERE hash = %s AND start_at = %s";
+			$query_str   = ! empty( $query_sub_str ) ? $query_str . $query_sub_str . $where : $query_str . $where;
+			$query       = $wpdb->prepare( $query_str, array( $currentdate, $notification['hash'], '0000-00-00 00:00:00' ) );
 			$return_id   = $wpdb->query( $query );
 		}
 

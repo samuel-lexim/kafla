@@ -36,8 +36,8 @@ class es_cls_dbquery {
 			$name       = $first_name;
 		}
 
-		$guid     = ES_Common::generate_guid();
-		$sub_data = array(
+		$guid       = ES_Common::generate_guid();
+		$sub_data   = array(
 			'first_name' => $first_name,
 			'last_name'  => $last_name,
 			'email'      => $email,
@@ -47,9 +47,9 @@ class es_cls_dbquery {
 			'created_at' => ig_get_current_date_time(),
 		);
 		$contact_id = ES_DB_Contacts::get_contact_id_by_email( $email );
-		if( !$contact_id ){
+		if ( ! $contact_id ) {
 			$contact_id = ES_DB_Contacts::add_subscriber( $sub_data );
-	    }
+		}
 
 		if ( $contact_id ) {
 
@@ -78,10 +78,12 @@ class es_cls_dbquery {
 
 			// Send Email Notification
 			$data = array(
-				'name'  => $name,
-				'email' => $email,
-				'db_id' => $contact_id,
-				'guid'  => $guid
+				'name'       => $name,
+				'first_name' => $sub_data['first_name'],
+				'last_name'  => $sub_data['last_name'],
+				'email'      => $email,
+				'db_id'      => $contact_id,
+				'guid'       => $guid
 			);
 
 			if ( $optin_type == 1 ) {
@@ -104,12 +106,13 @@ class es_cls_dbquery {
 				ES_Mailer::send( $email, $subject, $content );
 			}
 
-
 			$list_name     = ES_DB_Lists::get_list_id_name_map( $list_id );
 			$template_data = array(
-				'name'      => $name,
-				'email'     => $email,
-				'list_name' => $list_name
+				'name'       => $name,
+				'first_name' => $sub_data['first_name'],
+				'last_name'  => $sub_data['last_name'],
+				'email'      => $email,
+				'list_name'  => $list_name
 			);
 
 			ES_Common::send_signup_notification_to_admins( $template_data );

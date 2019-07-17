@@ -17,9 +17,19 @@ class Export_Subscribers {
 
 		if ( isset( $_GET['report'] ) && isset( $_GET['status'] ) ) {
 
-			$status = trim( $_GET['status'] );
+			$status           = trim( $_GET['status'] );
+			$selected_list_id = 0;
 
-			$csv = $this->generate_csv( $status );
+			if ( 'select_list' === $status ) {
+				$selected_list_id = ! empty( $_GET['list_id'] ) ? $_GET['list_id'] : 0;
+				if ( 0 === $selected_list_id ) {
+					$message = __( "Please Select List", "email-subscribers" );
+					ES_Common::show_message( $message, 'error' );
+					exit();
+				}
+			}
+
+			$csv = $this->generate_csv( $status, $selected_list_id );
 
 			$file_name = strtolower( $status ) . '-' . 'contacts.csv';
 
@@ -66,12 +76,18 @@ class Export_Subscribers {
 
 	public function prepare_body() {
 
+		$list_dropdown_html = "<select name='list_id' id='ig_es_export_list_dropdown'>";
+		$list_dropdown_html .= ES_Common::prepare_list_dropdown_options();
+		$list_dropdown_html .= "</select>";
+
 		$export_lists = array(
 
-			'all'         => __( 'All Contacts', 'email-subscribers' ),
-			'active'      => __( 'Subscribed Contacts', 'email-subscribers' ),
-			'inactive'    => __( 'Unsubscribed Contacts', 'email-subscribers' ),
-			'unconfirmed' => __( 'Unconfirmed Contacts', 'email-subscribers' ),
+			'all'          => __( 'All Contacts', 'email-subscribers' ),
+			'subscribed'   => __( 'Subscribed Contacts', 'email-subscribers' ),
+			'unsubscribed' => __( 'Unsubscribed Contacts', 'email-subscribers' ),
+			//'confirmed'    => __( 'Confirmed Contacts', 'email-subscribers' ),
+			'unconfirmed'  => __( 'Unconfirmed Contacts', 'email-subscribers' ),
+			'select_list'  => $list_dropdown_html
 		);
 
 		$i = 1;
@@ -84,11 +100,11 @@ class Export_Subscribers {
 
 			?>
 
-            <tr class="<?php echo $class; ?>">
+            <tr class="<?php echo $class; ?>" id="ig_es_export_<?php echo $key; ?>">
                 <td><?php echo $i; ?></td>
                 <td><?php _e( $export_list, 'email-subscribers' ); ?></td>
-                <td><?php echo $this->count_subscribers( $key ); ?></td>
-                <td><a href="<?php echo $url; ?>"><?php _e( 'Download', 'email-subscribers' ); ?></a></td>
+                <td class="ig_es_total_contacts"><?php echo $this->count_subscribers( $key ); ?></td>
+                <td><a href="<?php echo $url; ?>" id="ig_es_export_link_<?php echo $key; ?>"><?php _e( 'Download', 'email-subscribers' ); ?></a></td>
             </tr>
 
 			<?php
@@ -140,33 +156,31 @@ class Export_Subscribers {
 
 		switch ( $status ) {
 			case 'all':
-				// All Subscribers
-				$sql = "SELECT COUNT(email) FROM " . IG_CONTACTS_TABLE;
+				$sql = "SELECT COUNT(*) FROM " . IG_LISTS_CONTACTS_TABLE;
 				break;
 
-			case 'active':
-				// Active Subscribers
-				$sql = "SELECT COUNT(email) FROM " . IG_CONTACTS_TABLE . " WHERE unsubscribed = 0 OR unsubscribed IS NULL";
+			case 'subscribed':
+				$sql = $wpdb->prepare( "SELECT COUNT(*) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE status = %s", 'subscribed' );
 				break;
 
-			case 'inactive':
-				// InActive Subscribers
-				$sql = "SELECT COUNT(email) FROM " . IG_CONTACTS_TABLE . " WHERE unsubscribed = 1 ";
+			case 'unsubscribed':
+				$sql = $wpdb->prepare( "SELECT COUNT(email) FROM " . IG_CONTACTS_TABLE . " WHERE status = %s", 'unsubscribed' );
+				break;
+
+			case 'confirmed':
+				$sql = $wpdb->prepare( "SELECT COUNT(*) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE status = %s AND optin_type = %d", 'subscribed', IG_DOUBLE_OPTIN );
 				break;
 
 			case 'unconfirmed':
-				$sql = "SELECT count(distinct(contact_id)) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE status = 'unconfirmed'";
+				$sql = $wpdb->prepare( "SELECT count(contact_id) FROM " . IG_LISTS_CONTACTS_TABLE . " WHERE status = %s", 'unconfirmed' );
 				break;
 
-			case 'registered':
-			case 'commented':
-				// Registered/ Commented Subscribers
-				$sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . "users";
+			case 'select_list':
+				return '-';
 				break;
 		}
 
 		return $wpdb->get_var( $sql );
-
 	}
 
 
@@ -203,10 +217,18 @@ class Export_Subscribers {
         </p>
 
 		<?php
-
 	}
 
-	public function generate_csv( $status = 'all' ) {
+	/**
+	 * Generate CSV
+	 * first_name, last_name, email, status, list, subscribed_at, unsubscribed_at
+	 *
+	 * @param string $status
+	 * @param string $list_id
+	 *
+	 * @return string
+	 */
+	public function generate_csv( $status = 'all', $list_id = '' ) {
 
 		global $wpdb;
 
@@ -216,45 +238,83 @@ class Export_Subscribers {
 		$email_subscribe_table = IG_CONTACTS_TABLE;
 		$contact_lists_table   = IG_LISTS_CONTACTS_TABLE;
 
-		if ( 'active' === $status ) {
-			$query = "SELECT `first_name`, `last_name`, `email`, `status`, `unsubscribed`, `created_at` FROM  $email_subscribe_table WHERE unsubscribed = 0 OR unsubscribed IS NULL";
-		} elseif ( 'inactive' === $status ) {
-			$query = "SELECT `first_name`, `last_name`, `email`, `status`, `unsubscribed`, `created_at` FROM  $email_subscribe_table WHERE unsubscribed = 1 ";
-		} elseif ( 'all' === $status ) {
-			$query = "SELECT `first_name`, `last_name`, `email`, `status`, `unsubscribed`, `created_at` FROM  $email_subscribe_table";
+		if ( 'all' === $status ) {
+			$query = "SELECT * FROM " . IG_LISTS_CONTACTS_TABLE;
+		} elseif ( 'subscribed' === $status ) {
+			$query = $wpdb->prepare( "SELECT * FROM {$contact_lists_table} WHERE status = %s", 'subscribed' );
+		} elseif ( 'unsubscribed' === $status ) {
+			$query = $wpdb->prepare( "SELECT * FROM {$contact_lists_table} WHERE status = %s", 'unsubscribed' );
+		} elseif ( 'confirmed' === $status ) {
+			$query = $wpdb->prepare( "SELECT * FROM {$contact_lists_table} WHERE status = %s AND optin_type = %d ", 'subscribed', IG_DOUBLE_OPTIN );
 		} elseif ( 'unconfirmed' === $status ) {
-			$query = "SELECT `first_name`, `last_name`, `email`, `status`, `unsubscribed`, `created_at` FROM  $email_subscribe_table WHERE id IN (SELECT distinct(contact_id) FROM {$contact_lists_table} WHERE status = 'unconfirmed' )";
+			$query = $wpdb->prepare( "SELECT * FROM {$contact_lists_table} WHERE status = %s", 'unconfirmed' );
+		} elseif ( 'select_list' === $status ) {
+			$query = $wpdb->prepare( "SELECT * FROM {$contact_lists_table} WHERE list_id = %d ", $list_id );
+		} else {
+			// If nothing comes, export only 10 contacts
+			$query = "SELECT * FROM " . IG_LISTS_CONTACTS_TABLE . " LIMIT 0, 10";
 		}
 
-		$subscribers = $wpdb->get_results( $query, ARRAY_A );
+		$subscribers = array();
+		$results     = $wpdb->get_results( $query, ARRAY_A );
+
+		if ( count( $results ) > 0 ) {
+			$contact_list_map = array();
+			$contact_ids      = array();
+			foreach ( $results as $result ) {
+
+				if ( ! in_array( $result['contact_id'], $contact_ids ) ) {
+					$contact_ids[] = $result['contact_id'];
+				}
+
+				$contact_list_map[ $result['contact_id'] ][] = array(
+					'status'     => $result['status'],
+					'list_id'    => $result['list_id'],
+					'optin_type' => $result['optin_type']
+				);
+			}
+
+			$contact_ids_str = "'" . implode( "' , '", $contact_ids ) . "' ";
+
+			$query = "SELECT `id`, `first_name`, `last_name`, `email`, `created_at` FROM {$email_subscribe_table} WHERE id IN ({$contact_ids_str})";
+
+			$subscribers = $wpdb->get_results( $query, ARRAY_A );
+		}
 
 		$csv_output = '';
 		if ( count( $subscribers ) > 0 ) {
 
 			$headers = array(
-				__( 'Name', 'email-subscribers' ),
+				__( 'First Name', 'email-subscribers' ),
+				__( 'Last Name', 'email-subscribers' ),
 				__( 'Email', 'email-subscribers' ),
+				__( 'List', 'email-subscribers' ),
 				__( 'Status', 'email-subscribers' ),
+				__( 'Opt-In Type', 'email-subscribers' ),
 				__( 'Created On', 'email-subscribers' )
 			);
 
-			$csv_output .= implode( ',', $headers );
-			$csv_output .= "\n";
+			$lists_id_name_map = ES_DB_Lists::get_list_id_name_map();
+			$csv_output        .= '"' . implode( '", "', $headers ) . '"';
+			$csv_output        .= "\n";
 
 			foreach ( $subscribers as $key => $subscriber ) {
 
-				$data['name']  = trim( $subscriber['first_name'] . ' ' . $subscriber['last_name'] );
-				$data['email'] = trim( $subscriber['email'] );
+				$data['first_name'] = trim( str_replace( '"', ' ', $subscriber['first_name'] ) );
+				$data['last_name']  = trim( str_replace( '"', ' ', $subscriber['last_name'] ) );
+				$data['email']      = trim( str_replace( '"', ' ', $subscriber['email'] ) );
 
-				if ( 'unconfirmed' === $status ) {
-					$data['status'] = __( 'Unconfirmed', 'email-subscribers' );
-				} else {
-					$data['status'] = ( $subscriber['unsubscribed'] == 1 ) ? __( 'Unsubscribed', 'email-subscribers' ) : __( 'Subscribed', 'email-subscribers' );
+				$contact_id = $subscriber['id'];
+				if ( ! empty( $contact_list_map[ $contact_id ] ) ) {
+					foreach ( $contact_list_map[ $contact_id ] as $list_details ) {
+						$data['list']       = $lists_id_name_map[ $list_details['list_id'] ];
+						$data['status']     = ucfirst( $list_details['status'] );
+						$data['optin_type'] = ($list_details['optin_type'] == 1) ? 'Single Opt-In' : 'Double Opt-In';
+						$data['created_at'] = $subscriber['created_at'];
+						$csv_output         .= '"' . implode( '", "', $data ) . '"';
+						$csv_output         .= "\n";
+					}
 				}
-				$data['created_at'] = $subscriber['created_at'];
-
-				$csv_output .= implode( ',', $data );
-				$csv_output .= "\n";
 			}
 		}
 

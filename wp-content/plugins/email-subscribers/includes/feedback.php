@@ -13,8 +13,8 @@ if ( ! function_exists( 'ig_es_get_additional_info' ) ) {
 
 		if ( $system_info ) {
 
-			$additional_info['active_plugins']   = $ig_es_tracker::get_active_plugins();
-			$additional_info['inactive_plugins'] = $ig_es_tracker::get_inactive_plugins();
+			$additional_info['active_plugins']   = implode( ', ', $ig_es_tracker::get_active_plugins() );
+			$additional_info['inactive_plugins'] = implode( ', ', $ig_es_tracker::get_inactive_plugins() );
 			$additional_info['current_theme']    = $ig_es_tracker::get_current_theme_info();
 			$additional_info['wp_info']          = $ig_es_tracker::get_wp_info();
 			$additional_info['server_info']      = $ig_es_tracker::get_server_info();
@@ -24,7 +24,6 @@ if ( ! function_exists( 'ig_es_get_additional_info' ) ) {
 		}
 
 		return $additional_info;
-
 	}
 
 }
@@ -84,4 +83,53 @@ function ig_es_render_feedback_widget() {
 
 }
 
+function ig_es_render_general_feedback_widget() {
+
+	if ( is_admin() ) {
+
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			return;
+		}
+
+		global $ig_es_feedback;
+
+		$screen    = get_current_screen();
+		$screen_id = $screen ? $screen->id : '';
+
+		$show_on_screens = array(
+			'toplevel_page_es_dashboard',
+			'email-subscribers_page_es_subscribers',
+			'email-subscribers_page_es_lists',
+			'email-subscribers_page_es_forms',
+			'email-subscribers_page_es_campaigns',
+			'email-subscribers_page_es_reports',
+			'email-subscribers_page_es_settings',
+			'email-subscribers_page_es_general_information',
+			'email-subscribers_page_es_pricing'
+		);
+
+		if ( ! in_array( $screen_id, $show_on_screens ) ) {
+			return;
+		}
+
+		$event = 'plugin.feedback';
+
+		$params = array(
+			'type'              => 'feedback',
+			'event'             => $event,
+			'title'             => "Have feedback or question for us?",
+			'position'          => 'center',
+			'width'             => 700,
+			'force'             => true,
+			'confirmButtonText' => __( 'Send', 'email-subscribers' ),
+			'consent_text'      => __( 'Allow Email Subscribers to track plugin usage. We guarantee no sensitive data is collected.', 'email-subscribers' ),
+			'email'             => get_option( 'admin_email' ),
+			'name'              => ''
+		);
+
+		ES_Common::render_feedback_widget( $params );
+	}
+}
+
 //add_action( 'admin_footer', 'ig_es_render_feedback_widget' );
+add_action( 'admin_footer', 'ig_es_render_general_feedback_widget' );

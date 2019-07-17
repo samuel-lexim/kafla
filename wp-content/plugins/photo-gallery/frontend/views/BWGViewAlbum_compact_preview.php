@@ -79,22 +79,20 @@ class BWGViewAlbum_compact_preview extends BWGViewSite {
       }
       foreach ( $params['album_gallery_rows']['rows'] as $row ) {
         $href = add_query_arg(array(
-          "type_" . $bwg => $row->def_type,
-          "album_gallery_id_" . $bwg => (($params['album_gallery_id'] != 0) ? $row->alb_gal_id : $row->id),
-		  "bwg_search_" . $bwg => $search_value = !empty($_REQUEST['bwg_search_' . $bwg]) ? trim( esc_html($_REQUEST['bwg_search_' . $bwg]) ) : '',
-        ), $_SERVER['REQUEST_URI']);
+                                "type_" . $bwg => $row->def_type,
+                                "album_gallery_id_" . $bwg => (($params['album_gallery_id'] != 0) ? $row->alb_gal_id : $row->id),
+                              ), $_SERVER['REQUEST_URI']);
+        $href = $this->http_strip_query_param($href, 'bwg_search_' . $bwg);
+        $href = $this->http_strip_query_param($href, 'page_number_' . $bwg);
         $title = '<div class="bwg-title1"><div class="bwg-title2">' . ($row->name ? htmlspecialchars_decode($row->name, ENT_COMPAT | ENT_QUOTES) : '&nbsp;') . '</div></div>';
-
         $resolution_thumb = $row->resolution_thumb;
         $image_thumb_width = '';
         $image_thumb_height = '';
-
-        if($resolution_thumb != "" && strpos($resolution_thumb,'x') !== false) {
+        if ( $resolution_thumb != "" && strpos($resolution_thumb, 'x') !== FALSE ) {
           $resolution_th = explode("x", $resolution_thumb);
           $image_thumb_width = $resolution_th[0];
           $image_thumb_height = $resolution_th[1];
         }
-
         ?>
         <div class="bwg-item">
           <a class="<?php echo $from !== "widget" ? 'bwg-album ' : ''; ?>bwg_album_<?php echo $bwg; ?>"
@@ -221,7 +219,6 @@ class BWGViewAlbum_compact_preview extends BWGViewSite {
       background-color: #<?php echo $theme_row->album_compact_thumb_bg_color; ?>;
       border: <?php echo $theme_row->album_compact_thumb_border_width; ?>px <?php echo $theme_row->album_compact_thumb_border_style; ?> #<?php echo $theme_row->album_compact_thumb_border_color; ?>;
       opacity: <?php echo number_format($theme_row->album_compact_thumb_transparent / 100, 2, ".", ""); ?>;
-      filter: Alpha(opacity=<?php echo $theme_row->album_compact_thumb_transparent; ?>);
       border-radius: <?php echo $theme_row->album_compact_thumb_border_radius; ?>;
       box-shadow: <?php echo $theme_row->album_compact_thumb_box_shadow; ?>;
     }
@@ -285,7 +282,6 @@ class BWGViewAlbum_compact_preview extends BWGViewSite {
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        filter: Alpha(opacity=0);
         opacity: 0;
       }
       <?php

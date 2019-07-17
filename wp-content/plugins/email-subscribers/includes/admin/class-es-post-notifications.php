@@ -247,7 +247,7 @@ class ES_Post_Notifications_Table {
                                 <p class="helper"><?php _e( 'Contacts from the selected list will be notified about new post notification.', 'email-subscribers' ); ?></p>
                             </th>
                             <td>
-                                <select name="list_id" id="list_id">
+                                <select name="list_id" id="ig_es_post_notification_list_ids">
 									<?php echo ES_Common::prepare_list_dropdown_options( $list_id ); ?>
                                 </select>
                             </td>
@@ -314,7 +314,7 @@ class ES_Post_Notifications_Table {
                     </table>
                     <div class="row-blog">
                         <div class="leftside">
-							<?php echo get_submit_button(); ?>
+                            <p class="submit"><input type="submit" name="submit" id="ig_es_campaign_post_notification_submit_button" class="button button-primary button-large" value="Save Changes"></p>
                         </div>
                     </div>
                 </form>

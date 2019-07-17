@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: https://www.icegram.com/
 Tags: subscription, newsletter, email marketing, post notification, email newsletter form, email signup, email widget, newsletter signup, subscribe, subscription form, bulk emails, signup form, list builder, lead generation, welcome email, contacts
 Requires at least: 3.9
-Tested up to: 5.2.1
-Stable tag: 4.1.2.2
+Tested up to: 5.2.2
+Stable tag: 4.1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -134,7 +134,11 @@ Check out [Email Subscribers Starter](https://www.icegram.com/email-subscribers-
 
 * **Automatic Background Sending** 
 
-* **Connect with SMTP / Email Sending Services** 
+* **Connect with SMTP / Email Sending Services**
+
+* **Automatically add people to your mailing list whenever someone post a comment on your website**
+
+* Integrate with **WooCommerce & Contact Form 7**
 
 
 **Get more benefits by using Email Subscribers with these free plugins**
@@ -300,6 +304,37 @@ Use our free plugin [Email Subscribers - Group Selector](https://wordpress.org/p
 9. Admin page - Settings Tab 4 - Security Settings
 
 == Changelog ==
+
+= 4.1.8 (16.07.2019) =
+* New: Now, admin can add/ edit First Name & Last Name of subscribers.
+* Fix: Fixed Vulnerabilities (Thanks Tin Duong of Fortinet's FortiGuard Labs, WordPress Plugin Review Team & Ihor Voschyk for reporting)
+
+= 4.1.7 (15.07.2019) =
+* Update: Now, able to sort reports by Subject, Status, Start Date, End Date & Total Contacts
+* Update: Now, able to sort forms by Name & Created date
+* Update: Now, email template will pick up the latest content while email sending
+* Fix: Importing issue
+* Fix: Migration issue
+* Fix: Fixed Vulnerability
+
+= 4.1.6 (01.07.2019) =
+* Update: Added sorting for name field in Audience tab
+* Fix: Warning: Illegal string offset 'es_registered'
+* Fix: Set list name blank in campaign list page
+* Fix: Contacts sort by email was not working.
+
+= 4.1.5 (20.06.2019) =
+* Update: Added "Opt-In Type" column in exported contacts lists
+* Update: Allow to send broadcast only if contacts are available in list
+* Fix: "Select the list" error
+
+= 4.1.4 (13.06.2019) =
+* New: Added First Name, Last Name in exported csv file
+* New: Added {{FIRSTNAME}}, {{LASTNAME}} keyword
+* Update: Improve subscription form layout.
+
+= 4.1.3 (06.06.2019) =
+* New: Export contacts by list
 
 = 4.1.2.2 (31.05.2019) =
 * Fix: Fatal error: Call to undefined function get_plugins()

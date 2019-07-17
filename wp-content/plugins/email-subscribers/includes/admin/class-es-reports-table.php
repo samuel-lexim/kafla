@@ -151,7 +151,7 @@ class ES_Reports_Table extends WP_List_Table {
                 <td><?php echo $email['email']; ?></td>
                 <td><span style="color:#03a025;font-weight:bold;"><?php echo $email['status']; ?></span></td>
                 <td><?php echo ig_es_format_date_time( $email['sent_at'] ); ?></td>
-                <td><span><?php echo ( ! empty( $email['opened'] ) && $email['opened'] == 1 ) ? _e('Viewed', 'email-subscribers') : '<i title="'.__('Not yet viewed', 'email-subscribers').'" class="dashicons dashicons-es dashicons-minus">' ?></span></td>
+                <td><span><?php echo ( ! empty( $email['opened'] ) && $email['opened'] == 1 ) ? _e( 'Viewed', 'email-subscribers' ) : '<i title="' . __( 'Not yet viewed', 'email-subscribers' ) . '" class="dashicons dashicons-es dashicons-minus">' ?></span></td>
                 <td><?php echo ig_es_format_date_time( $email['opened_at'] ); ?></td>
             </tr>
 
@@ -184,7 +184,7 @@ class ES_Reports_Table extends WP_List_Table {
 				return ig_es_format_date_time( $item[ $column_name ] );
 			case 'type':
 				if ( empty( $item['campaign_id'] ) ) {
-                    $type = __('Post Notification', 'email-subscribers');
+					$type = __( 'Post Notification', 'email-subscribers' );
 				} else {
 					$type = ES_DB_Campaigns::get_campaign_type_by_id( $item['campaign_id'] );
 					$type = strtolower( $type );
@@ -245,7 +245,7 @@ class ES_Reports_Table extends WP_List_Table {
 		$title = '<strong>' . $item['subject'] . '</strong>';
 
 		$actions = array(
-			'view'          => sprintf( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s">%s</a>', esc_attr( Email_Subscribers::get_request( 'page' ) ), 'view', $item['hash'], $es_nonce,  __( 'View', 'email-subscribers' ) ),
+			'view'          => sprintf( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s">%s</a>', esc_attr( Email_Subscribers::get_request( 'page' ) ), 'view', $item['hash'], $es_nonce, __( 'View', 'email-subscribers' ) ),
 			'delete'        => sprintf( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s">%s</a>', esc_attr( Email_Subscribers::get_request( 'page' ) ), 'delete', absint( $item['id'] ), $es_nonce, __( 'Delete', 'email-subscribers' ) ),
 			'preview_email' => sprintf( '<a target="_blank" href="?page=%s&action=%s&list=%s&_wpnonce=%s">%s</a>', esc_attr( Email_Subscribers::get_request( 'page' ) ), 'preview', absint( $item['id'] ), $es_nonce, __( 'Preview', 'email-subscribers' ) )
 		);
@@ -312,9 +312,11 @@ class ES_Reports_Table extends WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		$sortable_columns = array(
-			'status'  => array( 'sentstatus', true ),
-			'date'    => array( 'sentdate', true ),
-			'emailid' => array( 'emailid', true )
+			'subject'   => array( 'subject', true ),
+			'status'    => array( 'status', true ),
+			'start_at'  => array( 'start_at', true ),
+			'finish_at' => array( 'finish_at', true ),
+			'count'     => array( 'count', true )
 		);
 
 		return $sortable_columns;
@@ -327,7 +329,7 @@ class ES_Reports_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = array(
-			'bulk_delete' => __('Delete', 'email-subscribers')
+			'bulk_delete' => __( 'Delete', 'email-subscribers' )
 		);
 
 		return $actions;
@@ -346,14 +348,60 @@ class ES_Reports_Table extends WP_List_Table {
 
 		$per_page     = $this->get_items_per_page( 'reports_per_page', 20 );
 		$current_page = $this->get_pagenum();
-		$total_items  = ES_DB_Mailing_Queue::get_notifications_count();
+		$total_items = $this->get_notifications( 0, 0, true );
 
 		$this->set_pagination_args( array(
 			'total_items' => $total_items, //WE have to calculate the total number of items
 			'per_page'    => $per_page //WE have to determine how many items to show on a page
 		) );
 
-		$this->items = ES_DB_Mailing_Queue::get_notifications( $per_page, $current_page );
+		$this->items = $this->get_notifications( $per_page, $current_page, false );
+	}
+
+	public function get_notifications( $per_page = 5, $page_number = 1, $do_count_only = false ) {
+		global $wpdb;
+
+		$order_by = Email_Subscribers::get_request( 'orderby' );
+		$order    = Email_Subscribers::get_request( 'order' );
+
+		$ig_mailing_queue_table = IG_MAILING_QUEUE_TABLE;
+
+		if ( $do_count_only ) {
+			$sql = "SELECT count(*) as total FROM {$ig_mailing_queue_table}";
+		} else {
+			$sql = "SELECT * FROM {$ig_mailing_queue_table}";
+		}
+
+		if ( ! $do_count_only ) {
+
+			// Prepare Order by clause
+			$order = ! empty( $order ) ? strtolower($order) : 'desc';
+			$expected_order_values = array('asc', 'desc');
+			if(!in_array($order, $expected_order_values)) {
+				$order = 'desc';
+			}
+
+			$default_order_by = esc_sql( 'created_at' );
+
+			$expected_order_by_values = array( 'subject', 'type', 'status', 'start_at', 'count', 'created_at' );
+
+			if ( ! in_array( $order_by, $expected_order_by_values ) ) {
+				$order_by_clause = " ORDER BY {$default_order_by} DESC";
+			} else {
+				$order_by        = esc_sql( $order_by );
+				$order_by_clause = " ORDER BY {$order_by} {$order}, {$default_order_by} DESC";
+			}
+
+			$sql    .= $order_by_clause;
+			$sql    .= " LIMIT $per_page";
+			$sql    .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
+			$result = $wpdb->get_results( $sql, 'ARRAY_A' );
+
+		} else {
+			$result = $wpdb->get_var( $sql );
+		}
+
+		return $result;
 	}
 
 	public function process_bulk_action() {

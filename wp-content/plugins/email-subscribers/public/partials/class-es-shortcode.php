@@ -149,7 +149,7 @@ class ES_Shortcode {
 		// Lists
 		if ( ! empty( $list_ids ) && $show_list ) {
 			$lists_id_name_map = ES_DB_Lists::get_list_id_name_map();
-			$list_html         = self::prepare_lists_checkboxes( $lists_id_name_map, $list_ids );
+			$list_html         = self::prepare_lists_checkboxes( $lists_id_name_map, $list_ids, 1 );
 		} elseif ( ! empty( $list_ids ) && ! $show_list ) {
 			$list_html = '';
 			foreach ( $list_ids as $id ) {
@@ -201,15 +201,20 @@ class ES_Shortcode {
 
             </form>
 
-            <span class="es_subscription_message success" id="es_subscription_message_<?php echo $unique_id; ?>"></span>
+            <span class="es_subscription_message" id="es_subscription_message_<?php echo $unique_id; ?>"></span>
         </div>
 
 		<?php
 	}
 
-	public static function prepare_lists_checkboxes( $lists, $list_ids = array(), $columns = 3, $selected_lists = array(), $contact_id = 0 ) {
-		$lists_html = '<div><table><tr>';
+	public static function prepare_lists_checkboxes( $lists, $list_ids = array(), $columns = 3, $selected_lists = array(), $contact_id = 0, $name = "lists[]" ) {
+		$lists_html = '<div><p><b>' . __('Select List(s)', 'email-subscribers') .'*</b></p><table class="ig-es-form-list-selection"><tr>';
 		$i          = 0;
+
+		if(!empty($contact_id)) {
+			$list_contact_status_map = ES_DB_Lists_Contacts::get_list_contact_status_map( $contact_id );
+        }
+
 		foreach ( $lists as $list_id => $list_name ) {
 			if ( $i != 0 && ( $i % $columns ) === 0 ) {
 				$lists_html .= "</tr><tr>";
@@ -218,12 +223,11 @@ class ES_Shortcode {
 			if ( in_array( $list_id, $list_ids ) ) {
 				if ( in_array( $list_id, $selected_lists ) ) {
 					if ( ! empty( $contact_id ) ) {
-						$list_contact_status_map = ES_DB_Lists_Contacts::get_list_contact_status_map( $contact_id );
 						$status_span             = '<span class="es_list_contact_status ' . $list_contact_status_map[ $list_id ] . '" title="' . ucwords( $list_contact_status_map[ $list_id ] ) . '">';
 					}
-					$lists_html .= '<td>' . $status_span . '<label><input type="checkbox" name="lists[]" checked="checked" value="' . $list_id . '" />' . $list_name . '</label></td>';
+					$lists_html .= '<td>' . $status_span . '<label><input type="checkbox" name="'. $name .'" checked="checked" value="' . $list_id . '" />' . $list_name . '</label></td>';
 				} else {
-					$lists_html .= '<td><label><input type="checkbox" name="lists[]" value="' . $list_id . '" />' . $list_name . '</label></td>';
+					$lists_html .= '<td><label><input type="checkbox" name="'. $name .'" value="' . $list_id . '" />' . $list_name . '</label></td>';
 				}
 				$i ++;
 			}
@@ -232,7 +236,6 @@ class ES_Shortcode {
 
 		return $lists_html;
 	}
-
 
 }
 

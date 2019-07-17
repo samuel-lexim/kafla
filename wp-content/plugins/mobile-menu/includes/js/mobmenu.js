@@ -56,28 +56,29 @@
           $( '.mobmenu-push-wrap' ).after( $(   $('.mob-menu-header-holder' ).attr( 'data-detach-el' ) ).detach() );
         }
 
-        // Double Check the the menu display classes where added to the body.
-        var menu_display_type = jQuery( '.mob-menu-header-holder' ).attr( 'data-menu-display' );
-
-        if ( menu_display_type != '' && !jQuery( 'body' ).hasClass( menu_display_type ) ) {
-          $( 'body' ).addClass( menu_display_type );
-        }
-
-        $( 'video' ).each( function(){
-          if( 'autoplay' === $( this ).attr('autoplay') ) {
-            $( this )[0].play();
-          } 
-        });
-
       }
-      var submenu_open_icon  = jQuery( '.mob-menu-header-holder' ).attr( 'data-open-icon' );
-      var submenu_close_icon = jQuery( '.mob-menu-header-holder' ).attr( 'data-close-icon' );
+      // Double Check the the menu display classes where added to the body.
+      var menu_display_type = $( '.mob-menu-header-holder' ).attr( 'data-menu-display' );
+
+      if ( menu_display_type != '' && !$( 'body' ).hasClass( menu_display_type ) ) {
+        $( 'body' ).addClass( menu_display_type );
+      }
+
+      $( 'video' ).each( function(){
+        if( 'autoplay' === $( this ).attr('autoplay') ) {
+          $( this )[0].play();
+        } 
+      });
+
+      var submenu_open_icon  = $( '.mob-menu-header-holder' ).attr( 'data-open-icon' );
+      var submenu_close_icon = $( '.mob-menu-header-holder' ).attr( 'data-close-icon' );
 
       $( '.mobmenu-content .sub-menu' ).each( function(){
+
         $( this ).prev().append('<div class="mob-expand-submenu"><i class="mob-icon-' + submenu_open_icon + ' open-icon"></i><i class="mob-icon-' + submenu_close_icon + ' close-icon hide"></i></div>');
 
         if ( 0 < $( this ).parents( '.mobmenu-parent-link' ).length  ) {
-          $( this ).prev().prev().attr('href', '#');
+          $( this ).prev().attr('href', '#');
         }
 
       });
@@ -91,10 +92,10 @@
         e.stopPropagation();
         
       });
-      jQuery( document ).on( 'click', '.show-nav-left .mobmenu-push-wrap,  .show-nav-left .mobmenu-overlay', function ( e ) { 
+      $( document ).on( 'click', '.show-nav-left .mobmenu-push-wrap,  .show-nav-left .mobmenu-overlay', function ( e ) { 
   
         e.preventDefault();
-        jQuery( '.mobmenu-left-bt' ).first().trigger( 'click' );
+        $( '.mobmenu-left-bt' ).first().trigger( 'click' );
         e.stopPropagation();
 
       });
@@ -118,8 +119,8 @@
 
         e.preventDefault();
         mobmenuClosePanel( 'show-panel' );
-        if ( jQuery('body').hasClass('mob-menu-sliding-menus') ) {
-          jQuery( '.mobmenu-trigger-action .hamburger' ).toggleClass('is-active');
+        if ( $('body').hasClass('mob-menu-sliding-menus') ) {
+          $( '.mobmenu-trigger-action .hamburger' ).toggleClass('is-active');
         }
 
       });
@@ -143,8 +144,8 @@
         
         setTimeout(function(){ 
           if ( $( 'body' ).hasClass('show-nav-left') ) {
-            if ( jQuery('body').hasClass('mob-menu-sliding-menus') ) {
-              jQuery( '.mobmenu-trigger-action .hamburger' ).toggleClass('is-active');
+            if ( $('body').hasClass('mob-menu-sliding-menus') ) {
+              $( '.mobmenu-trigger-action .hamburger' ).toggleClass('is-active');
             }
             mobmenuClosePanel( targetPanel );
             
@@ -157,71 +158,57 @@
 
       });
      
-
-      $('.mobmenu a[href*="#"]')
-      // Remove links that don't actually link to anything
-      .not('[href="#"]')
-      .not('[href="#0"]')
-      .on( 'click', function(event) {
-        // On-page links
+      $( document ).on( 'click', '.mobmenu a[href*="#"]:not([href="#"]), .mobmenu-panel a[href*="#"]:not([href="#"])', function(event){
+  
         if (
           location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
           && 
           location.hostname == this.hostname
           &&
-          $(this).parents('.mobmenu_content').length > 0
+          $(this).parents('.mobmenu-content').length > 0
         ) {
           // Figure out element to scroll to
           var target = $(this.hash);
           target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
           // Does a scroll target exist?
           if (target.length) {
-            // Only prevent default if animation is actually gonna happen
-            event.preventDefault();
-            event.stopPropagation();
-            $( '.show-nav-left .mobmenu-left-bt').first().click();
-            $( '.show-nav-right .mobmenu-right-bt').first().trigger( 'click' );
+            if ( 0 < $(this).parents('.mobmenu-left-panel').length ) {
+              mobmenuClosePanel( 'mobmenu-left-panel' );
+            } else {
+              mobmenuClosePanel( 'mobmenu-right-panel' );
+            }
+
             $( 'html' ).css( 'overflow', '' );
   
-            $('body').animate({
-              scrollTop: target.offset().top
-            }, 1000, function() {
-              // Callback after animation
-              // Must change focus!
-              var $target = $(target);
-              $target.focus();
-              if ($target.is(":focus")) { // Checking if the target was focused
-                return false;
-              } else {
-                $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-                $target.focus(); // Set focus again
-              };
-            });
+            $('body,html').animate({
+              scrollTop: target.offset().top - $(".mob-menu-header-holder").height() - 50
+            }, 1000);
           }
         }
       });
+      function mobmenuClosePanel( target ) {
+        $( '.' + target ).toggleClass( 'show-panel' );
+        $( 'html' ).removeClass( 'show-mobmenu-filter-panel' );
+        $( 'body' ).removeClass( 'show-nav-right' );
+        $( 'body' ).removeClass( 'show-nav-left' );
+        $( 'html' ).removeClass( 'mob-menu-no-scroll' ); 
+    
+      }
+    
+      function mobmenuOpenPanel( target) {
+        $( '.mobmenu-content' ).scrollTop(0);
+        $( 'html' ).addClass( 'mob-menu-no-scroll' ); 
+    
+        if ( $('.' + target ).hasClass( 'mobmenu-left-alignment' ) ) {
+          $('body').addClass('show-nav-left');
+        }
+        if ( $('.' + target ).hasClass( 'mobmenu-right-alignment' ) ) {
+          $('body').addClass('show-nav-right');
+        }
+    
+        $('.' + target ).addClass( 'show-panel' );
+    
+      }
     });
   
-  function mobmenuClosePanel( target ) {
-    jQuery( '.' + target ).toggleClass( 'show-panel' );
-    jQuery( 'html' ).removeClass( 'show-mobmenu-filter-panel' );
-    jQuery( 'body' ).removeClass( 'show-nav-right' );
-    jQuery( 'body' ).removeClass( 'show-nav-left' );
-    jQuery( 'html' ).removeClass( 'mob-menu-no-scroll' ); 
 
-  }
-
-  function mobmenuOpenPanel( target ) {
-    jQuery( '.mobmenu-content' ).scrollTop(0);
-    jQuery( 'html' ).addClass( 'mob-menu-no-scroll' ); 
-
-    if ( jQuery('.' + target ).hasClass( 'mobmenu-left-alignment' ) ) {
-      jQuery('body').addClass('show-nav-left');
-    }
-    if ( jQuery('.' + target ).hasClass( 'mobmenu-right-alignment' ) ) {
-      jQuery('body').addClass('show-nav-right');
-    }
-
-    jQuery('.' + target ).addClass( 'show-panel' );
-
-  }

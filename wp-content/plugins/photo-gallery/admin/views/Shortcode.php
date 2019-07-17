@@ -2090,6 +2090,7 @@ class ShortcodeView_bwg extends AdminView_bwg {
           <?php
           if ( $params['gutenberg_callback'] ) {
           ?>
+		  window.parent.window.jQuery(".edit-post-layout__content").css({"z-index":"0","overflow":"auto"});
           window.parent['<?php echo $params['gutenberg_callback']; ?>'](content, shortcode_id);
           return;
           <?php

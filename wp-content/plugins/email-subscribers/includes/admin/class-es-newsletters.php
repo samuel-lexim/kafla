@@ -39,53 +39,53 @@ class ES_Newsletters {
 		if ( 'submitted' === $submitted ) {
 
 			// $email_sent_type = __('Active', 'email-subscribers');
-			$list_id     = Email_Subscribers::get_request( 'list_ids' );
-			$template_id = Email_Subscribers::get_request( 'base_template_id' );
-
+			$list_id     = Email_Subscribers::get_request( 'ig_es_broadcast_list_ids' );
+			$template_id = Email_Subscribers::get_request( 'ig_es_broadcast_base_template_id' );
 			if ( empty( $template_id ) ) {
 				$message = __( 'Please select template.', 'email-subscribers' );
 				ES_Common::show_message( $message, 'error' );
 			} elseif ( empty( $list_id ) ) {
 				$message = __( 'Please select list.', 'email-subscribers' );
 				ES_Common::show_message( $message, 'error' );
-			}
+			} else {
 
-			$data = array(
-				'base_template_id' => $template_id,
-				'list_ids'         => $list_id,
-				'status'           => 1
-			);
-
-			self::es_send_email_callback( $data );
-
-			$reports_url = admin_url( 'admin.php?page=es_reports' );
-			$message     = __( sprintf( 'A new broadcast has been created successfully! Contacts from selected list will be notified within an hour. Want to notify now? <a href="%s" target="_blank">Click here</a>', $reports_url ), 'email-subscribers' );
-
-			ES_Common::show_message( $message, 'success' );
-
-			// **************** Quick Feedback - Start ********************
-			global $ig_es_feedback;
-
-			if ( ! $ig_es_feedback->can_show_feedback_widget() ) {
-				return;
-			}
-
-			$event = 'broadcast.created';
-			if ( ! $ig_es_feedback->is_event_transient_set( $ig_es_feedback->event_prefix . $event ) ) {
-
-				$params = array(
-					'type'              => 'emoji',
-					'event'             => $event,
-					'title'             => "How's your experience sending broadcast?",
-					'position'          => 'top-end',
-					'width'             => 300,
-					'delay'             => 2, // seconds
-					'confirmButtonText' => __( 'Send', 'email-subscribers' )
+				$data = array(
+					'base_template_id' => $template_id,
+					'list_ids'         => $list_id,
+					'status'           => 1
 				);
 
-				ES_Common::render_feedback_widget( $params );
+				self::es_send_email_callback( $data );
+
+				$reports_url = admin_url( 'admin.php?page=es_reports' );
+				$message     = __( sprintf( 'A new broadcast has been created successfully! Contacts from selected list will be notified within an hour. Want to notify now? <a href="%s" target="_blank">Click here</a>', $reports_url ), 'email-subscribers' );
+
+				ES_Common::show_message( $message, 'success' );
+
+				// **************** Quick Feedback - Start ********************/
+				global $ig_es_feedback;
+
+				if (  $ig_es_feedback->can_show_feedback_widget() ) {
+
+					$event = 'broadcast.created';
+					if ( ! $ig_es_feedback->is_event_transient_set( $ig_es_feedback->event_prefix . $event ) ) {
+
+						$params = array(
+							'type'              => 'emoji',
+							'event'             => $event,
+							'title'             => "How's your experience sending broadcast?",
+							'position'          => 'top-end',
+							'width'             => 300,
+							'delay'             => 2, // seconds
+							'confirmButtonText' => __( 'Send', 'email-subscribers' )
+						);
+						ES_Common::render_feedback_widget( $params );
+					}
+				}
+				
+				// **************** Quick Feedback - End ********************/
 			}
-			// **************** Quick Feedback - End ********************
+
 		}
 
 		$this->prepare_newsletter_settings_form();
@@ -105,7 +105,7 @@ class ES_Newsletters {
 					<?php settings_fields( 'es_newsletters_settings' ); ?>
 					<?php do_settings_sections( 'newsletters_settings' ); ?>
                     <div class="email-newsletters">
-                        <input type="submit" id="" name="es_send_email" value="<?php _e( 'Send Broadcast', 'email-subscribers' ) ?>" class="button button-primary">
+                        <input type="submit" id="ig_es_campaign_submit_button" name="es_send_email" value="<?php _e( 'Send Broadcast', 'email-subscribers' ) ?>" class="button button-primary">
                         <input type="hidden" name="submitted" value="submitted">
                     </div>
                 </form>
@@ -141,7 +141,7 @@ class ES_Newsletters {
 
 		$fields = array(
 			array(
-				'uid'          => 'base_template_id',
+				'uid'          => 'ig_es_broadcast_base_template_id',
 				'label'        => __( 'Select Template', 'email-subscribers' ),
 				'section'      => 'newsletters_settings',
 				'type'         => 'select',
@@ -153,7 +153,7 @@ class ES_Newsletters {
 			),
 
 			array(
-				'uid'          => 'list_ids',
+				'uid'          => 'ig_es_broadcast_list_ids',
 				'label'        => __( 'Select List', 'email-subscribers' ),
 				'section'      => 'newsletters_settings',
 				'type'         => 'select',
@@ -162,6 +162,14 @@ class ES_Newsletters {
 				'helper'       => '',
 				'supplemental' => __( 'Contacts from the selected list will be notified.', 'email-subscribers' ),
 				'default'      => ''
+			),
+
+			array(
+				'uid'     => 'ig_es_total_contacts',
+				'label'   => __( 'Total Contacts', 'email-subscribers' ),
+				'section' => 'newsletters_settings',
+				'type'    => 'label',
+				'default' => 0
 			),
 		);
 		$fields = apply_filters( 'email_newsletter_settings_fields', $fields );
@@ -174,7 +182,7 @@ class ES_Newsletters {
 
 	public function field_callback( $arguments ) {
 		$value = get_option( $arguments['uid'] ); // Get the current value, if there is one
-		if ( ! $value ) { // If no value exists
+		if ( ! $value && isset( $arguments['default'] ) ) { // If no value exists
 			$value = $arguments['default']; // Set to our default
 		}
 
@@ -183,6 +191,11 @@ class ES_Newsletters {
 			case 'text': // If it is a text field
 				printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', $arguments['uid'], $arguments['type'], $arguments['placeholder'], $value );
 				break;
+
+			case 'label': // If it is a text field
+				printf( '<p id="%1$s">%2$s</p>', $arguments['uid'], $value );
+				break;
+
 			case 'email':
 				printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', $arguments['uid'], $arguments['type'], $arguments['placeholder'], $value );
 				break;
@@ -201,26 +214,30 @@ class ES_Newsletters {
 		}
 
 		// If there is help text
-		if ( $helper = $arguments['helper'] ) {
-			printf( '<span class="helper"> %s</span>', $helper ); // Show it
+		if ( isset( $arguments['helper'] ) ) {
+			printf( '<span class="helper"> %s</span>', $arguments['helper'] ); // Show it
 		}
 
 		// If there is supplemental text
-		if ( $supplimental = $arguments['supplemental'] ) {
-			printf( '<p class="description">%s</p>', $supplimental ); // Show it
+		if ( isset( $arguments['supplemental'] ) ) {
+			printf( '<p class="description">%s</p>', $arguments['supplemental'] ); // Show it
 		}
+
 	}
 
 	public static function es_send_email_callback( $data ) {
-		global $wpdb;
 
 		$template_id = ! empty( $data['base_template_id'] ) ? $data['base_template_id'] : '';
-		$send_type   = ! empty( $data['status'] ) ? $data['status'] : '';
 		$list_id     = ! empty( $data['list_ids'] ) ? $data['list_ids'] : '';
 
 		$data['type'] = 'newsletter';
 		$data['name'] = get_the_title( $template_id );
 		$data['slug'] = sanitize_title( $data['name'] );
+		$data['list_ids'] = $list_id;
+		$data['base_template_id'] = $template_id;
+
+		$data = apply_filters( 'ig_es_broadcast_data', $data );
+
 
 		if ( ! empty( $template_id ) ) {
 
@@ -244,10 +261,11 @@ class ES_Newsletters {
 						'body'        => $post_template_content,
 						'count'       => count( $subscribers ),
 						'status'      => 'In Queue',
-						'start_at'    => '',
+						'start_at'    => !empty($data['start_at']) ? $data['start_at'] : '',
 						'finish_at'   => '',
 						'created_at'  => ig_get_current_date_time(),
-						'updated_at'  => ig_get_current_date_time()
+						'updated_at'  => ig_get_current_date_time(),
+						'meta'        => maybe_serialize(array( 'type' => 'newsletter' ))
 					);
 
 					$last_report_id = ES_DB_Mailing_Queue::add_notification( $data );
@@ -264,6 +282,15 @@ class ES_Newsletters {
 
 		return;
 
+	}
+
+	public static function refresh_newsletter_content( $campaign_id ){
+		$template_id = ES_DB_Campaigns::get_templateid_by_campaign( $campaign_id );
+		$template    = get_post( $template_id );
+		$content['subject'] = ! empty( $template->post_title ) ? $template->post_title : '';
+		$content['body'] = ! empty( $template->post_content ) ? $template->post_content : '';
+		$content['body'] = ES_Common::es_process_template_body( $content['body'], $template_id );
+		return $content;
 	}
 
 	public static function get_instance() {

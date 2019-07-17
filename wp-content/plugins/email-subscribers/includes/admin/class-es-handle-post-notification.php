@@ -126,7 +126,8 @@ class ES_Handle_Post_Notification {
 									'start_at'    => '',
 									'finish_at'   => '',
 									'created_at'  => ig_get_current_date_time(),
-									'updated_at'  => ig_get_current_date_time()
+									'updated_at'  => ig_get_current_date_time(),
+									'meta'        => maybe_serialize(array( 'post_id'=> $post_id, 'type' => 'post_notification' ))
 								);
 
 								// Add entry into mailing queue table
@@ -239,6 +240,17 @@ class ES_Handle_Post_Notification {
 		$content = ES_Common::es_process_template_body( $es_templ_body, $email_template_id );
 
 		return $content;
+	}
+
+	public static function refresh_post_content( $post_id, $campaign_id ){
+		$post = get_post( $post_id );
+		$template_id = ES_DB_Campaigns::get_templateid_by_campaign( $campaign_id );
+		$template    = get_post( $template_id );
+		$template_content = $template->post_content;
+		$content['subject'] = self::prepare_subject( $post, $template );
+		$content['body'] = self::prepare_body( $template_content, $post_id, $template_id );
+		return $content;
+
 	}
 
 }

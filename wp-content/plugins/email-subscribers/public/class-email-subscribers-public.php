@@ -168,10 +168,12 @@ class Email_Subscribers_Public {
 
 						$contact = ES_DB_Contacts::get_subsribers_email_name_map( array( $email ) );
 						$data    = array(
-							'name'  => $contact[ $email ],
-							'email' => $email,
-							'db_id' => $db_id,
-							'guid'  => $guid
+							'name'       => ! empty( $contact[ $email ] ) ? $contact[ $email ]['name'] : '',
+							'first_name' => ! empty( $contact[ $email ] ) ? $contact[ $email ]['first_name'] : '',
+							'last_name'  => ! empty( $contact[ $email ] ) ? $contact[ $email ]['last_name'] : '',
+							'email'      => $email,
+							'db_id'      => $db_id,
+							'guid'       => $guid
 						);
 
 						$enable_welcome_email = get_option( 'ig_es_enable_welcome_email', 'no' );
@@ -211,7 +213,7 @@ class Email_Subscribers_Public {
 			'wp_user_id' => 0
 		);
 
-		$contact_data = wp_parse_args($contact_data, $default_data);
+		$contact_data = wp_parse_args( $contact_data, $default_data );
 
 		$contact = ES_DB_Contacts::is_subscriber_exist_in_list( $email, $list_id );
 		if ( empty( $contact['contact_id'] ) ) {
@@ -234,7 +236,7 @@ class Email_Subscribers_Public {
 				'subscribed_ip' => null
 			);
 
-			ES_DB_Lists_Contacts::delete_list_contacts( $contact_id, array($list_id) );
+			ES_DB_Lists_Contacts::delete_list_contacts( $contact_id, array( $list_id ) );
 
 			$result = ES_DB_Lists_Contacts::add_lists_contacts( $list_contact_data );
 		}

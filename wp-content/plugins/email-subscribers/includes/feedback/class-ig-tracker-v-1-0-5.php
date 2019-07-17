@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'IG_Tracker_V_1_0_1' ) ) {
+if ( ! class_exists( 'IG_Tracker_V_1_0_5' ) ) {
 
 	/**
 	 * Icegram tracker.
@@ -14,7 +14,7 @@ if ( ! class_exists( 'IG_Tracker_V_1_0_1' ) ) {
 	 *
 	 * @since 1.0.0
 	 */
-	class IG_Tracker_V_1_0_1 {
+	class IG_Tracker_V_1_0_5 {
 
 		/**
 		 * Get Active, Inactive or all plugins info
@@ -30,6 +30,8 @@ if ( ! class_exists( 'IG_Tracker_V_1_0_1' ) ) {
 				'inactive_plugins' => array()
 			);
 
+			// Check if get_plugins() function exists. This is required on the front end of the
+			// site, since it is in a file that is normally only loaded in the admin.
 			if ( ! function_exists( 'get_plugins' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}
@@ -42,7 +44,6 @@ if ( ! class_exists( 'IG_Tracker_V_1_0_1' ) ) {
 				$active_plugins             = ! empty( $active_plugins ) ? array_merge( $sitewide_activated_plugins, $active_plugins ) : $sitewide_activated_plugins;
 			}
 
-			$i = 0;
 			foreach ( $all_plugins as $plugin_path => $plugin ) {
 				// If the plugin isn't active, don't show it.
 				if ( in_array( $plugin_path, $active_plugins ) ) {
@@ -71,8 +72,8 @@ if ( ! class_exists( 'IG_Tracker_V_1_0_1' ) ) {
 				return $plugins['active_plugins'];
 			} elseif ( 'inactive' === $status ) {
 				return $plugins['inactive_plugins'];
-			} elseif('all' === $status) {
-				return array_merge($plugins['active_plugins'], $plugins['inactive_plugins']);
+			} else {
+				return array_merge( $plugins['active_plugins'], $plugins['inactive_plugins'] );
 			}
 		}
 

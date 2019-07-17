@@ -180,7 +180,6 @@ class BWGViewThumbnails extends BWGViewSite {
       background-color: #<?php echo $theme_row->thumb_bg_color; ?>;
       border: <?php echo $theme_row->thumb_border_width; ?>px <?php echo $theme_row->thumb_border_style; ?> #<?php echo $theme_row->thumb_border_color; ?>;
       opacity: <?php echo number_format($theme_row->thumb_transparent / 100, 2, ".", ""); ?>;
-      filter: Alpha(opacity=<?php echo $theme_row->thumb_transparent; ?>);
       border-radius: <?php echo $theme_row->thumb_border_radius; ?>;
       box-shadow: <?php echo $theme_row->thumb_box_shadow; ?>;
     }
@@ -244,7 +243,6 @@ class BWGViewThumbnails extends BWGViewSite {
       justify-content: center;
       align-content: center;
       flex-direction: column;
-      filter: Alpha(opacity=0);
       opacity: 0;
     }
 	  <?php
@@ -275,7 +273,6 @@ class BWGViewThumbnails extends BWGViewSite {
       height: 100%;
       left: -3000px;
       opacity: 0;
-      filter: Alpha(opacity=0);
       position: absolute;
       top: 0;
       width: 100%;

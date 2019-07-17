@@ -387,9 +387,9 @@ class bwg_UploadHandler {
 
   protected function upcount_name( $name ) {
     return preg_replace_callback('/(?:(?: \(([\d]+)\))?(\.[^.]+))?$/', array(
-                                                                       $this,
-                                                                       'upcount_name_callback',
-                                                                     ), $name, 1);
+      $this,
+      'upcount_name_callback',
+    ), $name, 1);
   }
 
   protected function get_unique_filename( $name, $type, $index, $content_range ) {
@@ -501,6 +501,30 @@ class bwg_UploadHandler {
       default:
         $file->error = 'Failed to create scaled versions: ' . implode($failed_versions, ', ');
     }
+
+    if ( !$file->error ) {
+      global $wpdb;
+      $file->filename = str_replace("_", " ", substr($file->name, 0, strrpos($file->name, '.')));
+      $file_ex = explode('.', $file->name);
+      $file->type = strtolower(end($file_ex));
+      $file->thumb = $file->name;
+      $file->size = (int) ($file->size / 1024) . ' KB';
+      // ini_set('allow_url_fopen',1);
+      $image_info = @getimagesize(htmlspecialchars_decode($file->url, ENT_COMPAT | ENT_QUOTES));
+      $file->resolution = $image_info[0] . ' x ' . $image_info[1] . ' px';
+      $meta = WDWLibrary::read_image_metadata($file->dir . '/.original/' . $file->name);
+      $file->alt = (BWG()->options->read_metadata && $meta['title']) ? $meta['title'] : str_replace("_", " ", $file->filename);
+      $file->credit = !empty($meta['credit']) ? $meta['credit'] : '';
+      $file->aperture = !empty($meta['aperture']) ? $meta['aperture'] : '';
+      $file->camera = !empty($meta['camera']) ? $meta['camera'] : '';
+      $file->caption = !empty($meta['caption']) ? $meta['caption'] : '';
+      $file->iso = !empty($meta['iso']) ? $meta['iso'] : '';
+      $file->orientation = !empty($meta['orientation']) ? $meta['orientation'] : '';
+      $file->copyright = !empty($meta['copyright']) ? $meta['copyright'] : '';
+      $file->tags = !empty($meta['tags']) ? $meta['tags'] : '';
+
+      $wpdb->insert($wpdb->prefix . 'bwg_file_paths', $this->set_file_info($file));
+    }
   }
 
   protected function handle_zip_file( $file_path, $file ) {
@@ -529,6 +553,14 @@ class bwg_UploadHandler {
       }
       $zip->close();
       if ( $allow_extract ) {
+        global $wpdb;
+        $folder = new stdClass();
+        $folder_name = pathinfo($file->name, PATHINFO_FILENAME);
+        $folder->path = '/';
+        $folder->name = $folder_name;
+        $folder->filename = $folder_name;
+        $folder->alt = $folder_name;
+        $wpdb->insert($wpdb->prefix . 'bwg_file_paths', $this->set_folder_info($folder));
         $this->handle_directory($target_dir);
       }
     }
@@ -558,6 +590,7 @@ class bwg_UploadHandler {
             $size = $this->get_file_size($ex_file);
             $file = new stdClass();
             $file->name = $name;
+            $file->path = "/" . trailingslashit(pathinfo($target_dir, PATHINFO_FILENAME));
             $file->size = $this->fix_integer_overflow(intval($size));
             $file->type = $type;
             $file->url = $this->get_download_url($file);
@@ -690,24 +723,6 @@ class bwg_UploadHandler {
           $file->error = 'abort';
         }
       }
-      $file->filename = str_replace("_", " ", substr($file->name, 0, strrpos($file->name, '.')));
-      $file_ex = explode('.', $file->name);
-      $file->type = strtolower(end($file_ex));
-      $file->thumb = $file->name;
-      $file->size = (int) ($file->size / 1024) . ' KB';
-      // ini_set('allow_url_fopen',1);
-      $image_info = @getimagesize(htmlspecialchars_decode($file->url, ENT_COMPAT | ENT_QUOTES));
-      $file->resolution = $image_info[0] . ' x ' . $image_info[1] . ' px';
-      $meta = WDWLibrary::read_image_metadata($file->dir . '/.original/' . $file->name);
-      $file->alt = (BWG()->options->read_metadata && $meta['title']) ? $meta['title'] : str_replace("_", " ", $file->filename);
-      $file->credit = !empty($meta['credit']) ? $meta['credit'] : '';
-      $file->aperture = !empty($meta['aperture']) ? $meta['aperture'] : '';
-      $file->camera = !empty($meta['camera']) ? $meta['camera'] : '';
-      $file->caption = !empty($meta['caption']) ? $meta['caption'] : '';
-      $file->iso = !empty($meta['iso']) ? $meta['iso'] : '';
-      $file->orientation = !empty($meta['orientation']) ? $meta['orientation'] : '';
-      $file->copyright = !empty($meta['copyright']) ? $meta['copyright'] : '';
-      $file->tags = !empty($meta['tags']) ? $meta['tags'] : '';
       $this->set_file_delete_properties($file);
     }
 
@@ -920,14 +935,6 @@ class bwg_UploadHandler {
       // $_FILES is a one-dimensional array:
       $files[] = $this->handle_file_upload(isset($upload['tmp_name']) ? $upload['tmp_name'] : NULL, $filename, $size ? $size : (isset($upload['size']) ? $upload['size'] : $_SERVER['CONTENT_LENGTH']), isset($upload['type']) ? $upload['type'] : $_SERVER['CONTENT_TYPE'], isset($upload['error']) ? $upload['error'] : NULL, NULL, $content_range, $path);
     }
-    if ( !empty($files) ) {
-      foreach ( $files as $file ) {
-        if ( empty($file->error) ) {
-          $wpdb->insert($wpdb->prefix . 'bwg_file_paths', $this->set_file_info($file));
-        }
-      }
-    }
-
     return $this->generate_response(array( $this->options['param_name'] => $files ), $print_response);
   }
 

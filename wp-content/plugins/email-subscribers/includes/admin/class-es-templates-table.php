@@ -45,11 +45,11 @@ class ES_Templates_Table {
         </p>
 
         <p id="post_notification">
-            <a href="https://www.icegram.com/documentation/es-what-are-the-available-keywords-in-the-post-notifications/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php _e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php _e( 'for Post Notification: ', 'email-subsribers' ); ?> {{NAME}}, {{EMAIL}},
+            <a href="https://www.icegram.com/documentation/es-what-are-the-available-keywords-in-the-post-notifications/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php _e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php _e( 'for Post Notification: ', 'email-subsribers' ); ?> {{FIRSTNAME}}, {{LASTNAME}}, {{NAME}}, {{EMAIL}},
             {{DATE}}, {{POSTTITLE}}, {{POSTIMAGE}}, {{POSTEXCERPT}}, {{POSTDESC}},
             {{POSTAUTHOR}}, {{POSTLINK}}, {{POSTLINK-WITHTITLE}}, {{POSTLINK-ONLY}}, {{POSTFULL}} </p>
         <p id="newsletter">
-            <a href="https://www.icegram.com/documentation/es-what-are-the-available-keywords-in-the-newsletters/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php _e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php _e( 'for Newsletter:', 'email-subscribers' ); ?> {{NAME}}, {{EMAIL}} </p>
+            <a href="https://www.icegram.com/documentation/es-what-are-the-available-keywords-in-the-newsletters/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php _e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php _e( 'for Newsletter:', 'email-subscribers' ); ?> {{FIRSTNAME}}, {{LASTNAME}}, {{NAME}}, {{EMAIL}} </p>
 		<?php
 	}
 

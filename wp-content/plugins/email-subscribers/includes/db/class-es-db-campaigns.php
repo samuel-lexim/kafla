@@ -41,6 +41,7 @@ class ES_DB_Campaigns {
 			'created_at'       => '%s',
 			'updated_at'       => '%s',
 			'deleted_at'       => '%s',
+			'meta'       => '%s'
 		);
 	}
 
@@ -65,7 +66,8 @@ class ES_DB_Campaigns {
 			'status'           => 0,
 			'created_at'       => ig_get_current_date_time(),
 			'updated_at'       => null,
-			'deleted_at'       => null
+			'deleted_at'       => null,
+			'meta'       => null
 		);
 	}
 
@@ -74,7 +76,7 @@ class ES_DB_Campaigns {
 
 
 		$campiagns_table = IG_CAMPAIGNS_TABLE;
-		$query           = "INSERT INTO {$campiagns_table} (`slug`, `name`, `type`, `from_name`, `from_email`, `reply_to_name`, `reply_to_email`, `sequence_ids`, `categories`, `list_ids`, `base_template_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES ";
+		$query           = "INSERT INTO {$campiagns_table} (`slug`, `name`, `type`, `from_name`, `from_email`, `reply_to_name`, `reply_to_email`, `sequence_ids`, `categories`, `list_ids`, `base_template_id`, `status`, `created_at`, `updated_at`, `deleted_at`, `meta`) VALUES ";
 		$query           .= implode( ', ', $place_holders );
 		$sql             = $wpdb->prepare( "$query ", $values );
 
@@ -107,7 +109,6 @@ class ES_DB_Campaigns {
 
 		$campaigns_data = $prepared_data['data'];
 		$column_formats = $prepared_data['column_formats'];
-
 		if ( $insert ) {
 			$result = $wpdb->insert( IG_CAMPAIGNS_TABLE, $campaigns_data, $column_formats );
 			if ( $result ) {

@@ -894,7 +894,7 @@ Class ES_Common {
 			'force'         => false
 		);
 
-		$params = wp_parse_args($params, $default_params);
+		$params = wp_parse_args( $params, $default_params );
 
 		if ( ! empty( $params['event'] ) ) {
 
@@ -925,22 +925,45 @@ Class ES_Common {
 					$feedback->render_stars( $params );
 				} elseif ( 'emoji' === $params['type'] ) {
 					$feedback->render_emoji( $params );
+				} elseif ( 'feedback' === $params['type'] ) {
+					$feedback->render_general_feedback( $params );
 				}
 			}
 		}
 
 	}
 
+	public static function get_all_settings() {
+
+		global $wpdb;
+
+		$query = "SELECT option_name, option_value FROM {$wpdb->prefix}options WHERE option_name LIKE 'ig_es_%' AND option_name != 'ig_es_managed_blocked_domains' ";
+
+		$results = $wpdb->get_results( $query, ARRAY_A );
+
+		$options_name_value_map = array();
+		if(count($results) > 0 ) {
+		    foreach ($results as $result) {
+			    $options_name_value_map[$result['option_name']] = $result['option_value'];
+            }
+        }
+
+		return $options_name_value_map;
+	}
+
 	public static function get_ig_es_meta_info() {
 
 		$total_contacts           = ES_DB_Contacts::get_total_subscribers();
+		$total_lists              = ES_DB_Lists::count_lists();
 		$total_newsletters        = ES_DB_Campaigns::get_total_campaigns_by_type( 'newsletter' );
 		$total_post_notifications = ES_DB_Campaigns::get_total_campaigns_by_type( 'post_notification' );
 
 		$meta_info = array(
 			'total_contacts'           => $total_contacts,
+			'total_lists'              => $total_lists,
 			'total_newsletters'        => $total_newsletters,
-			'total_post_notifications' => $total_post_notifications
+			'total_post_notifications' => $total_post_notifications,
+			'settings'                 => self::get_all_settings()
 		);
 
 		return $meta_info;

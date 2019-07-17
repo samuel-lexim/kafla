@@ -3,7 +3,7 @@
  * Plugin Name: Photo Gallery
  * Plugin URI: https://10web.io/plugins/wordpress-photo-gallery/?utm_source=photo_gallery&utm_medium=free_plugin
  * Description: This plugin is a fully responsive gallery plugin with advanced functionality.  It allows having different image galleries for your posts and pages. You can create unlimited number of galleries, combine them into albums, and provide descriptions and tags.
- * Version: 1.5.27
+ * Version: 1.5.30
  * Author: Photo Gallery Team
  * Author URI: https://10web.io/plugins/?utm_source=photo_gallery&utm_medium=free_plugin
  * License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -84,8 +84,8 @@ final class BWG {
     $this->plugin_dir = WP_PLUGIN_DIR . "/" . plugin_basename(dirname(__FILE__));
     $this->plugin_url = plugins_url(plugin_basename(dirname(__FILE__)));
     $this->main_file = plugin_basename(__FILE__);
-    $this->plugin_version = '1.5.27';
-    $this->db_version = '1.5.27';
+    $this->plugin_version = '1.5.30';
+    $this->db_version = '1.5.30';
     $this->prefix = 'bwg';
     $this->nicename = __('Photo Gallery', $this->prefix);
 
@@ -581,7 +581,7 @@ final class BWG {
       'bwg_access_token'  => __('You do not have Instagram access token. Sign in with Instagram in Options -> Advanced tab -> Social. ', $this->prefix),
       'bwg_client_id' => __('You do not have Instagram CLIENT_ID. Input its value in Options->Embed options.', $this->prefix),
       'bwg_post_number'  => __('Instagram recent post number must be between 1 and 33.', $this->prefix),
-      'bwg_not_empty'  => __('Gallery type cannot be changed, since it is not empty. In case you would like to have Instagram or Facebook gallery, please create a new one.', $this->prefix),
+      'bwg_not_empty'  => __('Gallery type cannot be changed, since it is not empty. In case you would like to have Instagram gallery, please create a new one.', $this->prefix),
       'bwg_enter_url'  => __('Please enter url to embed.', $this->prefix),
       'bwg_cannot_response'  => __('Error: cannot get response from the server.', $this->prefix),
       'bwg_something_wrong'  => __('Error: something wrong happened at the server.', $this->prefix),
@@ -1003,14 +1003,15 @@ final class BWG {
       var bwg_admin_ajax = '<?php echo add_query_arg(array('action' => 'shortcode_' . $this->prefix), admin_url('admin-ajax.php')); ?>';
       var bwg_ajax_url = '<?php echo add_query_arg(array('action' => ''), admin_url('admin-ajax.php')); ?>';
       var bwg_plugin_url = '<?php echo BWG()->plugin_url; ?>';
-      jQuery(document).ready(function () {
+      document.addEventListener('DOMContentLoaded', function(){ // Analog of $(document).ready(function(){
         bwg_check_ready = function () {}
-        jQuery(document).keyup(function(e) {
+        document.onkeyup = function(e){
           if ( e.keyCode == 27 ) {
             bwg_remove_loading_block();
           }
-        });
+        };
       });
+
       // Set shortcode popup dimensions.
       function bwg_set_shortcode_popup_dimensions() {
         var H = jQuery(window).height(), W = jQuery(window).width();
@@ -1401,6 +1402,7 @@ final class BWG {
       'select_all' => __('Select all', $this->prefix),
       'lazy_load'=> BWG()->options->lazyload_images,
       'lazy_loader'=> BWG()->plugin_url."/images/ajax_loader.png",
+      'front_ajax' => BWG()->options->front_ajax,
     ));
   }
 
@@ -1954,11 +1956,11 @@ if ( !BWG()->is_pro ) {
     'plugin_slug' => 'photo-gallery', // Current plugin slug.
     'plugin_url' => BWG()->plugin_url, // Current plugin URL.
     'plugin_id' => 101, // Current plugin id.
-    'text' => sprintf(__("%s Photo Gallery advises:%s %sCheck your website's performance and improve the speed in just minutes.%s", BWG()->prefix), '<span>', '</span>', '<span>', '</span>'), // Banner text.
+    'text' => sprintf(__("%s Photo Gallery advises:%s %sCheck your website’s performance, optimize images and improve the speed in just minutes.%s", BWG()->prefix), '<span>', '</span>', '<span>', '</span>'), // Banner text.
     'slug' => '10web-manager', // Plugin slug to be installed.
     'mu_plugin_slug' => '10web-manager', // Must use plugin slug.
     'base_php' => '10web-manager.php', // Plugin base php filename to be installed.
     'page_url' => admin_url('admin.php?page=tenweb_menu'), // Redirect to URL after activating the plugin.
   );
-  new TWBanner($tw_banner_params);
+//  new TWBanner($tw_banner_params);
 }

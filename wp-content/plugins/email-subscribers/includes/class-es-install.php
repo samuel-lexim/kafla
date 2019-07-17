@@ -111,6 +111,12 @@ class ES_Install {
 		'4.1.1' => array(
 			'ig_es_update_411_alter_contacts_table',
 			'ig_es_update_411_db_version'
+		),
+
+		'4.1.7' => array(
+			'ig_es_update_417_alter_campaigns_table',
+			'ig_es_update_417_alter_mailing_queue_table',
+			'ig_es_update_417_db_version'
 		)
 	);
 
@@ -222,6 +228,8 @@ class ES_Install {
 	public static function delete_update_transient() {
 		global $wpdb;
 
+		delete_option('ig_es_processed_update_tasks');
+
 		$transient_like               = $wpdb->esc_like( '_transient_ig_es_update_' ) . '%';
 		$updating_like                = $wpdb->esc_like( '_transient_ig_es_updating' ) . '%';
 		$last_sent_queue_like         = '%' . $wpdb->esc_like( '_last_sending_queue_batch_run' ) . '%';
@@ -230,6 +238,7 @@ class ES_Install {
 		$query = "DELETE FROM {$wpdb->prefix}options WHERE option_name LIKE '{$transient_like}' OR option_name LIKE '{$updating_like}' OR option_name LIKE '{$last_sent_queue_like}' OR option_name LIKE '{$running_migration_queue_like}' ";
 
 		$wpdb->query( $query );
+
 	}
 
 	public static function is_new_install() {
@@ -274,7 +283,6 @@ class ES_Install {
 		// Check if we are not already running this routine.
 		if ( 'yes' === get_transient( 'ig_es_updating' ) ) {
 			self::$logger->info( '********* Update is already running..... ****** ' );
-
 			return;
 		}
 
@@ -368,7 +376,7 @@ class ES_Install {
 			'ig_es_enable_welcome_email'            => array( 'default' => 'yes', 'old_option' => 'ig_es_welcomeemail', 'action' => 'convert_space_to_underscore' ),
 			'ig_es_welcome_email_subject'           => array( 'default' => $welcome_email_subject, 'old_option' => 'ig_es_welcomesubject' ),
 			'ig_es_welcome_email_content'           => array( 'default' => $welcome_email_content, 'old_option' => 'ig_es_welcomecontent' ),
-			'ig_es_enable_cron_admin_email'         => array( 'default' => $cron_admin_email, 'old_option' => 'ig_es_enable_cron_adminmail' ),
+			'ig_es_enable_cron_admin_email'         => array( 'default' => 'yes', 'old_option' => 'ig_es_enable_cron_adminmail' ),
 			'ig_es_cron_admin_email'                => array( 'default' => $cron_admin_email, 'old_option' => 'ig_es_cron_adminmail' ),
 			'ig_es_cronurl'                         => array( 'default' => $cronurl, 'old_option' => 'ig_es_cronurl' ),
 			'ig_es_hourly_email_send_limit'         => array( 'default' => 300, 'old_option' => 'ig_es_cron_mailcount' ),
@@ -377,8 +385,8 @@ class ES_Install {
 			'ig_es_unsubscribe_link'                => array( 'default' => $unsublink, 'old_option' => 'ig_es_unsublink' ),
 			'ig_es_optin_link'                      => array( 'default' => $optinlink, 'old_option' => 'ig_es_optinlink' ),
 			'ig_es_unsubscribe_link_content'        => array( 'default' => $unsubscribe_link_content, 'old_option' => 'ig_es_unsubcontent' ),
-			'ig_es_email_type'                      => array( 'default' => 'wp_mail_html', 'old_option' => 'ig_es_emailtype', 'action' => 'convert_space_to_underscore' ),
-			'ig_es_notify_admin'                    => array( 'default' => 'no', 'old_option' => 'ig_es_notifyadmin', 'action' => 'convert_space_to_underscore' ),
+			'ig_es_email_type'                      => array( 'default' => 'wp_html_mail', 'old_option' => 'ig_es_emailtype', 'action' => 'convert_space_to_underscore' ),
+			'ig_es_notify_admin'                    => array( 'default' => 'yes', 'old_option' => 'ig_es_notifyadmin', 'action' => 'convert_space_to_underscore' ),
 			'ig_es_optin_type'                      => array( 'default' => 'double_opt_in', 'old_option' => 'ig_es_optintype', 'action' => 'convert_space_to_underscore' ),
 			'ig_es_subscription_error_messsage'     => array( 'default' => $subscription_error_messsage, 'old_option' => 'ig_es_suberror' ),
 			'ig_es_subscription_success_message'    => array( 'default' => "You have been successfully subscribed.", 'old_option' => 'ig_es_successmsg' ),
@@ -436,6 +444,7 @@ class ES_Install {
 				`list_ids` text NOT NULL,
 				`base_template_id` int(10) NOT NULL,
 				`status` tinyint(4) NOT NULL,
+				`meta` longtext DEFAULT NULL,
 				`created_at` datetime DEFAULT NULL,
 				`updated_at` datetime DEFAULT NULL,
 				`deleted_at` datetime DEFAULT NULL,
@@ -528,6 +537,7 @@ class ES_Install {
 				`status` varchar(10) NOT NULL,
 				`start_at` datetime DEFAULT NULL,
 				`finish_at` datetime DEFAULT NULL,
+				`meta` longtext DEFAULT NULL,
 				`created_at` datetime DEFAULT NULL,
 				`updated_at` datetime DEFAULT NULL,
                 PRIMARY KEY  (id)
@@ -618,8 +628,8 @@ class ES_Install {
 		 * - Send Email.
 		 */
 
-		$admin_name  = ES_Common::get_ig_option( 'admin_name' );
-		$admin_email = ES_Common::get_ig_option( 'admin_email' );
+		$from_name  = ES_Common::get_ig_option( 'from_name' );
+		$from_email = ES_Common::get_ig_option( 'from_email' );
 
 		// Create Default Template
 		$sample = '<strong style="color: #990000">What can you achieve using Email Subscribers?</strong><p>Add subscription forms on website, send HTML newsletters & automatically notify subscribers about new blog posts once it is published.';
@@ -662,8 +672,8 @@ class ES_Install {
 				$data['slug']             = sanitize_title( $title );
 				$data['name']             = $title;
 				$data['type']             = 'newsletter';
-				$data['from_email']       = $data['reply_to_email'] = $admin_email;
-				$data['from_name']        = $data['reply_to_name'] = $admin_name;
+				$data['from_email']       = $data['reply_to_email'] = $from_email;
+				$data['from_name']        = $data['reply_to_name'] = $from_name;
 				$data['list_ids']         = $list_id;
 				$data['base_template_id'] = $post_id;
 				$data['status']           = 1;
@@ -701,8 +711,8 @@ class ES_Install {
 
 					// Newsletter Send
 
-					$email_template = ES_Common::convert_es_templates( $sample, $admin_name, $admin_email, $email_created );
-					$response       = ES_Mailer::send( $admin_email, $title, $email_template );
+					$email_template = ES_Common::convert_es_templates( $sample, $from_name, $from_email, $email_created );
+					$response       = ES_Mailer::send( $from_email, $title, $email_template );
 					if ( ! empty( $response ) && $response['status'] === 'SUCCESS' ) {
 						//update sent details
 						$emails = ES_DB_Sending_Queue::get_emails_to_be_sent_by_hash( $guid, 5 );
@@ -724,8 +734,8 @@ class ES_Install {
 
 	public static function create_and_send_default_post_notification() {
 
-		$admin_name  = ES_Common::get_ig_option( 'admin_name' );
-		$admin_email = ES_Common::get_ig_option( 'admin_email' );
+		$from_name  = ES_Common::get_ig_option( 'from_name' );
+		$from_email = ES_Common::get_ig_option( 'from_email' );
 
 		$content = "Hello {{NAME}},\r\n\r\n";
 		$content .= "We have published a new blog article on our website : {{POSTTITLE}}\r\n";
@@ -774,8 +784,8 @@ class ES_Install {
 			$data['slug']             = sanitize_title( $title );
 			$data['name']             = $title;
 			$data['type']             = 'post_notification';
-			$data['from_email']       = $data['reply_to_email'] = $admin_email;
-			$data['from_name']        = $data['reply_to_name'] = $admin_name;
+			$data['from_email']       = $data['reply_to_email'] = $from_name;
+			$data['from_name']        = $data['reply_to_name'] = $from_email;
 			$data['categories']       = $categories_str;
 			$data['list_ids']         = $list_id;
 			$data['base_template_id'] = $post_id;
@@ -823,8 +833,8 @@ class ES_Install {
 					$email_created = time();
 
 					// Post Notification Send Send
-					$email_template = ES_Common::convert_es_templates( $content, $admin_name, $admin_email, $email_created );
-					$response       = ES_Mailer::send( $admin_email, $title, $email_template );
+					$email_template = ES_Common::convert_es_templates( $content, $from_name, $from_email, $email_created );
+					$response       = ES_Mailer::send( $from_email, $title, $email_template );
 					if ( ! empty( $response ) && $response['status'] === 'SUCCESS' ) {
 						//update sent details
 						$emails = ES_DB_Sending_Queue::get_emails_to_be_sent_by_hash( $guid, 5 );
@@ -884,8 +894,8 @@ class ES_Install {
 				'params' => array(
 					'label'    => 'Lists',
 					'show'     => false,
-					'required' => false,
-					'values'   => $list_id
+					'required' => true,
+					'values'   => array( $list_id )
 				),
 
 				'position' => 3
@@ -906,7 +916,7 @@ class ES_Install {
 		);
 
 		$settings = array(
-			'lists' => $list_id,
+			'lists' => array( $list_id ),
 			'desc'  => ''
 		);
 

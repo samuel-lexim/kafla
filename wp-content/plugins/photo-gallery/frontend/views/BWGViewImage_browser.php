@@ -313,7 +313,6 @@ class BWGViewImage_browser extends BWGViewSite {
 		  font-family: <?php echo $params['watermark_font']; ?>;
 		  color: #<?php echo $params['watermark_color']; ?> !important;
 		  opacity: <?php echo number_format($params['watermark_opacity'] / 100, 2, ".", ""); ?>;
-		  filter: Alpha(opacity=<?php echo $params['watermark_opacity']; ?>);
 		  text-decoration: none;
 		  position: relative;
 		  z-index: 10141;
@@ -367,35 +366,34 @@ class BWGViewImage_browser extends BWGViewSite {
       /*watermark*/
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_watermark_text_<?php echo $bwg; ?>,
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_watermark_text_<?php echo $bwg; ?>:hover {
-		text-decoration: none;
-		margin: 4px;
-		font-size: <?php echo $params['watermark_font_size']; ?>px;
-		font-family: <?php echo $params['watermark_font']; ?>;
-		color: #<?php echo $params['watermark_color']; ?> !important;
-		opacity: <?php echo number_format($params['watermark_opacity'] / 100, 2, ".", ""); ?>;
-		filter: Alpha(opacity=<?php echo $params['watermark_opacity']; ?>);
-		position: relative;
-		z-index: 10141;
+        text-decoration: none;
+        margin: 4px;
+        font-size: <?php echo $params['watermark_font_size']; ?>px;
+        font-family: <?php echo $params['watermark_font']; ?>;
+        color: #<?php echo $params['watermark_color']; ?> !important;
+        opacity: <?php echo number_format($params['watermark_opacity'] / 100, 2, ".", ""); ?>;
+        position: relative;
+        z-index: 10141;
       }
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_image_browser_image_contain_<?php echo $bwg; ?>{
-		position: absolute;
-		text-align: center;
-		vertical-align: middle;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
       }
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_image_browser_watermark_contain_<?php echo $bwg; ?>{
         display: table;
-		vertical-align: middle;
-		width: 100%;
-		height: 100%;
+        vertical-align: middle;
+        width: 100%;
+        height: 100%;
       }	 
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_image_browser_watermark_cont_<?php echo $bwg; ?>{
         display: table-cell;
-		text-align: <?php echo $text_align; ?>;
-		position: relative;
-		vertical-align: <?php echo $vertical_align; ?>;
+        text-align: <?php echo $text_align; ?>;
+        position: relative;
+        vertical-align: <?php echo $vertical_align; ?>;
       }
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_image_browser_watermark_<?php echo $bwg; ?>{
 		display: inline-block;
@@ -416,11 +414,10 @@ class BWGViewImage_browser extends BWGViewSite {
 		margin: 10px 10px 10px 10px;
       }
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_image_browser_watermark_img_<?php echo $bwg; ?>{
-		max-width: 100%;
-		opacity: <?php echo number_format($params['watermark_opacity'] / 100, 2, ".", ""); ?>;
-		filter: Alpha(opacity=<?php echo $params['watermark_opacity']; ?>);
-		position: relative;
-		z-index: 10141;
+        max-width: 100%;
+        opacity: <?php echo number_format($params['watermark_opacity'] / 100, 2, ".", ""); ?>;
+        position: relative;
+        z-index: 10141;
       }
       #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_none_selectable {
         -webkit-touch-callout: none;

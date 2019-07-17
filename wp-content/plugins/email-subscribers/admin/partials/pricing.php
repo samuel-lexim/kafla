@@ -38,15 +38,37 @@ if ( ! defined( 'ABSPATH' ) ) {
     .button.green-light{
         background: #4fad43;
     }
+    .es-btn-wrapper{
+        display: inline-block;
+    }
+    .es-monthly{
+        font-size: 1.2em; margin-top: 1.2em;
+    }
+    .es-monthly-wrapper{
+        width: 80%; padding-top: 0.7em; 
+    }
     @media only screen and (max-width: 1362px) {
     	.es-starter-gopro img{
     		width: 90%;
     	}
+        .es-monthly-wrapper{
+            width: 65%;
+        }
     }
 </style>
 <div class="es-starter-gopro">
-	<img src="<?php echo EMAIL_SUBSCRIBERS_URL.'/admin/images/pricing.png' ?>"/><br/>
-	<a class="button large green-light" href="https://www.icegram.com/email-subscribers-pricing/?utm_source=in_app&utm_medium=go_pro_monthly&utm_campaign=starter_launch" target="_blank"> <?php _e('Get Started @ $9/month', 'email-subscribers') ?></a> 
-	<div class="mid-or">OR</div> 
-	<a class="button large green"  href="https://www.icegram.com/email-subscribers-pricing/?utm_source=in_app&utm_medium=go_pro_yearly&utm_campaign=starter_launch" target="_blank"> <?php _e('Get Started @ $49/year', 'email-subscribers') ?></a>
+    <img class="ig-es-pricing-img" src="<?php echo EMAIL_SUBSCRIBERS_URL.'/admin/images/email-subscribers-pricing.png' ?>"/><br/>
+    <h1><?php _e('Ready to Grow Your Audience?', 'email-subscribers'); ?></h1>
+    <div class="es-btn-wrapper">
+        <a class="button large green-light" href="https://www.icegram.com/?buy-now=407190&qty=1&page=6&with-cart=0&utm_source=in_app&utm_medium=go_starter_yearly&utm_campaign=es_upsale" target="_blank"> <?php _e('Get Starter @ $49/year', 'email-subscribers') ?></a>
+    </div>
+    <div class="mid-or"></div>
+    <div class="es-btn-wrapper"> 
+        <a class="button large green"  href="https://www.icegram.com/?buy-now=39944&qty=1&page=6&with-cart=0&utm_source=in_app&utm_medium=go_pro_yearly&utm_campaign=es_upsale" target="_blank"> <?php _e('Get Pro @ $129/year', 'email-subscribers') ?></a>
+    </div>
+    <div class="es-monthly-wrapper">
+        <a class="es-monthly" href="https://www.icegram.com/?buy-now=409349&qty=1&page=6&with-cart=0&utm_source=in_app&utm_medium=go_starter_monthly&utm_campaign=es_upsale" target="_blank"> <?php _e('OR @ $9/month', 'email-subscribers') ?></a>
+    </div>
 </div>
+
+

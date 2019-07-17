@@ -100,13 +100,16 @@ abstract class ES_Background_Process extends WP_Background_Process {
 
 			$logger->info( '--------------------- Started To Run Task Again---------------------', array( 'source' => 'es_update' ) );
 			foreach ( $batch->data as $key => $value ) {
-				$task_transient = $value . '_processed';
-
-				$task = false; // By default it's set to false
+				$is_value_exists = true;
+				//$task_transient = $value . '_processed';
+				$ig_es_update_processed_tasks = get_option( 'ig_es_processed_update_tasks', array() );
+				$task                         = false; // By default it's set to false
 				$logger->info( '-------- Checking Transient For: ' . $value, array( 'source' => 'es_update' ) );
-				if ( false === get_transient( $task_transient ) ) {
+				//if ( false === get_transient( $task_transient ) ) {
+				if ( ! in_array( $value, $ig_es_update_processed_tasks ) ) {
+					$is_value_exists = false;
 					$logger->info( '------- Running Task: >>>>>  ' . $value, array( 'source' => 'es_update' ) );
-					$task = $this->task( $value );
+					$task = (bool) $this->task( $value );
 					$logger->info( '------ Task Completed: >>>>>  ' . $value . ' data ' . print_r( $task, true ), array( 'source' => 'es_update' ) );
 				}
 
@@ -114,7 +117,12 @@ abstract class ES_Background_Process extends WP_Background_Process {
 					$batch->data[ $key ] = $task;
 				} else {
 					$logger->info( '---- Setting Transient For: ' . $value, array( 'source' => 'es_update' ) );
-					set_transient( $task_transient, true, MINUTE_IN_SECONDS * 100 );
+
+					if ( ! $is_value_exists ) {
+						$ig_es_update_processed_tasks[] = $value;
+						update_option( 'ig_es_update_processed_tasks', $ig_es_update_processed_tasks );
+					}
+					//set_transient( $task_transient, true, MINUTE_IN_SECONDS * 100 );
 					unset( $batch->data[ $key ] );
 				}
 

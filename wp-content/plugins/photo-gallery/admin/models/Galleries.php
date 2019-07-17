@@ -452,7 +452,7 @@ class GalleriesModel_bwg {
         $filetype = WDWLibrary::get('input_filetype_' . $image_id, '');
         $resolution = WDWLibrary::get('input_resolution_' . $image_id, '');
         $resolution_thumb = WDWLibrary::get('input_resolution_thumb_' . $image_id, '');
-        if( $resolution_thumb == '' && $thumb_url != '' ) {
+        if( ($resolution_thumb == '' || $resolution_thumb == 'x') && $thumb_url != '' ) {
           $resolution_thumb = WDWLibrary::get_thumb_size( $thumb_url );
         }
         $order = (int) WDWLibrary::get('order_input_' . $image_id, 0);
@@ -501,6 +501,8 @@ class GalleriesModel_bwg {
           $image_id = $new_image_id;
         }
         else {
+          $resolution_thumb = WDWLibrary::get_thumb_size( $thumb_url );
+          $data['resolution_thumb'] = $resolution_thumb;
           $save = $wpdb->update($wpdb->prefix . 'bwg_image', $data, array( 'id' => $image_id ));
         }
 

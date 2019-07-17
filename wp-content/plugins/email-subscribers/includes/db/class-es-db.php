@@ -148,7 +148,7 @@ abstract class ES_DB {
 
 		$query = "INSERT INTO {$table_name} ({$fields_str}) VALUES ";
 		$query .= implode( ', ', $place_holders );
-		$sql   = $wpdb->prepare( "$query ", $values );
+		$sql   = $wpdb->prepare( $query, $values );
 
 		if ( $wpdb->query( $sql ) ) {
 			return true;

@@ -3,9 +3,9 @@
 /**
  * Plugin Name: Mobile Menu
  * Description: An easy to use WordPress responsive mobile menu. Keep your mobile visitors engaged.
- * Version: 2.7.4.2
+ * Version: 2.7.4.4
  * Plugin URI: https://www.wpmobilemenu.com/
- * Author: Takanakui
+ * Author: Rui Guerreiro
  * Author URI: https://www.jedipress.com/
  * Tested up to: 5.2
  * Text Domain: mobile-menu
@@ -15,7 +15,7 @@
 if ( !defined( 'ABSPATH' ) ) {
     die;
 }
-define( 'WP_MOBILE_MENU_VERSION', '2.7.4.2' );
+define( 'WP_MOBILE_MENU_VERSION', '2.7.4.4' );
 define( 'WP_MOBILE_MENU_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 if ( !class_exists( 'WP_Mobile_Menu' ) ) {
     /**
@@ -81,8 +81,6 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
             add_action( 'wp_loaded', array( $this->mobmenu_core, 'register_sidebar' ) );
             // Register Menus.
             add_action( 'init', array( $this->mobmenu_core, 'register_menus' ) );
-            // Register Dynamic Translation Strings.
-            add_action( 'init', array( $this->mobmenu_core, 'register_strings_for_translation' ) );
             // Load frontend assets.
             if ( !is_admin() ) {
                 add_action( 'init', array( $this, 'load_frontend_assets' ) );
@@ -116,22 +114,23 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
                 // Include Freemius SDK.
                 require_once dirname( __FILE__ ) . '/freemius/start.php';
                 $mm_fs = fs_dynamic_init( array(
-                    'id'             => '235',
-                    'slug'           => 'mobile-menu',
-                    'type'           => 'plugin',
-                    'public_key'     => 'pk_1ec93edfb66875251b62505b96489',
-                    'premium_suffix' => 'Premium',
-                    'is_premium'     => false,
-                    'has_addons'     => false,
-                    'has_paid_plans' => true,
-                    'trial'          => array(
+                    'id'              => '235',
+                    'slug'            => 'mobile-menu',
+                    'type'            => 'plugin',
+                    'public_key'      => 'pk_1ec93edfb66875251b62505b96489',
+                    'premium_suffix'  => 'Premium',
+                    'is_premium'      => false,
+                    'has_addons'      => false,
+                    'has_paid_plans'  => true,
+                    'has_affiliation' => 'selected',
+                    'trial'           => array(
                     'days'               => 14,
                     'is_require_payment' => true,
                 ),
-                    'menu'           => array(
+                    'menu'            => array(
                     'slug' => 'mobile-menu-options',
                 ),
-                    'is_live'        => true,
+                    'is_live'         => true,
                 ) );
             }
             

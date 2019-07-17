@@ -91,7 +91,11 @@ class ES_DB_Contacts {
 			if ( count( $subscribers ) > 0 ) {
 				foreach ( $subscribers as $subscriber ) {
 					$name                                              = ES_Common::prepare_name_from_first_name_last_name( $subscriber['first_name'], $subscriber['last_name'] );
-					$subscriber_email_name_map[ $subscriber['email'] ] = $name;
+					$subscriber_email_name_map[ $subscriber['email'] ] = array(
+						'name'       => $name,
+						'first_name' => $subscriber['first_name'],
+						'last_name'  => $subscriber['last_name']
+					);
 				}
 			}
 		}

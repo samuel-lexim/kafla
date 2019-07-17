@@ -1,16 +1,3 @@
-/* Adds a transition and the resting translate state */
-.mob-menu-slideout .mobmenu-push-wrap, .mob-menu-slideout .mob-menu-header-holder {
-    -webkit-transform: translate(0, 0);
-    -moz-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0);
-    -webkit-transition: -webkit-transform .5s;
-    -moz-transition: -moz-transform .5s;
-    -ms-transition: -ms-transform .5s;
-    -o-transition: -o-transform .5s;
-    transition: transform .5s;
-}
 .mob-menu-overlay .mobmenu-panel {
     opacity: 0;
     visibility: hidden;
@@ -133,7 +120,7 @@
     -o-transform: translateX(100%);
     transform: translateX(100%);
 }
-body.admin-bar .mobmenu {
+body.admin-bar .mobmenu, body.admin-bar .mobmenu-panel {
     top: 32px;
 }
 #wpadminbar {
@@ -165,6 +152,7 @@ body.admin-bar .mobmenu {
 #mobmenuleft  li > ul {
     display:none;
     left: 15px;
+    padding-left: 0px;
 }
 .mob-expand-submenu {
     position: relative;
@@ -178,16 +166,11 @@ body.admin-bar .mobmenu {
 #mobmenuright  li > ul {
     display:none;
     left: 15px;
+    padding-left: 0px;
 }
 .rightmbottom, .rightmtop {   
     padding-left: 10px;
     padding-right: 10px;
-}
-.mobmenu-content {
-    z-index: 1;
-    height: 100%;
-    overflow: auto;
-    padding-top: 10px;
 }
 .mobmenu-panel {
     -webkit-transition: -webkit-transform .5s;
@@ -228,9 +211,7 @@ body.admin-bar .mobmenu {
     right: 0;
 }
 .mob-menu-header-holder {
-    width: 100%;
     font-weight:bold;
-    position:fixed;
     top:0px;	
     right: 0px;
     color:#000;
@@ -252,8 +233,12 @@ body.admin-bar .mobmenu {
     font-size: 30px;
 }
 .mobmenu-content {
-    padding-top: 40px;
+    margin-top: 45px;
     padding-bottom: 120px;
+    z-index: 1;
+    height: 100%;
+    overflow: auto;
+    padding-top: 10px;
 }
 .mobmenu-parent-link .mob-expand-submenu {
     cursor: pointer;
@@ -273,8 +258,7 @@ body.admin-bar .mobmenu {
 }
 .mob-expand-submenu .mob-icon-up-open {
     display: none;
-}
-
+  }
 .show-nav-left .mobmenu-overlay, .show-nav-right .mobmenu-overlay {
     width: 100%;
     height: 100%;

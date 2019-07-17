@@ -19,6 +19,7 @@ class ES_Cron {
 	}
 
 	public function handle_cron_request( $es = '', $guid = '' ) {
+
 		$is_wp_cron = false;
 		if ( ! empty( $es ) ) {
 			$es_request = $es;
@@ -27,13 +28,20 @@ class ES_Cron {
 			$es_request = Email_Subscribers::get_request( 'es' );
 		}
 
+		// It's not a cron request. Say Goodbye!
+		if('cron' !== $es_request) {
+			return;
+		}
+
 		$ig_es_disable_wp_cron = get_option( 'ig_es_disable_wp_cron', 'no');
-		if( $is_wp_cron && 'yes' === $ig_es_disable_wp_cron ) return;
+
+		if( $is_wp_cron && 'yes' === $ig_es_disable_wp_cron ) {
+			return;
+		}
 
 		$self = ! empty( $_REQUEST['self'] ) ? $_REQUEST['self'] : 0;
 
 		if ( 'cron' === $es_request ) {
-
 			/*
 			$ig_es_last_cron_run = get_option( 'ig_es_last_cron_run', true );
 			$time_diff           = ( time() - $ig_es_last_cron_run );
@@ -86,13 +94,13 @@ class ES_Cron {
 									 */
 
 									// Get GUID from sentdetails report which are in queue
-									$campign_hash = Email_Subscribers::get_request( 'campaign_hash' );
+									$campaign_hash = Email_Subscribers::get_request( 'campaign_hash' );
 
 									if ( $self ) {
 										$es_c_croncount = ceil( $es_c_croncount / 4 ); // Send 1/4 of total limit
 									}
 
-									$notification      = ES_DB_Mailing_Queue::get_notification_to_be_sent( $campign_hash );
+									$notification      = ES_DB_Mailing_Queue::get_notification_to_be_sent( $campaign_hash );
 									$notification_guid = isset( $notification['hash'] ) ? $notification['hash'] : null;
 
 									if ( ! is_null( $notification_guid ) ) {
@@ -133,6 +141,11 @@ class ES_Cron {
 
 														if ( ! empty( $template ) ) {
 															$subject      = get_option( 'ig_es_cron_admin_email_subject', __( 'Campaign Sent!', 'email-subscribers' ) );
+															$notification = ES_DB_Mailing_Queue::get_notification_by_hash( $notification_guid );
+															if( isset( $notification['subject'] ) ){
+																$subject = str_replace( '{{SUBJECT}}', $notification['subject'], $subject );
+															}
+
 															$admin_emails = explode( ',', $admin_email_addresses );
 															foreach ( $admin_emails as $admin_email ) {
 																$admin_email = trim( $admin_email );

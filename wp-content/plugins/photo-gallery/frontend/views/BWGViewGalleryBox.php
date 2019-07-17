@@ -229,7 +229,6 @@ class BWGViewGalleryBox {
       .spider_popup_wrap .bwg-loading {
         background-color: #<?php echo $theme_row->lightbox_overlay_bg_color; ?>;
         opacity: <?php echo number_format($theme_row->lightbox_overlay_bg_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_overlay_bg_transparent; ?>);
       }
       .bwg_inst_play {
         background-image: url('<?php echo BWG()->plugin_url . '/images/play.png'; ?>');
@@ -250,13 +249,11 @@ class BWGViewGalleryBox {
         font-size: <?php echo $theme_row->lightbox_ctrl_btn_height; ?>px;
         margin: <?php echo $theme_row->lightbox_ctrl_btn_margin_top; ?>px <?php echo $theme_row->lightbox_ctrl_btn_margin_left; ?>px;
         opacity: <?php echo number_format($theme_row->lightbox_ctrl_btn_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_ctrl_btn_transparent; ?>);
       }
       .bwg_toggle_btn {
         color: #<?php echo $theme_row->lightbox_ctrl_btn_color; ?>;
         font-size: <?php echo $theme_row->lightbox_toggle_btn_height; ?>px;
         opacity: <?php echo number_format($theme_row->lightbox_ctrl_btn_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_ctrl_btn_transparent; ?>);
       }
       .bwg_ctrl_btn_container {
         background-color: rgba(<?php echo $rgb_lightbox_ctrl_cont_bg_color['red']; ?>, <?php echo $rgb_lightbox_ctrl_cont_bg_color['green']; ?>, <?php echo $rgb_lightbox_ctrl_cont_bg_color['blue']; ?>, <?php echo number_format($theme_row->lightbox_ctrl_cont_transparent / 100, 2, ".", ""); ?>);
@@ -276,8 +273,6 @@ class BWGViewGalleryBox {
           <?php
         }?>
         height: <?php echo $theme_row->lightbox_ctrl_btn_height + 2 * $theme_row->lightbox_ctrl_btn_margin_top; ?>px;
-        /*opacity: <?php echo number_format($theme_row->lightbox_ctrl_cont_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_ctrl_cont_transparent; ?>);*/
         text-align: <?php echo $theme_row->lightbox_ctrl_btn_align; ?>;
       }
       .bwg_toggle_container {
@@ -299,12 +294,10 @@ class BWGViewGalleryBox {
         }?>
         margin-left: -<?php echo $theme_row->lightbox_toggle_btn_width / 2; ?>px;
         opacity: <?php echo number_format($theme_row->lightbox_ctrl_cont_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_ctrl_cont_transparent; ?>);
         width: <?php echo $theme_row->lightbox_toggle_btn_width; ?>px;
       }
       .bwg_close_btn {
         opacity: <?php echo number_format($theme_row->lightbox_close_btn_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_close_btn_transparent; ?>);
       }
       .spider_popup_close {
         background-color: #<?php echo $theme_row->lightbox_close_btn_bg_color; ?>;
@@ -334,7 +327,6 @@ class BWGViewGalleryBox {
         font-size: <?php echo $theme_row->lightbox_rl_btn_size; ?>px;
         width: <?php echo $theme_row->lightbox_rl_btn_width; ?>px;
         opacity: <?php echo number_format($theme_row->lightbox_rl_btn_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_rl_btn_transparent; ?>);
       }
       #spider_popup_left-ico {
         padding-right: <?php echo ($theme_row->lightbox_rl_btn_width - $theme_row->lightbox_rl_btn_size) / 3; ?>px;
@@ -483,7 +475,7 @@ class BWGViewGalleryBox {
         <?php echo $theme_row->lightbox_filmstrip_pos; ?>: 0;
       }
       .bwg_filmstrip {
-        <?php echo $left_or_top; ?>: 20px;
+        <?php echo $left_or_top; ?>: <?php echo $theme_row->lightbox_filmstrip_rl_btn_size; ?>px;
         <?php echo $width_or_height; ?>: <?php echo ($filmstrip_direction == 'horizontal' ? $image_width - 40 : $image_height - 40); ?>px;
       }
       .bwg_filmstrip_thumbnails {
@@ -507,22 +499,23 @@ class BWGViewGalleryBox {
       }
       .bwg_thumb_deactive {
         opacity: <?php echo number_format($theme_row->lightbox_filmstrip_thumb_deactive_transparent / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $theme_row->lightbox_filmstrip_thumb_deactive_transparent; ?>);
       }
       .bwg_filmstrip_left {
         background-color: #<?php echo $theme_row->lightbox_filmstrip_rl_bg_color; ?>;
         display: <?php echo ($filmstrip_direction == 'horizontal' ? 'table-cell' : 'block') ?>;
-        <?php echo $width_or_height; ?>: 20px;
+        z-index: 99999;
+        <?php echo $width_or_height; ?>: <?php echo $theme_row->lightbox_filmstrip_rl_btn_size; ?>px;
         <?php echo $left_or_top; ?>: 0;
-        <?php echo ($filmstrip_direction == 'horizontal' ? '' : 'position: absolute;') ?>
+        <?php echo ($filmstrip_direction == 'horizontal' ? 'position: relative;' : 'position: absolute;') ?>
         <?php echo ($filmstrip_direction == 'horizontal' ? '' : 'width: 100%;') ?> 
       }
       .bwg_filmstrip_right {
         background-color: #<?php echo $theme_row->lightbox_filmstrip_rl_bg_color; ?>;
         <?php echo($filmstrip_direction == 'horizontal' ? 'right' : 'bottom') ?>: 0;
-        <?php echo $width_or_height; ?>: 20px;
+        z-index: 99999;
+        <?php echo $width_or_height; ?>: <?php echo $theme_row->lightbox_filmstrip_rl_btn_size; ?>px;
         display: <?php echo ($filmstrip_direction == 'horizontal' ? 'table-cell' : 'block') ?>;
-        <?php echo ($filmstrip_direction == 'horizontal' ? '' : 'position: absolute;') ?>
+        <?php echo ($filmstrip_direction == 'horizontal' ? 'position: relative;' : 'position: absolute;') ?>
         <?php echo ($filmstrip_direction == 'horizontal' ? '' : 'width: 100%;') ?>
       }
       .bwg_filmstrip_left i,
@@ -539,7 +532,6 @@ class BWGViewGalleryBox {
         max-height: <?php echo $watermark_height; ?>px;
         max-width: <?php echo $watermark_width; ?>px;
         opacity: <?php echo number_format($watermark_opacity / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $watermark_opacity; ?>);
       }
       .bwg_watermark_text,
       .bwg_watermark_text:hover {
@@ -547,7 +539,6 @@ class BWGViewGalleryBox {
         font-family: <?php echo $watermark_font; ?>;
         color: #<?php echo $watermark_color; ?> !important;
         opacity: <?php echo number_format($watermark_opacity / 100, 2, ".", ""); ?>;
-        filter: Alpha(opacity=<?php echo $watermark_opacity; ?>);
       }
       .bwg_image_info_container1 {
         display: <?php echo $popup_info_always_show ? 'table-cell' : 'none'; ?>;

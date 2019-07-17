@@ -1078,7 +1078,7 @@ msgstr ""
 #: admin/views/Galleries.php:334 photo-gallery.php:558
 msgid ""
 "Gallery type cannot be changed, since it is not empty. In case you would "
-"like to have Instagram or Facebook gallery, please create a new one."
+"like to have Instagram gallery, please create a new one."
 msgstr ""
 
 #: admin/views/Galleries.php:340
@@ -1600,7 +1600,7 @@ msgstr ""
 
 #: admin/views/Options.php:494
 msgid ""
-"Set the interval when Instagram or Facebook galleries will be updated, and "
+"Set the interval when Instagram galleries will be updated, and "
 "will display new posts of your Instagram or Facebook account."
 msgstr ""
 

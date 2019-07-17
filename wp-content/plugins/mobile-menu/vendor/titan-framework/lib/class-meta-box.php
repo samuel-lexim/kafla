@@ -6,15 +6,10 @@ class TitanFrameworkMetaBox {
 
 	private $defaultSettings = array(
 		'name' => '', // Name of the menu item
-		// 'parent' => null, // slug of parent, if blank, then this is a top level menu
 		'id' => '', // Unique ID of the menu item
-		// 'capability' => 'manage_options', // User role
-		// 'icon' => 'dashicons-admin-generic', // Menu icon for top level menus only
-		// 'position' => 100.01 // Menu position for top level menus only
 		'post_type' => 'page', // Post type, can be an array of post types
 		'page_template' => '', // if page template is selected, just will be show on that page
 		'context' => 'normal', // normal, advanced, or side
-		'hide_custom_fields' => true, // If true, the custom fields box will not be shown
 		'priority' => 'high', // high, core, default, low
 		'desc' => '', // Description displayed below the title
 	);
@@ -66,10 +61,6 @@ class TitanFrameworkMetaBox {
 		}
 
 		foreach ( $postTypes as $postType ) {
-			// Hide the custom fields
-			if ( $this->settings['hide_custom_fields'] ) {
-				remove_meta_box( 'postcustom' , $postType , 'normal' );
-			}
 
 			add_meta_box(
 				$this->settings['id'],

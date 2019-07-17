@@ -66,7 +66,6 @@ class Email_Subscribers_Admin {
 		add_action( 'admin_menu', array( $this, 'email_subscribers_admin_menu' ) );
 		add_action( 'wp_ajax_es_klawoo_subscribe', array( $this, 'klawoo_subscribe' ) );
 		add_action( 'admin_footer', array( $this, 'remove_submenu' ) );
-		add_action( 'edit_form_advanced', array( $this, 'add_spam_score_utm_link' ) );
 		add_action( 'wp_ajax_send_test_email', array( $this, 'send_test_email' ) );
 		add_action( 'admin_init', array( $this, 'es_save_onboarding_skip' ) );
 
@@ -359,8 +358,9 @@ class Email_Subscribers_Admin {
 		$es_current_version       = $es_plugin_data['Version'];
 		$admin_email              = get_option( 'admin_email' );
 		$ig_es_4015_db_updated_at = get_option( 'ig_es_4015_db_updated_at', false );
+		$is_sa_option_exists = get_option('current_sa_email_subscribers_db_version', false);
 		$onboarding_status        = get_option( 'ig_es_onboarding_complete', 'no' );
-		if ( ! $ig_es_4015_db_updated_at && 'yes' !== $onboarding_status ) {
+		if ( ! $is_sa_option_exists && ! $ig_es_4015_db_updated_at && 'yes' !== $onboarding_status ) {
 			include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/onboarding.php';
 		} else {
 			include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/dashboard.php';
@@ -370,28 +370,18 @@ class Email_Subscribers_Admin {
 
 	public static function es_feedback() {
 		$star_rating_dismiss = get_option( 'ig_es_dismiss_star_notice', 'no' );
-		$star_rating_done = get_option( 'ig_es_star_notice_done', 'no' );
+		$star_rating_done    = get_option( 'ig_es_star_notice_done', 'no' );
 		// Show if - more than 2 post notifications or Newsletters sent OR more than 10 subscribers
-		$total_contacts    = ES_DB_Contacts::count_active_subscribers_by_list_id();
-		$total_email_sent  = ES_DB_Mailing_Queue::get_notifications_count();
+		$total_contacts   = ES_DB_Contacts::count_active_subscribers_by_list_id();
+		$total_email_sent = ES_DB_Mailing_Queue::get_notifications_count();
 
-		if ( ( $total_contacts >= 10 || $total_email_sent > 2 ) && 'yes' !== $star_rating_dismiss && 'yes' !== $star_rating_done  ) {
+		if ( ( $total_contacts >= 10 || $total_email_sent > 2 ) && 'yes' !== $star_rating_dismiss && 'yes' !== $star_rating_done ) {
 			echo '<div class="notice notice-warning" style="background-color: #FFF;"><p style="letter-spacing: 0.6px;">If you like <strong>Email Subscribers</strong>, please consider leaving us a <a target="_blank" href="?es_dismiss_admin_notice=1&option_name=star_notice_done"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></a> rating. A huge thank you from Icegram in advance! <a style="float:right" class="es-admin-btn es-admin-btn-secondary" href="?es_dismiss_admin_notice=1&option_name=dismiss_star_notice">No, I don\'t like it</a></p></div>';
 		}
 	}
 
 
-	public static function add_spam_score_utm_link() {
-		global $post, $pagenow;
-		if ( $post->post_type !== 'es_template' ) {
-			return;
-		}
-		?>
-        <script>
-			jQuery('#submitdiv').after('<div class="es_upsale"><a style="text-decoration:none;" target="_blank" href="https://www.icegram.com/documentation/how-ready-made-template-in-in-email-subscribers-look/?utm_source=in_app&utm_medium=es_template&utm_campaign=es_upsale"><img title="Get readymade templates" style="width:100%;border:0.3em #d46307 solid" src="<?php echo EMAIL_SUBSCRIBERS_URL?>/admin/images/starter-tmpl.png"/><p style="background: #d46307; color: #FFF; padding: 4px; width: 100%; text-align:center">Get readymade beautiful email templates</p></a></div>');
-        </script>
-		<?php
-	}
+
 
 	function send_test_email() {
 		$message = array();
@@ -453,6 +443,20 @@ class Email_Subscribers_Admin {
 			wp_safe_redirect( $referer );
 			exit();
 		}
+	}
+
+	public function count_contacts_by_list() {
+
+		$list_id = ! empty( $_POST['list_id'] ) ? (int) $_POST['list_id'] : 0;
+		$status  = ! empty( $_POST['status'] ) ? $_POST['status'] : 'all';
+
+		if ( $list_id == 0 ) {
+			return 0;
+		}
+
+		$total_count = ES_DB_Lists_Contacts::get_total_count_by_list( $list_id, $status );
+
+		die( json_encode( array( 'total' => $total_count ) ) );
 	}
 
 }

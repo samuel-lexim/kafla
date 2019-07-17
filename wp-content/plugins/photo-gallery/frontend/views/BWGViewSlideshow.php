@@ -578,7 +578,6 @@ public function inline_styles($bwg, $theme_row, $params, $image_width, $image_he
 	  font-size: <?php echo $theme_row->slideshow_rl_btn_size; ?>px;
 	  width: <?php echo $theme_row->slideshow_rl_btn_width; ?>px;
 	  opacity: <?php echo number_format($theme_row->slideshow_close_btn_transparent / 100, 2, ".", ""); ?>;
-	  filter: Alpha(opacity=<?php echo $theme_row->slideshow_close_btn_transparent; ?>);
   }
   #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> #spider_slideshow_left-ico_<?php echo $bwg; ?>:hover,
   #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> #spider_slideshow_right-ico_<?php echo $bwg; ?>:hover {
@@ -639,8 +638,7 @@ public function inline_styles($bwg, $theme_row, $params, $image_width, $image_he
 	  border: <?php echo $theme_row->slideshow_filmstrip_thumb_active_border_width; ?>px solid #<?php echo $theme_row->slideshow_filmstrip_thumb_active_border_color; ?>;
   }
   #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_slideshow_thumb_deactive_<?php echo $bwg; ?> {
-	opacity: <?php echo number_format($theme_row->slideshow_filmstrip_thumb_deactive_transparent / 100, 2, ".", ""); ?>;
-	filter: Alpha(opacity=<?php echo $theme_row->slideshow_filmstrip_thumb_deactive_transparent; ?>);
+    opacity: <?php echo number_format($theme_row->slideshow_filmstrip_thumb_deactive_transparent / 100, 2, ".", ""); ?>;
   }
   #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_slideshow_filmstrip_left_<?php echo $bwg; ?> {
 	  background-color: #<?php echo $theme_row->slideshow_filmstrip_rl_bg_color; ?>;
@@ -680,7 +678,6 @@ public function inline_styles($bwg, $theme_row, $params, $image_width, $image_he
 	  max-height: <?php echo $watermark_height; ?>px;
 	  max-width: <?php echo $watermark_width; ?>px;
 	  opacity: <?php echo number_format($watermark_opacity / 100, 2, ".", ""); ?>;
-	  filter: Alpha(opacity=<?php echo $watermark_opacity; ?>);
   }
   #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_slideshow_watermark_text_<?php echo $bwg; ?>,
   #bwg_container1_<?php echo $bwg; ?> #bwg_container2_<?php echo $bwg; ?> .bwg_slideshow_watermark_text_<?php echo $bwg; ?>:hover {
@@ -694,8 +691,7 @@ public function inline_styles($bwg, $theme_row, $params, $image_width, $image_he
 	  font-family: <?php echo $theme_row->slideshow_title_font; ?>;
 	  color: #<?php echo $theme_row->slideshow_title_color; ?> !important;
 	  opacity: <?php echo number_format($theme_row->slideshow_title_opacity / 100, 2, ".", ""); ?>;
-	  filter: Alpha(opacity=<?php echo $theme_row->slideshow_title_opacity; ?>);
-	  border-radius: <?php echo $theme_row->slideshow_title_border_radius; ?>;
+    border-radius: <?php echo $theme_row->slideshow_title_border_radius; ?>;
 	  background-color: #<?php echo $theme_row->slideshow_title_background_color; ?>;
 	  padding: <?php echo $theme_row->slideshow_title_padding; ?>;
 	  <?php if($params['slideshow_title_full_width']) { ?>
@@ -710,8 +706,7 @@ public function inline_styles($bwg, $theme_row, $params, $image_width, $image_he
 	  font-family: <?php echo $theme_row->slideshow_description_font; ?>;
 	  color: #<?php echo $theme_row->slideshow_description_color; ?> !important;
 	  opacity: <?php echo number_format($theme_row->slideshow_description_opacity / 100, 2, ".", ""); ?>;
-	  filter: Alpha(opacity=<?php echo $theme_row->slideshow_description_opacity; ?>);
-	  border-radius: <?php echo $theme_row->slideshow_description_border_radius; ?>;
+    border-radius: <?php echo $theme_row->slideshow_description_border_radius; ?>;
 	  background-color: #<?php echo $theme_row->slideshow_description_background_color; ?>;
 	  padding: <?php echo $theme_row->slideshow_description_padding; ?>;
 	  <?php if (!$enable_slideshow_filmstrip && $slideshow_description_position[0] == $theme_row->slideshow_filmstrip_pos) echo $theme_row->slideshow_filmstrip_pos . ':' . ($theme_row->slideshow_dots_height + 4) . 'px;'; ?>

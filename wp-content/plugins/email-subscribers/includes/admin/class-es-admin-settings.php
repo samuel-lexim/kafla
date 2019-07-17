@@ -29,7 +29,6 @@ class ES_Admin_Settings {
 
 	public function es_settings_callback() {
 
-
 		$submitted     = ! empty( $_POST['submitted'] ) ? $_POST['submitted'] : '';
 		$submit_action = ! empty( $_POST['submit_action'] ) ? $_POST['submit_action'] : '';
 
@@ -42,11 +41,59 @@ class ES_Admin_Settings {
 			$options['ig_es_disable_wp_cron']   = isset( $options['ig_es_disable_wp_cron'] ) ? $options['ig_es_disable_wp_cron'] : 'no';
 			$options['ig_es_track_email_opens'] = isset( $options['ig_es_track_email_opens'] ) ? $options['ig_es_track_email_opens'] : 'no';
 
+			$text_fields_to_sanitize = array(
+				'ig_es_from_name',
+				'ig_es_admin_emails',
+				'ig_es_email_type',
+				'ig_es_optin_type',
+				'ig_es_post_image_size',
+				'ig_es_track_email_opens',
+				'ig_es_enable_welcome_email',
+				'ig_es_welcome_email_subject',
+				'ig_es_confirmation_mail_subject',
+				'ig_es_notify_admin',
+				'ig_es_admin_new_contact_email_subject',
+				'ig_es_enable_cron_admin_email',
+				'ig_es_cron_admin_email_subject',
+				'ig_es_cronurl',
+				'ig_es_hourly_email_send_limit',
+				'ig_es_disable_wp_cron'
+			);
+
+			$texarea_fields_to_sanitize = array(
+				'ig_es_unsubscribe_link_content',
+				'ig_es_subscription_success_message',
+				'ig_es_subscription_error_messsage',
+				'ig_es_unsubscribe_success_message',
+				'ig_es_unsubscribe_error_message',
+				'ig_es_welcome_email_content',
+				'ig_es_confirmation_mail_content',
+				'ig_es_admin_new_contact_email_content',
+				'ig_es_cron_admin_email',
+				'ig_es_blocked_domains'
+			);
+
+			$email_fields_to_sanitize = array(
+				'ig_es_from_email'
+			);
+
 			foreach ( $options as $key => $value ) {
 				if ( substr( $key, 0, 6 ) === 'ig_es_' ) {
-					update_option( $key, stripslashes( $value ) );
+
+					if ( in_array( $key, $text_fields_to_sanitize ) ) {
+						$value = sanitize_text_field( $value );
+					} elseif ( in_array( $key, $texarea_fields_to_sanitize ) ) {
+						$value = sanitize_textarea_field($value);
+					} elseif ( in_array( $key, $email_fields_to_sanitize ) ) {
+						$value = sanitize_email( $value );
+					}
+
+					update_option( $key, wp_unslash( $value ) );
 				}
 			}
+
+			do_action( 'ig_es_after_settings_save', $options );
+
 			$message = __( 'Settings have been saved successfully!' );
 			$status  = 'success';
 			ES_Common::show_message( $message, $status );
@@ -306,7 +353,7 @@ class ES_Admin_Settings {
 						'default'      => '',
 						'id'           => 'ig_es_welcome_email_content',
 						'name'         => __( 'Content', 'email-subscribers' ),
-						'desc'         => __( 'Available keywords. {{NAME}}, {{EMAIL}}, {{LIST}}, {{UNSUBSCRIBE-LINK}}', 'email-subscribers' ),
+						'desc'         => __( 'Available keywords. {{FIRSTNAME}}, {{LASTNAME}}, {{NAME}}, {{EMAIL}}, {{LIST}}, {{UNSUBSCRIBE-LINK}}', 'email-subscribers' ),
 					),
 				)
 			),
@@ -335,7 +382,7 @@ class ES_Admin_Settings {
 						'default'      => '',
 						'id'           => 'ig_es_confirmation_mail_content',
 						'name'         => __( 'Content', 'email-subscribers' ),
-						'desc'         => __( 'If Double Optin is set, contact will receive confirmation email with above content. You can use {{NAME}}, {{EMAIL}}, {{SUBSCRIBE-LINK}} keywords', 'email-subscribers' ),
+						'desc'         => __( 'If Double Optin is set, contact will receive confirmation email with above content. You can use {{FIRSTNAME}}, {{LASTNAME}}, {{NAME}}, {{EMAIL}}, {{SUBSCRIBE-LINK}} keywords', 'email-subscribers' ),
 					)
 				)
 			),

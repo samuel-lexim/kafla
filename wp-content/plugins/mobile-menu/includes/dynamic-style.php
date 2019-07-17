@@ -10,7 +10,6 @@
  */
 global  $mm_fs ;
 $titan = TitanFramework::getInstance( 'mobmenu' );
-$mobmenu_admin_bar = 0;
 $default_elements = '';
 $logo_height = '';
 $def_el_arr = $titan->getOption( 'default_hided_elements' );
@@ -20,9 +19,7 @@ $right_menu_width_translate = '100%';
 $left_menu_width_translate = '100%';
 $left_menu_height_translate = '100%';
 $woo_menu_width_translate = '100%';
-if ( is_admin_bar_showing() ) {
-    $mobmenu_admin_bar = 32;
-}
+$woo_menu_width = 0;
 if ( in_array( '1', $def_el_arr ) ) {
     $default_elements .= '.nav, ';
 }
@@ -56,6 +53,10 @@ $default_elements .= '.hide';
 if ( $titan->getOption( 'enabled_naked_header' ) ) {
     $header_bg_color = 'transparent';
     $wrap_padding_top = '0';
+    // If we are only using one of the menus without any logo.
+    if ( $titan->getOption( 'disabled_logo_text' ) && (!$titan->getOption( 'enable_left_menu' ) || !$titan->getOption( 'enable_right_menu' )) ) {
+        $header_width = '10%';
+    }
 } else {
     $header_bg_color = $titan->getOption( 'header_bg_color' );
     $wrap_padding_top = $titan->getOption( 'header_height' );
@@ -91,9 +92,29 @@ $total_header_height = $header_height;
 $banner_height = 0;
 $header_margin_top = '0px';
 $header_banner_padding_top = 0;
+$header_width = '100%';
 // Left Menu Background Image.
 $left_menu_bg_image = $titan->getOption( 'left_menu_bg_image' );
-$left_menu_bg_image_size = $titan->getOption( 'left_menu_bg_image_size' );
+$left_menu_bg_image_size = 'initial';
+$cart_menu_icon_font_size = 0;
+$cart_icon_top_margin = 0;
+$woo_menu_panel_bg_color = 'initial';
+$search_icon_font_size = 0;
+if ( $titan->getOption( 'search_icon_font_size' ) ) {
+    $search_icon_font_size = $titan->getOption( 'search_icon_font_size' );
+}
+if ( $titan->getOption( 'woo_menu_panel_bg_color' ) ) {
+    $woo_menu_panel_bg_color = $titan->getOption( 'woo_menu_panel_bg_color' );
+}
+if ( $titan->getOption( 'left_menu_bg_image_size' ) ) {
+    $left_menu_bg_image_size = $titan->getOption( 'left_menu_bg_image_size' );
+}
+if ( $titan->getOption( 'mm_woo_menu_icon_font_size' ) ) {
+    $cart_menu_icon_font_size = $titan->getOption( 'mm_woo_menu_icon_font_size' );
+}
+if ( $titan->getOption( 'cart_icon_top_margin' ) ) {
+    $cart_icon_top_margin = $titan->getOption( 'cart_icon_top_margin' );
+}
 $header_margin_left = '0';
 $header_margin_right = '0';
 $header_text_position = 'absolute';
@@ -128,7 +149,7 @@ if ( $titan->getOption( 'logo_img_retina' ) ) {
     ?>
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-	.mob-retina-logo {
+	.mob-menu-logo-holder .mob-retina-logo {
 		display: inline-block;
 	}
 	.mob-standard-logo {
@@ -138,6 +159,72 @@ if ( $titan->getOption( 'logo_img_retina' ) ) {
 <?php 
 }
 ?>
+
+@media screen and ( min-width: 782px ){
+		body.admin-bar .mobmenu, body.admin-bar .mobmenu-panel {
+			top: 32px!important;
+		}
+		<?php 
+$admin_bar_height = '32';
+?>
+		body.admin-bar .mobmenu-search-holder {
+				top: <?php 
+echo  $total_header_height + $admin_bar_height ;
+?>px!important;
+		}
+}
+
+@media screen and ( max-width: 782px ){
+	body.admin-bar .mobmenu, body.admin-bar .mobmenu-panel {
+		top: 46px!important;
+	}
+
+	body.admin-bar .mob-menu-header-banner {
+		top: <?php 
+echo  $header_banner_padding_top ;
+?>px!important;
+	}
+	<?php 
+$admin_bar_height = '46';
+?>
+	body.admin-bar .mobmenu-search-holder {
+		top: <?php 
+echo  $total_header_height + $admin_bar_height ;
+?>px!important;
+	}
+	body.admin-bar  .mob-menu-slideout .mobmenu-search-holder {
+		top: <?php 
+echo  $header_height ;
+?>px!important;
+	}
+
+}
+
+@media screen and ( max-width: 479px ) {
+	.mob-menu-overlay .mobmenu-content {
+		padding-top: 5%;
+	}
+}
+
+@media screen and ( max-width: 782px ) {
+	.mob-menu-overlay .mobmenu-content {
+		padding-top: 10%;
+	}
+}
+
+@media screen and ( min-width: 782px ) {
+	#mobmenu-footer li:hover {
+		background-color: <?php 
+echo  $titan->getOption( 'footer_bg_color_hover' ) ;
+?>;
+	}
+	#mobmenu-footer li:hover i {
+		color: <?php 
+echo  $titan->getOption( 'footer_icon_color_hover' ) ;
+?>;
+	}
+}
+
 @media only screen and (min-width:<?php 
 echo  $trigger_res + 1 ;
 ?>px){
@@ -164,102 +251,29 @@ if ( 0 < $border_menu_size ) {
 
 if ( '' !== $titan->getOption( 'hide_elements' ) ) {
     ?>
-	/* Our css Custom Options values */
-	@media only screen and (max-width:<?php 
+/* Our css Custom Options values */
+@media only screen and (max-width:<?php 
     echo  $trigger_res ;
     ?>px){
-		<?php 
+	<?php 
     echo  $titan->getOption( 'hide_elements' ) ;
     ?> {
-			display:none !important;
-		}
+		display:none !important;
 	}
+}
 
-	<?php 
+<?php 
 }
 
 ?>
-	
-	@media only screen and (max-width:<?php 
+
+@media only screen and (max-width:<?php 
 echo  $trigger_res ;
 ?>px) {
+
 		<?php 
 ?>
-	@media screen and ( min-width: 782px ){
-		#mobmenu-footer li:hover {
-			background-color: <?php 
-echo  $titan->getOption( 'footer_bg_color_hover' ) ;
-?>;
-		}
-		#mobmenu-footer li:hover i {
-			color: <?php 
-echo  $titan->getOption( 'footer_icon_color_hover' ) ;
-?>;
-		}
-	}
-	@media screen and ( min-width: 782px ){
-		body.admin-bar .mobmenu {
-			top: 32px!important;
-		}
-		<?php 
-if ( is_admin_bar_showing() ) {
-    $admin_bar_height = '32';
-}
-?>
-		.mobmenu-search-holder {
-				top: <?php 
-echo  $total_header_height + $admin_bar_height ;
-?>px!important;
-		}
-	}
-	@media screen and ( max-width: 782px ){	
-		body.admin-bar .mobmenu {
-			top: 46px!important;
-		}
 	
-		body.admin-bar .mob-menu-header-banner {
-			top: <?php 
-echo  $header_banner_padding_top ;
-?>px!important;
-		}
-		<?php 
-
-if ( is_admin_bar_showing() ) {
-    $admin_bar_height = '46';
-    ?>
-			.mobmenu-search-holder {
-				top: <?php 
-    echo  $total_header_height + $admin_bar_height ;
-    ?>px!important;
-			}
-			.mob-menu-slideout .mobmenu-search-holder {
-				top: <?php 
-    echo  $header_height ;
-    ?>px!important;
-			}
-		<?php 
-}
-
-?>
-	}
-
-	.mobmenu-search img {
-		width: <?php 
-echo  esc_attr( $titan->getOption( 'search_icon_font_size' ) ) ;
-?>px;
-		margin-top : <?php 
-echo  $titan->getOption( 'search_icon_top_margin' ) ;
-?>px;
-	}
-	.mobmenu-cart img {
-		width: <?php 
-echo  $titan->getOption( 'mm_woo_menu_icon_font_size' ) ;
-?>px;
-		margin-top : <?php 
-echo  $titan->getOption( 'cart_icon_top_margin' ) ;
-?>px;
-		
-	}	
 	.mobmenur-container i {
 		color: <?php 
 echo  $titan->getOption( 'right_menu_icon_color' ) ;
@@ -287,7 +301,7 @@ echo  $titan->getOption( 'header_height' ) ;
 echo  $titan->getOption( 'submenu_icon_font_size' ) ;
 ?>px;
 	}
-	#mobmenuleft li a , #mobmenuleft li a:visited, .mobmenu-left-panel .mob-cancel-button, .mobmenu-content h2, .mobmenu-content h3, .show-nav-left .mob-menu-copyright, .show-nav-left .mob-expand-submenu i {
+	#mobmenuleft li a , #mobmenuleft li a:visited, .mobmenu-content h2, .mobmenu-content h3, .show-nav-left .mob-menu-copyright, .show-nav-left .mob-expand-submenu i {
 		color: <?php 
 echo  $titan->getOption( 'left_panel_text_color' ) ;
 ?>;
@@ -298,49 +312,50 @@ echo  $titan->getOption( 'left_panel_text_color' ) ;
 echo  $titan->getOption( 'close_icon_font_size' ) ;
 ?>px!important;
 	}
-	<?php 
 
-if ( 'enabled' === $titan->getOption( 'enable_over_effects' ) ) {
-    ?>
 	/* 3rd Level Left Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuleft .sub-menu  .sub-menu li a:hover {
 		color: <?php 
-    echo  $titan->getOption( 'left_panel_3rd_menu_text_color_hover' ) ;
-    ?>;
+echo  $titan->getOption( 'left_panel_3rd_menu_text_color_hover' ) ;
+?>;
 	}
 	/* 3rd Level Left Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuleft .sub-menu .sub-menu li:hover {
 		background-color: <?php 
-    echo  $titan->getOption( 'left_panel_3rd_menu_bg_color_hover' ) ;
-    ?>;
+echo  $titan->getOption( 'left_panel_3rd_menu_bg_color_hover' ) ;
+?>;
 	}
 	.mobmenu-content #mobmenuleft li:hover, .mobmenu-content #mobmenuright li:hover  {
 		background-color: <?php 
-    echo  $titan->getOption( 'left_panel_hover_bgcolor' ) ;
-    ?>;
+echo  $titan->getOption( 'left_panel_hover_bgcolor' ) ;
+?>;
 	}
 	.mobmenu-content #mobmenuright li:hover  {
 		background-color: <?php 
-    echo  $titan->getOption( 'right_panel_hover_bgcolor' ) ;
-    ?> ;
+echo  $titan->getOption( 'right_panel_hover_bgcolor' ) ;
+?> ;
 	}
 	/* 3rd Level Right Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuright .sub-menu .sub-menu li:hover {
 		background-color: <?php 
-    echo  $titan->getOption( 'right_panel_3rd_menu_bg_color_hover' ) ;
-    ?>;
+echo  $titan->getOption( 'right_panel_3rd_menu_bg_color_hover' ) ;
+?>;
 	}
 	/* 3rd Level Right Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuright .sub-menu  .sub-menu li a:hover {
 		color: <?php 
-    echo  $titan->getOption( 'right_panel_3rd_menu_text_color_hover' ) ;
-    ?>;
+echo  $titan->getOption( 'right_panel_3rd_menu_text_color_hover' ) ;
+?>;
 	}
-		
 
 	<?php 
+if ( $titan->getOption( 'header_shadow' ) ) {
+    ?>
+		.mob-menu-header-holder {
+			box-shadow:0px 0px 8px 0px rgba(0,0,0,0.15);
+		}
+	<?php 
 }
-
 ?>
 	.mobmenu-content #mobmenuleft .sub-menu {
 		background-color: <?php 
@@ -438,7 +453,7 @@ echo  $titan->getOption( 'right_panel_submenu_text_color' ) ;
 echo  $titan->getOption( 'left_panel_hover_text_color' ) ;
 ?>;
 	}
-	#mobmenuright li a , #mobmenuright li a:visited, .show-nav-right .mob-menu-copyright, .show-nav-right .mob-expand-submenu i, .mobmenu-right-panel .mob-cancel-button {
+	#mobmenuright li a , #mobmenuright li a:visited, .show-nav-right .mob-menu-copyright, .show-nav-right .mob-expand-submenu i {
 		color: <?php 
 echo  $titan->getOption( 'right_panel_text_color' ) ;
 ?> ;
@@ -505,12 +520,15 @@ echo  $header_margin_right ;
 ?>;
 		height:       <?php 
 echo  $header_height ;
-?>px ;
+?>px;
 		<?php 
 echo  $header_logo_float ;
-?>;
+?>
 	}
 	.mob-menu-header-holder {
+		width:  <?php 
+echo  $header_width ;
+?> ;
 		background-color: <?php 
 echo  $header_bg_color ;
 ?> ;
@@ -541,11 +559,15 @@ if ( '' !== $titan->getOption( 'right_menu_bg_gradient' ) ) {
     $right_panel_bg_color = 'background-color:' . $titan->getOption( 'right_panel_bg_color' ) . ';';
 }
 
+$mm_woo_menu_panel_bg_color = '#CCC';
+if ( $titan->getOption( 'mm_woo_menu_panel_bg_color' ) ) {
+    $mm_woo_menu_panel_bg_color = $titan->getOption( 'mm_woo_menu_panel_bg_color' );
+}
 
-if ( '' !== $titan->getOption( 'mm_woo_menu_bg_gradient' ) ) {
+if ( $titan->getOption( 'mm_woo_menu_bg_gradient' ) ) {
     $cart_panel_bg_color = $titan->getOption( 'mm_woo_menu_bg_gradient' ) . ';';
 } else {
-    $cart_panel_bg_color = 'background-color:' . $titan->getOption( 'mm_woo_menu_panel_bg_color' ) . ';';
+    $cart_panel_bg_color = 'background-color:' . $mm_woo_menu_panel_bg_color . ';';
 }
 
 ?>
@@ -624,7 +646,7 @@ echo  $right_menu_width ;
 		height: <?php 
 echo  $left_menu_height_translate ;
 ?>;
-		z-index: 999999;
+		z-index: 1;
 		position: fixed;
 		left: 0px;
 		top: 0px;
@@ -653,27 +675,24 @@ echo  $left_menu_height_translate ;
 		-ms-transform: translateY(0px);
 		-o-transform: translateY(0px);
 		transform: translateY(0px);
+		z-index: 300000;
 	}
 	.mob-menu-slideout-over.show-nav-left .mobmenu-left-panel {
 		overflow: hidden;
 	}
-	.mob-menu-slideout-over .mobmenu-cart-panel.show-panel {
-		-webkit-transform: translateX( 0 );
-		-moz-transform: translateX( 0 );
-		-ms-transform: translateX( 0 );
-		-o-transform: translateX(0 );
-		transform: translateX( 0 );
-		overflow: hidden;
+	.show-nav-left .mobmenu-panel.show-panel , .show-nav-right .mobmenu-panel.show-panel {
+		z-index: 300000;
 	}
 	/* Hides everything pushed outside of it */
 	.mob-menu-slideout .mobmenu-panel, .mob-menu-slideout-over .mobmenu-panel, .mob-menu-slideout .mobmenu-cart-panel, .mob-menu-slideout-over .mobmenu-cart-panel {
 		position: fixed;
 		top: 0;
 		height: 100%;
-		z-index: 300000;
 		overflow-y: auto;   
 		overflow-x: hidden;
+		z-index: 1;
 		opacity: 1;
+
 	}
 	/*End of Mobmenu Slide Over */
 	.mobmenu .headertext { 
@@ -691,7 +710,7 @@ echo  $header_height ;
 	}
 	.mobmenu-search-holder {
 		top: <?php 
-echo  $total_header_height + $admin_bar_height ;
+echo  $total_header_height ;
 ?>px;
 	}
 	/*Premium options  */
@@ -701,7 +720,7 @@ echo  $total_header_height + $admin_bar_height ;
 	/* Mobile Menu Frontend CSS Style*/
 	html, body {
 		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch; 
+		-webkit-overflow-scrolling: auto; 
 		overflow-y: scroll; 
 	}
 	.mobmenu-left-panel li a, .leftmbottom, .leftmtop{
@@ -715,7 +734,7 @@ echo  $titan->getOption( 'left_menu_content_padding' ) ;
 	.mobmenu-content li > .sub-menu li {
 		padding-left: calc(<?php 
 echo  $titan->getOption( 'left_menu_content_padding' ) ;
-?>*2%);
+?>*1%);
 	}
 
 	.mobmenu-right-panel li, .rightmbottom, .rightmtop{
@@ -725,15 +744,6 @@ echo  $titan->getOption( 'right_menu_content_padding' ) ;
 		padding-right: <?php 
 echo  $titan->getOption( 'right_menu_content_padding' ) ;
 ?>%;
-	}
-	.mobmenu-cart-panel .mobmenu-content {
-		padding-left: <?php 
-echo  $titan->getOption( 'mm_woo_menu_content_padding' ) ;
-?>%!important;
-		padding-right: <?php 
-echo  $titan->getOption( 'mm_woo_menu_content_padding' ) ;
-?>%!important;
-		position: absolute;
 	}
 	.mobmenul-container i {
 		line-height: <?php 
@@ -749,16 +759,14 @@ echo  $titan->getOption( 'left_icon_font_size' ) ;
 		line-height: <?php 
 echo  $titan->getOption( 'left_icon_font_size' ) ;
 ?>px;
+		color: <?php 
+echo  $titan->getOption( 'header_text_after_icon' ) ;
+?>;
 	}
 	.mobmenu-left-panel .mobmenu-display-name {
 		color: <?php 
 echo  $titan->getOption( 'left_panel_text_color' ) ;
-?>!important;
-	}
-	.mobmenu-right-panel .mobmenu-display-name {
-		color: <?php 
-echo  $titan->getOption( 'right_panel_text_color' ) ;
-?>!important;
+?>;
 	}
 	.right-menu-icon-text {
 		float: right;
@@ -767,64 +775,6 @@ echo  $titan->getOption( 'right_icon_font_size' ) ;
 ?>px;
 		color: <?php 
 echo  $titan->getOption( 'header_text_before_icon' ) ;
-?>;
-	}
-	.mobmenur-container i.mob-search-button, .mobmenul-container i.mob-search-button {
-		color: <?php 
-echo  $titan->getOption( 'search_icon_color' ) ;
-?>;
-		font-size: <?php 
-echo  $titan->getOption( 'search_icon_font_size' ) ;
-?>px;
-	}
-	.mobmenur-container i.mob-cart-button, .mobmenul-container i.mob-cart-button {
-		color: <?php 
-echo  $titan->getOption( 'mm_woo_menu_icon_color' ) ;
-?>;
-		font-size: <?php 
-echo  $titan->getOption( 'mm_woo_menu_icon_font_size' ) ;
-?>px;
-	}
-	.mob-menu-search-form button[type=submit] i, .mob-menu-search-form button[type=submit] span{
-		color: <?php 
-echo  $titan->getOption( 'search_form_submit_color' ) ;
-?>;
-	}
-	.mob-menu-search-form input {
-		background: transparent;
-		color: <?php 
-echo  $titan->getOption( 'search_form_text_color' ) ;
-?>;
-	}
-	.mob-menu-search-form input:focus {
-		color: <?php 
-echo  $titan->getOption( 'search_form_text_color' ) ;
-?>;
-	}
-	.mob-menu-search-form input[type=text]:focus {
-		color: <?php 
-echo  $titan->getOption( 'search_form_text_color' ) ;
-?>;
-		background-color: transparent;
-	}
-	.mobmenu-search-holder {
-		background-color: <?php 
-echo  $titan->getOption( 'search_form_bg_color' ) ;
-?>;
-	}
-	.mob-menu-search-field::-webkit-input-placeholder {
-		color: <?php 
-echo  $titan->getOption( 'search_form_placeholder_color' ) ;
-?>;
-	}
-	.mob-menu-search-field::-moz-placeholder {
-		color: <?php 
-echo  $titan->getOption( 'search_form_placeholder_color' ) ;
-?>;
-	}
-	.mob-menu-search-field:-ms-input-placeholder {
-		color: <?php 
-echo  $titan->getOption( 'search_form_placeholder_color' ) ;
 ?>;
 	}
 	.mobmenur-container i {
@@ -836,16 +786,12 @@ echo  $titan->getOption( 'right_icon_font_size' ) ;
 ?>px;
 		float: right;
 	}
-	.mobmenu-content .current_page_item {
-		border-left-color:  <?php 
-echo  $titan->getOption( 'highlight_current_page' ) ;
-?>;
-	}
 	<?php 
 echo  $default_elements ;
 ?> {
 		display: none!important;
 	}
+	
 	.mob-standard-logo {
 		display: inline-block;
 		<?php 
@@ -857,5 +803,36 @@ echo  $logo_height ;
 echo  $logo_height ;
 ?>
 	}
+	.mobmenu-content #mobmenuleft > li > a:hover {
+		background-color: <?php 
+echo  $titan->getOption( 'left_panel_hover_bgcolor' ) ;
+?>;
+	}
 
+	.mobmenu-content #mobmenuright > li > a:hover {
+		background-color: <?php 
+echo  $titan->getOption( 'right_panel_hover_bgcolor' ) ;
+?>;
+	}
+	.mob-blocks-user-profile {
+		background-color: <?php 
+echo  $titan->getOption( 'user_profile_bg_color' ) ;
+?>;
+	}
+	.mob-blocks-user-profile .mobmenu-display-name {
+		color: <?php 
+echo  $titan->getOption( 'user_profile_text_color' ) ;
+?>;
+	}
+	.mobmenu-left-panel .mob-cancel-button {
+		color: <?php 
+echo  $titan->getOption( 'left_panel_cancel_button_color' ) ;
+?>;
+	}
+	.mobmenu-right-panel .mob-cancel-button {
+		color: <?php 
+echo  $titan->getOption( 'right_panel_cancel_button_color' ) ;
+?>;
+	}	
+	
 }

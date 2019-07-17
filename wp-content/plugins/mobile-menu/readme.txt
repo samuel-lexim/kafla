@@ -4,7 +4,7 @@ link: http://profiles.wordpress.org/takanakui
 Tags:   mobile, navigation, responsive, menu,  responsive menu, mobile menu,  tablet menu, hamburger menu, hamburger, wordpress responsive menu, wordpress mobile menu, canvas menu
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 2.7.4.2
+Stable tag: 2.7.4.4
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -95,7 +95,37 @@ Download and install the .zip file in the Wordpress plugin page of your website
 3. Done!
 
 == Frequently Asked Questions == 
-Not available at the moment
+= Where can I find WP Mobile Menu documentation? =
+
+For help setting up and configuring WP Mobile Menu check our [documentation](https://www.wpmobilemenu.com/knowledgebase)
+
+= Will WP Mobile Menu work with my theme? =
+
+Yes! WP Mobile Menu will work with any theme, but may require our help to hide the theme menu. Please see our [documentation](https://www.wpmobilemenu.com/knowledgebase/general-options/how-to-hide-the-main-menu-and-other-elements-when-wp-mobile-menu-is-active/).
+
+= how to install WP Mobile Menu? =
+
+Check this article in the following [link](https://www.wpmobilemenu.com/knowledgebase/getting-started/how-to-install-wp-mobile-menu/)
+
+= Problems after updating the plugin. The update messed the site? =
+
+Check this article in the following [link](https://www.wpmobilemenu.com/knowledgebase/common-errors/problems-after-updating-the-plugin/)
+
+= Can’t load WP Mobile Menu using HTTPS =
+
+Check this article in the following [link](https://www.wpmobilemenu.com/knowledgebase/common-errors/cant-load-wp-mobile-menu-using-https/)
+
+= How to add a Phone Call Button in the header? =
+
+Check this article in the following [link](https://www.wpmobilemenu.com/knowledgebase/header-options/how-to-add-a-phone-call-button-in-the-header/)
+
+= Where can I request new features and add-ons? =
+
+You can send us an email using the contact form available on the following [link](https://www.wpmobilemenu.com/support-contact/)
+
+= Is WP Mobile Menu Free? =
+There are two versions of WP Mobile Menu. One is free and another is Premium. Only being able to monetize the plugin is possible to provide constant updates and a good support on the Free version. 
+The Premium versions have some more advanced features in general and for Ecommerce websites that are not available in the free version.
 
 == Upgrade Notice ==
 Not available at the moment
@@ -103,9 +133,32 @@ Not available at the moment
 == Changelog ==
 
 
+= 2.7.4.4 =
+* Fix!      - Fix Panels Z-Index
+* Fix!      - Exclude the custom JS fromt the CSS generation process
+* Improved! - Freemius SDK 2.3 Update
+
+= 2.7.4.3.1 =
+* Fix!      - Retina issue
+* Fix!      - Gap on the right side when using the Slideout Push Content
+= 2.7.4.3 =
+* New!      - Autoclose opened submenus when opening a new one
+* New!      - Include plugin version in the bottom of the admin options
+* Fix!      - Color after left icon
+* Fix!      - Replace padding-top by margin-top on mobmenu-content
+* Fix!      - Fix menu panel positions when showing the admin bar
+* Fix!      - Fix One page navigation and smooth scroll
+* Fix!      - Removed outline focus
+* Fix!      - Fix submenus JS issue Replace jQuery by $
+* Fix!      - Fix CSS overlay issues
+* Fix!      - Include version in the JS/CSS enqueue 
+* Fix!      - Added version to CSS and JS files
+* Fix!      - Fixed bug in the admin menu options when using translations
+* Fix!      - Include FAQS in readme.txt
 = 2.7.4.2 =
 * Fix!      - Retina logo logic was fixed
 = 2.7.4.1 =
+
 * Fix!      - Overlay wasn't displayed correctly
 * Fix!      - Click in the Overlay wasn't working
 * Fix!      - Remove the enqueue of hamburgers.min.css
@@ -250,9 +303,9 @@ wrap that uses the translate3d property
 * Initial Version
 
 == Screenshots ==
-1. **WP Mobile Menu animated Demo.** 
-2. **WP Mobile Menu Header Types.** 
-3. **WP Mobile Menu Demo.** 
+1. **Mobile Menu animated Demo.** 
+2. **Naked Header.** 
+3. **Mobile Menu Demo.** 
 4. **Left Menu Demo.** 
 5. **Right Menu Demo.** 
 6. **General Options.** 

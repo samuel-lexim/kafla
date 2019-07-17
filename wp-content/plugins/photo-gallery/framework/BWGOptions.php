@@ -24,6 +24,7 @@ class WD_BWG_Options {
   public $enable_wp_editor = 0;
   public $enable_seo = 1;
   public $read_metadata = 1;
+  public $front_ajax = 0;
   public $developer_mode = 0;
 
   // Thumbnail

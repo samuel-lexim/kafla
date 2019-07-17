@@ -241,7 +241,7 @@ class ES_Lists_Table extends WP_List_Table {
 
 		global $wpdb;
 
-		$list_data['name']       = $data['list_name'];
+		$list_data['name']       = sanitize_text_field($data['list_name']);
 		$list_data['slug']       = sanitize_title( $list_data['name'] );
 		$list_data['created_at'] = ig_get_current_date_time();
 
@@ -301,14 +301,26 @@ class ES_Lists_Table extends WP_List_Table {
 		if ( ! $do_count_only ) {
 
 			// Prepare Order by clause
-			$order_by_clause = '';
-			$order           = ! empty( $order ) ? ' ' . esc_sql( $order ) : ' DESC';
-			$order_by_clause = ' ORDER BY ' . esc_sql( 'created_at' ) . ' ' . $order;
-			$order_by_clause = ! empty( $order_by) ? $order_by_clause . ' , ' . esc_sql( $order_by ) . ' ' . $order : $order_by_clause;
+			$order = ! empty( $order ) ? strtolower($order) : 'desc';
+			$expected_order_values = array('asc', 'desc');
+			if(!in_array($order, $expected_order_values)) {
+				$order = 'desc';
+			}
 
-			$sql .= $order_by_clause;
-			$sql .= " LIMIT $per_page";
-			$sql .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
+			$default_order_by = esc_sql( 'created_at' );
+
+			$expected_order_by_values = array( 'name', 'created_at' );
+
+			if ( ! in_array( $order_by, $expected_order_by_values ) ) {
+				$order_by_clause = " ORDER BY {$default_order_by} DESC";
+			} else {
+				$order_by        = esc_sql( $order_by );
+				$order_by_clause = " ORDER BY {$order_by} {$order}, {$default_order_by} DESC";
+			}
+
+			$sql    .= $order_by_clause;
+			$sql    .= " LIMIT $per_page";
+			$sql    .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
 			$result = $wpdb->get_results( $sql, 'ARRAY_A' );
 
 		} else {
@@ -362,19 +374,19 @@ class ES_Lists_Table extends WP_List_Table {
 
 		switch ( $column_name ) {
 			case 'active_contacts':
-			    $count = ES_DB_Lists_Contacts::get_total_count_by_list( $item['id'], 'active' );
-			    if($count > 0) {
-			        $url = admin_url('admin.php?page=es_subscribers&filter_by_status=subscribed&filter_by_list_id=' . $item['id']);
-			        $count = sprintf(__('<a href="%s" target="_blank">%d</a>', 'email-subscribers'), $url, $count);
-                }
+				$count = ES_DB_Lists_Contacts::get_total_count_by_list( $item['id'], 'subscribed' );
+				if ( $count > 0 ) {
+					$url   = admin_url( 'admin.php?page=es_subscribers&filter_by_status=subscribed&filter_by_list_id=' . $item['id'] );
+					$count = sprintf( __( '<a href="%s" target="_blank">%d</a>', 'email-subscribers' ), $url, $count );
+				}
 
-			    return $count;
+				return $count;
 				break;
 			case 'all_contacts':
 				$count = ES_DB_Lists_Contacts::get_total_count_by_list( $item['id'], 'all' );
-				if($count > 0) {
-					$url = admin_url('admin.php?page=es_subscribers&filter_by_list_id=' . $item['id']);
-					$count = sprintf(__('<a href="%s" target="_blank">%d</a>', 'email-subscribers'), $url, $count);
+				if ( $count > 0 ) {
+					$url   = admin_url( 'admin.php?page=es_subscribers&filter_by_list_id=' . $item['id'] );
+					$count = sprintf( __( '<a href="%s" target="_blank">%d</a>', 'email-subscribers' ), $url, $count );
 				}
 
 				return $count;
@@ -382,6 +394,9 @@ class ES_Lists_Table extends WP_List_Table {
 			case 'created_at':
 				return ig_es_format_date_time( $item[ $column_name ] );
 				break;
+
+			case 'export':
+				return "<a href='admin.php?page=download_report&report=users&status=select_list&list_id={$item['id']}'>" . __( 'Download', 'email-subscribers' ) . '</a>';
 			default:
 				return '';
 		}
@@ -415,8 +430,8 @@ class ES_Lists_Table extends WP_List_Table {
 		$actions = array();
 		if ( $item['id'] != 1 ) {
 			$actions = array(
-				'edit'   => sprintf( __('<a href="?page=%s&action=%s&list=%s&_wpnonce=%s">Edit</a>', 'email-subscribers' ), esc_attr( Email_Subscribers::get_request( 'page' ) ), 'edit', absint( $item['id'] ), $list_nonce ),
-				'delete' => sprintf( __('<a href="?page=%s&action=%s&list=%s&_wpnonce=%s" onclick="return checkDelete()">Delete</a>', 'email-subscribers' ), esc_attr( Email_Subscribers::get_request( 'page' ) ), 'delete', absint( $item['id'] ), $list_nonce )
+				'edit'   => sprintf( __( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s">Edit</a>', 'email-subscribers' ), esc_attr( Email_Subscribers::get_request( 'page' ) ), 'edit', absint( $item['id'] ), $list_nonce ),
+				'delete' => sprintf( __( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s" onclick="return checkDelete()">Delete</a>', 'email-subscribers' ), esc_attr( Email_Subscribers::get_request( 'page' ) ), 'delete', absint( $item['id'] ), $list_nonce )
 			);
 		}
 
@@ -435,7 +450,8 @@ class ES_Lists_Table extends WP_List_Table {
 			'name'            => __( 'Name', 'email-subscribers' ),
 			'active_contacts' => __( 'Active Contacts', 'email-subscribers' ),
 			'all_contacts'    => __( 'All Contacts', 'email-subscribers' ),
-			'created_at'      => __( 'Created', 'email-subscribers' )
+			'created_at'      => __( 'Created', 'email-subscribers' ),
+			'export'          => __( 'Export', 'email-subscribers' )
 		);
 
 		return $columns;
@@ -449,7 +465,8 @@ class ES_Lists_Table extends WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		$sortable_columns = array(
-			'name' => array( 'name', true ),
+			'name'       => array( 'name', true ),
+			'created_at' => array( 'created_at', true ),
 		);
 
 		return $sortable_columns;
@@ -472,7 +489,7 @@ class ES_Lists_Table extends WP_List_Table {
         <p class="search-box">
             <label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
             <input type="search" id="<?php echo $input_id ?>" name="s" value="<?php _admin_search_query(); ?>"/>
-			<?php submit_button( __('Search Lists', 'email-subscribers'), 'button', false, false, array( 'id' => 'search-submit' ) ); ?>
+			<?php submit_button( __( 'Search Lists', 'email-subscribers' ), 'button', false, false, array( 'id' => 'search-submit' ) ); ?>
         </p>
 	<?php }
 
@@ -482,7 +499,6 @@ class ES_Lists_Table extends WP_List_Table {
 	public function prepare_items() {
 
 		$this->_column_headers = $this->get_column_info();
-
 
 		/** Process bulk action */
 		$this->process_bulk_action();
@@ -582,4 +598,6 @@ class ES_Lists_Table extends WP_List_Table {
 
 		return self::$instance;
 	}
+
+
 }

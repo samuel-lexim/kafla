@@ -3,11 +3,11 @@
  * Plugin Name: Email Subscribers & Newsletters
  * Plugin URI: https://www.icegram.com/
  * Description: Add subscription forms on website, send HTML newsletters & automatically notify subscribers about new blog posts once it is published.
- * Version: 4.1.2.2
+ * Version: 4.1.8
  * Author: Icegram
  * Author URI: https://www.icegram.com/
  * Requires at least: 3.9
- * Tested up to: 5.2.1
+ * Tested up to: 5.2.2
  * Text Domain: email-subscribers
  * Domain Path: /languages/
  * License: GPLv3
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Define constants
  */
 define( 'ES_PLUGIN_DIR', dirname( __FILE__ ) );
-define( 'ES_PLUGIN_VERSION', '4.1.2.2' );
+define( 'ES_PLUGIN_VERSION', '4.1.8' );
 define( 'ES_PLUGIN_BASE_NAME', plugin_basename( __FILE__ ) );
 
 if ( ! defined( 'ES_PLUGIN_FILE' ) ) {

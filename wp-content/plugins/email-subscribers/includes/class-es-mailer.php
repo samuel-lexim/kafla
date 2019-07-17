@@ -12,7 +12,6 @@ class ES_Mailer {
 
 	}
 
-
 	/* prepare cron email*/
 	public static function prepare_and_send_email( $mails, $notification ) {
 
@@ -37,13 +36,17 @@ class ES_Mailer {
 			$email      = $mail['email'];
 			$id         = $mail['contact_id'];
 			$guid       = $mail['mailing_queue_hash'];
-			$email_name = ! empty( $emails_name_map[ $email ] ) ? $emails_name_map[ $email ] : '';
+			$email_name = ! empty( $emails_name_map[ $email ] ) ? $emails_name_map[ $email ]['name'] : '';
+			$first_name = ! empty( $emails_name_map[ $email ] ) ? $emails_name_map[ $email ]['first_name'] : '';
+			$last_name  = ! empty( $emails_name_map[ $email ] ) ? $emails_name_map[ $email ]['last_name'] : '';
 
 			$keywords = array(
-				'name'  => $email_name,
-				'email' => $email,
-				'guid'  => $guid,
-				'dbid'  => $id
+				'name'       => $email_name,
+				'first_name' => $first_name,
+				'last_name'  => $last_name,
+				'email'      => $email,
+				'guid'       => $guid,
+				'dbid'       => $id
 			);
 
 			// Preparing email body
@@ -65,11 +68,15 @@ class ES_Mailer {
 		$blog_name = get_option( 'blogname' );
 		$site_url  = home_url( '/' );
 
-		$name      = isset( $data['name'] ) ? $data['name'] : '';
-		$email     = isset( $data['email'] ) ? $data['email'] : '';
-		$list_name = isset( $data['list_name'] ) ? $data['list_name'] : '';
+		$name       = isset( $data['name'] ) ? $data['name'] : '';
+		$first_name = isset( $data['first_name'] ) ? $data['first_name'] : '';
+		$last_name  = isset( $data['last_name'] ) ? $data['last_name'] : '';
+		$email      = isset( $data['email'] ) ? $data['email'] : '';
+		$list_name  = isset( $data['list_name'] ) ? $data['list_name'] : '';
 
 		$content = str_replace( "{{NAME}}", $name, $content );
+		$content = str_replace( "{{FIRSTNAME}}", $first_name, $content );
+		$content = str_replace( "{{LASTNAME}}", $last_name, $content );
 		$content = str_replace( "{{EMAIL}}", $email, $content );
 		$content = str_replace( "{{GROUP}}", $list_name, $content );
 		$content = str_replace( "{{LIST}}", $list_name, $content );
@@ -115,17 +122,21 @@ class ES_Mailer {
 		$total_contacts = ES_DB_Contacts::count_active_subscribers_by_list_id();
 		$content        = stripslashes( get_option( 'ig_es_welcome_email_content', '' ) );
 
-		$name      = isset( $data['name'] ) ? $data['name'] : '';
-		$email     = isset( $data['email'] ) ? $data['email'] : '';
-		$list_name = isset( $data['list_name'] ) ? $data['list_name'] : '';
-		$db_id     = isset( $data['db_id'] ) ? $data['db_id'] : '';
-		$guid      = ES_DB_Contacts::get_contact_hash_by_id( $db_id );
+		$name       = isset( $data['name'] ) ? $data['name'] : '';
+		$first_name = isset( $data['first_name'] ) ? $data['first_name'] : '';
+		$last_name  = isset( $data['last_name'] ) ? $data['last_name'] : '';
+		$email      = isset( $data['email'] ) ? $data['email'] : '';
+		$list_name  = isset( $data['list_name'] ) ? $data['list_name'] : '';
+		$db_id      = isset( $data['db_id'] ) ? $data['db_id'] : '';
+		$guid       = ES_DB_Contacts::get_contact_hash_by_id( $db_id );
 		// $guid  = isset( $data['guid'] ) ? $data['guid'] : '';
 		$guid = ! empty( $guid ) ? $guid : '';
 
 		$unsubscribe_link = self::prepare_link( 'unsubscribe', $db_id, $email, $guid );
 
 		$content = str_replace( "{{NAME}}", $name, $content );
+		$content = str_replace( "{{FIRSTNAME}}", $first_name, $content );
+		$content = str_replace( "{{LASTNAME}}", $last_name, $content );
 		$content = str_replace( "{{EMAIL}}", $email, $content );
 		$content = str_replace( "{{SITENAME}}", $blog_name, $content );
 		$content = str_replace( "{{GROUP}}", $list_name, $content );
@@ -150,13 +161,17 @@ class ES_Mailer {
 		$db_id = isset( $data['db_id'] ) ? $data['db_id'] : '';
 		$guid  = ES_DB_Contacts::get_contact_hash_by_id( $db_id );
 		// $guid  = isset( $data['guid'] ) ? $data['guid'] : '';
-		$guid  = ! empty( $guid ) ? $guid : '';
-		$email = isset( $data['email'] ) ? $data['email'] : '';
-		$name  = isset( $data['name'] ) ? $data['name'] : '';
+		$guid       = ! empty( $guid ) ? $guid : '';
+		$email      = isset( $data['email'] ) ? $data['email'] : '';
+		$name       = isset( $data['name'] ) ? $data['name'] : '';
+		$first_name = isset( $data['first_name'] ) ? $data['first_name'] : '';
+		$last_name  = isset( $data['last_name'] ) ? $data['last_name'] : '';
 
 		$subscribe_link = self::prepare_link( 'subscribe', $db_id, $email, $guid );
 
 		$content = str_replace( "{{NAME}}", $name, $content );
+		$content = str_replace( "{{FIRSTNAME}}", $first_name, $content );
+		$content = str_replace( "{{LASTNAME}}", $last_name, $content );
 		$content = str_replace( "{{EMAIL}}", $email, $content );
 		$content = str_replace( "{{LINK}}", $subscribe_link, $content );
 		$content = str_replace( "{{SITENAME}}", $blog_name, $content );
@@ -171,10 +186,14 @@ class ES_Mailer {
 
 	public static function prepare_email_template( $template_content, $keywords, $template_id = 0 ) {
 
-		$name  = isset( $keywords['name'] ) ? $keywords['name'] : '';
-		$email = isset( $keywords['email'] ) ? $keywords['email'] : '';
+		$name       = isset( $keywords['name'] ) ? $keywords['name'] : '';
+		$email      = isset( $keywords['email'] ) ? $keywords['email'] : '';
+		$first_name = isset( $keywords['first_name'] ) ? $keywords['first_name'] : '';
+		$last_name  = isset( $keywords['last_name'] ) ? $keywords['last_name'] : '';
 
 		$template_content = str_replace( "{{NAME}}", $name, $template_content );
+		$template_content = str_replace( "{{FIRSTNAME}}", $first_name, $template_content );
+		$template_content = str_replace( "{{LASTNAME}}", $last_name, $template_content );
 		$template_content = str_replace( "{{EMAIL}}", $email, $template_content );
 
 		$template_content = convert_chars( convert_smilies( wptexturize( $template_content ) ) );
@@ -341,6 +360,7 @@ class ES_Mailer {
 
 			$response = array();
 			$response = apply_filters( $send_email_via . '_do_send', $response, $data );
+
 			return $response;
 		} else {
 			mail( $to_email, $subject, $email_template, $headers );

@@ -9,8 +9,8 @@ class WP_Mobile_Menu_Walker_Nav_Menu extends Walker_Nav_Menu
     public  $footer_li_class ;
     public function __construct( $myarg, $aditional_footer_li_class )
     {
+        global  $mm_fs ;
         $this->menu_position = $myarg;
-        $this->footer_li_class = $aditional_footer_li_class;
     }
     
     public function start_el(
@@ -22,7 +22,6 @@ class WP_Mobile_Menu_Walker_Nav_Menu extends Walker_Nav_Menu
     )
     {
         global  $mm_fs ;
-        $titan = TitanFramework::getInstance( 'mobmenu' );
         $icon_class = '';
         $mobile_icon = '';
         $menu_position = '';
@@ -30,7 +29,6 @@ class WP_Mobile_Menu_Walker_Nav_Menu extends Walker_Nav_Menu
         $class_names = '';
         $value = '';
         $classes = ( empty($item->classes) ? array() : (array) $item->classes );
-        array_push( $classes, $this->footer_li_class );
         $classes[] = 'menu-item-' . $item->ID;
         $class_names = join( ' ', apply_filters(
             'nav_menu_css_class',
@@ -85,15 +83,9 @@ class WP_Mobile_Menu_Walker_Nav_Menu extends Walker_Nav_Menu
     
     public function start_lvl( &$output, $depth = 0, $args = array() )
     {
-        $titan = TitanFramework::getInstance( 'mobmenu' );
-        
-        if ( $titan->getOption( 'sliding_submenus' ) ) {
-            $output .= "\n" . '<ul class="sub-menu" data-menu-level="' . ($depth + 1) . '"><li class="sliding-back-menu" role="button"><i class="mob-icon-left-open mob-back-button"></i>' . __( "Back", "mobile-menu" ) . '</li>' . "\n";
-        } else {
-            $indent = str_repeat( "\t", $depth );
-            $output .= "\n{$indent}<ul class=\"sub-menu \">\n";
-        }
-    
+        global  $mm_fs ;
+        $indent = str_repeat( "\t", $depth );
+        $output .= "\n{$indent}<ul class=\"sub-menu \">\n";
     }
 
 }
