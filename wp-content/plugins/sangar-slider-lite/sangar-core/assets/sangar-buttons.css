@@ -1,0 +1,205 @@
+/**
+ * Sangar Buttons
+ */
+.sangar-btn-full-rounded {
+    background: #F80028;
+    color: #FFFFFF;
+    padding: 15px 40px;
+    text-decoration: none;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    border-radius: 9999px;
+    display: inline-block;
+    font-weight: bold;
+    line-height: normal;
+}
+.sangar-btn-full-rounded:hover {
+    color: #FFFFFF;
+    background: #FF193F;
+}
+
+.sangar-btn-full-rounded-bevel {
+    background: #F80028;
+    color: #FFFFFF;
+    padding: 15px 40px;
+    text-decoration: none;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    border-radius: 9999px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    line-height: normal;
+    box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15);
+}
+.sangar-btn-full-rounded-bevel:hover {
+    color: #FFFFFF;
+    background: #FF193F;
+}
+
+.sangar-btn-full-rounded-border {
+    background: #F80028;
+    color: #FFFFFF;
+    padding: 13px 38px;
+    text-decoration: none;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    border-radius: 9999px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    line-height: normal;
+    border: 2px solid #333333;
+}
+.sangar-btn-full-rounded-border:hover {
+    color: #FFFFFF;
+    background: #FF193F;
+}
+
+.sangar-btn-full-rounded-outline {  
+    color: #333333;
+    padding: 13px 38px;
+    text-decoration: none;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    border-radius: 9999px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    line-height: normal;
+    border: 2px solid #333333;
+}
+.sangar-btn-full-rounded-outline:hover {
+    color: #333333;
+}
+
+.sangar-btn-square {
+    background: #1E68B8;
+    color: #FFFFFF;
+    padding: 15px 40px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    line-height: normal;
+}
+.sangar-btn-square:hover {
+    color: #FFFFFF;
+    background: #1988FF;
+}
+
+.sangar-btn-square-bevel {
+    background: #1E68B8;
+    color: #FFFFFF;
+    padding: 15px 40px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    line-height: normal;
+    box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15);
+}
+.sangar-btn-square-bevel:hover {
+    color: #FFFFFF;
+    background: #1988FF;
+}
+
+.sangar-btn-square-border {
+    background: #1E68B8;
+    color: #FFFFFF;
+    padding: 13px 38px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    border: 2px solid #333333;
+    line-height: normal;
+}
+.sangar-btn-square-border:hover {
+    color: #FFFFFF;
+    background: #1988FF;
+}
+
+.sangar-btn-square-outline {    
+    color: #333333;
+    padding: 13px 38px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    border: 2px solid #333333;
+    line-height: normal;
+}
+.sangar-btn-square-outline:hover {
+    color: #333333;
+}
+
+.sangar-btn-rounded {
+    background: #00A0D2;
+    color: #FFFFFF;
+    padding: 15px 40px;
+    text-decoration: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    line-height: normal;
+}
+.sangar-btn-rounded:hover {
+    color: #FFFFFF;
+    background: #19C8FF;
+}
+
+.sangar-btn-rounded-bevel {
+    background: #00A0D2;
+    color: #FFFFFF;
+    padding: 15px 40px;
+    text-decoration: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    line-height: normal;
+    box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15);
+}
+.sangar-btn-rounded-bevel:hover {
+    color: #FFFFFF;
+    background: #19C8FF;
+}
+
+.sangar-btn-rounded-border {
+    background: #00A0D2;
+    color: #FFFFFF;
+    padding: 13px 38px;
+    text-decoration: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    border: 2px solid #333333;
+    line-height: normal;
+}
+.sangar-btn-rounded-border:hover {
+    color: #FFFFFF;
+    background: #19C8FF;
+}
+
+.sangar-btn-rounded-outline {   
+    color: #333333;
+    padding: 13px 38px;
+    text-decoration: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    border: 2px solid #333333;
+    line-height: normal;
+}
+.sangar-btn-rounded-outline:hover {
+    color: #333333;
+}

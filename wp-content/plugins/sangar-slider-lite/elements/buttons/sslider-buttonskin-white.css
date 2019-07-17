@@ -1,0 +1,39 @@
+/* BUTTONS
+ ================================================== */
+
+.sslider-button.sslider-buttonskin-white {
+	padding-top: 1em;
+	padding-bottom: 1.3em;
+	font-size: 1.4em;
+}
+
+.sslider-button.sslider-buttonskin-white a.sslider-link {
+	text-decoration: none;
+	font-size: inherit;
+}
+
+.sslider-button.sslider-buttonskin-white a.sslider-link:hover {
+	text-decoration: none;
+}
+
+.sslider-button.sslider-buttonskin-white a.sslider-link span {	
+	padding: 0.75em 2em;
+	border-width: 0.1em;
+	border-style: solid;
+
+	-webkit-border-radius: 100em;
+	-moz-border-radius: 100em;
+	border-radius: 100em;
+
+	color: #222;
+	border-color: #e6e6e6;
+	background: #eee;
+
+	font-weight: bold;
+}
+
+.sslider-button.sslider-buttonskin-white a.sslider-link:hover span {	
+	color: #222;
+	border-color: #e6e6e6;
+	background: #f9f9f9;
+}

@@ -1,0 +1,123 @@
+@font-face {
+	font-family: 'sangarico';
+	src:url('fonts/sangarico.eot?xr5rj7');
+	src:url('fonts/sangarico.eot?xr5rj7#iefix') format('embedded-opentype'),
+		url('fonts/sangarico.ttf?xr5rj7') format('truetype'),
+		url('fonts/sangarico.woff?xr5rj7') format('woff'),
+		url('fonts/sangarico.svg?xr5rj7#sangarico') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="sangarico-"], [class*=" sangarico-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'sangarico' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.sangarico-chevron-right:before {
+	content: "\e923";
+}
+.sangarico-chevron-circle-right:before {
+	content: "\e92f";
+}
+.sangarico-aircraft:before {
+	content: "\e95d";
+}
+.sangarico-music:before {
+	content: "\e96c";
+}
+.sangarico-clock:before {
+	content: "\e985";
+}
+.sangarico-eye:before {
+	content: "\e9a1";
+}
+.sangarico-game:before {
+	content: "\e9ad";
+}
+.sangarico-heart-o:before {
+	content: "\e9b4";
+}
+.sangarico-heart:before {
+	content: "\e9b5";
+}
+.sangarico-laptop:before {
+	content: "\e9c6";
+}
+.sangarico-location:before {
+	content: "\e9d1";
+}
+.sangarico-message:before {
+	content: "\e9e1";
+}
+.sangarico-news:before {
+	content: "\e9ec";
+}
+.sangarico-quote:before {
+	content: "\ea02";
+}
+.sangarico-share:before {
+	content: "\ea0d";
+}
+.sangarico-chart:before {
+	content: "\ea13";
+}
+.sangarico-star-o:before {
+	content: "\ea1c";
+}
+.sangarico-star:before {
+	content: "\ea1d";
+}
+.sangarico-dislike:before {
+	content: "\ea29";
+}
+.sangarico-like:before {
+	content: "\ea2a";
+}
+.sangarico-trophy:before {
+	content: "\ea31";
+}
+.sangarico-typing:before {
+	content: "\ea33";
+}
+.sangarico-video:before {
+	content: "\ea39";
+}
+.sangarico-facebook:before {
+	content: "\ea67";
+}
+.sangarico-google:before {
+	content: "\ea6d";
+}
+.sangarico-instagram:before {
+	content: "\ea6f";
+}
+.sangarico-linkedin:before {
+	content: "\ea73";
+}
+.sangarico-pinterest:before {
+	content: "\ea75";
+}
+.sangarico-tumblr:before {
+	content: "\ea7a";
+}
+.sangarico-twitter:before {
+	content: "\ea7c";
+}
+.sangarico-vimeo:before {
+	content: "\ea7e";
+}
+.sangarico-youtube:before {
+	content: "\ea80";
+}
+

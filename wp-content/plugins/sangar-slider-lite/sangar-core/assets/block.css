@@ -1,0 +1,13 @@
+.sslider-shortcode {
+	display: none;
+}
+.sangar-preview {
+	background: url(images/preview.jpg) top left no-repeat;
+	width: 608px;
+	height: 236px;
+	display: inline-block;
+	text-align: center;
+}
+.gutenberg select.sangar-select {
+	margin-top: 210px;
+}

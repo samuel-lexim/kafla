@@ -1,0 +1,14 @@
+/* BUTTONS
+ ================================================== */
+.sslider-button.sslider-buttonskin-none {
+	font-size: 1.4em;
+}
+
+.sslider-button.sslider-buttonskin-none a.sslider-link {
+	font-size: inherit;
+	margin-left: 0;
+}
+
+.sslider-button.sslider-buttonskin-none a.sslider-link span {	
+	padding: 0.5em 0;
+}

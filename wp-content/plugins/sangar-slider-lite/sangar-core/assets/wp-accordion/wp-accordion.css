@@ -1,0 +1,136 @@
+/** ===== Floats & clearfix ===== */
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+.clearfix {
+    *zoom: 1;
+}
+.clearfix::before, .clearfix::after {
+    display: table;
+    content: '';
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+
+/** ===== Settings container ===== */
+.wpAccordionContainer {
+    width: 100%;
+    border: none !important;
+    margin: 0px !important;
+    background: none !important;
+}
+.wpAccordionContainer .widgets-holder-wrap {
+    margin-top: 0;
+    margin-bottom: 9px;
+}
+.wpAccordionContainer .widgets-holder-wrap.closed .sidebar-name {
+    border-width: 0;
+}
+.closed > .sidebar-content,
+.wpAccordionContainer .widgets-holder-wrap.closed .sidebar-content {
+    display: none;
+}
+.wpAccordionContainer .sidebar-content {
+    border-width: 0 1px 1px;
+    border-style: none solid solid;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+    min-height: 20px;
+    border-color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.wpAccordionContainer .sidebar-content.no-padding {
+    padding: 0px;
+}
+.wpAccordionContainer .sidebar-content .divider {
+    margin-bottom: 0;
+}
+.wpAccordionContainer .sidebar-content .field,
+.wpAccordionContainer .sidebar-content .radio {
+    width: 100%;
+    margin: 1em 0;
+}
+.wpAccordionContainer .sidebar-content .field span {
+    font-weight: bold;
+    display: block;
+}
+.wpAccordionContainer .sidebar-content .field {
+    float: left;
+}
+.wpAccordionContainer .sidebar-content .field input,
+.wpAccordionContainer .sidebar-content .field select {
+    width: 90%;
+}
+.wpAccordionContainer .sidebar-content .field input[type="checkbox"] {
+    width: auto;
+    margin-right: 4px;
+}
+.wpAccordionContainer .sidebar-content .radio > span {
+    font-weight: bold;
+    float: left;
+}
+.wpAccordionContainer .sidebar-content .radio .buttons {
+    float: right;
+}
+.wpAccordionContainer .sidebar-content .radio .buttons label {
+    margin-right: 10px;
+}
+.wpAccordionContainer .sidebar-content .radio .buttons input {
+    margin-top: 0;
+    margin-right: 2px;
+}
+
+.wpAccordionContainer .sidebar-content .table-content {
+    width: 100%; 
+}
+.wpAccordionContainer .sidebar-content .table-content td {
+    padding: 10px
+}
+.wpAccordionContainer .sidebar-content .table-content td label {
+    display: block;
+    padding: 0px;
+}
+.wpAccordionContainer .sidebar-content .table-content th {
+    vertical-align: top;
+    text-align: left;
+    width: 250px;
+    padding-top: 15px;
+    font-size: 14px;
+}
+
+.wpAccordionContainer .dimension-settings .field {
+    width: 45%;
+}
+.wpAccordionContainer .dimension-settings .field:first-child {
+    margin-right: 5%;
+}
+
+.wpAccordionContainer .sidebar-name {
+    border-bottom: 1px solid #eee;
+}
+
+.wpAccordionContainer .closed .sidebar-name {
+    border-width: 0;
+}
+
+.wpAccordionContainer .sidebar-name h3 {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.wpAccordionContainer .sidebar-name-arrow:before {
+    width: inherit;
+    right: 0px !important;
+    padding: 8px 10px !important;
+}

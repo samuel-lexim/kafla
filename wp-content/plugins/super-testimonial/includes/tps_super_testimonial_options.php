@@ -1,0 +1,62 @@
+<?php 
+	if ( ! defined('ABSPATH')) exit;  // if direct access 	
+?>
+
+
+<div class="wrap about-wrap full-width-layout">
+	<h1><?php _e('Welcome to Super Testimonials 1.9', 'ktsttestimonial');?></h1>
+	<p id="tp_testimonials_shortcode_para">
+		<p class="about-text">Thanks for installing our plugin super testimonial.   If you have any Question or need any helps, please don't hesitate to post it on <a href="https://wordpress.org/support/plugin/super-testimonial" target="_blank">WordPress.org Support Forum</a> or <a href="https://themepoints.com/questions-answer/" target="_blank">Themepoints.com Support Forum</a>.</p>
+		<div class="changelog point-releases">
+			<h3>Submit a Review</h3>
+			<p>We spend plenty of time to develop a plugin like this and give you freely to make your life easier. If you like this plugin, please <a style="color:red;" href="https://wordpress.org/support/plugin/super-testimonial/reviews/" target="_blank">rate it 5 stars</a>. If you have any problems with the plugin, please <a href="https://themepoints.com/questions-answer/" target="_blank">let us know</a> before leaving a review.</p>	
+		</div>
+	</p>
+	<div class="testimonials_btn_area">
+		<a target="_blank" href="https://themepoints.com/product/super-testimonial-pro" class="testimonials_btn">Upgrade Pro</a>
+		<a target="_blank" href="https://themepoints.com/product/super-testimonial-pro" class="testimonials_btn">Live Preview</a>
+		<a target="_blank" href="https://themepoints.com/testimonials/documentation" class="testimonials_btn">Documentation</a>
+		<a target="_blank" href="https://themepoints.com/questions-answer" class="testimonials_btn">Support</a><br />
+	</div>
+	
+	
+	<div class="testimonials_btn_area">
+		<h3>How to display Testimonial :</h3>
+		<p class="about-text">Super testimonial is very easy to display testimonial in post, page or widget section. first need to create testimonial then copy & paste the shortcode into post, page or widgets. </p>
+		<span class="shortcode">[tpsscode]</span><br/><br/>
+		<p id="tp_testimonials_shortcode_para"><strong>Note: </strong> Testimonial Default Shortcode without any attributes.</p>
+	</div>
+
+	<div class="testimonials_btn_area">
+		<h3>All Shortcode Attributes :</h3>
+		<p class="about-text">Super Testimonial All shortcode attributes available here.</p>
+		Testimonial Themes:<br/><br/>
+		<div id="">[tpsscode themes="theme1"]</div><br/>
+
+		<p id="tp_testimonials_shortcode_para">
+			<strong>Note: </strong>You can use 4 Different theme in your testimonial using shortcode parameters. testimonial shortcode parameters list: (theme1,theme2,theme3,theme4).
+		</p>
+
+		Testimonials Category by ID:<br/><br/>
+		<div id="tp_testimonials_shortcode">[tpsscode themes="theme1" category="your category id"]</div><br/>
+
+		<p id="tp_testimonials_shortcode_para">
+			<strong>Note: </strong>you can show testimonials in the website using category id. Example category id:25
+		</p>	
+
+		Sort by date, random or custom order:<br/><br/>
+		<div id="tp_testimonials_shortcode">[tpsscode themes="theme1" category="25" order_by="date" order="DESC"]</div><br/>
+
+		<p id="tp_testimonials_shortcode_para">
+			<strong>Note: </strong>you can Sort your testimonials by order & order_by. Example (order="DESC/ASC", order_by="date/random/menu_order")
+		</p>
+	</div>
+	
+	<div class="testimonials_btn_area">
+		<h3>How to display Testimonial in widget :</h3>
+		<p class="about-text">First need to add a text widget in sidebar then copy & paste the shortcode. </p>
+		<span class="">[tpsscode]</span><br/><br/>
+		<p id="tp_testimonials_shortcode_para"><strong>Note: </strong> Testimonial Default Shortcode without any attributes.</p>
+	</div>
+	
+</div>

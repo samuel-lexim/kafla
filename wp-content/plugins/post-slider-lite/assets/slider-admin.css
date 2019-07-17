@@ -1,0 +1,47 @@
+#sslider-query-editor-container .ordinary-select-2 .select2-container {
+    width: 300px !important;
+}
+
+#sslider-query-editor-container .toclone {
+	margin-bottom: 15px;
+	border-bottom: 1px solid #CCCBCB;
+	padding-bottom: 20px;
+}
+
+.sangar-layer .layer .layer-content .add-post-content > p {
+	line-height: 0;
+	padding: 7px 10px;
+	font-weight: bold;
+}
+
+.sangar-layer .layer .layer-content .add-post-content-container {
+	position: absolute;
+	top: 95px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	overflow: hidden;
+}
+
+.sangar-layer .layer .layer-content .add-post-content-container > ul {
+    margin: 0px;
+    text-align: center;
+}
+
+.sangar-layer .layer .layer-content .add-post-content-container > ul > li {
+	margin: 0px;
+	padding: 10px;
+	border: 1px solid rgb(221, 221, 221);
+	cursor: pointer;
+	font-weight: normal;
+	font-size: 14px;
+	width: 150px;
+	display: inline-block;
+	margin-top: 3px;
+	text-align: left;
+}
+
+.sangar-layer .layer .layer-content .add-post-content-container > ul > li:hover {
+	background: rgb(221, 221, 221);
+	font-weight: bold;
+}
