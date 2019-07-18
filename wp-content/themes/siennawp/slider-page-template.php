@@ -45,6 +45,10 @@ Template Name: Slider Page Template
                             <?php } ?>
                         </div>
 
+                        <div class="page_content">
+                            <?php the_content() ?>
+                        </div>
+
                         <?php do_action('sienna_mikado_page_after_content'); ?>
                     </div>
 

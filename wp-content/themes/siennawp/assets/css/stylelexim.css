@@ -1373,6 +1373,14 @@ aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item > a, aside.mkdf-si
     width: 100%;
 }
 
+.page_content {
+    width: 100%;
+}
+
+.page_content img {
+    width: 100%;
+}
+
 /*
 * ========== END CSS Slider Page Template ===========
 */
