@@ -470,6 +470,10 @@ aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item > a, aside.mkdf-si
 }
 
 .mkdf-wrapper .mkdf-wrapper-inner {
+    position: relative;
+}
+
+body.home .mkdf-wrapper .mkdf-wrapper-inner {
     position: absolute;
 }
 
@@ -477,8 +481,12 @@ aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item > a, aside.mkdf-si
     width: 100%;
     z-index: 999;
     margin: 0 auto;
-    background: transparent;
+    background: url(./images/bg-header.jpg) no-repeat center;
+    background-size: cover;
+}
 
+body.home .bg-header:not(.sticky) {
+    background: transparent;
 }
 
 .bg-header.sticky {
@@ -488,8 +496,6 @@ aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item > a, aside.mkdf-si
     right: 0;
     z-index: 9999;
     padding: 0;
-    background: url(./images/bg-header.jpg) no-repeat center;
-    background-size: cover;
 }
 
 .bg-header-child {

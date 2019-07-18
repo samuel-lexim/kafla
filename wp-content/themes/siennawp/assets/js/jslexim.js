@@ -33,7 +33,8 @@ jQuery(function () {
 
         // START - sticky menu on pc and mobile
         function checkSticky() {
-            if ($(window).scrollTop() > 50) {
+            let currentTop = jQuery(window).scrollTop();
+            if (currentTop >= 100) {
                 $('.bg-header').addClass('sticky');
             } else {
                 $('.bg-header').removeClass('sticky');
