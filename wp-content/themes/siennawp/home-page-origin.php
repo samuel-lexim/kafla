@@ -63,7 +63,7 @@ Template Name: Home Page Origin
 			                <div class="empowerment-box parent-position">
 			                	<div class="empowerment-box-child child-position">
 				                	<div id="ic-political"></div>	
-			                		<div class="empowerment-titles"> Political  Empowerment</div>
+			                		<div class="empowerment-titles">Political  Empowerment</div>
 		                		</div>
 			                </div>
 			            </a>
