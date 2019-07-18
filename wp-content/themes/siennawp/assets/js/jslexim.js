@@ -31,16 +31,22 @@ jQuery(function () {
         // add placeholder Search... in textbox search
         $('.form-search-home-top #s').attr('placeholder', 'Search...');
 
-        // sticky menu on pc and mobile       
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 0) {
+        // START - sticky menu on pc and mobile
+        function checkSticky() {
+            if ($(window).scrollTop() > 50) {
                 $('.bg-header').addClass('sticky');
-                $('.bg-header').addClass('bg-image-header');
             } else {
                 $('.bg-header').removeClass('sticky');
-                $('.bg-header').removeClass('bg-image-header');
             }
+        }
+
+        $(window).scroll(function () {
+            checkSticky();
         });
+
+        checkSticky();
+        // END - sticky menu on pc and mobile
+
 
         //  func click show video and hide background slider
         $('body').delegate('#btn-watchvideo', 'click', function () {
