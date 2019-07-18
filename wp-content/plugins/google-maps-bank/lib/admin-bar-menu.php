@@ -166,7 +166,7 @@ if ( ! is_user_logged_in() ) {
 					'parent' => 'google_maps_bank',
 					'id'     => 'gm_upgrade_google_maps_bank',
 					'title'  => $gm_premium_edition_label,
-					'href'   => 'https://google-maps-bank.tech-banker.com/pricing/',
+					'href'   => 'https://tech-banker.com/google-maps-bank/pricing/',
 					'meta'   => array( 'target' => '_blank' ),
 				)
 			);

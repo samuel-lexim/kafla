@@ -56,7 +56,7 @@ if ( ! is_user_logged_in() ) {
 							<?php echo esc_attr( $gm_manage_store ); ?>
 						</div>
 						<p class="premium-editions">
-							<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://google-maps-bank.tech-banker.com" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://google-maps-bank.tech-banker.com/frontend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
+							<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://tech-banker.com/google-maps-bank" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://tech-banker.com/google-maps-bank/backend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
 						</p>
 					</div>
 					<div class="portlet-body form">
@@ -107,7 +107,7 @@ if ( ! is_user_logged_in() ) {
 									<tbody>
 										<?php
 										foreach ( $store_locator_unserialize_data as $data ) {
-										?>
+											?>
 											<tr>
 												<td class="chk-action" style="text-align:center;width: 5%;">
 													<input type="checkbox" name="ux_check_manage_store_locator_<?php echo esc_attr( $data['meta_id'] ); ?>" value="<?php echo esc_attr( $data['meta_id'] ); ?>" id="ux_check_manage_store_locator_<?php echo esc_attr( $data['meta_id'] ); ?>" onclick="all_check_google_maps('#ux_chk_all_manage_store', oTable_store_locator);">

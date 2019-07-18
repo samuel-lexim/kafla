@@ -144,7 +144,7 @@ if ( ! is_user_logged_in() ) {
 			add_submenu_page( 'gmb_google_maps', $gm_roles_and_capabilities, $gm_roles_and_capabilities, 'read', 'gmb_roles_and_capabilities', false === $check_google_map_wizard ? 'gmb_wizard_google_map' : 'gmb_roles_and_capabilities' );
 			add_submenu_page( 'gmb_google_maps', $gm_support_forum, $gm_support_forum, 'read', 'https://wordpress.org/support/plugin/google-maps-bank', '' );
 			add_submenu_page( 'gmb_google_maps', $gm_system_information, $gm_system_information, 'read', 'gmb_system_information', false === $check_google_map_wizard ? 'gmb_wizard_google_map' : 'gmb_system_information' );
-			add_submenu_page( 'gmb_google_maps', $gm_premium_edition_label, $gm_premium_edition_label, 'read', 'https://google-maps-bank.tech-banker.com/pricing/', '' );
+			add_submenu_page( 'gmb_google_maps', $gm_premium_edition_label, $gm_premium_edition_label, 'read', 'https://tech-banker.com/google-maps-bank/pricing/', '' );
 		}
 
 		if ( ! function_exists( 'gmb_wizard_google_map' ) ) {

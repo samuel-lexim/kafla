@@ -3,8 +3,8 @@ Contributors: themepoints
 Donate link: https://themepoints.com
 Tags:  testimonial, testimonial shortcode, testimonial slider, testimonial widget, testimonials, random testimonials, client review
 Requires at least: 3.8
-Tested up to: 5.2
-Stable tag: 2.0
+Tested up to: 5.2.2
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,17 +34,16 @@ Testimonials are easy to use the plugin that allows users to add Testimonials to
 * Clean Design & Code.
 * Unlimited Testimonials.
 * Easy to use shortcodes.
-* 4 Different Testimonials Themes.
+* 4 Different Testimonial Themes.
 * Widget Ready.
-* Custom post enable.
+* Custom Post Enable.
 * Testimonials filtering by categories.
 * Sort by date, random or custom order.
-* Slider auto play with time interval.
 * multiple testimonial in same page.
 * Display Testimonials on any Page, Post or Text Widget.
-* Easy Documentation
-* Customer support
-* Easy to use
+* Easy Documentation.
+* 24/7 Customer support.
+* Super Easy to use.
 
 
 <strong>Testimonial Available fields</strong>
@@ -95,10 +94,11 @@ Testimonials are easy to use the plugin that allows users to add Testimonials to
 	* contentbg_color
 	* tborder_color
 * Display Testimonial by Category.
-* Testimonial order_by (Publish date, Order, Random).
+* Testimonial order_by (Publish date, Order, rand).
 * Testimonial order (DESC, ASC).
 * Show all testimonials via a shortcode.
 * Testimonial Slider AutoPlay Option.
+* Slider auto play with time interval.
 * Testimonial Support Multiple Column.
 * Highly customized for User Experience.
 * Work in all browsers and mobile devices.
@@ -180,6 +180,11 @@ When active & options setup done please paste [tpsscode] this shortcode into you
 
 
 == Changelog ==
+
+= 2.1 =
+*Release Date - 19 June 2019*
+ * Fix Random Order Issues.
+ * Update documentation.
 
 = 2.0 =
 *Release Date - 8 May, 2019*

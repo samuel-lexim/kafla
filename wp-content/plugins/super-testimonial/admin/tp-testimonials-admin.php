@@ -123,7 +123,7 @@
 	function tps_super_testimonials_meta_box() {
 		add_meta_box(
 			'custom_meta_box', // $id
-			'Super Testimonials Information - <a target="_blank" style="color:red;font-weight:bold" href="https://themepoints.com/product/super-testimonial-pro/">Unlock All Features</a>', // $title
+			'Super Testimonials Information - <a target="_blank" style="color:red;font-size:15px;font-weight:bold" href="https://themepoints.com/product/super-testimonial-pro/">Unlock All Features</a>', // $title
 			'tps_super_testimonials_inner_custom_box', // $callback
 			'ktsprotype', // $page
 			'normal', // $context

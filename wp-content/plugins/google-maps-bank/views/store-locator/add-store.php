@@ -57,7 +57,7 @@ if ( ! is_user_logged_in() ) {
 							<?php echo isset( $_REQUEST['id'] ) ? esc_attr( $gm_update_store ) : esc_attr( $gm_add_store ); // WPCS: CSRF ok,input var ok. ?>
 						</div>
 						<p class="premium-editions">
-							<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://google-maps-bank.tech-banker.com" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://google-maps-bank.tech-banker.com/frontend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
+							<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://tech-banker.com/google-maps-bank" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://tech-banker.com/google-maps-bank/backend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
 						</p>
 					</div>
 					<div class="portlet-body form">

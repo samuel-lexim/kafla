@@ -65,7 +65,7 @@ if ( ! is_user_logged_in() ) {
 						<?php echo esc_attr( $gm_store_locator ); ?>
 					</div>
 					<p class="premium-editions">
-						<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://google-maps-bank.tech-banker.com" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://google-maps-bank.tech-banker.com/frontend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
+						<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://tech-banker.com/google-maps-bank" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://tech-banker.com/google-maps-bank/backend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
 					</p>
 				</div>
 				<div class="portlet-body form">
@@ -750,9 +750,9 @@ if ( ! is_user_logged_in() ) {
 		</div>
 	</div>
 </div>
-	<?php
+		<?php
 	} else {
-	?>
+		?>
 	<div class="page-bar">
 		<ul class="page-breadcrumb">
 			<li>
@@ -792,6 +792,6 @@ if ( ! is_user_logged_in() ) {
 			</div>
 		</div>
 	</div>
-	<?php
+		<?php
 	}
 }

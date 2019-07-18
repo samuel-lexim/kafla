@@ -1,11 +1,11 @@
 <?php // @codingStandardsIgnoreLine.
 /**
  * Plugin Name: Google Maps Bank
- * Plugin URI: https://google-maps-bank.tech-banker.com/
+ * Plugin URI: https://tech-banker.com/google-maps-bank/
  * Description: Google Maps provides directions, locations, markers, interactive maps, and satellite/aerial imagery of anything. It's more than just a Map.
  * Author: Tech Banker
- * Author URI: https://google-maps-bank.tech-banker.com/
- * Version: 2.0.17
+ * Author URI: https://tech-banker.com/google-maps-bank/
+ * Version: 2.0.18
  * License: GPLv3
  * Text Domain: google-maps-bank
  * Domain Path: /languages
@@ -36,23 +36,17 @@ if ( ! defined( 'GOOGLE_MAP_CUSTOM_MARKER_ICON' ) ) {
 if ( ! defined( 'GOOGLE_MAP_DEFAULT_MARKER_ICON' ) ) {
 	define( 'GOOGLE_MAP_DEFAULT_MARKER_ICON', plugins_url( plugin_basename( dirname( __FILE__ ) ) . '/assets/global/img/marker-logo.png' ) );
 }
+if ( ! defined( 'TECH_BANKER_URL' ) ) {
+	define( 'TECH_BANKER_URL', 'https://tech-banker.com' );
+}
+if ( ! defined( 'TECH_BANKER_SITE_URL' ) ) {
+	define( 'TECH_BANKER_SITE_URL', 'https://tech-banker.com/google-maps-bank' );
+}
 if ( is_ssl() ) {
-	if ( ! defined( 'TECH_BANKER_URL' ) ) {
-		define( 'TECH_BANKER_URL', 'https://tech-banker.com' );
-	}
-	if ( ! defined( 'TECH_BANKER_SITE_URL' ) ) {
-		define( 'TECH_BANKER_SITE_URL', 'https://google-maps-bank.tech-banker.com/' );
-	}
 	if ( ! defined( 'TECH_BANKER_SERVICES_URL' ) ) {
 		define( 'TECH_BANKER_SERVICES_URL', 'https://tech-banker-services.org' );
 	}
 } else {
-	if ( ! defined( 'TECH_BANKER_URL' ) ) {
-		define( 'TECH_BANKER_URL', 'http://tech-banker.com' );
-	}
-	if ( ! defined( 'TECH_BANKER_SITE_URL' ) ) {
-		define( 'TECH_BANKER_SITE_URL', 'https://google-maps-bank.tech-banker.com/' );
-	}
 	if ( ! defined( 'TECH_BANKER_SERVICES_URL' ) ) {
 		define( 'TECH_BANKER_SERVICES_URL', 'http://tech-banker-services.org' );
 	}
@@ -61,7 +55,7 @@ if ( ! defined( 'TECH_BANKER_STATS_URL' ) ) {
 	define( 'TECH_BANKER_STATS_URL', 'http://stats.tech-banker-services.org' );
 }
 if ( ! defined( 'GOOGLE_MAPS_VERSION_NUMBER' ) ) {
-	define( 'GOOGLE_MAPS_VERSION_NUMBER', '2.0.17' );
+	define( 'GOOGLE_MAPS_VERSION_NUMBER', '2.0.18' );
 }
 
 $memory_limit_google_map = intval( ini_get( 'memory_limit' ) );
@@ -154,7 +148,7 @@ if ( ! function_exists( 'get_others_capabilities_google_maps' ) ) {
  * @param array $plugin_link .
  */
 function google_maps_bank_action_links( $plugin_link ) {
-	$plugin_link[] = '<a href="https://google-maps-bank.tech-banker.com" style="color: red;font-weight: bold;" target="_blank">Go Pro!</a>';
+	$plugin_link[] = '<a href="https://tech-banker.com/google-maps-bank/" style="color: red;font-weight: bold;" target="_blank">Go Pro!</a>';
 	return $plugin_link;
 }
 if ( ! function_exists( 'google_maps_bank_settings_link' ) ) {
@@ -1294,7 +1288,7 @@ function add_popup_on_deactivation_google_maps_bank() {
 				</ul>
 			</form>
 		</div>
-		<?php
+			<?php
 		}
 	}
 	$plugin_deactivation_details = new Google_Maps_Bank_Deactivation_Form();

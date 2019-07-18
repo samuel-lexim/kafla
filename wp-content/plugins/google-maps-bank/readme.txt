@@ -2,7 +2,7 @@
 Contributors: contact-banker, google-maps-bank
 Tags: maps, best google maps, custom google map, google map widget, google map plugin, google map, google maps, wp maps, wp google maps, wp google map, store locator
 Requires at least: 3.8
-Tested up to: 5.1
+Tested up to: 5.2.1
 Stable Tag: trunk
 Requires PHP: 5.4
 License: GPLv3 or later
@@ -295,6 +295,10 @@ If any problem occurs, please contact us at [support@tech-banker.com](mailto:sup
 
 == Changelog ==
 
+= 2.0.18 =
+
+* TWEAK: Link Changed
+
 = 2.0.16 =
 
 * TWEAK: GDPR Message Changed
@@ -489,7 +493,7 @@ If any problem occurs, please contact us at [support@tech-banker.com](mailto:sup
 
 = 1.0.42 =
 
-* FIX: Css Issues. 
+* FIX: Css Issues.
 
 = 1.0.41 =
 

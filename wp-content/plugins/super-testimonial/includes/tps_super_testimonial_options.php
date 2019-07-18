@@ -4,7 +4,7 @@
 
 
 <div class="wrap about-wrap full-width-layout">
-	<h1><?php _e('Welcome to Super Testimonials 1.9', 'ktsttestimonial');?></h1>
+	<h1><?php _e('Welcome to Super Testimonials 2.1', 'ktsttestimonial');?></h1>
 	<p id="tp_testimonials_shortcode_para">
 		<p class="about-text">Thanks for installing our plugin super testimonial.   If you have any Question or need any helps, please don't hesitate to post it on <a href="https://wordpress.org/support/plugin/super-testimonial" target="_blank">WordPress.org Support Forum</a> or <a href="https://themepoints.com/questions-answer/" target="_blank">Themepoints.com Support Forum</a>.</p>
 		<div class="changelog point-releases">
@@ -48,7 +48,7 @@
 		<div id="tp_testimonials_shortcode">[tpsscode themes="theme1" category="25" order_by="date" order="DESC"]</div><br/>
 
 		<p id="tp_testimonials_shortcode_para">
-			<strong>Note: </strong>you can Sort your testimonials by order & order_by. Example (order="DESC/ASC", order_by="date/random/menu_order")
+			<strong>Note: </strong>you can Sort your testimonials by order & order_by. Example (order="DESC/ASC", order_by="date/rand/menu_order")
 		</p>
 	</div>
 	
@@ -57,6 +57,16 @@
 		<p class="about-text">First need to add a text widget in sidebar then copy & paste the shortcode. </p>
 		<span class="">[tpsscode]</span><br/><br/>
 		<p id="tp_testimonials_shortcode_para"><strong>Note: </strong> Testimonial Default Shortcode without any attributes.</p>
+	</div>
+
+
+	
+	<div class="testimonials_btn_area">
+		<h3 style="color:red">Change Log:</h3>
+		<p class="changelog-text"> 2.1 - 19 June 2019 </p>
+
+		<p id="tp_testimonials_shortcode_para"><strong style="color:green">Fixed: </strong> Testimonial Random Order issues.</p>
+		<p id="tp_testimonials_shortcode_para"><strong style="color:blue">Update: </strong> Testimonial Options page.</p>
 	</div>
 	
 </div>

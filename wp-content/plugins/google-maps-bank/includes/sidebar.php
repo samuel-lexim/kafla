@@ -216,11 +216,11 @@ if ( ! is_user_logged_in() ) {
 						</a>
 					</li>
 					<li id="ux_li_upgrade">
-						<a href="https://google-maps-bank.tech-banker.com/pricing/" target="_blank">
+						<a href="https://tech-banker.com/google-maps-bank/pricing/" target="_blank">
 							<i class="icon-custom-briefcase"></i>
 							<strong>
-									<span style="color:yellow;">
-										<?php echo esc_attr( $gm_premium_edition_label ); ?>
+								<span style="color:yellow;">
+									<?php echo esc_attr( $gm_premium_edition_label ); ?>
 								</span>
 							</strong>
 						</a>

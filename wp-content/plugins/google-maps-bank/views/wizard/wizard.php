@@ -60,7 +60,7 @@ if ( ! is_user_logged_in() ) {
 										<?php echo esc_attr( __( 'Email Address for Notifications', 'google-maps-bank' ) ); ?> :
 									</label>
 									<span id="ux_txt_validation_gdpr_google_maps_bank" style="display:none;vertical-align:middle;">*</span>
-									<input type="text" style="width: 90%;" class="form-control" name="ux_txt_email_address_notifications" id="ux_txt_email_address_notifications" value="<?php echo esc_attr( get_option( 'admin_email' ) ); ?>">
+									<input type="text" style="width: 90%;" class="form-control" name="ux_txt_email_address_notifications" id="ux_txt_email_address_notifications" value="">
 								</div>
 								<div class="textalign">
 									<p><?php echo esc_attr( __( "If you're not ready to Opt-In, that's ok too!", 'google-maps-bank' ) ); ?></p>
@@ -130,15 +130,15 @@ if ( ! is_user_logged_in() ) {
 								</div>
 							</div>
 							<div class="col-md-12 terms">
-								<a href="<?php echo esc_attr( TECH_BANKER_SITE_URL ); ?>privacy-policy/" target="_blank"><?php echo esc_attr( __( 'Privacy Policy', 'google-maps-bank' ) ); ?></a>
+								<a href="<?php echo esc_attr( TECH_BANKER_URL ); ?>/privacy-policy/" target="_blank"><?php echo esc_attr( __( 'Privacy Policy', 'google-maps-bank' ) ); ?></a>
 								<span> - </span>
-								<a href="<?php echo esc_attr( TECH_BANKER_SITE_URL ); ?>terms-conditions/" target="_blank"><?php echo esc_attr( __( 'Terms &amp; Conditions', 'google-maps-bank' ) ); ?></a>
+								<a href="<?php echo esc_attr( TECH_BANKER_URL ); ?>/terms-and-conditions/" target="_blank"><?php echo esc_attr( __( 'Terms &amp; Conditions', 'google-maps-bank' ) ); ?></a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</body>
 		</html>
-	<?php
+		<?php
 	}
 }

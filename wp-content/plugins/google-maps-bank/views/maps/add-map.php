@@ -70,7 +70,7 @@ if ( ! is_user_logged_in() ) {
 						<?php echo esc_attr( $gm_add_map ); ?>
 					</div>
 					<p class="premium-editions">
-						<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://google-maps-bank.tech-banker.com" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://google-maps-bank.tech-banker.com/frontend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
+						<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://tech-banker.com/google-maps-bank" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://tech-banker.com/google-maps-bank/backend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
 					</p>
 				</div>
 				<div class="portlet-body form">
@@ -313,42 +313,42 @@ if ( ! is_user_logged_in() ) {
 											foreach ( $google_maps_marker_data as $data ) {
 												?>
 												<tr>
-												<td class="chk-action" style="text-align:center;width: 5%;">
-													<input type="checkbox" name="ux_chk_manage_marker_<?php echo esc_attr( $data['id'] ); ?>" id="ux_chk_manage_marker_<?php echo esc_attr( $data['id'] ); ?>" onclick="all_check_google_maps('#ux_chk_all_maps_marker', oTable_marker)" value="<?php echo isset( $data['id'] ) ? intval( $data['id'] ) : ''; ?>">
-												</td>
-												<td style="text-align:left;width:7%;">
-													<?php
-													if ( 'choose_icon' === $data['marker_icon_type'] ) {
-														$url = isset( $data['marker_icon_url'] ) && '' !== $data['marker_icon_url'] ? esc_attr( $data['marker_icon_url'] ) : GOOGLE_MAP_DEFAULT_MARKER_ICON;
-														?>
-														<img src="<?php echo esc_attr( GOOGLE_MAP_CUSTOM_MARKER_ICON ) . esc_attr( $url ); ?>">
+													<td class="chk-action" style="text-align:center;width: 5%;">
+														<input type="checkbox" name="ux_chk_manage_marker_<?php echo esc_attr( $data['id'] ); ?>" id="ux_chk_manage_marker_<?php echo esc_attr( $data['id'] ); ?>" onclick="all_check_google_maps('#ux_chk_all_maps_marker', oTable_marker)" value="<?php echo isset( $data['id'] ) ? intval( $data['id'] ) : ''; ?>">
+													</td>
+													<td style="text-align:left;width:7%;">
 														<?php
-													} elseif ( 'upload' === $data['marker_icon_type'] ) {
-														?>
-														<img src="<?php echo esc_attr( $data['marker_icon_upload'] ); ?>" style="height:30px;width:30px">
-														<?php
-													} else {
-														?>
-														<img src="<?php echo esc_attr( plugins_url( 'assets/global/img/marker-logo.png', dirname( dirname( __FILE__ ) ) ) ); ?>">
-														<?php
-													}
+														if ( 'choose_icon' === $data['marker_icon_type'] ) {
+															$url = isset( $data['marker_icon_url'] ) && '' !== $data['marker_icon_url'] ? esc_attr( $data['marker_icon_url'] ) : GOOGLE_MAP_DEFAULT_MARKER_ICON;
+															?>
+															<img src="<?php echo esc_attr( GOOGLE_MAP_CUSTOM_MARKER_ICON ) . esc_attr( $url ); ?>">
+															<?php
+														} elseif ( 'upload' === $data['marker_icon_type'] ) {
+															?>
+															<img src="<?php echo esc_attr( $data['marker_icon_upload'] ); ?>" style="height:30px;width:30px">
+															<?php
+														} else {
+															?>
+															<img src="<?php echo esc_attr( plugins_url( 'assets/global/img/marker-logo.png', dirname( dirname( __FILE__ ) ) ) ); ?>">
+															<?php
+														}
 														?>
 													</td>
 													<td style="width:20%;">
 														<?php echo isset( $data['marker_title'] ) ? esc_attr( $data['marker_title'] ) : ''; ?>
 													</td>
 													<td style="width:34%;">
-													<?php echo isset( $data['marker_address'] ) ? esc_html( $data['marker_address'] ) : ''; ?>
+														<?php echo isset( $data['marker_address'] ) ? esc_html( $data['marker_address'] ) : ''; ?>
 													</td>
 													<td style="width:13%;">
-													<?php echo isset( $data['marker_latitude'] ) ? floatval( $data['marker_latitude'] ) : ''; ?>
+														<?php echo isset( $data['marker_latitude'] ) ? floatval( $data['marker_latitude'] ) : ''; ?>
 													</td>
 													<td style="width:13%;">
-													<?php echo isset( $data['marker_longitude'] ) ? floatval( $data['marker_longitude'] ) : ''; ?>
+														<?php echo isset( $data['marker_longitude'] ) ? floatval( $data['marker_longitude'] ) : ''; ?>
 													</td>
 													<td style="text-align:center;width:8% !important;">
-													<a href="admin.php?page=gmb_add_map&google_map_id=<?php echo $mapid;// WPCS: XSS ok. ?>&overlay=marker&edit=<?php echo esc_attr( $data['id'] ); ?>" class="btn google-maps-bank-buttons"><?php echo esc_attr( $gmb_edit_tooltip ); ?></a>
-													<a href="javascript:void(0);" class="btn google-maps-bank-buttons" onclick="delete_data_google_maps('<?php echo isset( $data['id'] ) ? intval( $data['id'] ) : ''; ?>', '<?php echo esc_attr( $gm_data_deleted ); ?>', 'admin.php?page=gmb_add_map&google_map_id=<?php echo esc_attr( $data['meta_id'] ); ?>&overlay=marker', '<?php echo esc_attr( $google_maps_delete_nonce ); ?>', 'delete_data_google_maps');"><?php echo esc_attr( $gm_map_delete ); ?></a>
+														<a href="admin.php?page=gmb_add_map&google_map_id=<?php echo $mapid;// WPCS: XSS ok. ?>&overlay=marker&edit=<?php echo esc_attr( $data['id'] ); ?>" class="btn google-maps-bank-buttons"><?php echo esc_attr( $gmb_edit_tooltip ); ?></a>
+														<a href="javascript:void(0);" class="btn google-maps-bank-buttons" onclick="delete_data_google_maps('<?php echo isset( $data['id'] ) ? intval( $data['id'] ) : ''; ?>', '<?php echo esc_attr( $gm_data_deleted ); ?>', 'admin.php?page=gmb_add_map&google_map_id=<?php echo esc_attr( $data['meta_id'] ); ?>&overlay=marker', '<?php echo esc_attr( $google_maps_delete_nonce ); ?>', 'delete_data_google_maps');"><?php echo esc_attr( $gm_map_delete ); ?></a>
 													</td>
 												</tr>
 												<?php
@@ -799,23 +799,23 @@ if ( ! is_user_logged_in() ) {
 														<td class="chk-action" style="text-align:center;width: 5%;">
 															<input type="checkbox" name="ux_chk_polyline_data_<?php echo esc_attr( $value['id'] ); ?>" id="ux_chk_polyline_data_<?php echo esc_attr( $value['id'] ); ?>" value="<?php echo isset( $value['id'] ) ? intval( $value['id'] ) : ''; ?>" onclick="all_check_google_maps('#ux_chk_all_maps_polyline', oTable_polyline);">
 														</td>
-													<td style="width:27% !important;">
-														<?php echo esc_attr( $value['polyline_title'] ); ?>
-													</td>
-													<td style="width:60%;">
-														<?php
-														$polyline_coordinates = explode( "\n", $value['polyline_cordinates'] );
-														foreach ( $polyline_coordinates as $coordinates ) {
-															echo esc_attr( $coordinates ) . '<br>';
-														}
-														?>
-													</td>
-													<td style="text-align:center;width:8% !important;">
-														<a href="admin.php?page=gmb_add_map&google_map_id=<?php echo intval( $value['meta_id'] ); ?>&overlay=polyline&edit=<?php echo esc_attr( $value['id'] ); ?>" class="btn google-maps-bank-buttons" ><?php echo esc_attr( $gmb_edit_tooltip ); ?></a>
-														<a href="javascript:void(0);" class="btn google-maps-bank-buttons" onclick="delete_data_google_maps('<?php echo isset( $value['id'] ) ? intval( $value['id'] ) : ''; ?>', '<?php echo esc_attr( $gm_data_deleted ); ?>', 'admin.php?page=gmb_add_map&google_map_id=<?php echo esc_attr( $value['meta_id'] ); ?>&overlay=polyline', '<?php echo esc_attr( $google_maps_delete_nonce ); ?>', 'delete_data_google_maps');"><?php echo esc_attr( $gm_map_delete ); ?></a>
-													</td>
-												</tr>
-												<?php
+														<td style="width:27% !important;">
+															<?php echo esc_attr( $value['polyline_title'] ); ?>
+														</td>
+														<td style="width:60%;">
+															<?php
+															$polyline_coordinates = explode( "\n", $value['polyline_cordinates'] );
+															foreach ( $polyline_coordinates as $coordinates ) {
+																echo esc_attr( $coordinates ) . '<br>';
+															}
+															?>
+														</td>
+														<td style="text-align:center;width:8% !important;">
+															<a href="admin.php?page=gmb_add_map&google_map_id=<?php echo intval( $value['meta_id'] ); ?>&overlay=polyline&edit=<?php echo esc_attr( $value['id'] ); ?>" class="btn google-maps-bank-buttons" ><?php echo esc_attr( $gmb_edit_tooltip ); ?></a>
+															<a href="javascript:void(0);" class="btn google-maps-bank-buttons" onclick="delete_data_google_maps('<?php echo isset( $value['id'] ) ? intval( $value['id'] ) : ''; ?>', '<?php echo esc_attr( $gm_data_deleted ); ?>', 'admin.php?page=gmb_add_map&google_map_id=<?php echo esc_attr( $value['meta_id'] ); ?>&overlay=polyline', '<?php echo esc_attr( $google_maps_delete_nonce ); ?>', 'delete_data_google_maps');"><?php echo esc_attr( $gm_map_delete ); ?></a>
+														</td>
+													</tr>
+													<?php
 												}
 											}
 											?>
@@ -1181,7 +1181,7 @@ if ( ! is_user_logged_in() ) {
 													<?php
 												}
 											}
-										?>
+											?>
 										</tbody>
 									</table>
 								</div>

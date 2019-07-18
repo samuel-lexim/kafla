@@ -218,12 +218,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$polylines_type = isset( $polylines['polyline_type'] ) ? esc_attr( $polylines['polyline_type'] ) : 'solid';
 				switch ( $polylines_type ) {
 					case 'solid':
-					?>
+						?>
 						poly_line_stroke_opacity = "<?php echo isset( $polyline_stroke_color_opacity[1] ) ? floatval( $polyline_stroke_color_opacity[1] / 100 ) : '0.75'; ?>";
 						<?php
 						break;
 					case 'dotted':
-					?>
+						?>
 						poly_line_stroke_opacity = 0;
 						repeat = "10px";
 						var lineSymbol =

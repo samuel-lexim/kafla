@@ -420,7 +420,7 @@ if (typeof (google_maps_info_window) !== "function")
 				jQuery(wp_error_id).css("display", "block");
 				<?php
 			}
-		?>
+			?>
 		} else {
 			jQuery(info_window_image).css("display", "none");
 			jQuery(wp_error_id).css("display", "none");
@@ -1361,7 +1361,7 @@ if (typeof (marker_initialize_google_maps) !== "function")
 			if ( isset( $_GET['page'] ) && esc_attr( $_GET['page'] ) === 'gmb_add_store' ) {// WPCS: input var ok, CSRF ok, sanitization ok.
 				?>
 				initialize_store_locator_google_maps();
-			<?php
+				<?php
 			} else {
 				?>
 				initialize_google_map_setttings("marker");
@@ -1669,9 +1669,10 @@ if (typeof (marker_initialize_google_maps) !== "function")
 				{
 					function plugin_stats_google_maps(type)
 					{
-						if( jQuery("#ux_txt_email_address_notifications").val() ===  "" && type !== "skip")
+						var email_pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+						if( ( jQuery("#ux_txt_email_address_notifications").val() ===  "" || false == email_pattern.test(jQuery("#ux_txt_email_address_notifications").val()) ) && type !== "skip")
 						{
-							if( jQuery("#ux_txt_email_address_notifications").val() ===  "" )
+							if( jQuery("#ux_txt_email_address_notifications").val() ===  "" || false == email_pattern.test(jQuery("#ux_txt_email_address_notifications").val()) )
 							{
 								jQuery("#ux_txt_validation_gdpr_google_maps_bank").css({"display":'','color':'red'});
 								jQuery("#ux_txt_email_address_notifications").css("border-color","red");
@@ -2929,7 +2930,7 @@ if (typeof (marker_initialize_google_maps) !== "function")
 								jQuery("#ux_txt_shortcodes").html(shortcode);
 							}
 						});
-					<?php
+						<?php
 					}
 					break;
 				case 'gmb_other_settings':
@@ -3054,7 +3055,7 @@ if (typeof (marker_initialize_google_maps) !== "function")
 								premium_edition_notification_google_maps_bank();
 							}
 					});
-					<?php
+						<?php
 					}
 					break;
 				case 'gmb_system_information':

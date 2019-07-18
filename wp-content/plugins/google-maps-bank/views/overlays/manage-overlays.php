@@ -57,7 +57,7 @@ if ( ! is_user_logged_in() ) {
 							<?php echo esc_attr( $gm_manage_overlays ); ?>
 						</div>
 						<p class="premium-editions">
-							<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://google-maps-bank.tech-banker.com" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://google-maps-bank.tech-banker.com/frontend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
+							<?php echo esc_attr( $gm_upgrade_kanow_about ); ?> <a href="https://tech-banker.com/google-maps-bank" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_full_features ); ?></a> <?php echo esc_attr( $gm_chek_our ); ?><a href="https://tech-banker.com/google-maps-bank/backend-demos/" target="_blank" class="premium-editions-documentation"> <?php echo esc_attr( $gm_online_demos ); ?></a>
 						</p>
 					</div>
 					<div class="portlet-body form">
@@ -166,7 +166,7 @@ if ( ! is_user_logged_in() ) {
 													<?php
 													if ( isset( $google_maps_marker_data ) && count( $google_maps_marker_data ) > 0 ) {
 														foreach ( $google_maps_marker_data as $data ) {
-														?>
+															?>
 															<tr>
 																<td class="chk-action" style="text-align:center;width:5%;">
 																	<input type="checkbox" name="ux_chk_manage_marker_<?php echo intval( $data['id'] ); ?>" id="ux_chk_manage_marker_<?php echo intval( $data['id'] ); ?>" onclick="all_check_google_maps('#ux_chk_all_maps_marker', oTable_marker)" value="<?php echo isset( $data['id'] ) ? intval( $data['id'] ) : ''; ?>">
@@ -206,10 +206,10 @@ if ( ! is_user_logged_in() ) {
 																	<a href="javascript:void(0);" class="btn google-maps-bank-buttons" onclick="delete_data_google_maps(<?php echo intval( $data['id'] ); ?>, '<?php echo esc_attr( $gm_data_deleted ); ?>', 'admin.php?page=gmb_manage_overlays&google_map_id=<?php echo esc_attr( $data['meta_id'] ); ?>&overlay=marker', '<?php echo esc_attr( $google_maps_delete_nonce ); ?>', 'delete_data_google_maps');"><?php echo esc_attr( $gm_map_delete ); ?></a>
 																</td>
 															</tr>
-														<?php
+															<?php
 														}
 													}
-												?>
+													?>
 											</tbody>
 										</table>
 									</div>
