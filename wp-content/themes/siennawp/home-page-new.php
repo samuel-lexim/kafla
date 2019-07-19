@@ -11,6 +11,7 @@ $sidebar = sienna_mikado_sidebar_layout(); ?>
 
 <div class="mkdf-full-width">
 	<div class="mkdf-full-width-inner">
+        <?php /**
 	    <div class="content-top-home parent-position ">
 			<div class="content-top-child-home child-position">	
 				<div id="header-top-home">
@@ -60,6 +61,7 @@ $sidebar = sienna_mikado_sidebar_layout(); ?>
 				 	</div>	
 				 	<div class="clearfix"></div>
 			 	</div>
+
 			 	<div class="child-position content-home-center">
 
 			 		<a href="https://twitter.com/kafla1962" target="_blank"><div id="ic-tw"></div></a>	
@@ -73,7 +75,7 @@ $sidebar = sienna_mikado_sidebar_layout(); ?>
 		 	</div>
 		</div>	
 
-   		
+   		**/ ?>
 
 		<div class="about-kafla-content parent-position" >
 			<div class="about-kafla-content-child child-position">				                              

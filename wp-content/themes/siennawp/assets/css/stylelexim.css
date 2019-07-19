@@ -471,6 +471,7 @@ aside.mkdf-sidebar .widget.widget_nav_menu .current-menu-item > a, aside.mkdf-si
 
 .mkdf-wrapper .mkdf-wrapper-inner {
     position: relative;
+    overflow: visible;
 }
 
 body.home .mkdf-wrapper .mkdf-wrapper-inner {
@@ -548,6 +549,11 @@ body.home .bg-header:not(.sticky) {
     z-index: 9999;
 }
 
+.mobmenur-container {
+    position: absolute;
+    right: 0;
+    top: 26px;
+}
 
 /*
 * ==========  END CSS Home ===========
@@ -1316,7 +1322,7 @@ body.home .bg-header:not(.sticky) {
 
 
 /*
-* ========== END CSS Slider Page Template ===========
+* ========== START CSS Slider Page Template ===========
 */
 
 .item-title-wrap {
@@ -2130,6 +2136,7 @@ body.home .bg-header:not(.sticky) {
         right: 0;
         position: fixed;
     }
+
     body.admin-bar .mobmenu-panel {
         top: 0 !important;
         right: 0;
@@ -2145,6 +2152,10 @@ body.home .bg-header:not(.sticky) {
     /*
     * ==========  CSS Home ===========
     */
+    .metaslider.ms-theme-jenga .slide-control {
+        display: none !important;
+    }
+
     .empowerment-box {
         width: 180px;
         height: 180px;

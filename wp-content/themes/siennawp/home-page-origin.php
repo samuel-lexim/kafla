@@ -7,32 +7,30 @@ Template Name: Home Page Origin
 <?php $sidebar = sienna_mikado_sidebar_layout(); ?>
 <?php get_header(); ?>
 	<div class="mkdf-container">
-		
+
 		<div class="content-top-home parent-position ">
-			<div class="content-top-child-home child-position">					
+			<div class="content-top-child-home child-position">
 			 	<div class="child-position content-home-center" >
-			 		
-			 		<a class="hidden-xs" href="https://www.youtube.com/channel/UC0eC11Hw5AYxaZkfcwPdmVQ" target="_blank"><div id="ic-you"></div></a>	
+
+			 		<a class="hidden-xs" href="https://www.youtube.com/channel/UC0eC11Hw5AYxaZkfcwPdmVQ" target="_blank"><div id="ic-you"></div></a>
                     <a class="hidden-xs" href="https://www.instagram.com/kafla1962/" target="_blank"><div id="ic-in"></div></a>
-			 		<a class="hidden-xs" href="https://twitter.com/kafla1962" target="_blank"><div id="ic-tw"></div></a>	
+			 		<a class="hidden-xs" href="https://twitter.com/kafla1962" target="_blank"><div id="ic-tw"></div></a>
                     <a class="hidden-xs" href="https://www.facebook.com/kafla1962/" target="_blank"><div id="ic-fb"></div></a>
-                    <div class="hidden-xs" id="follow-us-text"></div>	
+                    <div class="hidden-xs" id="follow-us-text"></div>
                     <div class="hidden-xs" id="decor-top-left"></div>
 
-			 		<!-- <div class="titles-top-home">25 years after racial tensions erupted, black and Korean communities reflect on L.A.</div> -->	
-			 		<div class="text-center"><a href="#videos" id="btn-watchvideo" class="btn btn-link" role="button">Watch video</a></div>	 			
+			 		<!-- <div class="titles-top-home">25 years after racial tensions erupted, black and Korean communities reflect on L.A.</div> -->
+			 		<div class="text-center"><a href="#videos" id="btn-watchvideo" class="btn btn-link" role="button">Watch video</a></div>
 
-			 	</div>	
-			 	<?php echo do_shortcode('[metaslider id="2045"]'); ?>	
+			 	</div>
+			 	<?php echo do_shortcode('[metaslider id="2045"]'); ?>
 		 	</div>
 	 	 	<div class="bg-video-home-top" style="display: none;">
-
-
-			 	 <div align="center" class="embed-responsive embed-responsive-16by9">	
+			 	 <div align="center" class="embed-responsive embed-responsive-16by9">
 				 	<video autoplay loop muted playsinline  width='100%' height='100%' class="embed-responsive-item">
 					  <source src="/wp-content/themes/siennawp/assets/css/images/KAFLA.mp4" type="video/mp4">
-					</video>	
-				</div>  
+					</video>
+				</div>
 
 	 			<!-- <div align="center" class="embed-responsive embed-responsive-16by9">
 				    <video autoplay loop class="embed-responsive-item">
@@ -41,9 +39,10 @@ Template Name: Home Page Origin
 				</div>  -->
 	 			<!-- <iframe id="someVideo" style="display: block;cursor: pointer;" src="https://www.youtube.com/embed/5Uyqm6Hagpc?autoplay=1&mute=1&loop=1&rel=0&showinfo=0&color=white&playlist=1wUgMEaUUrM" width="1280" height="720" frameborder="0" allowfullscreen=""></iframe>  -->
 	 			<!-- <iframe src="https://www.youtube.com/embed/5Uyqm6Hagpc?autoplay=1&mute=1&loop=1&rel=0&showinfo=0&color=white&playlist=1wUgMEaUUrM" width="1280" height="720" frameborder="0" allowfullscreen=""></iframe>  -->
-	 			 	 		
-		 	</div> 		 	
-		</div>	
+
+		 	</div>
+		</div>
+
 
 		<div class="about-kafla-content parent-position" >
 			<div class="about-kafla-content-child child-position">				                              
@@ -173,9 +172,7 @@ Template Name: Home Page Origin
 				<div class="clearfix"></div>
 				<div class="btn-show-more" ><a href="/sponsors/" id="btn-show-more"  class="btn btn-link" role="button">Show more</a></div>
 			</div>
-		</div>		
-
-			
+		</div>
 			
 	</div>
 
