@@ -2131,13 +2131,13 @@ body.home .bg-header:not(.sticky) {
         padding-left: 5px;
     }
 
-    body.admin-bar .mobmenu {
-        top: 26px !important;
+    body .mobmenu {
+        top: 0 !important;
         right: 0;
         position: fixed;
     }
 
-    body.admin-bar .mobmenu-panel {
+    body .mobmenu-panel {
         top: 0 !important;
         right: 0;
         position: fixed;
