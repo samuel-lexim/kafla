@@ -552,7 +552,7 @@ body.home .bg-header:not(.sticky) {
 .mobmenur-container {
     position: absolute;
     right: 0;
-    top: 26px;
+    top: 26px !important;
 }
 
 /*
