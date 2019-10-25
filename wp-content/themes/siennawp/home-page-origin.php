@@ -83,7 +83,7 @@ Template Name: Home Page Origin
 	            	<div class="col-xs-12 col-md-12">
 	            		<a href="/ournews/">
 	                		<div id="news-korean" class="check-active-overlay">
-	                			<div class="korean-news-titles">KOREAN NEWS</div>
+	                			<div class="korean-news-titles">NEWS ARTICLES</div>
 	                			<div class="korean-news-descript">[Korea Times] KAFLA Hosts 72nd <br> Korean Independence Day Ceremony</div>
 	                			<div class="hover-overlay-effect active"></div>
 	                		</div>
