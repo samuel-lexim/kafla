@@ -110,7 +110,7 @@ $sidebar = sienna_mikado_sidebar_layout(); ?>
                 	<div class="row">
                 		<a href="/ournews/">
 	                		<div id="news-korean" class="check-active-overlay">
-	                			<div class="korean-news-titles">KOREAN NEWS</div>
+	                			<div class="korean-news-titles">NEWS ARTICLES</div>
 	                			<div class="korean-news-descript">[Korea Times] KAFLA Hosts 72nd <br> Korean Independence Day Ceremony</div>
 	                			<div class="hover-overlay-effect "></div>
 	                		</div>
@@ -126,8 +126,8 @@ $sidebar = sienna_mikado_sidebar_layout(); ?>
 	                	</a>
 	                	<a href="/videos/">
 		                	<div id="news-video" class="check-active-overlay">
-		                		<div class="news-titles">VIDEO STORY</div>
-	                			<div class="news-descript">LA Korean American Association Introduction</div>
+		                		<div class="news-titles">VIDEO GALLERY</div>
+	                			<div class="news-descript">Korean American Federation of Los Angeles Introduction</div>
 	                			<div class="hover-overlay-effect "></div>
 		                	</div>
 	                	</a>
@@ -135,7 +135,7 @@ $sidebar = sienna_mikado_sidebar_layout(); ?>
                 	<div class="col-md-6">
                 		<a href="/events/">
 	                		<div id="news-event" class="check-active-overlay">
-	                			<div class="news-titles">UP COMING EVENT</div>
+	                			<div class="news-titles">UPCOMING EVENTS</div>
 	                			<div class="news-descript">2017 Heritage Night</div>
 	                			<div class="hover-overlay-effect "></div>
 	                		</div>
