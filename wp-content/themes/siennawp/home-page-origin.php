@@ -109,7 +109,7 @@ Template Name: Home Page Origin
 	            		<a href="/events/">
 	                		<div id="news-event" class="check-active-overlay">
 	                			<div class="news-titles">UP COMING EVENT</div>
-	                			<div class="news-descript">56th Anniversary Heritage Gala</div>
+	                			<div class="news-descript"></div>
 	                			<div class="hover-overlay-effect active"></div>
 	                		</div>
 	            		</a>

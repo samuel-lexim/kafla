@@ -23,7 +23,7 @@ class HeaderConnector {
 		do_action('sienna_mikado_pre_header_connect');
 
 		$defaultConfig = array(
-			'affect_content' => true,
+			'affect_content' => false,
 			'affect_title'   => true,
 			'affect_slider'  => true
 		);
@@ -33,7 +33,7 @@ class HeaderConnector {
 		}
 
 		if(!empty($config['affect_content'])) {
-			add_filter('sienna_mikado_content_elem_style_attr', array($this, 'contentMarginFilter'));
+			//add_filter('sienna_mikado_content_elem_style_attr', array($this, 'contentMarginFilter'));
 		}
 
 		if(!empty($config['affect_title'])) {
@@ -59,15 +59,7 @@ class HeaderConnector {
 	 *
 	 * @return array
 	 */
-	public function contentMarginFilter($styles) {
-		$marginTopValue = $this->object->getHeightOfTransparency();
 
-		if(!empty($marginTopValue)) {
-			$styles[] = 'margin-top: -'.$marginTopValue.'px';
-		}
-
-		return $styles;
-	}
 
 	/**
 	 * Returns padding value calculated from transparent header parts.

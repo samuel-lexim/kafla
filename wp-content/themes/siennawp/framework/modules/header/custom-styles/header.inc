@@ -45,7 +45,7 @@ if(!function_exists('sienna_mikado_header_top_bar_styles')) {
 		echo sienna_mikado_dynamic_css('.mkdf-top-bar', $top_bar_styles);
 	}
 
-	add_action('sienna_mikado_style_dynamic', 'sienna_mikado_header_top_bar_styles');
+	//add_action('sienna_mikado_style_dynamic', 'sienna_mikado_header_top_bar_styles');
 }
 
 if(!function_exists('sienna_mikado_header_standard_menu_area_styles')) {

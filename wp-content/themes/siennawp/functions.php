@@ -54,6 +54,10 @@ if (!function_exists('sienna_mikado_styles')) {
     }
 
     add_action('wp_enqueue_scripts', 'sienna_mikado_styles');
+	
+
+	
+	
 }
 
 if (!function_exists('sienna_mikado_google_fonts_styles')) {
@@ -986,7 +990,7 @@ if (!function_exists('sienna_mikado_get_global_variables')) {
         $global_variables = array();
         $element_appear_amount = -150;
 
-        $global_variables['mkdfAddForAdminBar'] = is_admin_bar_showing() ? 32 : 0;
+        $global_variables['mkdfAddForAdminBar'] = is_admin_bar_showing() ? 0 : 0;
         $global_variables['mkdfElementAppearAmount'] = sienna_mikado_options()->getOptionValue('element_appear_amount') !== '' ? sienna_mikado_options()->getOptionValue('element_appear_amount') : $element_appear_amount;
         $global_variables['mkdfFinishedMessage'] = esc_html__('No more posts', 'sienna');
         $global_variables['mkdfMessage'] = esc_html__('Loading new posts...', 'sienna');
@@ -1000,6 +1004,13 @@ if (!function_exists('sienna_mikado_get_global_variables')) {
     }
 
     add_action('wp_enqueue_scripts', 'sienna_mikado_get_global_variables');
+	
+	function remove_admin_login_header() {
+		remove_action('wp_head', '_admin_bar_bump_cb');
+	}
+	add_action('get_header', 'remove_admin_login_header');
+	
+	
 }
 
 if (!function_exists('sienna_mikado_per_page_js_variables')) {

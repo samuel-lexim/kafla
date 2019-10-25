@@ -70,7 +70,7 @@ if(!function_exists('sienna_mikado_get_top_bar_height')) {
 		if(sienna_mikado_is_top_bar_enabled()) {
 			$top_bar_height = sienna_mikado_filter_px(sienna_mikado_options()->getOptionValue('top_bar_height'));
 
-			return $top_bar_height !== '' ? intval($top_bar_height) : 42;
+			return $top_bar_height !== '' ? intval($top_bar_height) : 0;
 		}
 
 		return 0;
