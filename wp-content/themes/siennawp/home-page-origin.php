@@ -105,7 +105,7 @@ Template Name: Home Page Origin
 		                	</div>
 	                	</a>
 	            	</div>
-	            	<div class="col-xs-12 col-md-6">
+	            	<div class="col-xs-12 col-md-6 events">
 	            		<a href="/events/">
 	                		<div id="news-event" class="check-active-overlay">
 	                			<div class="news-titles">UPCOMING EVENTS</div>
