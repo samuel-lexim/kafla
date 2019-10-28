@@ -11,7 +11,7 @@ jQuery(function () {
         });
 
         // change text chooser language item
-        $('li.language-chooser-item-en a').html('E');
+        $('li.language-chooser-item-en a').html('EN');
         $('li.language-chooser-item-ko a').html('한');
 
         // hover on menu top show sub menu.
