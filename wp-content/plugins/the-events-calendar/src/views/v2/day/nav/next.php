@@ -9,9 +9,9 @@
  *
  * @link {INSERT_ARTCILE_LINK_HERE}
  *
- * @var string $link The URL to the next page, if any, or an empty string.
+ * @var string $link The URL to the next page.
  *
- * @version 4.9.4
+ * @version TBD
  *
  */
 ?>
@@ -19,7 +19,7 @@
 	<a
 		href="<?php echo esc_url( $link ); ?>"
 		rel="next"
-		class="tribe-events-c-nav__next tribe-common-b2"
+		class="tribe-events-c-nav__next tribe-common-b2 tribe-common-b1--min-medium"
 		data-js="tribe-events-view-link"
 	>
 		<?php esc_html_e( 'Next Day', 'the-events-calendar' ); ?>

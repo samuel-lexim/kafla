@@ -103,12 +103,7 @@ class CatListDisplayer {
   }
 
   private function build_output($tag){
-    $this->lcp_output .= '<div class="kafla-category-post">';
-
     $this->category_title();
-
-    $this->lcp_output .= '</div>';
-
 
     $this->get_category_description();
 
@@ -185,16 +180,8 @@ class CatListDisplayer {
     }
     $lcp_display_output = '<'. $tag . ' ' . $tag_css . '>';
 
-    $lcp_display_output .= '<div class="kafla-post-img">';
-
-    $lcp_display_output .= $this->get_thumbnail($single);
-
-    $lcp_display_output .= '</div><div class="kafla-post-content">';
-
-
     if ( empty($this->params['no_post_titles']) || !empty($this->params['no_post_titles']) && $this->params['no_post_titles'] !== 'yes' ) {
-      //$lcp_display_output .= $this->get_post_title($single);
-      $lcp_display_output .= '<p class="kafla-post-title">'. $this->get_post_title($single) . '</p>';
+      $lcp_display_output .= $this->get_post_title($single);
     }
 
     // Comments count
@@ -229,19 +216,13 @@ class CatListDisplayer {
     // Custom field display
     $lcp_display_output .= $this->get_custom_fields($single);
 
-    // $lcp_display_output .= $this->get_thumbnail($single);
+    $lcp_display_output .= $this->get_thumbnail($single);
 
     $lcp_display_output .= $this->get_stuff_with_tags_and_classes('content', $single);
 
-    //$lcp_display_output .= $this->get_stuff_with_tags_and_classes('excerpt', $single);
+    $lcp_display_output .= $this->get_stuff_with_tags_and_classes('excerpt', $single);
 
-    // $lcp_display_output .= $this->get_posts_morelink($single);
-
-    $lcp_display_output .= '<p class="kafla-post-excerp">'. $this->get_stuff_with_tags_and_classes('excerpt', $single) . '</p>';    
-
-    $lcp_display_output .= '<p class="kafla-post-readmore-link">' . $this->get_posts_morelink($single) . '</p>';
-
-    $lcp_display_output .= '</div>';
+    $lcp_display_output .= $this->get_posts_morelink($single);
 
     $lcp_display_output .= '</' . $tag . '>';
     return $lcp_display_output;
