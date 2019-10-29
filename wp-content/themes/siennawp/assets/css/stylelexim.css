@@ -2101,6 +2101,7 @@ body.home .bg-header:not(.sticky) {
         top: 0 !important;
         right: 0;
         position: fixed;
+        width: 50px;
     }
 
     body .mobmenu-panel {
