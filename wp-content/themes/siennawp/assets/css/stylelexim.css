@@ -471,6 +471,11 @@ body.home .bg-header:not(.sticky) {
     position: relative;
 }
 
+.empowerment-item {
+    max-width: calc(33.33% - 30px);
+    width: 100%;
+}
+
 .empowerment-titles {
     font-size: 24px;
     color: #343091;
@@ -498,8 +503,9 @@ body.home .bg-header:not(.sticky) {
     justify-content: center;
     -webkit-align-items: center;
     align-items: center;
-    width: 360px;
-    height: 320px;
+    width: 100%;
+    height: 100%;
+    padding: 25% 0;
     font-size: 14px;
     text-align: center;
     background-color: #ffffff;
@@ -508,11 +514,6 @@ body.home .bg-header:not(.sticky) {
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-}
-
-.empowerment-box-child {
-    width: 200px;
-    height: 200px;
 }
 
 .news-box {
@@ -543,6 +544,17 @@ body.home .bg-header:not(.sticky) {
 .news-box > div:nth-child(2), .news-box > div:nth-child(3) {
     width: 50%;
 }
+.news-box > div:nth-child(2) {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
 
 #news-korean {
     width: 100%;
@@ -551,14 +563,12 @@ body.home .bg-header:not(.sticky) {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    margin: 0;
     position: relative;
     cursor: pointer;
 }
 
 #news-gallery {
     width: 100%;
-    height: 357px;
     background-image: url(./images/img-photo-gallery.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -569,19 +579,17 @@ body.home .bg-header:not(.sticky) {
 
 #news-video {
     width: 100%;
-    height: 357px;
     background-image: url(./images/img-video-story.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    margin-top: 30px;
     position: relative;
     cursor: pointer;
 }
 
 #news-event {
     width: 100%;
-    height: 740px;
+    height: 100%;
     background-image: url(./images/img-up-coming.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -638,14 +646,6 @@ body.home .bg-header:not(.sticky) {
     position: relative;
     z-index: 999;
     text-shadow: 2px 2px 4px #000000;
-}
-
-#news-gallery .news-titles, #news-video .news-titles {
-    padding-top: 31%;
-}
-
-#news-event .news-titles {
-    padding-top: 96%;
 }
 
 .hover-overlay-effect {
@@ -1391,24 +1391,6 @@ body.home .bg-header:not(.sticky) {
         font-size: 16px;
     }
 
-    .content-home-center {
-        width: 74%;
-    }
-
-    .titles-top-home {
-        margin-bottom: 15px;
-        font-size: 20px;
-    }
-
-    .content-top-home {
-        height: 760px;
-    }
-
-    .content-top-child-home {
-        height: 760px;
-        max-width: 1366px;
-    }
-
     #btn-watchvideo {
         font-size: 20px;
         padding: 5px 20px;
@@ -1418,19 +1400,6 @@ body.home .bg-header:not(.sticky) {
         font-size: 20px;
         padding: 5px 20px;
         text-decoration: unset;
-    }
-
-    .about-kafla-content-child {
-        max-width: 1366px;
-        height: 1590px;
-    }
-
-    .about-kafla-content {
-        height: 1590px;
-    }
-
-    .empowerment-anchor-box {
-        left: 25px;
     }
 
     .empowerment-titles {
@@ -1455,21 +1424,6 @@ body.home .bg-header:not(.sticky) {
         margin-bottom: 30px;
     }
 
-    .empowerment-box {
-        width: 340px;
-        height: 300px;
-    }
-
-    .empowerment-anchor-box .col-md-4 {
-        padding-right: 50px;
-        padding-left: 50px;
-    }
-
-    .empowerment-box-child {
-        width: 170px;
-        height: 170px;
-    }
-
     .korean-news-titles {
         font-size: 55px;
         padding-top: 29%;
@@ -1477,40 +1431,6 @@ body.home .bg-header:not(.sticky) {
 
     .korean-news-descript {
         font-size: 22px;
-    }
-
-    #news-korean {
-        width: 1150px;
-        height: 525px;
-    }
-
-    #news-gallery {
-        width: 595px;
-        height: 305px;
-    }
-
-    #news-video {
-        width: 595px;
-        height: 305px;
-    }
-
-
-
-    #news-gallery .news-titles, #news-video .news-titles {
-        padding-top: 27%;
-    }
-
-    .news-titles {
-        padding-left: 50px;
-    }
-
-    .news-descript {
-        padding-left: 50px;
-    }
-
-    .detailing-content-child {
-        width: 1220px;
-        height: 430px;
     }
 
     .detailing-content {
@@ -1678,38 +1598,8 @@ body.home .bg-header:not(.sticky) {
         max-width: 1280px;
     }
 
-
     .korean-news-titles {
         font-size: 50px;
-    }
-
-    #news-korean {
-        width: 1050px;
-        height: 480px;
-        margin-top: 28px;
-    }
-
-    #news-gallery {
-        width: 535px;
-        height: 275px;
-    }
-
-    #news-video {
-        width: 535px;
-        height: 275px;
-    }
-
-    #news-event {
-        height: 580px;
-        margin-left: 29px;
-    }
-
-    #news-gallery .news-titles, #news-video .news-titles {
-        padding-top: 29%;
-    }
-
-    #news-event .news-titles {
-        padding-top: 96%;
     }
 
     .news-descript {
@@ -1750,15 +1640,6 @@ body.home .bg-header:not(.sticky) {
         font-size: 16px;
     }
 
-    .content-top-home {
-        height: 580px;
-    }
-
-    .content-top-child-home {
-        height: 580px;
-        max-width: 1024px;
-    }
-
     #decor-top-left {
         height: 50px;
         margin-left: 7px;
@@ -1772,14 +1653,6 @@ body.home .bg-header:not(.sticky) {
         font-size: 16px;
     }
 
-    .about-kafla-content-child {
-        max-width: 1024px;
-        height: 1200px;
-    }
-
-    .about-kafla-content {
-        height: 1100px;
-    }
 
     .empowerment-anchor-box {
         top: -30px;
@@ -1790,47 +1663,12 @@ body.home .bg-header:not(.sticky) {
         font-size: 17px;
     }
 
-    .empowerment-box {
-        width: 260px;
-        height: 240px;
-    }
-
-    .empowerment-anchor-box .col-md-4 {
-        padding-right: 35px;
-        padding-left: 35px;
-    }
-
-    .empowerment-box-child {
-        width: 150px;
-        height: 150px;
-    }
-
     .korean-news-titles {
         font-size: 40px;
     }
 
     .korean-news-descript {
         font-size: 20px;
-    }
-
-    #news-korean {
-        width: 855px;
-        height: 390px;
-    }
-
-    #news-gallery {
-        width: 430px;
-        height: 220px;
-    }
-
-    #news-video {
-        width: 430px;
-        height: 220px;
-    }
-
-    #news-event {
-        height: 470px;
-        margin-left: 22px;
     }
 
     .news-descript {
@@ -2075,11 +1913,6 @@ body.home .bg-header:not(.sticky) {
         display: none !important;
     }
 
-    .empowerment-box {
-        width: 180px;
-        height: 180px;
-    }
-
     .empowerment-anchor-box .col-xs-4 {
         padding-right: 10px;
         padding-left: 10px;
@@ -2095,52 +1928,13 @@ body.home .bg-header:not(.sticky) {
         font-size: 14px;
     }
 
-    .empowerment-box-child {
-        width: 100px;
-        height: 100px;
-    }
-
     .empowerment-anchor-box {
         left: 0;
         top: 0;
     }
 
-    .content-top-home {
-        height: 380px;
-    }
-
-    .content-top-child-home {
-        height: 380px;
-    }
-
-
-    .about-kafla-content-child {
-        max-width: 600px;
-    }
-
-    #news-event {
-        width: 100%;
-        height: auto;
-    }
-
-    #news-video {
-        width: 100%;
-        height: 291px;
-    }
-
-    #news-korean {
-        width: 100%;
-        height: 260px;
-    }
-
-    #news-gallery {
-        width: 100%;
-        height: 291px;
-    }
-
     .korean-news-titles {
         font-size: 28px;
-        padding-top: 25%;
     }
 
     .korean-news-descript {
@@ -2155,50 +1949,6 @@ body.home .bg-header:not(.sticky) {
         font-size: 14px;
     }
 
-
-    #news-event .news-titles {
-        padding-top: 105%;
-    }
-
-    #news-korean {
-        margin-top: 10px;
-    }
-
-    #news-gallery .news-titles, #news-video .news-titles {
-        padding-top: 35%;
-    }
-
-
-    #news-video {
-        margin-top: 15px;
-    }
-
-
-    .korean-news-titles, .korean-news-descript, .news-titles, .news-descript {
-        padding-left: 30px;
-    }
-
-    .about-kafla-content {
-        height: 1800px;
-    }
-
-    .about-kafla-content-child {
-        height: 1750px;
-    }
-
-    .detailing-content-child {
-        width: 600px;
-        height: 480px;
-    }
-
-    .brand-content {
-        height: 430px;
-    }
-
-    .brand-content-child {
-        width: 620px;
-        height: 315px;
-    }
 
     #ic-bank-of-hope {
         width: 240px;
@@ -2554,10 +2304,6 @@ body.home .bg-header:not(.sticky) {
 /* # max 767px */
 
 @media all and (max-width: 639px) {
-    .empowerment-box {
-        width: 100px;
-        height: 100px;
-    }
 
     .empowerment-anchor-box .col-xs-4 {
         padding-right: 10px;
@@ -2574,11 +2320,6 @@ body.home .bg-header:not(.sticky) {
         font-size: 10px;
     }
 
-    .empowerment-box-child {
-        width: 80px;
-        height: 70px;
-    }
-
     .empowerment-anchor-box {
         left: 0;
         top: 0;
@@ -2590,10 +2331,6 @@ body.home .bg-header:not(.sticky) {
 
     .content-top-child-home {
         height: 220px;
-    }
-
-    .about-kafla-content-child {
-        max-width: 350px;
     }
 
     #news-korean, #news-gallery, #news-video, #news-event {
@@ -2616,38 +2353,6 @@ body.home .bg-header:not(.sticky) {
 
     .news-descript {
         font-size: 14px;
-    }
-
-
-
-    #news-korean {
-        margin-top: 15px;
-    }
-
-    #news-gallery .news-titles, #news-video .news-titles {
-        padding-top: 35%;
-    }
-
-    #news-video {
-        margin-top: -10px;
-        margin-bottom: -10px;
-    }
-
-    #news-video .news-descript {
-        margin-top: 0;
-        padding-bottom: 22px;
-    }
-
-    .korean-news-titles, .korean-news-descript, .news-titles, .news-descript {
-        padding-left: 20px;
-    }
-
-    .about-kafla-content {
-        height: 1050px;
-    }
-
-    .about-kafla-content-child {
-        height: 1000px;
     }
 
     .detailing-content-child {
