@@ -8,6 +8,7 @@ Template Name: Home Page Origin
 <?php get_header(); ?>
     <div class="mkdf-container">
 
+        <!-- Hero Slider -->
         <div class="hero-wrap">
             <div class="hero-slider-wrap">
                 <div class="hero-slick vertical-dots">
@@ -61,47 +62,46 @@ Template Name: Home Page Origin
                 </div>
             </div>
         </div>
+        <!-- # Hero Slider -->
 
-
-
-
-        <div class="about-kafla-content parent-position">
-            <div class="about-kafla-content-child child-position">
+        <!-- About -->
+        <div class="about-kafla-content">
+            <div class="about-kafla-content-child">
                 <div class="empowerment-anchor-box">
-                    <div class="col-xs-4 col-md-4">
+                    <div class="empowerment-item">
                         <a href="/community-empowerment/">
-                            <div class="empowerment-box parent-position">
-                                <div class="empowerment-box-child child-position">
+                            <div class="empowerment-box">
+                                <div class="empowerment-box-child">
                                     <div id="ic-community"></div>
                                     <div class="empowerment-titles">Community Empowerment</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-xs-4 col-md-4">
+                    <div class="empowerment-item">
                         <a href="/political-empowerment/">
-                            <div class="empowerment-box parent-position">
-                                <div class="empowerment-box-child child-position">
+                            <div class="empowerment-box">
+                                <div class="empowerment-box-child">
                                     <div id="ic-political"></div>
                                     <div class="empowerment-titles">Political Empowerment</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-xs-4 col-md-4">
+                    <div class="empowerment-item">
                         <a href="/economic-empowerment/">
-                            <div class="empowerment-box parent-position">
-                                <div class="empowerment-box-child child-position">
+                            <div class="empowerment-box">
+                                <div class="empowerment-box-child">
                                     <div id="ic-economic"></div>
                                     <div class="empowerment-titles">Economic Empowerment</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
+
                 <div class="news-box">
-                    <div class="col-xs-12 col-md-12">
+                    <div class="">
                         <a href="/ournews/">
                             <div id="news-korean" class="check-active-overlay">
                                 <div class="korean-news-titles">NEWS ARTICLES</div>
@@ -112,7 +112,7 @@ Template Name: Home Page Origin
                             </div>
                         </a>
                     </div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="">
                         <a href="/photos/">
                             <div id="news-gallery" class="check-active-overlay">
                                 <div class="news-titles">PHOTO GALLERY</div>
@@ -128,7 +128,7 @@ Template Name: Home Page Origin
                             </div>
                         </a>
                     </div>
-                    <div class="col-xs-12 col-md-6 events">
+                    <div class="events">
                         <a href="/events/">
                             <div id="news-event" class="check-active-overlay">
                                 <div class="news-titles">UPCOMING EVENTS</div>
@@ -162,8 +162,9 @@ Template Name: Home Page Origin
                                 non-profit organization that serves the Korean American community in Greater Los
                                 Angeles.
                             </div>
-                            <div class="btn-read-more"><a href="/about-us/" id="btn-read-more" class="btn btn-link"
-                                                          role="button">Read more</a></div>
+                            <div class="btn-read-more">
+                                <a href="/about-us/" id="btn-read-more" class="btn btn-link" role="button">Read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
