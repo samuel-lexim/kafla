@@ -72,6 +72,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* Home page */
 .content-top-home {
     height: 1078px;
     background-repeat: no-repeat;
@@ -93,6 +94,35 @@ body {
 .content-home-center {
     width: 73%;
     z-index: 99;
+}
+
+.bg-video-home-top {
+    width: 100%;
+    position: relative;
+}
+
+.hero-slider-wrap {
+    position: relative;
+}
+
+.social-hero {
+    position: absolute;
+    top: 50%;
+    left: 12%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.watch-hero {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 #icon-home {
@@ -372,6 +402,8 @@ body {
     padding-left: 25px;
 }
 
+/* # Home page */
+
 .mkdf-main-menu > ul > li > a > span.item_outer {
     top: 0;
     -moz-transform: none;
@@ -399,9 +431,6 @@ body {
     width: 60%;
     left: 16px;
     top: 35px;
-}
-
-#menu-main-home-top {
 }
 
 #multi-languages-home-top {
@@ -498,14 +527,6 @@ body.home .bg-header:not(.sticky) {
 .bg-header-child {
     height: 139px;
     width: auto;
-}
-
-.bg-video-home-top {
-    height: 1078px;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .sticky-element-placeholder.sticky-element-active {
@@ -1323,24 +1344,31 @@ body.home .bg-header:not(.sticky) {
 .sponsor-list-inner {
     text-align: center;
 }
+
 .sponsor-list-inner img {
     margin: 10px;
 }
+
 .sponsor-list-inner.sponsor-list-1 img {
     height: 100px;
 }
+
 .sponsor-list-inner.sponsor-list-2 img {
     height: 40px;
 }
+
 .sponsor-list-inner.sponsor-list-3 img {
     height: 35px;
 }
+
 .sponsor-list-inner.sponsor-list-4 img {
     height: 30px;
 }
+
 /* # sponsor page */
 
 
+/* max 1599px */
 @media all and (max-width: 1599px) {
     body {
         font-size: 12px;
@@ -1648,7 +1676,9 @@ body.home .bg-header:not(.sticky) {
     }
 }
 
+/* # max 1599px */
 
+/* max 1365px */
 @media all and (max-width: 1365px) {
     .content-top-child-home {
         max-width: 1280px;
@@ -1735,6 +1765,9 @@ body.home .bg-header:not(.sticky) {
     }
 }
 
+/* # max 1599px */
+
+/* max 1279px */
 @media all and (max-width: 1279px) {
     body {
         font-size: 11px;
@@ -2047,6 +2080,8 @@ body.home .bg-header:not(.sticky) {
     }
 }
 
+/* # max 1599px */
+
 @media all and (max-width: 992px) {
     #icon-home {
         width: 160px;
@@ -2075,6 +2110,9 @@ body.home .bg-header:not(.sticky) {
     }
 }
 
+/* # max 1599px */
+
+/* max 767px */
 @media all and (max-width: 767px) {
     .metaslider.ms-theme-jenga .slide-control {
         display: none !important;
@@ -2116,12 +2154,8 @@ body.home .bg-header:not(.sticky) {
 
     .content-top-child-home {
         height: 380px;
-        max-width: 768px;
     }
 
-    .bg-video-home-top {
-        height: 220px;
-    }
 
     .about-kafla-content-child {
         max-width: 600px;
@@ -2582,6 +2616,8 @@ body.home .bg-header:not(.sticky) {
     }
 }
 
+/* # max 767px */
+
 @media all and (max-width: 639px) {
     .empowerment-box {
         width: 100px;
@@ -2618,11 +2654,6 @@ body.home .bg-header:not(.sticky) {
     }
 
     .content-top-child-home {
-        height: 220px;
-        max-width: 415px;
-    }
-
-    .bg-video-home-top {
         height: 220px;
     }
 

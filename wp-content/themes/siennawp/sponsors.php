@@ -40,9 +40,9 @@ Template Name: Sponsors
 
                                         <div class="sponsor-list-inner sponsor-list-<?= $i ?>">
                                             <?php foreach ($sponsor_list as $item) { ?>
-<!--                                                <div class="sponsor-item-box">-->
-                                                    <img alt="" src="<?= $item['url'] ?>"/>
-<!--                                                </div>-->
+                                                <!--<div class="sponsor-item-box">-->
+                                                <img alt="" src="<?= $item['url'] ?>"/>
+                                                <!--</div>-->
                                             <?php } ?>
                                         </div>
 

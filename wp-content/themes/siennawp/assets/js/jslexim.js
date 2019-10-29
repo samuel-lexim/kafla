@@ -2,6 +2,7 @@ jQuery(function () {
     'use strict';
 
     jQuery(document).ready(function ($) {
+        let body = $('body');
 
         // hover on area KOREAN NEWS,PHOTO GALLERY,VIDEO STORY,UP COMING EVENT active for hover
         $('.check-active-overlay').hover(function () {
@@ -24,7 +25,7 @@ jQuery(function () {
         });
 
         // func click icon find at home, show or hide form search.
-        $('body').delegate('#ic-find', 'click', function () {
+        body.delegate('#ic-find', 'click', function () {
             $('.form-search-home-top').toggle();
         });
 
@@ -50,16 +51,31 @@ jQuery(function () {
 
 
         //  func click show video and hide background slider
-        $('body').delegate('#btn-watchvideo', 'click', function () {
-            $('.content-top-home .bg-video-home-top').show();
-            $('.content-top-home .content-top-child-home').hide();
-            $('.content-top-home .home-banner-slider').hide();
-            $('.content-top-home').css({'background-image': 'unset'});
+        body.delegate('#btn-watchvideo', 'click', function () {
+            $('.bg-video-home-top').show();
+            $('.hero-slider-wrap').hide();
+            $('.hero-slick').hide();
+            $('.hero-wrap').css({'background-image': 'unset'});
         });
 
 
         // Slick slider
         $('.single-image-slick').slick();
+
+        $('.hero-slick').slick({
+            vertical : true,
+            verticalSwiping: true,
+            dots: true,
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        dots: false
+                    }
+                }
+            ]
+        });
 
     });
 });
