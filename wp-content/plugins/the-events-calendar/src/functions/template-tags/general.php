@@ -786,8 +786,12 @@ if ( class_exists( 'Tribe__Events__Main' ) ) {
 				break;
 		}
 
+
 		$start_of_week = get_option( 'start_of_week', 0 );
-		for ( $i = 0; $i < $start_of_week; $i ++ ) {
+
+        $start_of_week = 0; // Sunday is 0
+
+        for ( $i = 0; $i < $start_of_week; $i ++ ) {
 			$day = $days_of_week[ $i ];
 			unset( $days_of_week[ $i ] );
 			$days_of_week[ $i ] = $day;
