@@ -8,7 +8,6 @@
     -ms-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
-    -khtml-user-select: none;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
@@ -29,7 +28,6 @@
 }
 
 .slick-list.dragging {
-    cursor: pointer;
     cursor: hand;
 }
 
@@ -101,10 +99,8 @@
 
 .slick-vertical .slick-slide {
     display: block;
-
     height: auto;
-
-    border: 1px solid transparent;
+    border: 0;
 }
 
 .slick-arrow.slick-hidden {
