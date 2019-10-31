@@ -1,20 +1,20 @@
 @font-face {
-    font-family: 'SFUIText Regular';
+    font-family: 'SFUIText Regular', Helvetica, Arial, sans-serif;
     src: url('fonts/SFUIT fonts/SF-UI-Text-Regular.ttf');
 }
 
 @font-face {
-    font-family: 'SFUIText Light';
+    font-family: 'SFUIText Light', Helvetica, Arial, sans-serif;
     src: url('fonts/SFUIT fonts/SF-UI-Text-Light.ttf');
 }
 
 @font-face {
-    font-family: 'SFUIText Medium';
+    font-family: 'SFUIText Medium', Helvetica, Arial, sans-serif;
     src: url('fonts/SFUIT fonts/SF-UI-Text-Medium.ttf');
 }
 
 @font-face {
-    font-family: 'SFUIText Bold';
+    font-family: 'SFUIText Bold', Helvetica, Arial, sans-serif;
     src: url('fonts/SFUIT fonts/SF-UI-Text-Bold.ttf');
 }
 
@@ -24,7 +24,7 @@
 }
 
 @font-face {
-    font-family: 'SFUIText Semibold';
+    font-family: 'SFUIText Semibold', Helvetica, Arial, sans-serif;
     src: url('fonts/SFUIT fonts/SF-UI-Text-Semibold.ttf');
 }
 
@@ -432,7 +432,7 @@ input.vfb-medium, input[type="text"].vfb-medium {
 }
 
 .mkdf-section-title-holder .mkdf-section-title {
-    font-family: 'SFUIText Regular';
+    font-family: 'SFUIText Regular', Helvetica, Arial, sans-serif;
     font-size: 40px;
 }
 
@@ -442,7 +442,7 @@ input.vfb-medium, input[type="text"].vfb-medium {
 
 .mkdf-section-subtitle-holder .mkdf-section-subtitle {
     font-size: 20px;
-    font-family: 'SFUIText Light';
+    font-family: 'SFUIText Light', Helvetica, Arial, sans-serif;
 }
 
 .mkdf-section-title-holder .mkdf-section-title.mkdf-section-title-large {
@@ -513,7 +513,7 @@ input.vfb-medium, input[type="text"].vfb-medium {
 
 .kafla-home-intro .kafla-home-intro-title,
 .kafla-news-section-top.kafla-home-layout a {
-    font-family: 'SFUIText Regular';
+    font-family: 'SFUIText Regular', Helvetica, Arial, sans-serif;
 }
 
 /* ============================ FOOTER ================================= */
@@ -767,7 +767,7 @@ aside.mkdf-sidebar .widget.widget_nav_menu ul.menu li a {
     color: #555;
     font-size: 18px;
     line-height: 30px;
-    font-family: 'SFUIText Light';
+    font-family: 'SFUIText Light', Helvetica, Arial, sans-serif;
 
 }
 
@@ -1014,7 +1014,7 @@ ul.lcp_catlist {
     font-size: 30px;
     color: #2e265f;
     margin: 50px 0 40px;
-    font-family: "SFUIText Semibold";
+    font-family: 'SFUIText Semibold', Helvetica, Arial, sans-serif;
 }
 
 .kafla-news-section-bottom img {
@@ -1026,7 +1026,7 @@ ul.lcp_catlist {
     font-size: 20px;
     line-height: 30px;
     padding-bottom: 50px;
-    font-family: 'SFUIText Light';
+    font-family: 'SFUIText Light', Helvetica, Arial, sans-serif;
     text-align: center;
 }
 
@@ -1035,7 +1035,7 @@ ul.lcp_catlist {
     background-color: #f11b25;
     padding: 15px 30px;
     font-size: 16px;
-    font-family: 'SFUIText Semibold';
+    font-family: 'SFUIText Semibold', Helvetica, Arial, sans-serif;
 }
 
 .kafla-home-intro {
@@ -1067,7 +1067,7 @@ ul.lcp_catlist {
 .kafla-heritage-night-section .mkdf-section-title-holder h2,
 .kafla-home-sponsers h2 {
     font-size: 33px !important;
-    font-family: 'SFUIText Light' !important;
+    font-family: 'SFUIText Light', Helvetica, Arial, sans-serif !important;
 }
 
 .home .section4-custom-ecommerce {
@@ -1121,12 +1121,12 @@ ul.lcp_catlist {
 .kafla-category-news .kafla-post-content {
     font-size: 18px;
     color: #555;
-    font-family: 'SFUIText Light';
+    font-family: 'SFUIText Light', Helvetica, Arial, sans-serif;
 }
 
 .kafla-category-news .kafla-post-title a {
     color: #2e265f;
-    font-family: 'SFUIText Bold';
+    font-family: 'SFUIText Bold', Helvetica, Arial, sans-serif;
     height: 60px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1146,7 +1146,7 @@ ul.lcp_catlist {
     text-overflow: ellipsis;
     display: -webkit-box;
     line-height: 25px;
-    -webkit-line-clamp: 6;
+    /*-webkit-line-clamp: 6;*/
     -webkit-box-orient: vertical;
     font-size: 16px;
 }
@@ -1402,7 +1402,7 @@ ul.lcp_catlist {
 }
 
 .kafla-home-layout.sponsors-area .sponsors-title {
-    font-family: "SFUIText Bold";
+    font-family: 'SFUIText Bold', Helvetica, Arial, sans-serif;
     font-size: 22px;
     border-bottom: 4px solid;
     width: 120px;
@@ -1440,7 +1440,7 @@ ul.lcp_catlist {
 }
 
 .kafla-mission-bottom p {
-    font-family: 'SFUIText Medium';
+    font-family: 'SFUIText Medium', Helvetica, Arial, sans-serif;
     font-size: 16px;
     color: #2e265f;
 }
@@ -1452,7 +1452,7 @@ ul.lcp_catlist {
 /* ============================ PROJECT PAGE ================================= */
 .kafla-page-projects .kafla-project-title {
     font-size: 25px;
-    font-family: 'SFUIText Regular';
+    font-family: 'SFUIText Regular', Helvetica, Arial, sans-serif;
     color: #2e265f;
     padding-bottom: 15px;
     text-align: center;
@@ -1461,7 +1461,7 @@ ul.lcp_catlist {
 .kafla-page-projects .kafla-project-subtitle {
     font-size: 18px;
     color: #000;
-    font-family: 'SFUIText Regular';
+    font-family: 'SFUIText Regular', Helvetica, Arial, sans-serif;
     margin: 10px 0 0;
     padding-left: 0;
 }
