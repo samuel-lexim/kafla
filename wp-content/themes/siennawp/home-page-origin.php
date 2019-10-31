@@ -55,7 +55,7 @@ Template Name: Home Page Origin
             </div>
             <div class="bg-video-home-top" style="display: none;">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <video autoplay loop muted playsinline width='100%' height='100%' class="embed-responsive-item">
+                    <video autoplay loop muted playsinline controls width='100%' height='100%' class="embed-responsive-item">
                         <source src="/wp-content/themes/siennawp/assets/css/images/KAFLA.mp4" type="video/mp4">
                     </video>
                 </div>

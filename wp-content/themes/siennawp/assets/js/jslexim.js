@@ -73,7 +73,9 @@ jQuery(function () {
                 {
                     breakpoint: 768,
                     settings: {
-                        dots: false
+                        dots: false,
+                        vertical : false,
+                        verticalSwiping: false,
                     }
                 }
             ]
