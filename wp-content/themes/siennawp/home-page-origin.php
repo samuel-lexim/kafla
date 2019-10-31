@@ -13,19 +13,19 @@ Template Name: Home Page Origin
             <div class="hero-slider-wrap">
                 <div class="hero-slick vertical-dots">
                     <div class="hero-home-item">
-                        <img alt="" src="http://kafla.local/wp-content/uploads/2019/10/1-Copy-1920x945.jpg"/>
+                        <img alt="" src="/wp-content/uploads/2019/10/1-Copy-1920x945.jpg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="http://kafla.local/wp-content/uploads/2019/10/2-Copy-1920x945.jpg"/>
+                        <img alt="" src="/wp-content/uploads/2019/10/2-Copy-1920x945.jpg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="http://kafla.local/wp-content/uploads/2019/10/3-Copy-1920x945.jpg"/>
+                        <img alt="" src="/wp-content/uploads/2019/10/3-Copy-1920x945.jpg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="http://kafla.local/wp-content/uploads/2019/10/4-Copy-1920x945.jpg"/>
+                        <img alt="" src="/wp-content/uploads/2019/10/4-Copy-1920x945.jpg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="http://kafla.local/wp-content/uploads/2019/10/5-Copy-1920x945.jpg"/>
+                        <img alt="" src="/wp-content/uploads/2019/10/5-Copy-1920x945.jpg"/>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@ Template Name: Home Page Origin
             </div>
             <div class="bg-video-home-top" style="display: none;">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <video autoplay loop muted playsinline width='100%' height='100%' class="embed-responsive-item">
+                    <video autoplay loop muted playsinline controls width='100%' height='100%' class="embed-responsive-item">
                         <source src="/wp-content/themes/siennawp/assets/css/images/KAFLA.mp4" type="video/mp4">
                     </video>
                 </div>
