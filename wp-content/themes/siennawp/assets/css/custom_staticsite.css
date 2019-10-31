@@ -1132,7 +1132,6 @@ ul.lcp_catlist {
     text-overflow: ellipsis;
     display: -webkit-box;
     line-height: 20px;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
@@ -1141,7 +1140,7 @@ ul.lcp_catlist {
     font-weight: bold;
 }
 
-.page-id-399 .kafla-category-news .kafla-post-excerp {
+.kafla-category-news .kafla-post-excerp {
     height: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1403,7 +1402,7 @@ ul.lcp_catlist {
 }
 
 .kafla-home-layout.sponsors-area .sponsors-title {
-    font-family: SFUIText Bold;
+    font-family: "SFUIText Bold";
     font-size: 22px;
     border-bottom: 4px solid;
     width: 120px;
