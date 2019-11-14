@@ -1367,6 +1367,14 @@ body.home .bg-header:not(.sticky) {
 
 /* # sponsor page */
 
+.contact-content-page .contact-infor {
+    padding-right: 30px;
+}
+
+.contact-content-page .form-contact-mb {
+    width: 100%;
+    padding-left: 30px;
+}
 
 /* max 1599px */
 @media all and (max-width: 1599px) {
@@ -2082,7 +2090,7 @@ body.home .bg-header:not(.sticky) {
 
 /* # max 1599px */
 
-@media all and (max-width: 992px) {
+@media all and (max-width: 991px) {
     #icon-home {
         width: 160px;
         height: 33px;
@@ -2109,9 +2117,21 @@ body.home .bg-header:not(.sticky) {
         right: 0;
         position: fixed;
     }
+
+    .contact-content-page > .col-md-6{
+        border: none !important;
+    }
+
+    .contact-content-page .contact-infor {
+        padding-right: 0;
+    }
+
+    .contact-content-page .form-contact-mb {
+        padding-left: 0;
+    }
 }
 
-/* # max 1599px */
+/* # max 992px */
 
 /* max 767px */
 @media all and (max-width: 767px) {
@@ -2601,11 +2621,6 @@ body.home .bg-header:not(.sticky) {
 
     .lcp_paginator {
         text-align: left;
-    }
-
-    .contact-content-page .form-contact-mb {
-        float: left;
-        padding-left: 0;
     }
 
     .contact-content-page .col-md-6 {
@@ -3111,10 +3126,6 @@ body.home .bg-header:not(.sticky) {
 
     .lcp_paginator {
         text-align: left;
-    }
-
-    .mkdf-container .form-contact-mb {
-        padding-left: 0;
     }
 
     .kafla-orginization-second .wpb_wrapper div img {
