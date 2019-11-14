@@ -1260,14 +1260,15 @@ ul.lcp_catlist {
 }
 
 .kafla-orginization-second .wpb_wrapper div {
-    width: 11.1%;
+    width: 12.1%;
     float: left;
     padding: 10px;
     text-align: center;
 }
 
 .kafla-orginization-second .wpb_wrapper div img {
-    width: 100%;
+    width: auto;
+    height: 76px;
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 768px) {
@@ -1503,4 +1504,7 @@ ul.lcp_catlist {
 
 .page table td {
     border-right: 1px solid #e6e6e6;
+}
+.hero-wrap .bg-video-home-top .embed-responsive {
+    z-index: 999;
 }
