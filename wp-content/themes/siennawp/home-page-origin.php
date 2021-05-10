@@ -8,24 +8,23 @@ Template Name: Home Page Origin
 <?php get_header(); ?>
     <div class="mkdf-container">
 
+        <?php
+        $heroImages = get_field('images_list', 'option');
+        ?>
+
+        <?php if ($heroImages) { ?>
         <div class="hero-wrap">
             <div class="hero-slider-wrap">
                 <div class="hero-slick vertical-dots">
+                    <?php if (is_array($heroImages)) {
+                        foreach ($heroImages as $img) {
+                            if (isset($img['image']['url'])) { ?>
                     <div class="hero-home-item">
-                        <img alt="" src="wp-content/uploads/2021/05/even-tops1-e1620275689111.jpeg"/>
+                        <img alt="<?= $img['image']['alt'] ?>" src="<?= $img['image']['url'] ?>" />
                     </div>
-                    <div class="hero-home-item">
-                        <img alt="" src="wp-content/uploads/2021/05/even-tops2-1-e1620276177767.jpeg"/>
-                    </div>
-                    <div class="hero-home-item">
-                        <img alt="" src="wp-content/uploads/2021/05/even-tops3-1-e1620276218234.jpeg"/>
-                    </div>
-                    <div class="hero-home-item">
-                        <img alt="" src="wp-content/uploads/2021/05/even-tops4-1-e1620276284681.jpeg"/>
-                    </div>
-                    <div class="hero-home-item">
-                        <img alt="" src="wp-content/uploads/2021/05/even-tops5-1-e1620276346712.jpeg"/>
-                    </div>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
 
                 <div class="social-hero">
@@ -61,9 +60,7 @@ Template Name: Home Page Origin
                 </div>
             </div>
         </div>
-
-
-
+        <?php } ?>
 
         <div class="about-kafla-content parent-position">
             <div class="about-kafla-content-child child-position">

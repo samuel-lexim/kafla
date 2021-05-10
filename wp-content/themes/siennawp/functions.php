@@ -1195,3 +1195,31 @@ function my_scripts_method()
 }
 
 add_action('wp_enqueue_scripts', 'my_scripts_method');
+
+// Notice: ob_end_flush(): failed to send buffer of zlib output compression (1) in /var/www/html/kafla/wp-includes/functions.php on line 4339
+// remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+
+
+/**
+ * Add section in admin page
+ * @position function.php
+ */
+if ( function_exists( 'acf_add_options_page' ) ) {
+    acf_add_options_page(
+        array(
+            'page_title' => 'Options Page',
+            'menu_title' => 'Options Page Settings',
+            'menu_slug'  => 'options-page-settings',
+            'capability' => 'edit_posts',
+            'redirect'   => true
+        )
+    );
+
+    acf_add_options_sub_page(
+        array(
+            'page_title'  => 'Hero Slider in Home page',
+            'menu_title'  => 'Hero Slider in Home page',
+            'parent_slug' => 'options-page-settings'
+        )
+    );
+}
