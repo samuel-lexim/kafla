@@ -1,11 +1,11 @@
 === List category posts ===
-Contributors: fernandobt
+Contributors: fernandobt, zymeth25
 Donate Link: http://picandocodigo.net/programacion/wordpress/list-category-posts-wordpress-plugin-english/#support
 Tags: list, categories, posts, cms
 Requires at least: 3.3
-Tested up to: 5.2.2
+Tested up to: 5.7.1
 Requires PHP: 5.4
-Stable tag: 0.81
+Stable tag: 0.84.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,11 @@ Great to use WordPress as a CMS, and create pages with several categories posts.
 Klemens Starybrat has created a GUI for List Category Posts. It helps you create a shortcode from a nice visual interface in WordPress' text editor. Check it out:
 [GUI for List Category Posts](https://wordpress.org/plugins/gui-for-lcp/)
 
+**AJAX pagination**
+
+The ajax pagination feature is maintained in an add-on plugin by Klemens Starybrat. Check it out:
+[LCP Ajax Pagination](https://wordpress.org/plugins/lcp-ajax-pagination)
+
 **Widget**
 
 Since WordPress 4.9, [you can use shortcode in text widgets](https://make.wordpress.org/core/2017/10/24/widget-improvements-in-wordpress-4-9/). So you can just add a text widget in Appearence > Widgets and write the List Category Posts shortcode.
@@ -60,7 +65,10 @@ Some users have made videos on how to use the plugin (thank you, you are awesome
 
 **Support the plugin**
 
-If you've found the plugin useful, consider making a [donation via PayPal](http://picandocodigo.net/programacion/wordpress/list-category-posts-wordpress-plugin-english/#support "Donate via PayPal").
+Klemens Starybrat has been writing lots of amazing code for this plugin, so if you've found it useful and want to pay it forward, consider sponsoring him on GitHub: https://github.com/sponsors/klemens-st
+
+I have a [PayPal account](http://picandocodigo.net/programacion/wordpress/list-category-posts-wordpress-plugin-english/#support "Donate via PayPal") where you can donate too.
+
 
 **Development**
 
@@ -179,7 +187,7 @@ Then just add a new text widget to your blog and use the shortcode there as the 
 
 **TEMPLATE SYSTEM**
 
-How to customize the way the posts are shown: [Template System](https://github.com/picandocodigo/List-Category-Posts/wiki/Template-System). I am aware the Template System is not the friendliest right now, I'll work on improving this if I ever get the time to work on it.
+How to customize the way the posts are shown: [Template System](https://github.com/picandocodigo/List-Category-Posts/wiki/Template-System).
 
 **NEW FEATURE REQUESTS, BUG FIXES, ENHANCEMENTS**
 
@@ -228,6 +236,51 @@ Widget built for WordPress 2.8's Widget API, so you need at least WP 2.8 to use 
 Template system has changed. Custom templates should be stored in WordPress theme folder.
 
 == Changelog ==
+
+= 0.84.2 =
+
+* Fixed includeposts undefined index in older widgets.
+* Fixed invalid href attribute in morelink.
+
+= 0.84.1 =
+
+* Filter hook added: `shortcode_atts_catlist`, see [the docs](https://developer.wordpress.org/reference/hooks/shortcode_atts_shortcode/).
+* Filter hook added: `lcp_pagination_html`, see [the source](https://github.com/picandocodigo/List-Category-Posts/blob/90d6cf08aad9c4590e3c06b8ce8d9256f757917f/include/lcp-paginator.php#L104).
+
+= 0.84.0 =
+
+* **New feature**: Select specific posts by IDs: `[catlist includeposts="2,97"]`. Thanks @hvianna!
+* **New feature:** Advanced customfield filtering with `customfield_compare`, see [the docs](https://github.com/picandocodigo/List-Category-Posts/wiki/How-to-select-which-posts-to-show#other-ways-of-selecting-what-posts-to-show) for instructions.
+* **New feature:** It is now possible to style `category_description` with `category_description_tag` and `category_description_class`.
+* Changed the default wrapper tag for `content=yes` to `<div>` to avoid generating invalid HTML (previously `<p>`).
+* Fixed `excerpt_full` not being run through `the_excerpt` filters (thanks @StefanXRoos!). The filters are now applied same as for `excerpt_yes`. **Please check your setup** if you are using `excerpt_full`.
+* Fixed `display_id` bug, thanks for reporting @fiestoforo!
+* Fixed PHP warnings in WP admin caused by the widget, thanks for reporting @hiskingdomprophecy (#420).
+* Fixed `posts_where` filter not being properly removed when using `starting_with`.
+* Full refactor of HTML generation making it easier to maintain.
+* Upgraded PHP to 7.4 in the Vagrant machine.
+
+= 0.83.1 =
+
+* Fixes bug with order parameter after refactor: https://wordpress.org/support/topic/notice-undefined-variable-params/
+
+= 0.83 =
+
+This is a big release since @zymeth25 and I have been doing lots of refactoring based on maintainability, code quality and testing. It means the code is much cleaner and easier to maintain. So fixing bugs or adding new features should be easier now. If you find any issues, please report them on GitHub (https://github.com/picandocodigo/List-Category-Posts/issues).
+
+* Development: We've refactored a lot of the code in `include`, updated the build, bumped versions, added tests, and more.
+* Bugfix: An issue where `customfield_display_glue` was shown even when the custom field values were empty - https://wordpress.org/support/topic/hide-the-glue-content-if-costum-fields-are-empty
+* Bugfix: Fixed excluded categories when using an `and` relationship.
+* New parameter: `ol_offset`, when you use an ordered list, you can set an offset so the posts will start from that number instead of 1.
+* *Templates system refactor* - The plugin now uses the template system by default. There should be no changes on how the plugin works, but please do let us know if you have any issues. Building templates should be easier now. You can use the included template as an example to start. It's in the plugin's template folder under the name default.php. Be warned, however, that this is the default template the plugin uses to create output so if you change it, you *will change* the plugin's default behavior. When you update the plugin this file will be overwritten so it's best not to edit it but copy it over to another file to create your custom template.
+More information on templates:
+- Pull Request: https://github.com/picandocodigo/List-Category-Posts/pull/411
+- Official docs: https://github.com/picandocodigo/List-Category-Posts/wiki/HTML-&-CSS-Customization#templates
+
+= 0.82 =
+
+* Adds support for several authors. To select posts from one author, you can use the **author_posts** parameter and use 'user_nicename' (NOT name). Example: `[catlist author_posts="fernando"]`. If you want to select posts from several authors, you need to use the author id instead. You can find the id for each author in `wp-admin/users.php`. It needs to be a comma separated value, example: `[catlist author_posts="1,2"]`
+* Rewrote `excludeposts` function. It wasn't working very well with `this`.
 
 = 0.81 =
 

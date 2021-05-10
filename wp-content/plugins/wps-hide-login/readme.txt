@@ -1,12 +1,12 @@
 === WPS Hide Login ===
 
-Contributors: tabrisrp, WPServeur, nicolaskulka
+Contributors: WPServeur, NicolasKulka, wpformation
 Donate link : https://www.paypal.me/donateWPServeur
 Tags: rename, login, wp-login, wp-login.php, custom login url, jetpack, wpserveur
 Requires at least: 4.1
-Tested up to: 5.2
+Tested up to: 5.7
 Requires PHP: 7.0
-Stable tag: 1.5.4.2
+Stable tag: 1.8.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,8 @@ This plugin is only maintained, which means we do not guarantee free support. Co
 *WPS Hide Login* est un plugin très léger qui vous permet de changer facilement et en toute sécurité l'url de la page de formulaire de connexion. Il ne renomme pas littéralement ou ne modifie pas les fichiers dans le noyau, ni n'ajoute des règles de réécriture. Il intercepte simplement les demandes de pages et fonctionne sur n'importe quel site WordPress. Le répertoire wp-admin et la page wp-login.php deviennent inaccessibles, vous devez donc ajouter un signet ou vous souvenir de l'URL. Désactiver ce plugin ramène votre site exactement à l'état dans lequel il était auparavant.
 
 Ce plugin vous est gentiment proposé par <a href="https://www.wpserveur.net/?refwps=14&campaign=wpshidelogin" target="_blank">WPServeur</a> l'hébergeur spécialisé WordPress.
+
+Plus d'infos sur son utilisation : <a href="https://wpformation.com/wps-hide-login-url-connexion-wordpress/" target="_blank">https://wpformation.com/wps-hide-login-url-connexion-wordpress/</a>
 
 Découvrez également nos autres extensions gratuites :
 - <a href="https://fr.wordpress.org/plugins/wps-limit-login/" target="_blank">WPS Limit Login</a> pour bloquer les attaques par force brute.
@@ -145,6 +147,45 @@ Ce cas peut provenir de plugins modifiant vos fichiers .htaccess pour ajouter ou
 La première étape consiste à vérifier votre fichier .htaccess et à le comparer à un fichier .htaccess normal, pour voir si le problème provient de ce fichier.
 
 == Changelog ==
+
+= 1.8.5 =
+* Fix : Force refresh permalinks update option 'whl_page'
+
+= 1.8.4 =
+* Tested up to 5.7
+
+= 1.8.3 =
+* Fix : remove WP_Review
+
+= 1.8.2 =
+* Fix notice "Notice: Trying to get property 'href' of non-object"
+
+= 1.8.1 =
+* Fix fatal error with vendor wp-dismissible-notices-handler and wp-review-me
+
+= 1.8 =
+* Fix multisite subdomain for website menu (Thanks Eric Celeste)
+
+= 1.7 =
+* Fix vulnerability (Thanks Sebastian Schmitt) : Posting "post_password" with arbitrary content to /wp-login.php reveals the normal wordpress login page.
+
+= 1.6.1 =
+* Fix : loopback request site-health
+
+= 1.6 =
+* Tested up to 5.6
+* Add compatibility with PHP8
+
+= 1.5.7 =
+* Fix : Text Domain Issue
+
+= 1.5.6 =
+* Fix : flush rewrite rules after install or update option
+* Tested up to 5.4
+
+= 1.5.5 =
+* Add filter to redirect in cases where the user is already logged in.
+* Fix : add rawurldecode for all $_SERVER['REQUEST_URI'] (Thanks @nintechnet)
 
 = 1.5.4.2 =
 * Revert to code in tag 1.5.3

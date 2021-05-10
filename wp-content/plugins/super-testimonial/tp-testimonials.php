@@ -3,15 +3,13 @@
 	/*
 	Plugin Name: Super Testimonial
 	Plugin URI: https://themepoints.com/product/super-testimonial-pro/
-	Description: Super Testimonials is a component ready to use on mobile devices and desktop devices.
-	Version: 2.1
+	Description: Super Testimonials is a component ready to use on mobile devices and desktop devices. Super Testimonial are easy to use the plugin that allows users to add Testimonials to the sidebar, as a widget, or to embed testimonials into a Page or Post using the shortcode.
+	Version: 2.3
 	Author: Themepoints
 	Author URI: https://themepoints.com
 	TextDomain: ktsttestimonial
 	License: GPLv2
 	*/
-
-
 
 	if ( ! defined( 'ABSPATH' ) )
 	die( "Can't load this file directly" );
@@ -42,7 +40,6 @@
 		wp_enqueue_style('tps-super-font-awesome-css', TPS_TESTIMONIAL_PLUGIN_PATH.'css/font-awesome.css');
 		wp_enqueue_style('tps-super-owl.carousel-css', TPS_TESTIMONIAL_PLUGIN_PATH.'css/owl.carousel.css');
 		wp_enqueue_style('tps-super-style-css', TPS_TESTIMONIAL_PLUGIN_PATH.'css/theme-style.css');
-
 		wp_enqueue_script('tps-super-star-js', plugins_url('js/jquery.raty-fa.js', __FILE__), array('jquery'), '2.4', true);
 		wp_enqueue_script('tps-super-owl-js', plugins_url('js/owl.carousel.js', __FILE__), array('jquery'), '2.4', true);
 		wp_enqueue_script('tps-super-main-js', plugins_url('js/main.js', __FILE__), array('jquery'), '2.4', true);
@@ -87,11 +84,11 @@
 			'auto_play' => 'true',
 			'navigation' => 'true',
 			'stars_color' => '#1a1a1a',
+			'text_color' => '#8a9aad',
 		), $atts));
 		
 		
 		// 	query posts
-		
 		$args =	array ( 'post_type' => 'ktsprotype',
 						'posts_per_page' => $number,
 						'orderby' => $order_by,
@@ -131,7 +128,7 @@
 			    padding: 0;
 			}
 			.testimonial-'.$themes.' .testimonial-description-'.$themes.'{
-				color: #8a9aad;
+				color: '.$text_color.';
 				font-size: 15px;
 				font-style: italic;
 				line-height: 24px;
@@ -242,9 +239,11 @@
 					<div class="testimonial-'.$themes.'">
 						<div class="testimonial-thumb-'.$themes.'">
 							<img src="'.$imgurl.'" alt="">
-						</div>
-						<p class="testimonial-description-'.$themes.'">'.$testimonial_information.'
-						</p>
+						</div>';
+						if(!empty($testimonial_information)){
+							$result .='<p class="testimonial-description-'.$themes.'">'.$testimonial_information.'</p>';
+						}
+						$result .='
 						<div class="super-testimonial-'.$themes.'" data-number="5" data-score="'.$company_ratings_target.'"></div>
 						<div class="testimonial-description-profiles-'.$themes.'">
 							<span class="testimonial-description-title-'.$themes.'">'.esc_attr($client_name_value).'</span><small><a target="'.$company_url_target.'" href="'.esc_url($company_url).'">'.$link_value.'</a></small>
@@ -263,6 +262,9 @@
 			$result='';
 			$result.='
 			<style type="text/css">
+				#ktsttestimonial_list_style .client_content{
+					color:'.$text_color.';
+				}
 				#ktsttestimonial_list_style .fa-fw {
 				  text-align: center;
 				  width: 1.28571em;
@@ -339,7 +341,7 @@
 				position: relative;
 				font-size: 16px;
 				line-height:26px;
-				color: #696969;
+				color: '.$text_color.';
 				padding: 25px 20px;
 				border:1px solid #d3d3d3;
 			}
@@ -468,8 +470,11 @@
 				if ( empty( $imgurl ) ) $imgurl = get_avatar_url( -1 );
 
 				$result .='
-					<div class="testimonial-theme3-'.$themes.'">
-						<p class="testimonial-theme3-description-'.$themes.'">'.$testimonial_information.'</p>
+					<div class="testimonial-theme3-'.$themes.'">';
+					if(!empty($testimonial_information)){
+						$result .='<p class="testimonial-theme3-description-'.$themes.'">'.$testimonial_information.'</p>';
+					}
+						$result .='
 						<div class="testimonial-theme3-pic-'.$themes.'">
 							<img src="'.$imgurl.'" alt="">
 						</div>
@@ -518,7 +523,7 @@
 			.testimonial-theme4-'.$themes.' .testimonial-theme4-description-'.$themes.'{
 				font-size: 16px;
 				font-style: italic;
-				color: #808080;
+				color: '.$text_color.';
 				line-height: 30px;
 				margin: 10px 0 20px;
 			}

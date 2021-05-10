@@ -3,20 +3,22 @@
 /**
  * Plugin Name: Mobile Menu
  * Description: An easy to use WordPress responsive mobile menu. Keep your mobile visitors engaged.
- * Version: 2.7.4.4
+ * Version: 2.8.2.1
  * Plugin URI: https://www.wpmobilemenu.com/
  * Author: Rui Guerreiro
  * Author URI: https://www.jedipress.com/
- * Tested up to: 5.2
+ * Tested up to: 5.7
  * Text Domain: mobile-menu
  * Domain Path: /languages/
  * License: GPLv2
+ *
  */
 if ( !defined( 'ABSPATH' ) ) {
     die;
 }
-define( 'WP_MOBILE_MENU_VERSION', '2.7.4.4' );
+define( 'WP_MOBILE_MENU_VERSION', '2.8.2.1' );
 define( 'WP_MOBILE_MENU_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'WP_MOBILE_MENU_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 if ( !class_exists( 'WP_Mobile_Menu' ) ) {
     /**
      * Main Mobile Menu class
@@ -32,7 +34,6 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
          */
         public function __construct()
         {
-            $this->init_mobile_menu();
         }
         
         public function wp_mobile_menu_custom_admin_notice()
@@ -45,7 +46,7 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
 					<span class="dashicons dashicons-warning"></span>
 
 					<?php 
-            _e( '<strong>WP Mobile Menu PRO- </strong>If you need further features like 2000+ Menu Icons, 3rd Level Menus, Header Banner, Menus only visible for logged in users, alternative menus per page, Disable Mobile Menus in specific pages, Check the <a href="' . esc_url( $this->mm_fs()->get_upgrade_url() ) . '"> Professional Version Features</a> and the <a href="http://www.wpmobilemenu.com" target="_blank" >Demo site</a>', 'mobile-menu' );
+            _e( '<strong>Getting Started with WP Mobile Menu - </strong> You can start with an already existing demo just go to General Options-> Import and Export. Check our knowledgebase <a href="https://www.wpmobilemenu.com/knowledgebase/?utm_source=wprepo-dash&utm_medium=user%20website&utm_campaign=getting-started-notice" target="_blank" >site</a> as a starting point.', 'mobile-menu' );
             ?>
 				</div>
 
@@ -81,6 +82,8 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
             add_action( 'wp_loaded', array( $this->mobmenu_core, 'register_sidebar' ) );
             // Register Menus.
             add_action( 'init', array( $this->mobmenu_core, 'register_menus' ) );
+            // Find Elements to hide.
+            add_action( 'init', array( $this->mobmenu_core, 'find_elements_mobmenu' ) );
             // Load frontend assets.
             if ( !is_admin() ) {
                 add_action( 'init', array( $this, 'load_frontend_assets' ) );
@@ -153,7 +156,7 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
          */
         private function include_required_files()
         {
-            require_once dirname( __FILE__ ) . '/vendor/titan-framework/titan-framework-embedder.php';
+            require_once dirname( __FILE__ ) . '/options-framework/option-framework.php';
             require_once dirname( __FILE__ ) . '/includes/class-wp-mobile-menu-core.php';
             require_once dirname( __FILE__ ) . '/includes/class-wp-mobile-menu-options.php';
             require_once dirname( __FILE__ ) . '/includes/class-wp-mobile-menu-walker-nav-menu.php';
@@ -168,8 +171,13 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
         {
             $mobmenu_options = TitanFramework::getInstance( 'mobmenu' );
             $is_mobile_only = $mobmenu_options->getOption( 'only_mobile_devices' );
+            $is_testing_mode = $mobmenu_options->getOption( 'only_testing_mode' );
+            $mobmenu_action = '';
+            if ( isset( $_GET['mobmenu-action'] ) ) {
+                $mobmenu_action = $_GET['mobmenu-action'];
+            }
             
-            if ( !$is_mobile_only || $is_mobile_only && wp_is_mobile() ) {
+            if ( $mobmenu_action == 'find-element' || $is_testing_mode && current_user_can( 'administrator' ) || !$is_testing_mode && (!$is_mobile_only || $is_mobile_only && wp_is_mobile()) ) {
                 // Enqueue Html to the Footer.
                 add_action( 'wp_footer', array( $this->mobmenu_core, 'load_menu_html_markup' ) );
                 // Frontend Scripts.
@@ -202,16 +210,17 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
             add_action( 'wp_ajax_dismiss_wp_mobile_notice', array( $this->mobmenu_core, 'dismiss_wp_mobile_notice' ) );
             add_action( 'wp_ajax_nopriv_dismiss_wp_mobile_notice', array( $this->mobmenu_core, 'dismiss_wp_mobile_notice' ) );
             add_action( 'wp_ajax_save_menu_item_icon', array( $this->mobmenu_core, 'save_menu_item_icon' ) );
+            add_action( 'wp_ajax_dismiss_wp_mobile_upgrade_notice', array( $this->mobmenu_core, 'dismiss_wp_mobile_upgrade_notice' ) );
             add_action( 'wp_ajax_nopriv_save_menu_item_icon', array( $this->mobmenu_core, 'save_menu_item_icon' ) );
             add_action( 'wp_ajax_mobile_menu_search__premium_only', array( $this->mobmenu_core, 'mobile_menu_search__premium_only' ) );
             add_action( 'wp_ajax_nopriv_mobile_menu_search__premium_only', array( $this->mobmenu_core, 'mobile_menu_search__premium_only' ) );
-            add_action( 'wp_ajax_mobmenu_export_settings', array( $this->mobmenu_core, 'mobile_menu_export_settings' ) );
         }
         
         /** Admin Scripts. **/
         public function admin_enqueue_scripts( $hook )
         {
             global  $mm_fs ;
+            global  $post_type ;
             
             if ( 'toplevel_page_mobile-menu-options' === $hook && !$mm_fs->is__premium_only() ) {
                 if ( !get_option( 'wp_mobile_menu_banner_dismissed' ) ) {
@@ -224,7 +233,12 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
             if ( 'nav-menus.php' === $hook || 'toplevel_page_mobile-menu-options' === $hook ) {
                 wp_enqueue_style( 'cssmobmenu-icons', plugins_url( 'includes/css/mobmenu-icons.css', __FILE__ ) );
                 wp_enqueue_style( 'cssmobmenu-admin', plugins_url( 'includes/css/mobmenu-admin.css', __FILE__ ) );
-                wp_register_script( 'mobmenu-admin-js', plugins_url( 'includes/js/mobmenu-admin.js', __FILE__ ), array( 'jquery' ) );
+                wp_register_script(
+                    'mobmenu-admin-js',
+                    plugins_url( 'includes/js/mobmenu-admin.js', __FILE__ ),
+                    array( 'jquery' ),
+                    WP_MOBILE_MENU_VERSION
+                );
                 wp_enqueue_script( 'mobmenu-admin-js' );
             }
             
@@ -232,11 +246,11 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
             
             if ( 'toplevel_page_mobile-menu-options' === $hook ) {
                 // Export settings.
-                if ( isset( $_GET['mobmenu-action'] ) && 'download-settings' === $_GET['mobmenu-action'] ) {
+                if ( isset( $_GET['mobmenu-action'] ) && 'download-settings' === sanitize_text_field( $_GET['mobmenu-action'] ) ) {
                     $this->mobmenu_core->mobile_menu_export_settings();
                 }
                 // Import settings.
-                if ( isset( $_GET['mobmenu-action'] ) && 'import-settings' === $_GET['mobmenu-action'] && 'mobile-menu-options' === $_GET['page'] ) {
+                if ( isset( $_GET['mobmenu-action'] ) && 'import-settings' === sanitize_text_field( $_GET['mobmenu-action'] ) && 'mobile-menu-options' === sanitize_text_field( $_GET['page'] ) ) {
                     add_action( 'mobile_menu_importer_page', array( $this->mobmenu_core, 'mobile_menu_import_settings' ), 1 );
                 }
             }
@@ -245,5 +259,22 @@ if ( !class_exists( 'WP_Mobile_Menu' ) ) {
     
     }
 }
-// Instanciate the WP_Mobile_Menu.
-new WP_Mobile_Menu();
+$current_options = get_option( 'mobmenu_options' );
+$admin_options = unserialize( $current_options );
+
+if ( isset( $admin_options['only_mobile_devices'] ) ) {
+    $is_mobile_only = $admin_options['only_mobile_devices'];
+} else {
+    $is_mobile_only = false;
+}
+
+$mobmenu_action = '';
+if ( isset( $_GET['mobmenu-action'] ) ) {
+    $mobmenu_action = $_GET['mobmenu-action'];
+}
+
+if ( $mobmenu_action == 'find-element' || is_admin() || (!$is_mobile_only || $is_mobile_only && wp_is_mobile()) ) {
+    // Instanciate the WP_Mobile_Menu.
+    $mobile_menu_instance = new WP_Mobile_Menu();
+    $mobile_menu_instance->init_mobile_menu();
+}

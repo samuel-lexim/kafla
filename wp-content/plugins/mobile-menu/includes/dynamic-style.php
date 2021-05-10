@@ -12,6 +12,7 @@ global  $mm_fs ;
 $titan = TitanFramework::getInstance( 'mobmenu' );
 $default_elements = '';
 $logo_height = '';
+$header_logo_float = '';
 $def_el_arr = $titan->getOption( 'default_hided_elements' );
 $trigger_res = $titan->getOption( 'width_trigger' );
 $right_menu_width = $titan->getOption( 'right_menu_width' ) . 'px';
@@ -20,31 +21,33 @@ $left_menu_width_translate = '100%';
 $left_menu_height_translate = '100%';
 $woo_menu_width_translate = '100%';
 $woo_menu_width = 0;
-if ( in_array( '1', $def_el_arr ) ) {
+$woo_menu_font = '';
+$search_results_font = $titan->getOption( 'search_results_font' );
+if ( in_array( '1', $def_el_arr, true ) ) {
     $default_elements .= '.nav, ';
 }
-if ( in_array( '2', $def_el_arr ) ) {
+if ( in_array( '2', $def_el_arr, true ) ) {
     $default_elements .= '.main-navigation, ';
 }
-if ( in_array( '3', $def_el_arr ) ) {
+if ( in_array( '3', $def_el_arr, true ) ) {
     $default_elements .= '.genesis-nav-menu, ';
 }
-if ( in_array( '4', $def_el_arr ) ) {
+if ( in_array( '4', $def_el_arr, true ) ) {
     $default_elements .= '#main-header, ';
 }
-if ( in_array( '5', $def_el_arr ) ) {
+if ( in_array( '5', $def_el_arr, true ) ) {
     $default_elements .= '#et-top-navigation, ';
 }
-if ( in_array( '6', $def_el_arr ) ) {
+if ( in_array( '6', $def_el_arr, true ) ) {
     $default_elements .= '.site-header, ';
 }
-if ( in_array( '7', $def_el_arr ) ) {
+if ( in_array( '7', $def_el_arr, true ) ) {
     $default_elements .= '.site-branding, ';
 }
-if ( in_array( '8', $def_el_arr ) ) {
+if ( in_array( '8', $def_el_arr, true ) ) {
     $default_elements .= '.ast-mobile-menu-buttons, ';
 }
-if ( in_array( '9', $def_el_arr ) ) {
+if ( in_array( '9', $def_el_arr, true ) ) {
     $default_elements .= '.storefront-handheld-footer-bar, ';
 }
 $default_elements .= '.hide';
@@ -90,7 +93,7 @@ $logo_height = 'height:' . $logo_height . 'px!important;';
 $header_height = $titan->getOption( 'header_height' );
 $total_header_height = $header_height;
 $banner_height = 0;
-$header_margin_top = '0px';
+$header_margin_top = $titan->getOption( 'logo_top_margin' );
 $header_banner_padding_top = 0;
 $header_width = '100%';
 // Left Menu Background Image.
@@ -115,6 +118,7 @@ if ( $titan->getOption( 'mm_woo_menu_icon_font_size' ) ) {
 if ( $titan->getOption( 'cart_icon_top_margin' ) ) {
     $cart_icon_top_margin = $titan->getOption( 'cart_icon_top_margin' );
 }
+$header_margin_top = $header_margin_top . 'px';
 $header_margin_left = '0';
 $header_margin_right = '0';
 $header_text_position = 'absolute';
@@ -129,7 +133,7 @@ if ( $titan->getOption( 'enabled_sticky_header' ) ) {
 }
 
 
-if ( 'center' == $titan->getOption( 'header_text_align' ) ) {
+if ( 'center' === $titan->getOption( 'header_text_align' ) ) {
     $logo_header_position = 'absolute';
 } else {
     $logo_header_position = 'relative';
@@ -156,44 +160,44 @@ if ( $titan->getOption( 'logo_img_retina' ) ) {
 		display: none!important;
 	}
 }
-<?php
+<?php 
 }
 ?>
 
 @media screen and ( min-width: 782px ){
-		body.admin-bar .mobmenu, body.admin-bar .mobmenu-panel {
-<!--			top: 32px!important;-->
+		body.admin-bar .mobmenu, body.admin-bar .mobmenu-panel, .show-nav-left.admin-bar .mobmenu-overlay, .show-nav-right.admin-bar .mobmenu-overlay {
+			top: 32px!important;
 		}
-		<?php
+		<?php 
 $admin_bar_height = '32';
 ?>
 		body.admin-bar .mobmenu-search-holder {
-				top: <?php
+				top: <?php 
 echo  $total_header_height + $admin_bar_height ;
 ?>px!important;
 		}
 }
 
 @media screen and ( max-width: 782px ){
-	body.admin-bar .mobmenu, body.admin-bar .mobmenu-panel {
-<!--		top: 46px!important;-->
+	body.admin-bar .mobmenu, body.admin-bar .mobmenu-panel, .show-nav-left.admin-bar .mobmenu-overlay, .show-nav-right.admin-bar .mobmenu-overlay {
+		top: 46px!important;
 	}
 
 	body.admin-bar .mob-menu-header-banner {
-		top: <?php
+		top: <?php 
 echo  $header_banner_padding_top ;
 ?>px!important;
 	}
-	<?php
+	<?php 
 $admin_bar_height = '46';
 ?>
 	body.admin-bar .mobmenu-search-holder {
-		top: <?php
+		top: <?php 
 echo  $total_header_height + $admin_bar_height ;
 ?>px!important;
 	}
 	body.admin-bar  .mob-menu-slideout .mobmenu-search-holder {
-		top: <?php
+		top: <?php 
 echo  $header_height ;
 ?>px!important;
 	}
@@ -202,37 +206,37 @@ echo  $header_height ;
 
 @media screen and ( max-width: 479px ) {
 	.mob-menu-overlay .mobmenu-content {
-<!--		padding-top: 5%;-->
+		padding-top: 5%;
 	}
 }
 
 @media screen and ( max-width: 782px ) {
 	.mob-menu-overlay .mobmenu-content {
-<!--		padding-top: 10%;-->
+		padding-top: 10%;
 	}
 }
 
 @media screen and ( min-width: 782px ) {
 	#mobmenu-footer li:hover {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'footer_bg_color_hover' ) ;
 ?>;
 	}
 	#mobmenu-footer li:hover i {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'footer_icon_color_hover' ) ;
 ?>;
 	}
 }
 
-@media only screen and (min-width:<?php
+@media only screen and (min-width:<?php 
 echo  $trigger_res + 1 ;
 ?>px){
 	.mob_menu, .mobmenu-panel, .mobmenu, .mobmenu-cart-panel, .mobmenu-footer-menu-holder, .mobmenu-right-panel, .mobmenu-left-panel  {
 		display: none!important;
 	}
 }
-<?php
+<?php 
 
 if ( 0 < $border_menu_size ) {
     $border_menu_color = $titan->getOption( 'menu_items_border_color' );
@@ -240,197 +244,228 @@ if ( 0 < $border_menu_size ) {
     ?>
 
 		.mobmenu-content li {
-			border-bottom: <?php
+			border-bottom: <?php 
     echo  $border_style ;
     ?>;
 		}
 
-<?php
+<?php 
+}
+
+
+if ( $titan->getOption( 'left_menu_tabbed_menus', false ) ) {
+    $border_menu_color = $titan->getOption( 'menu_items_border_color' );
+    $border_style = '2px solid ' . $border_menu_color;
+    ?>
+
+		.mobmenu-left-panel .mobmenu-tabs-header .active-tab {
+			border-bottom: <?php 
+    echo  $border_style ;
+    ?>;
+		}
+
+<?php 
+}
+
+
+if ( $titan->getOption( 'right_menu_tabbed_menus', false ) ) {
+    $border_menu_color = $titan->getOption( 'menu_items_border_color' );
+    $border_style = '2px solid ' . $border_menu_color;
+    ?>
+
+		.mobmenu-right-panel .mobmenu-tabs-header .active-tab {
+			border-bottom: <?php 
+    echo  $border_style ;
+    ?>;
+		}
+
+<?php 
 }
 
 
 if ( '' !== $titan->getOption( 'hide_elements' ) ) {
     ?>
 /* Our css Custom Options values */
-@media only screen and (max-width:<?php
+@media only screen and (max-width:<?php 
     echo  $trigger_res ;
     ?>px){
-	<?php
+	<?php 
     echo  $titan->getOption( 'hide_elements' ) ;
     ?> {
 		display:none !important;
 	}
 }
 
-<?php
+<?php 
 }
 
 ?>
 
-@media only screen and (max-width:<?php
+@media only screen and (max-width:<?php 
 echo  $trigger_res ;
 ?>px) {
 
-		<?php
+		<?php 
 ?>
-
+	
 	.mobmenur-container i {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'right_menu_icon_color' ) ;
 ?>;
 	}
 	.mobmenul-container i {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_menu_icon_color' ) ;
 ?>;
 	}
 	.mobmenul-container img {
-		max-height:  <?php
+		max-height:  <?php 
 echo  $titan->getOption( 'header_height' ) ;
 ?>px;
 		float: left;
 	}
 	.mobmenur-container img {
-		max-height:  <?php
+		max-height:  <?php 
 echo  $titan->getOption( 'header_height' ) ;
 ?>px;
 		float: right;
 	}
 	.mob-expand-submenu i {
-		font-size: <?php
+		font-size: <?php 
 echo  $titan->getOption( 'submenu_icon_font_size' ) ;
 ?>px;
 	}
 	#mobmenuleft li a , #mobmenuleft li a:visited, .mobmenu-content h2, .mobmenu-content h3, .show-nav-left .mob-menu-copyright, .show-nav-left .mob-expand-submenu i {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_panel_text_color' ) ;
 ?>;
 
 	}
 	.mob-cancel-button {
-		font-size: <?php
+		font-size: <?php 
 echo  $titan->getOption( 'close_icon_font_size' ) ;
 ?>px!important;
 	}
 
 	/* 3rd Level Left Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuleft .sub-menu  .sub-menu li a:hover {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_panel_3rd_menu_text_color_hover' ) ;
 ?>;
 	}
 	/* 3rd Level Left Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuleft .sub-menu .sub-menu li:hover {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'left_panel_3rd_menu_bg_color_hover' ) ;
 ?>;
 	}
 	.mobmenu-content #mobmenuleft li:hover, .mobmenu-content #mobmenuright li:hover  {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'left_panel_hover_bgcolor' ) ;
 ?>;
 	}
 	.mobmenu-content #mobmenuright li:hover  {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'right_panel_hover_bgcolor' ) ;
 ?> ;
 	}
 	/* 3rd Level Right Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuright .sub-menu .sub-menu li:hover {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'right_panel_3rd_menu_bg_color_hover' ) ;
 ?>;
 	}
 	/* 3rd Level Right Menu Items Background color on Hover*/
 	.mobmenu-content #mobmenuright .sub-menu  .sub-menu li a:hover {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'right_panel_3rd_menu_text_color_hover' ) ;
 ?>;
 	}
 
-	<?php
-if ( $titan->getOption( 'header_shadow' ) ) {
+	<?php 
+if ( $titan->getOption( 'header_shadow' ) && !$titan->getOption( 'enabled_naked_header' ) ) {
     ?>
 		.mob-menu-header-holder {
 			box-shadow:0px 0px 8px 0px rgba(0,0,0,0.15);
 		}
-	<?php
+	<?php 
 }
 ?>
 	.mobmenu-content #mobmenuleft .sub-menu {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'left_panel_submenu_bgcolor' ) ;
 ?> ;
 		margin: 0;
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_panel_submenu_text_color' ) ;
 ?> ;
 		width: 100%;
 		position: initial;
+		height: 100%;
 	}
 	.mob-menu-left-bg-holder {
-		<?php
+		<?php 
 
 if ( $left_menu_bg_image ) {
     ?>
-				background: url(<?php
+			background: url(<?php 
     echo  wp_get_attachment_url( $left_menu_bg_image ) ;
     ?>);
-		<?php
+		<?php 
 }
 
 ?>
-		opacity: <?php
+		opacity: <?php 
 echo  $titan->getOption( 'left_menu_bg_opacity' ) / 100 ;
 ?>;
 		background-attachment: fixed ;
 		background-position: center top ;
-		-webkit-background-size:  <?php
+		-webkit-background-size:  <?php 
 echo  $left_menu_bg_image_size ;
 ?>;
-		-moz-background-size: <?php
+		-moz-background-size: <?php 
 echo  $left_menu_bg_image_size ;
 ?>;
-		background-size: <?php
+		background-size: <?php 
 echo  $left_menu_bg_image_size ;
 ?>;
 	}
-	.mob-menu-right-bg-holder {
-		<?php
+	.mob-menu-right-bg-holder { 
+		<?php 
 
 if ( $titan->getOption( 'right_menu_bg_image' ) ) {
     ?>
-				background: url(<?php
+			background: url(<?php 
     echo  wp_get_attachment_url( $titan->getOption( 'right_menu_bg_image' ) ) ;
     ?>);
-		<?php
+		<?php 
 }
 
 ?>
-		opacity: <?php
+		opacity: <?php 
 echo  $titan->getOption( 'right_menu_bg_opacity' ) / 100 ;
 ?>;
 		background-attachment: fixed ;
 		background-position: center top ;
-		-webkit-background-size: <?php
+		-webkit-background-size: <?php 
 echo  $titan->getOption( 'right_menu_bg_image_size' ) ;
 ?>;
-		-moz-background-size: <?php
+		-moz-background-size: <?php 
 echo  $titan->getOption( 'right_menu_bg_image_size' ) ;
 ?>;
-		background-size:  <?php
+		background-size:  <?php 
 echo  $titan->getOption( 'right_menu_bg_image_size' ) ;
 ?>;
 	}
-	<?php
+	<?php 
 ?>
 	.mobmenu-content #mobmenuleft .sub-menu a {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_panel_submenu_text_color' ) ;
 ?> ;
 	}
 	.mobmenu-content #mobmenuright .sub-menu  a {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'right_panel_submenu_text_color' ) ;
 ?> ;
 	}
@@ -438,58 +473,58 @@ echo  $titan->getOption( 'right_panel_submenu_text_color' ) ;
 		background-color: inherit;
 	}
 	.mobmenu-content #mobmenuright .sub-menu {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'right_panel_submenu_bgcolor' ) ;
 ?> ;
 		margin: 0;
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'right_panel_submenu_text_color' ) ;
 ?> ;
 		position: initial;
 		width: 100%;
 	}
 	#mobmenuleft li:hover a, #mobmenuleft li:hover i {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_panel_hover_text_color' ) ;
 ?>;
 	}
 	#mobmenuright li a , #mobmenuright li a:visited, .show-nav-right .mob-menu-copyright, .show-nav-right .mob-expand-submenu i {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'right_panel_text_color' ) ;
 ?> ;
 	}
 	#mobmenuright li a:hover {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'right_panel_hover_text_color' ) ;
 ?> ;
 	}
 	.mobmenul-container {
-		top: <?php
+		top: <?php 
 echo  $titan->getOption( 'left_icon_top_margin' ) ;
 ?>px;
-		margin-left: <?php
+		margin-left: <?php 
 echo  $titan->getOption( 'left_icon_left_margin' ) ;
 ?>px;
-		margin-top: <?php
+		margin-top: <?php 
 echo  $header_margin_top ;
 ?>;
-		height: <?php
+		height: <?php 
 echo  $header_height ;
 ?>px;
 		float: left;
 	}
 	.mobmenur-container {
-		top: <?php
+		top: <?php 
 echo  $titan->getOption( 'right_icon_top_margin' ) ;
 ?>px;
-		margin-right: <?php
+		margin-right: <?php 
 echo  $titan->getOption( 'right_icon_right_margin' ) ;
 ?>px;
-		margin-top: <?php
+		margin-top: <?php 
 echo  $header_margin_top ;
 ?>;
 	}
-	<?php
+	<?php 
 switch ( $titan->getOption( 'header_text_align' ) ) {
     case 'left':
         $header_logo_float = 'float:left;';
@@ -503,48 +538,45 @@ switch ( $titan->getOption( 'header_text_align' ) ) {
 }
 ?>
 	.mob-menu-logo-holder {
-		padding-top:  <?php
-echo  $titan->getOption( 'logo_top_margin' ) ;
-?>px;
-		margin-top:   <?php
+		margin-top:   <?php 
 echo  $header_margin_top ;
 ?>;
-		text-align:   <?php
+		text-align:   <?php 
 echo  $titan->getOption( 'header_text_align' ) ;
 ?>;
-		margin-left:  <?php
+		margin-left:  <?php 
 echo  $header_margin_left ;
 ?>;
-		margin-right: <?php
+		margin-right: <?php 
 echo  $header_margin_right ;
 ?>;
-		height:       <?php
+		height:       <?php 
 echo  $header_height ;
 ?>px;
-		<?php
+		<?php 
 echo  $header_logo_float ;
 ?>
 	}
 	.mob-menu-header-holder {
-		width:  <?php
+		width:  <?php 
 echo  $header_width ;
 ?> ;
-		background-color: <?php
+		background-color: <?php 
 echo  $header_bg_color ;
 ?> ;
-		height: <?php
+		height: <?php 
 echo  $total_header_height ;
 ?>px ;
-		position:<?php
+		position:<?php 
 echo  $header_position ;
 ?>;
 	}
-	body {
-		padding-top: <?php
+	body.mob-menu-overlay, body.mob-menu-slideout, body.mob-menu-slideout-over, body.mob-menu-slideout-top {
+		padding-top: <?php 
 echo  $wrap_padding_top ;
 ?>px;
 	}
-	<?php
+	<?php 
 
 if ( '' !== $titan->getOption( 'left_menu_bg_gradient' ) ) {
     $left_panel_bg_color = $titan->getOption( 'left_menu_bg_gradient' ) . ';';
@@ -572,100 +604,93 @@ if ( $titan->getOption( 'mm_woo_menu_bg_gradient' ) ) {
 
 ?>
 	.mobmenul-container, .mobmenur-container{
-		position: <?php
+		position: <?php 
 echo  $logo_header_position ;
-?>;
+?>; 
 	}
 	.mobmenu-left-panel {
-		<?php
+		<?php 
 echo  $left_panel_bg_color ;
 ?>;
-		width:  <?php
+		width:  <?php 
 echo  $left_menu_width ;
-?>;
+?>;  
 	}
 	.mobmenu-right-panel {
-		<?php
+		<?php 
 echo  $right_panel_bg_color ;
 ?>
-		width:  <?php
+		width:  <?php 
 echo  $right_menu_width ;
-?>;
+?>; 
 	}
 	.show-nav-left .mobmenu-overlay, .show-nav-right .mobmenu-overlay, .show-mob-menu-search .mobmenu-overlay  {
-		background: <?php
+		background: <?php 
 echo  $titan->getOption( 'overlay_bg_color' ) ;
 ?>;
 	}
-	.show-nav-left .mob-menu-header-holder, .show-nav-right .mob-menu-header-holder{
-		-webkit-transition: .5s;
-		-moz-transition: .5s;
-		-ms-transition: .5s;
-		-o-transition: .5s;
-		transition: .5s;
-	}
-	.mob-menu-slideout-top .mobmenu-overlay, .show-nav-right.mob-menu-slideout .mobmenur-container {
+	.mob-menu-slideout-top .mobmenu-overlay {
 		display:none!important;
 	}
 	.mob-menu-slideout.show-nav-left .mobmenu-push-wrap, .mob-menu-slideout.show-nav-left .mob-menu-header-holder {
-		-webkit-transform: translateX(<?php
+		-webkit-transform: translateX(<?php 
 echo  $left_menu_width ;
 ?>);
-		-moz-transform: translateX(<?php
+		-moz-transform: translateX(<?php 
 echo  $left_menu_width ;
 ?>);
-		-ms-transform: translateX(<?php
+		-ms-transform: translateX(<?php 
 echo  $left_menu_width ;
 ?>);
-		-o-transform: translateX(<?php
+		-o-transform: translateX(<?php 
 echo  $left_menu_width ;
 ?>);
-		transform: translateX(<?php
+		transform: translateX(<?php 
 echo  $left_menu_width ;
 ?>);
 	}
 	.mob-menu-slideout.show-nav-right .mobmenu-push-wrap, .mob-menu-slideout.show-nav-right .mob-menu-header-holder {
-		-webkit-transform: translateX(-<?php
+		-webkit-transform: translateX(-<?php 
 echo  $right_menu_width ;
 ?>);
-		-moz-transform: translateX(-<?php
+		-moz-transform: translateX(-<?php 
 echo  $right_menu_width ;
 ?>);
-		-ms-transform: translateX(-<?php
+		-ms-transform: translateX(-<?php 
 echo  $right_menu_width ;
 ?>);
-		-o-transform: translateX(-<?php
+		-o-transform: translateX(-<?php 
 echo  $right_menu_width ;
 ?>);
-		transform: translateX(-<?php
+		transform: translateX(-<?php 
 echo  $right_menu_width ;
 ?>);
 	}
 	.mob-menu-slideout-top .mobmenu-panel {
 		width:  100%;
-		height: <?php
+		height: <?php 
 echo  $left_menu_height_translate ;
 ?>;
 		z-index: 1;
 		position: fixed;
 		left: 0px;
 		top: 0px;
-		max-height: <?php
+		max-height: <?php 
 echo  $left_menu_height_translate ;
 ?>;
-		-webkit-transform: translateY(-<?php
+		-webkit-transform: translateY(-<?php 
 echo  $left_menu_height_translate ;
 ?>);
-		-moz-transform: translateY(-<?php
+		-moz-transform: translateY(-<?php 
 echo  $left_menu_height_translate ;
 ?>);
-		-ms-transform: translateY(-<?php
+		-ms-transform: translateY(-<?php 
 echo  $left_menu_height_translate ;
 ?>);
-		-o-transform: translateY(-<?php
+		-o-transform: translateY(-<?php 
 echo  $left_menu_height_translate ;
 ?>);
-		transform: translateY(-<?php
+		transform: translateY(-<?php 
 echo  $left_menu_height_translate ;
 ?>);
 	}
@@ -689,150 +714,267 @@ echo  $left_menu_height_translate ;
 		top: 0;
 		height: 100%;
 		overflow-y: auto;
-		overflow-x: hidden;
-		z-index: 1;
+		overflow-x: auto;
+		z-index: 10000;
 		opacity: 1;
-
 	}
 	/*End of Mobmenu Slide Over */
-	.mobmenu .headertext {
-		color: <?php
+	.mobmenu .headertext { 
+		color: <?php 
 echo  $titan->getOption( 'header_text_color' ) ;
 ?> ;
+		text-decoration: none;
 	}
 	.headertext span {
-		position: <?php
+		position: <?php 
 echo  $header_text_position ;
 ?>;
-		line-height: <?php
+		line-height: <?php 
 echo  $header_height ;
 ?>px;
 	}
 	.mobmenu-search-holder {
-		top: <?php
+		top: <?php 
 echo  $total_header_height ;
 ?>px;
 	}
 	/*Premium options  */
-	<?php
+	<?php 
 ?>
 
 	/* Mobile Menu Frontend CSS Style*/
-	html, body {
+	body.mob-menu-overlay, body.mob-menu-slideout, body.mob-menu-slideout-over, body.mob-menu-slideout-top  {
 		overflow-x: hidden;
-		-webkit-overflow-scrolling: auto;
-		overflow-y: scroll;
 	}
+	
 	.mobmenu-left-panel li a, .leftmbottom, .leftmtop{
-		padding-left: <?php
+		padding-left: <?php 
 echo  $titan->getOption( 'left_menu_content_padding' ) ;
 ?>%;
-		padding-right: <?php
+		padding-right: <?php 
 echo  $titan->getOption( 'left_menu_content_padding' ) ;
 ?>%;
 	}
 	.mobmenu-content li > .sub-menu li {
-		padding-left: calc(<?php
+		padding-left: calc(<?php 
 echo  $titan->getOption( 'left_menu_content_padding' ) ;
 ?>*1%);
 	}
 
 	.mobmenu-right-panel li, .rightmbottom, .rightmtop{
-		padding-left: <?php
+		padding-left: <?php 
 echo  $titan->getOption( 'right_menu_content_padding' ) ;
 ?>%;
-		padding-right: <?php
+		padding-right: <?php 
 echo  $titan->getOption( 'right_menu_content_padding' ) ;
 ?>%;
 	}
 	.mobmenul-container i {
-		line-height: <?php
+		line-height: <?php 
 echo  $titan->getOption( 'left_icon_font_size' ) ;
 ?>px;
-		font-size: <?php
+		font-size: <?php 
 echo  $titan->getOption( 'left_icon_font_size' ) ;
 ?>px;
 		float: left;
 	}
 	.left-menu-icon-text {
 		float: left;
-		line-height: <?php
+		line-height: <?php 
 echo  $titan->getOption( 'left_icon_font_size' ) ;
 ?>px;
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'header_text_after_icon' ) ;
 ?>;
 	}
 	.mobmenu-left-panel .mobmenu-display-name {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_panel_text_color' ) ;
 ?>;
 	}
 	.right-menu-icon-text {
 		float: right;
-		line-height: <?php
+		line-height: <?php 
 echo  $titan->getOption( 'right_icon_font_size' ) ;
 ?>px;
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'header_text_before_icon' ) ;
 ?>;
 	}
 	.mobmenur-container i {
-		line-height: <?php
+		line-height: <?php 
 echo  $titan->getOption( 'right_icon_font_size' ) ;
 ?>px;
-		font-size: <?php
+		font-size: <?php 
 echo  $titan->getOption( 'right_icon_font_size' ) ;
 ?>px;
 		float: right;
 	}
-	<?php
+	<?php 
 echo  $default_elements ;
 ?> {
 		display: none!important;
 	}
-
+	
 	.mob-standard-logo {
 		display: inline-block;
-		<?php
+		<?php 
 echo  $logo_height ;
 ?>
 	}
 	.mob-retina-logo {
-		<?php
+		<?php 
 echo  $logo_height ;
 ?>
 	}
 	.mobmenu-content #mobmenuleft > li > a:hover {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'left_panel_hover_bgcolor' ) ;
 ?>;
 	}
 
 	.mobmenu-content #mobmenuright > li > a:hover {
-		background-color: <?php
+		background-color: <?php 
 echo  $titan->getOption( 'right_panel_hover_bgcolor' ) ;
 ?>;
 	}
-	.mob-blocks-user-profile {
-		background-color: <?php
-echo  $titan->getOption( 'user_profile_bg_color' ) ;
-?>;
-	}
-	.mob-blocks-user-profile .mobmenu-display-name {
-		color: <?php
-echo  $titan->getOption( 'user_profile_text_color' ) ;
-?>;
-	}
 	.mobmenu-left-panel .mob-cancel-button {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'left_panel_cancel_button_color' ) ;
 ?>;
 	}
 	.mobmenu-right-panel .mob-cancel-button {
-		color: <?php
+		color: <?php 
 echo  $titan->getOption( 'right_panel_cancel_button_color' ) ;
 ?>;
-	}
-
+	}	
+	
 }
+
+<?php 
+$text_after_left_icon_font = $titan->getOption( 'text_after_left_icon_font' );
+$footer_text_font = $titan->getOption( 'footer_text_font' );
+$header_banner_font = $titan->getOption( 'header_banner_font' );
+$header_menu_font = $titan->getOption( 'header_menu_font' );
+$left_menu_font = $titan->getOption( 'left_menu_font' );
+$text_before_right_icon_font = $titan->getOption( 'text_before_right_icon_font' );
+$right_menu_font = $titan->getOption( 'right_menu_font' );
+?>
+
+.mob-menu-logo-holder > .headertext span,.mobmenu input.mob-menu-search-field {
+	font-family:<?php 
+echo  $header_menu_font['font-family'] ;
+?>;
+	font-size:<?php 
+echo  $header_menu_font['font-size'] ;
+?>;
+	font-weight:<?php 
+echo  $header_menu_font['font-weight'] ;
+?>;
+	font-style:<?php 
+echo  $header_menu_font['font-style'] ;
+?>;
+	letter-spacing:<?php 
+echo  $header_menu_font['letter-spacing'] ;
+?>;
+	text-transform:<?php 
+echo  $header_menu_font['text-transform'] ;
+?>;
+}
+
+.left-menu-icon-text {
+	font-family:<?php 
+echo  $text_after_left_icon_font['font-family'] ;
+?>;
+	font-size:<?php 
+echo  $text_after_left_icon_font['font-size'] ;
+?>;
+	font-weight:<?php 
+echo  $text_after_left_icon_font['font-weight'] ;
+?>;
+	font-style:<?php 
+echo  $text_after_left_icon_font['font-style'] ;
+?>;
+	line-height:<?php 
+echo  $text_after_left_icon_font['line-height'] ;
+?>;
+	letter-spacing:<?php 
+echo  $text_after_left_icon_font['letter-spacing'] ;
+?>;
+	text-transform:<?php 
+echo  $text_after_left_icon_font['text-transform'] ;
+?>;
+}
+
+#mobmenuleft .mob-expand-submenu,#mobmenuleft > .widgettitle,#mobmenuleft li a,#mobmenuleft li a:visited,#mobmenuleft .mobmenu-content h2,#mobmenuleft .mobmenu-content h3,.mobmenu-left-panel .mobmenu-display-name, .mobmenu-content .mobmenu-tabs-header li {
+	font-family:<?php 
+echo  $left_menu_font['font-family'] ;
+?>;
+	font-size:<?php 
+echo  $left_menu_font['font-size'] ;
+?>;
+	font-weight:<?php 
+echo  $left_menu_font['font-weight'] ;
+?>;
+	font-style:<?php 
+echo  $left_menu_font['font-style'] ;
+?>;
+	line-height:<?php 
+echo  $left_menu_font['line-height'] ;
+?>;
+	letter-spacing:<?php 
+echo  $left_menu_font['letter-spacing'] ;
+?>;
+	text-transform:<?php 
+echo  $left_menu_font['text-transform'] ;
+?>;
+}
+
+.right-menu-icon-text {
+	font-family:<?php 
+echo  $text_before_right_icon_font['font-family'] ;
+?>;
+	font-size:<?php 
+echo  $text_before_right_icon_font['font-size'] ;
+?>;
+	font-weight:<?php 
+echo  $text_before_right_icon_font['font-weight'] ;
+?>;
+	font-style:<?php 
+echo  $text_before_right_icon_font['font-style'] ;
+?>;
+	line-height:<?php 
+echo  $text_before_right_icon_font['line-height'] ;
+?>;
+	letter-spacing:<?php 
+echo  $text_before_right_icon_font['letter-spacing'] ;
+?>;
+	text-transform:<?php 
+echo  $text_before_right_icon_font['text-transform'] ;
+?>;
+}
+
+#mobmenuright li a,#mobmenuright li a:visited,#mobmenuright .mobmenu-content h2,#mobmenuright .mobmenu-content h3,.mobmenu-left-panel .mobmenu-display-name {
+	font-family:<?php 
+echo  $right_menu_font['font-family'] ;
+?>;
+	font-size:<?php 
+echo  $right_menu_font['font-size'] ;
+?>;
+	font-weight:<?php 
+echo  $right_menu_font['font-weight'] ;
+?>;
+	font-style:<?php 
+echo  $right_menu_font['font-style'] ;
+?>;
+	line-height:<?php 
+echo  $right_menu_font['line-height'] ;
+?>;
+	letter-spacing:<?php 
+echo  $right_menu_font['letter-spacing'] ;
+?>;
+	text-transform:<?php 
+echo  $right_menu_font['text-transform'] ;
+?>;
+}
+

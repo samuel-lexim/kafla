@@ -3,8 +3,8 @@ Contributors: themepoints
 Donate link: https://themepoints.com
 Tags:  testimonial, testimonial shortcode, testimonial slider, testimonial widget, testimonials, random testimonials, client review
 Requires at least: 3.8
-Tested up to: 5.2.2
-Stable tag: 2.1
+Tested up to: 5.4.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -180,6 +180,18 @@ When active & options setup done please paste [tpsscode] this shortcode into you
 
 
 == Changelog ==
+
+= 2.3 =
+*Release Date - 13 July 2020*
+ * Fix Responsive Issues.
+ * Added New Options.
+ * Added Text color change option.
+ * Added Rating Icon color change option.
+
+= 2.2 =
+*Release Date - 04 January 2020*
+ * Fix CSS Issues.
+ * Update Options.
 
 = 2.1 =
 *Release Date - 19 June 2019*
