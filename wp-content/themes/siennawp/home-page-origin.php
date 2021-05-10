@@ -12,19 +12,19 @@ Template Name: Home Page Origin
             <div class="hero-slider-wrap">
                 <div class="hero-slick vertical-dots">
                     <div class="hero-home-item">
-                        <img alt="" src="/wp-content/uploads/2019/10/1-Copy-1920x945.jpg"/>
+                        <img alt="" src="wp-content/uploads/2021/05/even-tops1-e1620275689111.jpeg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="/wp-content/uploads/2019/10/2-Copy-1920x945.jpg"/>
+                        <img alt="" src="wp-content/uploads/2021/05/even-tops2-1-e1620276177767.jpeg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="/wp-content/uploads/2019/10/3-Copy-1920x945.jpg"/>
+                        <img alt="" src="wp-content/uploads/2021/05/even-tops3-1-e1620276218234.jpeg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="/wp-content/uploads/2019/10/4-Copy-1920x945.jpg"/>
+                        <img alt="" src="wp-content/uploads/2021/05/even-tops4-1-e1620276284681.jpeg"/>
                     </div>
                     <div class="hero-home-item">
-                        <img alt="" src="/wp-content/uploads/2019/10/5-Copy-1920x945.jpg"/>
+                        <img alt="" src="wp-content/uploads/2021/05/even-tops5-1-e1620276346712.jpeg"/>
                     </div>
                 </div>
 
