@@ -1197,7 +1197,7 @@ function my_scripts_method()
 add_action('wp_enqueue_scripts', 'my_scripts_method');
 
 // Notice: ob_end_flush(): failed to send buffer of zlib output compression (1) in /var/www/html/kafla/wp-includes/functions.php on line 4339
-// remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+ remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 
 
 /**
@@ -1223,3 +1223,30 @@ if ( function_exists( 'acf_add_options_page' ) ) {
         )
     );
 }
+
+// Add slug column for PAGE posts
+add_filter("manage_page_posts_columns", "page_columns");
+function page_columns($columns)
+{
+    $add_columns = array(
+        'slug' => 'Slug',
+    );
+    $res = array_slice($columns, 0, 2, true) +
+        $add_columns +
+        array_slice($columns, 2, count($columns) - 1, true);
+
+    return $res;
+}
+
+add_action("manage_page_posts_custom_column", "my_custom_page_columns");
+function my_custom_page_columns($column)
+{
+    global $post;
+    switch ($column) {
+        case 'slug' :
+            echo $post->post_name;
+            break;
+    }
+}
+
+// End - Add slug column for PAGE posts
