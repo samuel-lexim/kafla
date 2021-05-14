@@ -2840,6 +2840,7 @@ body.home .bg-header:not(.sticky) {
 @media only screen and (min-width: 992px) {
   .news-box {
     padding: 30px 15px;
+    margin-top: 5vw;
   }
 
   .news-box .check-active-overlay {
@@ -2848,6 +2849,8 @@ body.home .bg-header:not(.sticky) {
 
   .about-kafla-content-child {
     margin-bottom: -7vw;
+    padding-top: 0;
+    margin-top: 5vw;
   }
 
   .detailing-content {
