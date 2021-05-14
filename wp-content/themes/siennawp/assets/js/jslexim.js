@@ -69,6 +69,7 @@ jQuery(function () {
             arrows: false,
             autoplay: true,
             autoplaySpeed: 3000,
+            adaptiveHeight: true,
             responsive: [
                 {
                     breakpoint: 768,

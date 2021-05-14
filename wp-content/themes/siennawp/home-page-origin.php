@@ -62,45 +62,45 @@ Template Name: Home Page Origin
         </div>
         <?php } ?>
 
-        <div class="about-kafla-content parent-position">
-            <div class="about-kafla-content-child child-position">
+        <div class="about-kafla-content">
+            <div class="about-kafla-content-child home-1col">
                 <div class="empowerment-anchor-box">
-                    <div class="col-xs-4 col-md-4">
+                    <div class="_item">
                         <a href="/community-empowerment/">
-                            <div class="empowerment-box parent-position">
-                                <div class="empowerment-box-child child-position">
+                            <div class="empowerment-box">
+                                <div class="empowerment-box-child">
                                     <div id="ic-community"></div>
-                                    <div class="empowerment-titles">Community Empowerment</div>
+                                    <div class="empowerment-titles">Community<br>Empowerment</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-xs-4 col-md-4">
+                    <div class="_item">
                         <a href="/political-empowerment/">
-                            <div class="empowerment-box parent-position">
-                                <div class="empowerment-box-child child-position">
+                            <div class="empowerment-box">
+                                <div class="empowerment-box-child">
                                     <div id="ic-political"></div>
-                                    <div class="empowerment-titles">Political Empowerment</div>
+                                    <div class="empowerment-titles">Political<br>Empowerment</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-xs-4 col-md-4">
+                    <div class="_item">
                         <a href="/economic-empowerment/">
-                            <div class="empowerment-box parent-position">
-                                <div class="empowerment-box-child child-position">
+                            <div class="empowerment-box">
+                                <div class="empowerment-box-child">
                                     <div id="ic-economic"></div>
-                                    <div class="empowerment-titles">Economic Empowerment</div>
+                                    <div class="empowerment-titles">Economic<br>Empowerment</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
+
                 <div class="news-box">
                     <div class="col-xs-12 col-md-12">
                         <a href="/ournews/">
-                            <div id="news-korean" class="check-active-overlay">
+                            <div id="news-korean" class="check-active-overlay1">
                                 <div class="korean-news-titles">NEWS ARTICLES</div>
                                 <div class="korean-news-descript">[Korea Times] KAFLA Hosts 72nd <br> Korean
                                     Independence Day Ceremony
@@ -142,18 +142,18 @@ Template Name: Home Page Origin
             </div>
         </div>
 
-        <div class="detailing-content parent-position">
-            <div class="detailing-content-child child-position">
-                <div class="col-xs-12 col-md-6 nopadding">
-                    <div class="detailing-content-left parent-position">
-                        <div class="detailing-content-left-child child-position">
-                            <div class="visible-xs">
+        <div class="detailing-content ">
+            <div class="detailing-content-child home-1col">
+                <div class="col-xs-12 col-sm-12 col-md-6 nopadding">
+                    <div class="detailing-content-left">
+                        <div class="detailing-content-left-child">
+                            <div class="visible-xs visible-sm">
                                 <div id="decor-hand"></div>
                             </div>
                             <div class="detailing-content-titles">
                                 The Korean American Federation of Los Angeles (KAFLA)
                             </div>
-                            <div class="visible-xs">
+                            <div class="visible-xs visible-sm">
                                 <div id="img-hand-mobi"></div>
                             </div>
                             <div class="detailing-descript">
@@ -161,21 +161,21 @@ Template Name: Home Page Origin
                                 non-profit organization that serves the Korean American community in Greater Los
                                 Angeles.
                             </div>
-                            <div class="btn-read-more"><a href="/about-us/" id="btn-read-more" class="btn btn-link"
-                                                          role="button">Read more</a></div>
+                            <div class="btn-read-more">
+                                <a href="/about-us/" id="btn-read-more" class="btn btn-link" role="button">Read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="hidden-xs col-md-6 nopadding">
+                <div class="hidden-xs hidden-sm col-md-6 nopadding">
                     <div id="img-hand"></div>
                 </div>
                 <div class="clearfix"></div>
-
             </div>
         </div>
 
-        <div class="brand-content parent-position">
-            <div class="brand-content-child child-position">
+        <div class="brand-content">
+            <div class="brand-content-child home-1col">
                 <div class="brand-titles">2019-2020 Heritage Night Sponsors</div>
 
                 <div class="col-xs-6 col-md-6">
