@@ -51,11 +51,53 @@ jQuery(function () {
 
 
         //  func click show video and hide background slider
+
+        // Start - Youtube Video
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: $('#player').attr('data-id'),
+                playerVars: {
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        var done = false;
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                setTimeout(stopVideo, 6000);
+                done = true;
+            }
+        }
+
+        function stopVideo() {
+            player.stopVideo();
+        }
+
+        // End - Youtube Video
+
         body.delegate('#btn-watchvideo', 'click', function () {
             $('.bg-video-home-top').show();
             $('.hero-slider-wrap').hide();
             $('.hero-slick').hide();
             $('.hero-wrap').css({'background-image': 'unset'});
+            let video = $('.embed-responsive-item');
+            if (video.hasClass('youtube')) {
+                onYouTubeIframeAPIReady();
+            }
         });
 
 
@@ -63,7 +105,7 @@ jQuery(function () {
         $('.single-image-slick').slick();
 
         $('.hero-slick').slick({
-            vertical : true,
+            vertical: true,
             verticalSwiping: true,
             dots: true,
             arrows: false,
@@ -75,7 +117,7 @@ jQuery(function () {
                     breakpoint: 768,
                     settings: {
                         dots: false,
-                        vertical : false,
+                        vertical: false,
                         verticalSwiping: false,
                     }
                 }

@@ -33,7 +33,8 @@ if (!function_exists('sienna_mikado_styles')) {
         }
 
         if (file_exists(MIKADO_ROOT_DIR . '/assets/css/style_dynamic.css') && sienna_mikado_is_css_folder_writable() && !is_multisite()) {
-            wp_enqueue_style('sienna_mikado_style_dynamic', MIKADO_ASSETS_ROOT . '/css/style_dynamic.css', $style_dynamic_deps_array, filemtime(MIKADO_ROOT_DIR . '/assets/css/style_dynamic.css')); //it must be included after woocommerce styles so it can override it
+            wp_enqueue_style('sienna_mikado_style_dynamic', MIKADO_ASSETS_ROOT . '/css/style_dynamic.css', $style_dynamic_deps_array,
+                filemtime(MIKADO_ROOT_DIR . '/assets/css/style_dynamic.css')); //it must be included after woocommerce styles so it can override it
         }
 
         //is responsive option turned on?
@@ -43,7 +44,8 @@ if (!function_exists('sienna_mikado_styles')) {
 
             //include proper styles
             if (file_exists(MIKADO_ROOT_DIR . '/assets/css/style_dynamic_responsive.css') && sienna_mikado_is_css_folder_writable() && !is_multisite()) {
-                wp_enqueue_style('sienna_mikado_style_dynamic_responsive', MIKADO_ASSETS_ROOT . '/css/style_dynamic_responsive.css', array(), filemtime(MIKADO_ROOT_DIR . '/assets/css/style_dynamic_responsive.css'));
+                wp_enqueue_style('sienna_mikado_style_dynamic_responsive', MIKADO_ASSETS_ROOT . '/css/style_dynamic_responsive.css', array(),
+                    filemtime(MIKADO_ROOT_DIR . '/assets/css/style_dynamic_responsive.css'));
             }
         }
 
@@ -54,10 +56,8 @@ if (!function_exists('sienna_mikado_styles')) {
     }
 
     add_action('wp_enqueue_scripts', 'sienna_mikado_styles');
-	
 
-	
-	
+
 }
 
 if (!function_exists('sienna_mikado_google_fonts_styles')) {
@@ -159,8 +159,6 @@ if (!function_exists('sienna_mikado_scripts')) {
 
         wp_enqueue_script('slick', MIKADO_ASSETS_ROOT . '/js/slick.min.js', array('jquery'), false, true);
 
-        wp_enqueue_script('hoa-custom_modules', MIKADO_ASSETS_ROOT . '/js/hoa-custom.js', array('jquery'), false, true);
-
         wp_enqueue_script('pagination-custom_modules', MIKADO_ASSETS_ROOT . '/js/jquery.easyPaginate.js', array('jquery'), false, true);
 
         if (sienna_mikado_load_blog_assets()) {
@@ -177,6 +175,10 @@ if (!function_exists('sienna_mikado_scripts')) {
         if (class_exists('WPBakeryVisualComposerAbstract')) {
             wp_enqueue_script('wpb_composer_front_js');
         }
+
+        wp_enqueue_script('jslexim', MIKADO_ASSETS_ROOT . '/js/jslexim.js', array('jquery'), false, true);
+
+        wp_enqueue_script('hoa-custom_modules', MIKADO_ASSETS_ROOT . '/js/hoa-custom.js', array('jquery'), false, true);
     }
 
     add_action('wp_enqueue_scripts', 'sienna_mikado_scripts');
@@ -213,9 +215,11 @@ if (!function_exists('sienna_mikado_ajax_meta')) {
 
         <?php if ($page_transition !== '') { ?>
         <div class="mkdf-page-transition"><?php echo esc_html($page_transition); ?></div>
-    <?php } else if (sienna_mikado_options()->getOptionValue('default_page_transition')) { ?>
-        <div class="mkdf-page-transition"><?php echo esc_html(sienna_mikado_options()->getOptionValue('default_page_transition')); ?></div>
-    <?php }
+    <?php } else {
+        if (sienna_mikado_options()->getOptionValue('default_page_transition')) { ?>
+            <div class="mkdf-page-transition"><?php echo esc_html(sienna_mikado_options()->getOptionValue('default_page_transition')); ?></div>
+        <?php }
+    }
     }
 
     add_action('sienna_mikado_ajax_meta', 'sienna_mikado_ajax_meta');
@@ -1004,13 +1008,15 @@ if (!function_exists('sienna_mikado_get_global_variables')) {
     }
 
     add_action('wp_enqueue_scripts', 'sienna_mikado_get_global_variables');
-	
-	function remove_admin_login_header() {
-		remove_action('wp_head', '_admin_bar_bump_cb');
-	}
-	add_action('get_header', 'remove_admin_login_header');
-	
-	
+
+    function remove_admin_login_header()
+    {
+        remove_action('wp_head', '_admin_bar_bump_cb');
+    }
+
+    add_action('get_header', 'remove_admin_login_header');
+
+
 }
 
 if (!function_exists('sienna_mikado_per_page_js_variables')) {
@@ -1187,38 +1193,38 @@ add_action('wp_enqueue_scripts', 'wp_include_css');
 
 function my_scripts_method()
 {
-    wp_enqueue_script(
-        'jslexim',
-        get_stylesheet_directory_uri() . '/assets/js/jslexim.js',
-        array('jquery')
-    );
+//    wp_enqueue_script(
+//        'jslexim',
+//        get_stylesheet_directory_uri() . '/assets/js/jslexim.js',
+//        array('jquery')
+//    );
 }
 
 add_action('wp_enqueue_scripts', 'my_scripts_method');
 
 // Notice: ob_end_flush(): failed to send buffer of zlib output compression (1) in /var/www/html/kafla/wp-includes/functions.php on line 4339
- remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+remove_action('shutdown', 'wp_ob_end_flush_all', 1);
 
 
 /**
  * Add section in admin page
  * @position function.php
  */
-if ( function_exists( 'acf_add_options_page' ) ) {
+if (function_exists('acf_add_options_page')) {
     acf_add_options_page(
         array(
             'page_title' => 'Options Page',
             'menu_title' => 'Options Page Settings',
-            'menu_slug'  => 'options-page-settings',
+            'menu_slug' => 'options-page-settings',
             'capability' => 'edit_posts',
-            'redirect'   => true
+            'redirect' => true
         )
     );
 
     acf_add_options_sub_page(
         array(
-            'page_title'  => 'Hero Slider in Home page',
-            'menu_title'  => 'Hero Slider in Home page',
+            'page_title' => 'Hero Slider in Home page',
+            'menu_title' => 'Hero Slider in Home page',
             'parent_slug' => 'options-page-settings'
         )
     );
@@ -1250,3 +1256,51 @@ function my_custom_page_columns($column)
 }
 
 // End - Add slug column for PAGE posts
+
+
+/**
+ * Get link embed
+ *
+ * @param $url
+ *
+ * @return false|string
+ */
+function generateVideoEmbedUrl($url)
+{
+    if (!$url || !is_string($url)) {
+        return false;
+    }
+
+    //This is a general function for generating an embed link of an FB/Vimeo/Youtube Video.
+    $finalUrl = '';
+
+    if (strpos($url, 'facebook.com/') !== false) {
+        //it is FB video
+        $finalUrl .= 'https://www.facebook.com/plugins/video.php?href=' . rawurlencode($url) . '&show_text=1&width=200';
+    } elseif (strpos($url, 'vimeo.com/') !== false) {
+        //it is Vimeo video
+        $videoId = explode("vimeo.com/", $url)[1];
+        if (strpos($videoId, '&') !== false) {
+            $videoId = explode("&", $videoId)[0];
+        }
+        $finalUrl .= 'https://player.vimeo.com/video/' . $videoId;
+    } elseif (strpos($url, 'youtube.com/') !== false && !strpos($url, 'youtube.com/embed') !== false) {
+        //it is Youtube video
+        $videoId = explode("v=", $url)[1];
+        if (strpos($videoId, '&') !== false) {
+            $videoId = explode("&", $videoId)[0];
+        }
+        $finalUrl .= 'https://www.youtube.com/embed/' . $videoId;
+    } elseif (strpos($url, 'youtu.be/') !== false && !strpos($url, 'youtu.be/embed') !== false) {
+        //it is Youtube video
+        $videoId = explode("youtu.be/", $url)[1];
+        if (strpos($videoId, '&') !== false) {
+            $videoId = explode("&", $videoId)[0];
+        }
+        $finalUrl .= 'https://www.youtube.com/embed/' . $videoId;
+    } else {
+        $finalUrl = $url;
+    }
+
+    return $finalUrl;
+}

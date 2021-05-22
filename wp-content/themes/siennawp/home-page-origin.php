@@ -49,14 +49,28 @@ Template Name: Home Page Origin
                     </div>
 
                 <div class="watch-hero">
-                    <a href="#videos" id="btn-watchvideo" class="btn btn-link" role="button">Watch video</a>
+                    <a href="javascript:void(0)" id="btn-watchvideo" class="btn btn-link" role="button">Watch video</a>
                 </div>
             </div>
+
+            <?php
+                $video_link = get_field('home_video_link', 'option');
+                $video_link = generateVideoEmbedUrl($video_link);
+                $youtubeVideoId = explode('/embed/', $video_link);
+                $youtubeVideoId = end($youtubeVideoId);
+                $video_file = get_field('home_video_file', 'option');
+            ?>
             <div class="bg-video-home-top" style="display: none;">
                 <div class="embed-responsive embed-responsive-16by9">
+                    <?php if ($video_link) { // Video Link ?>
+                    <script src="https://www.youtube.com/iframe_api"></script>
+                    <div class="embed-responsive-item youtube" id="player" data-id="<?= $youtubeVideoId ?>"></div>
+
+                    <?php } else if ($video_file) { // Or Video File ?>
                     <video autoplay loop muted playsinline controls width='100%' height='100%' class="embed-responsive-item">
-                        <source src="/wp-content/themes/siennawp/assets/css/images/KAFLA.mp4" type="video/mp4">
+                        <source src="<?= $video_file ?>" type="video/mp4">
                     </video>
+                    <?php } ?>
                 </div>
             </div>
         </div>
