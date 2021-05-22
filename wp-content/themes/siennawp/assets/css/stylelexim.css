@@ -398,7 +398,6 @@ body {
 #img-hand-mobi {
   max-width: 100%;
   height: 240px;
-  background-image: url(./images/img-hand-mobi.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -704,7 +703,6 @@ body.home .bg-header:not(.sticky) {
 #img-hand {
   width: 760px;
   height: 533px;
-  background-image: url(./images/img-hand.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

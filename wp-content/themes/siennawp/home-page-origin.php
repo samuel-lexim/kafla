@@ -48,32 +48,34 @@ Template Name: Home Page Origin
 
                     </div>
 
-                <div class="watch-hero">
-                    <a href="javascript:void(0)" id="btn-watchvideo" class="btn btn-link" role="button">Watch video</a>
+                    <div class="watch-hero">
+                        <a href="javascript:void(0)" id="btn-watchvideo" class="btn btn-link" role="button">Watch video</a>
+                    </div>
                 </div>
-            </div>
 
-            <?php
+                <?php
                 $video_link = get_field('home_video_link', 'option');
                 $video_link = generateVideoEmbedUrl($video_link);
                 $youtubeVideoId = explode('/embed/', $video_link);
                 $youtubeVideoId = end($youtubeVideoId);
                 $video_file = get_field('home_video_file', 'option');
-            ?>
-            <div class="bg-video-home-top" style="display: none;">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <?php if ($video_link) { // Video Link ?>
-                    <script src="https://www.youtube.com/iframe_api"></script>
-                    <div class="embed-responsive-item youtube" id="player" data-id="<?= $youtubeVideoId ?>"></div>
+                ?>
+                <div class="bg-video-home-top" style="display: none;">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <?php if ($video_link) { // Video Link ?>
+                            <script src="https://www.youtube.com/iframe_api"></script>
+                            <div class="embed-responsive-item youtube" id="player" data-id="<?= $youtubeVideoId ?>"></div>
 
-                    <?php } else if ($video_file) { // Or Video File ?>
-                    <video autoplay loop muted playsinline controls width='100%' height='100%' class="embed-responsive-item">
-                        <source src="<?= $video_file ?>" type="video/mp4">
-                    </video>
-                    <?php } ?>
+                        <?php } else {
+                        if ($video_file) { // Or Video File ?>
+                            <video autoplay loop muted playsinline controls width='100%' height='100%' class="embed-responsive-item">
+                                <source src="<?= $video_file ?>" type="video/mp4">
+                            </video>
+                        <?php }
+                        } ?>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php } ?>
 
         <div class="about-kafla-content">
@@ -171,6 +173,9 @@ Template Name: Home Page Origin
         </div>
 
         <div class="detailing-content ">
+            <?php
+            $aboutUsImg = get_field('about_us_img', 'option');
+            ?>
             <div class="detailing-content-child home-1col">
                 <div class="col-xs-12 col-sm-12 col-md-6 nopadding">
                     <div class="detailing-content-left">
@@ -182,7 +187,9 @@ Template Name: Home Page Origin
                                 The Korean American Federation of Los Angeles (KAFLA)
                             </div>
                             <div class="visible-xs visible-sm">
-                                <div id="img-hand-mobi"></div>
+                                <?php if ($aboutUsImg && isset($aboutUsImg['url'])) { ?>
+                                    <div id="img-hand-mobi" style="background-image: url(<?= $aboutUsImg['url'] ?>)"></div>
+                                <?php } ?>
                             </div>
                             <div class="detailing-descript">
                                 The Korean American Federation of Los Angeles (KAFLA) is a registered 501(c)(3)
@@ -196,7 +203,9 @@ Template Name: Home Page Origin
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm col-md-6 nopadding">
-                    <div id="img-hand"></div>
+                    <?php if ($aboutUsImg && isset($aboutUsImg['url'])) { ?>
+                        <div id="img-hand" style="background-image: url(<?= $aboutUsImg['url'] ?>)"></div>
+                    <?php } ?>
                 </div>
                 <div class="clearfix"></div>
             </div>
