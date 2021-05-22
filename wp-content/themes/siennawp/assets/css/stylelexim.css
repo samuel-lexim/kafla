@@ -370,7 +370,6 @@ body {
 }
 
 #news-korean {
-  background-image: url(./images/bg-home-2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -381,7 +380,6 @@ body {
 }
 
 #news-gallery {
-  background-image: url(./images/img-photo-gallery.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -390,7 +388,6 @@ body {
 }
 
 #news-video {
-  background-image: url(./images/img-video-story.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

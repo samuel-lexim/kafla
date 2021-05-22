@@ -13,40 +13,40 @@ Template Name: Home Page Origin
         ?>
 
         <?php if ($heroImages) { ?>
-        <div class="hero-wrap">
-            <div class="hero-slider-wrap">
-                <div class="hero-slick vertical-dots">
-                    <?php if (is_array($heroImages)) {
-                        foreach ($heroImages as $img) {
-                            if (isset($img['image']['url'])) { ?>
-                    <div class="hero-home-item">
-                        <img alt="<?= $img['image']['alt'] ?>" src="<?= $img['image']['url'] ?>" />
-                    </div>
+            <div class="hero-wrap">
+                <div class="hero-slider-wrap">
+                    <div class="hero-slick vertical-dots">
+                        <?php if (is_array($heroImages)) {
+                            foreach ($heroImages as $img) {
+                                if (isset($img['image']['url'])) { ?>
+                                    <div class="hero-home-item">
+                                        <img alt="<?= $img['image']['alt'] ?>" src="<?= $img['image']['url'] ?>"/>
+                                    </div>
+                                <?php } ?>
                             <?php } ?>
                         <?php } ?>
-                    <?php } ?>
-                </div>
+                    </div>
 
-                <div class="social-hero">
-                    <a class="hidden-xs" href="https://www.youtube.com/channel/UC0eC11Hw5AYxaZkfcwPdmVQ"
-                       target="_blank">
-                        <div id="ic-you"></div>
-                    </a>
-                    <a class="hidden-xs" href="https://www.instagram.com/kafla1962/" target="_blank">
-                        <div id="ic-in"></div>
-                    </a>
-                    <a class="hidden-xs" href="https://twitter.com/kafla1962" target="_blank">
-                        <div id="ic-tw"></div>
-                    </a>
-                    <a class="hidden-xs" href="https://www.facebook.com/kafla1962/" target="_blank">
-                        <div id="ic-fb"></div>
-                    </a>
-                    <div class="hidden-xs" id="follow-us-text"></div>
-                    <div class="hidden-xs" id="decor-top-left"></div>
+                    <div class="social-hero">
+                        <a class="hidden-xs" href="https://www.youtube.com/channel/UC0eC11Hw5AYxaZkfcwPdmVQ"
+                           target="_blank">
+                            <div id="ic-you"></div>
+                        </a>
+                        <a class="hidden-xs" href="https://www.instagram.com/kafla1962/" target="_blank">
+                            <div id="ic-in"></div>
+                        </a>
+                        <a class="hidden-xs" href="https://twitter.com/kafla1962" target="_blank">
+                            <div id="ic-tw"></div>
+                        </a>
+                        <a class="hidden-xs" href="https://www.facebook.com/kafla1962/" target="_blank">
+                            <div id="ic-fb"></div>
+                        </a>
+                        <div class="hidden-xs" id="follow-us-text"></div>
+                        <div class="hidden-xs" id="decor-top-left"></div>
 
-                    <!-- <div class="titles-top-home">25 years after racial tensions erupted, black and Korean communities reflect on L.A.</div> -->
+                        <!-- <div class="titles-top-home">25 years after racial tensions erupted, black and Korean communities reflect on L.A.</div> -->
 
-                </div>
+                    </div>
 
                 <div class="watch-hero">
                     <a href="#videos" id="btn-watchvideo" class="btn btn-link" role="button">Watch video</a>
@@ -98,32 +98,46 @@ Template Name: Home Page Origin
                 </div>
 
                 <div class="news-box">
-                    <div class="col-xs-12 col-md-12">
-                        <a href="/ournews/">
-                            <div id="news-korean" class="check-active-overlay1">
-                                <div class="korean-news-titles">NEWS ARTICLES</div>
-                                <div class="korean-news-descript">[Korea Times] KAFLA Hosts 72nd <br> Korean
-                                    Independence Day Ceremony
+                    <?php $newsArticlesImg = get_field('news_articles_img', 'option');
+                    if ($newsArticlesImg && isset($newsArticlesImg['url'])) { ?>
+                        <div class="col-xs-12 col-md-12">
+                            <a href="/ournews/">
+                                <div id="news-korean" class="check-active-overlay1" style="background-image: url(<?= $newsArticlesImg['url'] ?>)">
+                                    <div class="korean-news-titles">NEWS ARTICLES</div>
+                                    <div class="korean-news-descript">[Korea Times] KAFLA Hosts 72nd <br> Korean
+                                        Independence Day Ceremony
+                                    </div>
+                                    <div class="hover-overlay-effect active"></div>
                                 </div>
-                                <div class="hover-overlay-effect active"></div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    <?php } ?>
+
+                    <?php
+                    $photoGalleryImg = get_field('photo_gallery_img', 'option');
+                    $videoGalleryImg = get_field('video_gallery_img', 'option');
+                    ?>
+
                     <div class="col-xs-12 col-md-12">
-                        <a href="/photos/">
-                            <div id="news-gallery" class="check-active-overlay">
-                                <div class="news-titles">PHOTO GALLERY</div>
-                                <div class="news-descript">Sebastian Ridley-Thomas visited KAFLA</div>
-                                <div class="hover-overlay-effect active"></div>
-                            </div>
-                        </a>
-                        <a href="/videos/">
-                            <div id="news-video" class="check-active-overlay">
-                                <div class="news-titles">VIDEO GALLERY</div>
-                                <div class="news-descript">Korean American Federation of Los Angeles Introduction</div>
-                                <div class="hover-overlay-effect active"></div>
-                            </div>
-                        </a>
+                        <?php if ($photoGalleryImg && isset($photoGalleryImg['url'])) { ?>
+                            <a href="/photos/">
+                                <div id="news-gallery" class="check-active-overlay" style="background-image: url(<?= $photoGalleryImg['url'] ?>)">
+                                    <div class="news-titles">PHOTO GALLERY</div>
+                                    <div class="news-descript">Sebastian Ridley-Thomas visited KAFLA</div>
+                                    <div class="hover-overlay-effect active"></div>
+                                </div>
+                            </a>
+                        <?php } ?>
+
+                        <?php if ($videoGalleryImg && isset($videoGalleryImg['url'])) { ?>
+                            <a href="/videos/">
+                                <div id="news-video" class="check-active-overlay" style="background-image: url(<?= $videoGalleryImg['url'] ?>)">
+                                    <div class="news-titles">VIDEO GALLERY</div>
+                                    <div class="news-descript">Korean American Federation of Los Angeles Introduction</div>
+                                    <div class="hover-overlay-effect active"></div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
 
                     <!--
